@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoadMargin — Fleet Profitability Tools for Carriers & Owner-Operators</title>
+    <meta name="description" content="Complete profitability suite for trucking carriers. Load Calculator, Freight Dashboard, Driver Analytics, HOS Compliance, and more. Trusted by 1000+ carriers.">
+    <meta name="keywords" content="fleet management, load calculator, profitability, trucking tools, owner operator, carrier software, freight profit">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232B5FE0' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%23B8860B' font-family='Arial'>LM</text></svg>" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Roboto:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #0F66FF;
+            --blue-light: #1F7FFF;
+            --gold: #FFB800;
+            --dark: #0A0E27;
+            --dark-secondary: #1A1F3A;
+            --light: #F0F4FF;
+            --gray: #8B92B4;
+            --gray-light: #D4D9E8;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --danger: #EF4444;
+            --accent: #FF6B35;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* ===== PREMIUM NAVBAR ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(10, 14, 39, 0.85) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 184, 0, 0.15);
+            padding: 1.5rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Brand Section */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 200px;
+            flex-shrink: 0;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(15, 102, 255, 0.1) 100%);
+            border: 1.5px solid rgba(255, 184, 0, 0.3);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .brand-icon:hover {
+            border-color: rgba(255, 184, 0, 0.6);
+            box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-main {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-sub {
+            font-size: 0.65rem;
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        /* Center Links */
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, var(--gold), var(--blue-light));
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Right Section */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-shrink: 0;
+        }
+
+        .btn-nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #FFC933 100%);
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 20px rgba(255, 184, 0, 0.25);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.4);
+        }
+
+        .btn-nav-cta:active {
+            transform: scale(0.98);
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-text {
+            font-size: 0.8rem;
+            color: var(--success);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== PREMIUM HERO ===== */
+        .hero-premium {
+            background: linear-gradient(135deg, rgba(15, 102, 255, 0.08) 0%, rgba(255, 184, 0, 0.04) 100%),
+                        var(--dark);
+            padding: 6rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 184, 0, 0.1);
+        }
+
+        .hero-content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(15, 102, 255, 0.1) 100%);
+            border: 1px solid rgba(255, 184, 0, 0.25);
+            border-radius: 50px;
+            width: fit-content;
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(10px);
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--white);
+            letter-spacing: -1px;
+            animation: slideInLeft 0.6s ease-out 0.1s backwards;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--blue-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+            max-width: 550px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            animation: slideInLeft 0.6s ease-out 0.2s backwards;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: slideInLeft 0.6s ease-out 0.3s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, #FFC933 100%);
+            color: var(--dark);
+            box-shadow: 0 8px 30px rgba(255, 184, 0, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 184, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            color: var(--gold);
+            border: 1.5px solid rgba(255, 184, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 184, 0, 0.05) 100%);
+            border-color: var(--gold);
+            box-shadow: 0 8px 30px rgba(255, 184, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn-large {
+            padding: 1.1rem 2.8rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .play-icon {
+            margin-right: 0.7rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 184, 0, 0.1);
+            animation: slideInLeft 0.6s ease-out 0.4s backwards;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .stat strong {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--blue-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat span {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* Hero Right - Animated Visual */
+        .hero-right {
+            position: relative;
+            animation: slideInRight 0.6s ease-out 0.2s backwards;
+        }
+
+        .hero-visual {
+            width: 100%;
+            aspect-ratio: 1;
+            position: relative;
+            filter: drop-shadow(0 20px 60px rgba(255, 184, 0, 0.15));
+        }
+
+        .hero-animation {
+            animation: floatHero 6s ease-in-out infinite;
+        }
+
+        @keyframes floatHero {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Background elements */
+        .hero-bg-element {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .hero-bg-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            top: 50%;
+            left: -200px;
+            transform: translateY(-50%);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-bg-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+            bottom: 100px;
+            right: 100px;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(40px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ===== FLOATING TRUCK COMPANION ===== */
+        .floating-truck-container {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 99;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInTruck 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInTruck {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .floating-truck {
+            filter: drop-shadow(0 10px 30px rgba(255, 184, 0, 0.2));
+            animation: truckFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes truckFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+        }
+
+        /* Tooltip styling */
+        .truck-tooltip {
+            position: absolute;
+            bottom: 130px;
+            right: 10px;
+            opacity: 0;
+            pointer-events: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .floating-truck-container:hover .truck-tooltip {
+            opacity: 1;
+        }
+
+        .tooltip-content {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(15, 102, 255, 0.15) 100%);
+            border: 1px solid rgba(255, 184, 0, 0.4);
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            backdrop-filter: blur(15px);
+            white-space: nowrap;
+            animation: tooltipBounce 0.4s ease-out;
+        }
+
+        .tooltip-icon {
+            font-size: 1.3rem;
+        }
+
+        .tooltip-text {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes tooltipBounce {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Mobile version */
+        @media (max-width: 768px) {
+            .floating-truck-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .truck-tooltip {
+                display: none;
+            }
+
+            .floating-truck {
+                width: 80px;
+                height: 80px;
+            }
+
+            .hero-content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-truck-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PREMIUM NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFB800;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <g fill="url(#brandGrad)">
+                            <rect x="10" y="50" width="50" height="35" rx="3"/>
+                            <rect x="55" y="60" width="25" height="25" rx="2"/>
+                        </g>
+                        <circle cx="25" cy="85" r="8" fill="#0F66FF"/>
+                        <circle cx="45" cy="85" r="8" fill="#0F66FF"/>
+                        <circle cx="75" cy="85" r="6" fill="#0F66FF"/>
+                        <g stroke="url(#brandGrad)" stroke-width="2" fill="none" stroke-linecap="round">
+                            <path d="M 65 45 L 75 30 L 85 25"/>
+                            <polyline points="70 35 85 25 82 40"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-main">LoadMargin</div>
+                    <div class="brand-sub">Freight Suite</div>
+                </div>
+            </div>
+
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <button class="btn-nav-cta">Get Started</button>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">24/7 Live</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LUXURY HERO BANNER -->
+    <section class="hero-premium">
+        <div class="hero-content-wrapper">
+            <div class="hero-left">
+                <span class="hero-badge">🚀 Trusted by 1000+ Carriers</span>
+                <h1 class="hero-title">
+                    Maximize Truck <span class="highlight">Profitability</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Real-time load profitability analysis, driver performance tracking, and compliance management. Everything you need to run a profitable fleet.
+                </p>
+                <div class="hero-ctas">
+                    <button class="btn btn-primary btn-large">Get Started Free</button>
+                    <a href="#" class="btn btn-secondary btn-large">
+                        <span class="play-icon">▶</span> Watch Demo
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>$50M+</strong>
+                        <span>Tracked</span>
+                    </div>
+                    <div class="stat">
+                        <strong>+15%</strong>
+                        <span>Avg Margin</span>
+                    </div>
+                    <div class="stat">
+                        <strong>24/7</strong>
+                        <span>Monitoring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <svg width="100%" height="100%" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="hero-animation">
+                        <defs>
+                            <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFB800;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="heroGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0F66FF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0050CC;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="heroGlow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <style>
+                                @keyframes floatCard {
+                                    0%, 100% { transform: translateY(0px); }
+                                    50% { transform: translateY(-20px); }
+                                }
+                                @keyframes rotateGlow {
+                                    0% { transform: rotate(0deg); }
+                                    100% { transform: rotate(360deg); }
+                                }
+                                .float-1 { animation: floatCard 4s ease-in-out infinite; }
+                                .float-2 { animation: floatCard 5s ease-in-out infinite 0.5s; }
+                                .float-3 { animation: floatCard 6s ease-in-out infinite 1s; }
+                                .glow-ring { animation: rotateGlow 20s linear infinite; }
+                            </style>
+                        </defs>
+
+                        <circle class="glow-ring" cx="250" cy="250" r="220" fill="none" stroke="rgba(255,184,0,0.1)" stroke-width="2"/>
+
+                        <g class="float-1" filter="url(#heroGlow)">
+                            <rect x="30" y="50" width="180" height="110" rx="12" fill="rgba(255,184,0,0.1)" stroke="url(#heroGrad1)" stroke-width="2"/>
+                            <text x="120" y="85" text-anchor="middle" fill="#FFB800" font-size="32" font-weight="800">+28%</text>
+                            <text x="120" y="110" text-anchor="middle" fill="#D4D9E8" font-size="12" font-weight="600">Margin Increase</text>
+                        </g>
+
+                        <g class="float-2" filter="url(#heroGlow)">
+                            <rect x="290" y="80" width="180" height="110" rx="12" fill="rgba(15,102,255,0.1)" stroke="url(#heroGrad2)" stroke-width="2"/>
+                            <text x="380" y="115" text-anchor="middle" fill="#0F66FF" font-size="32" font-weight="800">$4.2K</text>
+                            <text x="380" y="140" text-anchor="middle" fill="#D4D9E8" font-size="12" font-weight="600">Daily Revenue</text>
+                        </g>
+
+                        <g class="float-3" filter="url(#heroGlow)">
+                            <rect x="160" y="280" width="180" height="110" rx="12" fill="rgba(255,184,0,0.1)" stroke="url(#heroGrad1)" stroke-width="2"/>
+                            <text x="250" y="315" text-anchor="middle" fill="#FFB800" font-size="32" font-weight="800">247</text>
+                            <text x="250" y="340" text-anchor="middle" fill="#D4D9E8" font-size="12" font-weight="600">Loads Analyzed</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING TRUCK COMPANION -->
+    <div class="floating-truck-container">
+        <svg width="120" height="120" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" class="floating-truck">
+            <defs>
+                <linearGradient id="truckGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFB800;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="truckBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#0F66FF;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0050CC;stop-opacity:1" />
+                </linearGradient>
+                <filter id="truckGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3"/>
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.3"/>
+                    </feComponentTransfer>
+                </filter>
+                <style>
+                    @keyframes wheelSpin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                    @keyframes truckBounce {
+                        0%, 100% { transform: translateY(0px); }
+                        50% { transform: translateY(-8px); }
+                    }
+                    .truck-wheel {
+                        transform-origin: center;
+                        animation: wheelSpin 1.5s linear infinite;
+                    }
+                    .truck-body {
+                        animation: truckBounce 3s ease-in-out infinite;
+                    }
+                </style>
+            </defs>
+
+            <g class="truck-body">
+                <rect x="50" y="80" width="140" height="60" fill="url(#truckGold)" rx="8"/>
+                <rect x="55" y="85" width="130" height="50" fill="#FFC933" rx="6"/>
+                
+                <rect x="190" y="90" width="60" height="50" fill="url(#truckBlue)" rx="5"/>
+                <rect x="195" y="95" width="35" height="20" fill="#87CEEB" opacity="0.8" rx="2"/>
+                
+                <g class="truck-wheel">
+                    <circle cx="90" cy="145" r="20" fill="#0A0E27" stroke="url(#truckGold)" stroke-width="3"/>
+                    <circle cx="90" cy="145" r="12" fill="none" stroke="url(#truckGold)" stroke-width="2" opacity="0.6"/>
+                    <line x1="90" y1="125" x2="90" y2="165" stroke="url(#truckGold)" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="70" y1="145" x2="110" y2="145" stroke="url(#truckGold)" stroke-width="1.5" opacity="0.7"/>
+                </g>
+                
+                <g class="truck-wheel">
+                    <circle cx="160" cy="145" r="20" fill="#0A0E27" stroke="url(#truckGold)" stroke-width="3"/>
+                    <circle cx="160" cy="145" r="12" fill="none" stroke="url(#truckGold)" stroke-width="2" opacity="0.6"/>
+                    <line x1="160" y1="125" x2="160" y2="165" stroke="url(#truckGold)" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="140" y1="145" x2="180" y2="145" stroke="url(#truckGold)" stroke-width="1.5" opacity="0.7"/>
+                </g>
+                
+                <g class="truck-wheel">
+                    <circle cx="215" cy="145" r="18" fill="#0A0E27" stroke="url(#truckBlue)" stroke-width="2.5"/>
+                    <circle cx="215" cy="145" r="10" fill="none" stroke="url(#truckBlue)" stroke-width="1.5" opacity="0.6"/>
+                </g>
+            </g>
+            
+            <circle cx="140" cy="140" r="100" fill="url(#truckGold)" opacity="0.1" filter="url(#truckGlow)"/>
+        </svg>
+        
+        <div class="truck-tooltip">
+            <div class="tooltip-content">
+                <span class="tooltip-icon">📊</span>
+                <span class="tooltip-text">Maximize margin!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating Truck Visibility Control
+        const floatingTruck = document.querySelector('.floating-truck-container');
+        
+        if (floatingTruck) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight;
+                const windowHeight = window.innerHeight;
+                
+                if (scrollY + windowHeight > docHeight - 200) {
+                    floatingTruck.style.display = 'none';
+                } else {
+                    floatingTruck.style.display = 'block';
+                }
+            });
+
+            floatingTruck.addEventListener('click', () => {
+                const hero = document.querySelector('.hero-premium');
+                if (hero) {
+                    hero.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            floatingTruck.style.cursor = 'pointer';
+        }
+    </script>
+</body>
+</html>
