@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LoadMargin - Smart Tools for Smarter Freight Decisions</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0e27;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+/* HEADER */
+header {
+    background: #0f1835;
+    border-bottom: 1px solid #1e3a5f;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+.header-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-img { height: 46px; width: auto; }
+.nav-links { display: flex; gap: 26px; align-items: center; }
+.nav-links a { color: #94a3b8; font-size: 0.9em; transition: color 0.2s; }
+.nav-links a:hover { color: #e0b872; }
+.nav-cta {
+    background: #e0b872; color: #0a0e27 !important;
+    padding: 8px 18px; border-radius: 5px; font-weight: 600;
+}
+.nav-cta:hover { background: #eac88a; }
+.hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+}
+.hamburger span { width: 26px; height: 3px; background: #e0b872; border-radius: 2px; transition: 0.3s; }
+
+/* MOBILE MENU */
+.mobile-menu {
+    display: none; flex-direction: column;
+    background: #0f1835; border-bottom: 1px solid #1e3a5f;
+    padding: 10px 24px 20px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: #cbd5e1; padding: 12px 0; border-bottom: 1px solid #1e3a5f; font-size: 0.95em; }
+
+.container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO */
+.hero {
+    position: relative; overflow: hidden;
+    padding: 80px 0 70px;
+    background: linear-gradient(135deg, #0f1835 0%, #0a0e27 100%);
+    border-bottom: 1px solid #1e3a5f;
+}
+.hero-watermark {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; max-width: 1100px; opacity: 0.07;
+    pointer-events: none; z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
+.hero-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
+}
+.hero h1 { font-size: 2.6em; color: #f1f5f9; line-height: 1.15; margin-bottom: 18px; }
+.hero h1 .gold { color: #e0b872; }
+.hero p { color: #cbd5e1; font-size: 1.05em; margin-bottom: 28px; max-width: 520px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-gold {
+    background: #e0b872; color: #0a0e27; padding: 13px 30px;
+    border-radius: 6px; font-weight: 600; font-size: 0.95em;
+    border: none; cursor: pointer; transition: 0.2s;
+}
+.btn-gold:hover { background: #eac88a; transform: translateY(-2px); }
+.btn-outline {
+    background: transparent; color: #e0b872; padding: 13px 30px;
+    border: 1px solid #e0b872; border-radius: 6px; font-weight: 600;
+    font-size: 0.95em; cursor: pointer; transition: 0.2s;
+}
+.btn-outline:hover { background: rgba(224,184,114,0.1); }
+
+/* HERO SLIDESHOW */
+.slideshow {
+    position: relative; background: #0f1835;
+    border: 1px solid #1e3a5f; border-radius: 12px;
+    padding: 32px 28px; min-height: 230px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.slide {
+    display: none; text-align: center;
+    animation: fade 0.6s ease;
+}
+.slide.active { display: block; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.slide .badge {
+    display: inline-block; background: rgba(224,184,114,0.15);
+    color: #e0b872; font-size: 0.72em; font-weight: 600;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.5px;
+}
+.slide h3 { color: #f1f5f9; font-size: 1.5em; margin-bottom: 8px; }
+.slide .price { color: #e0b872; font-size: 2.2em; font-weight: 700; margin-bottom: 10px; }
+.slide p { color: #94a3b8; font-size: 0.9em; margin-bottom: 18px !important; max-width: 340px; margin-left: auto; margin-right: auto; }
+.slide a {
+    display: inline-block; background: #e0b872; color: #0a0e27;
+    padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.85em;
+}
+.slide-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+.slide-dots span {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #1e3a5f; cursor: pointer; transition: 0.2s;
+}
+.slide-dots span.active { background: #e0b872; }
+
+/* SPLIT ARTICLE SECTIONS */
+.split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #1e3a5f;
+}
+.split > div { padding: 56px 40px; }
+.split > div:first-child { border-right: 1px solid #1e3a5f; }
+.split h2 { color: #e0b872; font-size: 1.5em; margin-bottom: 18px; line-height: 1.3; }
+.split p { color: #cbd5e1; font-size: 0.93em; margin-bottom: 14px; }
+
+/* PRODUCT CARDS inside split */
+.mini-products { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.mini-card {
+    background: #0f1835; border: 1px solid #1e3a5f;
+    border-radius: 7px; padding: 18px; transition: 0.2s;
+}
+.mini-card:hover { border-color: #e0b872; }
+.mini-card h4 { color: #e0b872; font-size: 0.95em; margin-bottom: 8px; }
+.mini-card .price { color: #f1f5f9; font-weight: 700; font-size: 1.1em; margin-bottom: 6px; }
+.mini-card p { font-size: 0.8em; color: #94a3b8; margin-bottom: 12px; }
+.mini-card a {
+    display: inline-block; background: #e0b872; color: #0a0e27;
+    padding: 7px 14px; border-radius: 4px; font-size: 0.78em; font-weight: 600;
+}
+
+/* PRODUCTS PREVIEW SECTION */
+.section { padding: 70px 0; border-bottom: 1px solid #1e3a5f; }
+.section h2 { color: #e0b872; font-size: 2em; text-align: center; margin-bottom: 12px; }
+.section .sub { text-align: center; color: #94a3b8; margin-bottom: 46px; }
+.products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px;
+}
+.product-card {
+    background: #0f1835; border: 1px solid #1e3a5f;
+    border-radius: 9px; padding: 28px; transition: 0.25s;
+}
+.product-card:hover { border-color: #e0b872; background: #131d3a; transform: translateY(-4px); }
+.product-card h3 { color: #e0b872; font-size: 1.15em; margin-bottom: 10px; }
+.product-card .price { color: #f1f5f9; font-size: 1.9em; font-weight: 700; margin: 12px 0; }
+.product-card p { color: #94a3b8; font-size: 0.88em; margin-bottom: 18px; }
+.product-card a {
+    display: inline-block; background: #e0b872; color: #0a0e27;
+    padding: 9px 20px; border-radius: 5px; font-weight: 600; font-size: 0.85em;
+}
+.center-btn { text-align: center; margin-top: 44px; }
+
+/* PRIVACY */
+.privacy h3 { color: #e0b872; font-size: 1em; margin: 18px 0 8px; }
+.privacy p { font-size: 0.86em; color: #94a3b8; }
+
+/* FOOTER */
+footer {
+    background: #0f1835; border-top: 1px solid #1e3a5f;
+    padding: 34px 0; text-align: center; color: #64748b; font-size: 0.88em;
+}
+footer a { color: #e0b872; margin: 0 8px; }
+
+/* AI CHAT */
+.ai-chat { position: fixed; bottom: 22px; right: 22px; z-index: 300; }
+.chat-bubble {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg, #e0b872, #eac88a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7em; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(224,184,114,0.4); transition: 0.25s;
+}
+.chat-bubble:hover { transform: scale(1.08); }
+.chat-bubble.nudge { animation: nudge 1s ease infinite; }
+@keyframes nudge {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); box-shadow: 0 6px 24px rgba(224,184,114,0.7); }
+}
+.chat-prompt {
+    position: absolute; bottom: 12px; right: 74px;
+    background: #fff; color: #0a0e27; padding: 10px 16px;
+    border-radius: 20px 20px 4px 20px; font-size: 0.85em; font-weight: 500;
+    white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    opacity: 0; transform: translateX(10px); pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.chat-prompt.show { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.chat-prompt::after {
+    content: ''; position: absolute; right: -6px; bottom: 8px;
+    width: 0; height: 0; border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent; border-left: 7px solid #fff;
+}
+.chat-prompt b { color: #b8860b; }
+.chat-window {
+    display: none; position: absolute; bottom: 76px; right: 0;
+    width: 350px; height: 480px; background: #0f1835;
+    border: 1px solid #1e3a5f; border-radius: 14px; overflow: hidden;
+    flex-direction: column; box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+    animation: pop 0.25s ease-out;
+}
+.chat-window.active { display: flex; }
+@keyframes pop { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.chat-head {
+    background: linear-gradient(135deg, #e0b872, #eac88a); color: #0a0e27;
+    padding: 16px 18px; font-weight: 700; display: flex; justify-content: space-between; align-items: center;
+}
+.chat-head span { cursor: pointer; }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.msg { padding: 10px 13px; border-radius: 9px; font-size: 0.86em; max-width: 84%; }
+.msg.bot { background: #1e3a5f; align-self: flex-start; }
+.msg.user { background: #e0b872; color: #0a0e27; align-self: flex-end; }
+.chat-in { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #1e3a5f; }
+.chat-in input {
+    flex: 1; padding: 9px 12px; border-radius: 5px;
+    background: #1e3a5f; border: 1px solid #3b5f8f; color: #e2e8f0; font-size: 0.85em;
+}
+.chat-in input:focus { outline: none; border-color: #e0b872; }
+.chat-in button {
+    background: #e0b872; color: #0a0e27; border: none;
+    padding: 9px 16px; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.85em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-logo { order: -1; }
+    .split { grid-template-columns: 1fr; }
+    .split > div:first-child { border-right: none; border-bottom: 1px solid #1e3a5f; }
+    .split > div { padding: 40px 24px; }
+    .mini-products { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2em; }
+    .chat-window { width: calc(100vw - 44px); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <img src="images/logo.png" alt="LoadMargin" class="logo-img"/>
+        <nav class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#calculate">Cost Per Mile</a>
+            <a href="#privacy">Privacy</a>
+            <a href="https://loadmargin.gumroad.com" target="_blank" class="nav-cta">Shop Now</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#products">Products</a>
+        <a href="#calculate">Cost Per Mile</a>
+        <a href="#privacy">Privacy</a>
+        <a href="https://loadmargin.gumroad.com" target="_blank">Shop Now</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="images/logo-transparent.png" alt="" class="hero-watermark"/>
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1>Smart Tools for <span class="gold">Smarter Freight</span> Decisions</h1>
+                <p>Professional-grade profitability tools for owner-operators and fleets. Calculate your true cost per mile, pick the right loads, and keep more of every dollar you earn.</p>
+                <div class="hero-buttons">
+                    <a href="https://loadmargin.gumroad.com" target="_blank"><button class="btn-gold">Shop Products</button></a>
+                    <a href="#products"><button class="btn-outline">View Tools</button></a>
+                </div>
+            </div>
+            <div class="slideshow" id="slideshow">
+                <div class="slide active">
+                    <div class="badge">MOST POPULAR</div>
+                    <h3>Profitability PRO</h3>
+                    <div class="price">$19</div>
+                    <p>Full fleet profit analysis and reporting in one spreadsheet you own.</p>
+                    <a href="https://loadmargin.gumroad.com/l/qgiwbx" target="_blank">Learn More</a>
+                </div>
+                <div class="slide">
+                    <div class="badge">BEST FOR STARTERS</div>
+                    <h3>Load Calculator</h3>
+                    <div class="price">$12</div>
+                    <p>Instant profit-per-load and per-mile math before you book.</p>
+                    <a href="https://loadmargin.gumroad.com/l/ihvinv" target="_blank">Learn More</a>
+                </div>
+                <div class="slide">
+                    <div class="badge">SAVE ON FUEL</div>
+                    <h3>Fuel Tracker</h3>
+                    <div class="price">$9</div>
+                    <p>Track MPG and fuel cost across every truck in your fleet.</p>
+                    <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+                </div>
+                <div class="slide">
+                    <div class="badge">PLAN SMARTER</div>
+                    <h3>Route Planner</h3>
+                    <div class="price">$25</div>
+                    <p>Optimize routes for maximum efficiency and fuel savings.</p>
+                    <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+                </div>
+                <div class="slide-dots" id="slideDots"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPLIT 1: The same engine -->
+<section class="split" id="products">
+    <div>
+        <h2>The same engine, in a spreadsheet you own</h2>
+        <p>Every LoadMargin tool runs on the same profitability engine used by professional dispatchers - no subscription required. Buy it once, own it forever, use it offline.</p>
+        <div class="mini-products">
+            <div class="mini-card">
+                <h4>Load Calculator</h4>
+                <div class="price">$12</div>
+                <p>Instant profit-per-load and per-mile math.</p>
+                <a href="https://loadmargin.gumroad.com/l/ihvinv" target="_blank">Learn More</a>
+            </div>
+            <div class="mini-card">
+                <h4>Profitability PRO</h4>
+                <div class="price">$19</div>
+                <p>Full fleet profit analysis and reporting.</p>
+                <a href="https://loadmargin.gumroad.com/l/qgiwbx" target="_blank">Learn More</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>Tools built for real freight decisions</h2>
+        <p>Stop guessing on deadhead, fuel, and rate-per-mile. These sheets give you the numbers before you book the load - not after.</p>
+        <div class="mini-products">
+            <div class="mini-card">
+                <h4>Fuel Tracker</h4>
+                <div class="price">$9</div>
+                <p>Track MPG and fuel cost across trucks.</p>
+                <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+            </div>
+            <div class="mini-card">
+                <h4>Driver Performance</h4>
+                <div class="price">$14</div>
+                <p>Safety scores and driver metrics.</p>
+                <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPLIT 2: Article + Privacy -->
+<section class="split">
+    <div id="calculate">
+        <h2>How to calculate your true cost per mile</h2>
+        <p>Most owner-operators underestimate their real cost per mile because they only count fuel. Your true number includes truck payment, insurance, maintenance, tires, permits, tolls, and your own pay.</p>
+        <p>Add every fixed and variable cost for a month, divide by the miles you ran, and you get your break-even per mile. Any load below that number loses you money - even if the total looks big.</p>
+        <p>LoadMargin's calculators do this automatically so you can decide in seconds whether a load is worth taking.</p>
+    </div>
+    <div id="privacy" class="privacy">
+        <h2>Privacy Policy</h2>
+        <p>We keep this simple: your data is yours.</p>
+        <h3>What we collect</h3>
+        <p>Only what you enter on a contact or newsletter form (name and email). Our spreadsheet products run on your own device - we never see the numbers you put in them.</p>
+        <h3>How we use it</h3>
+        <p>To reply to you and, if you opt in, to send occasional product updates. We never sell or share your information with third parties.</p>
+        <h3>Your control</h3>
+        <p>Ask us to delete your details anytime at aleksnvkvc@gmail.com.</p>
+    </div>
+</section>
+
+<!-- PRODUCTS PREVIEW -->
+<section class="section">
+    <div class="container">
+        <h2>Our Products</h2>
+        <p class="sub">Professional freight tools, priced for owner-operators</p>
+        <div class="products-grid">
+            <div class="product-card">
+                <h3>Fuel Tracker</h3>
+                <div class="price">$9</div>
+                <p>Monitor fuel costs and MPG across your fleet in real time.</p>
+                <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3>Load Calculator</h3>
+                <div class="price">$12</div>
+                <p>Calculate profitability for every load instantly.</p>
+                <a href="https://loadmargin.gumroad.com/l/ihvinv" target="_blank">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3>Profitability PRO</h3>
+                <div class="price">$19</div>
+                <p>Advanced fleet profit analysis and reporting.</p>
+                <a href="https://loadmargin.gumroad.com/l/qgiwbx" target="_blank">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3>Route Planner</h3>
+                <div class="price">$25</div>
+                <p>Optimize routes for maximum efficiency and fuel savings.</p>
+                <a href="https://loadmargin.gumroad.com" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="center-btn">
+            <a href="https://loadmargin.gumroad.com" target="_blank"><button class="btn-gold">View All Products</button></a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 LoadMargin. Driven by relationships. Delivered with precision.</p>
+    <p style="margin-top:10px;">
+        <a href="https://loadmargin.gumroad.com" target="_blank">Shop</a> |
+        <a href="#privacy">Privacy</a> |
+        <a href="mailto:aleksnvkvc@gmail.com">Contact</a>
+    </p>
+</footer>
+
+<!-- AI CHAT -->
+<div class="ai-chat">
+    <div class="chat-prompt" id="chatPrompt">👋 <b>Need some help?</b></div>
+    <div class="chat-bubble" id="chatBubble">🤖</div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-head">
+            LoadMargin Assistant
+            <span id="chatClose">✕</span>
+        </div>
+        <div class="chat-msgs" id="chatMsgs">
+            <div class="msg bot">Hi! 👋 Ask me about our freight tools, pricing, or how to calculate cost per mile.</div>
+        </div>
+        <div class="chat-in">
+            <input type="text" id="chatInput" placeholder="Type a message..."/>
+            <button id="chatSend">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Hamburger
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', function(){ mm.classList.toggle('open'); });
+Array.prototype.forEach.call(mm.querySelectorAll('a'), function(a){
+    a.addEventListener('click', function(){ mm.classList.remove('open'); });
+});
+
+// Chat
+var bubble = document.getElementById('chatBubble');
+var win = document.getElementById('chatWindow');
+var close = document.getElementById('chatClose');
+var msgs = document.getElementById('chatMsgs');
+var input = document.getElementById('chatInput');
+var send = document.getElementById('chatSend');
+
+bubble.addEventListener('click', function(){ win.classList.toggle('active'); });
+close.addEventListener('click', function(){ win.classList.remove('active'); });
+
+function addMsg(text, who){
+    var d = document.createElement('div');
+    d.className = 'msg ' + who;
+    d.textContent = text;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+}
+function reply(q){
+    var l = q.toLowerCase();
+    if (l.indexOf('price') > -1 || l.indexOf('cost') > -1 || l.indexOf('how much') > -1)
+        return 'Our tools run $9-$25: Fuel Tracker $9, Load Calculator $12, Driver Performance $14, Profitability PRO $19, Route Planner $25.';
+    if (l.indexOf('fuel') > -1 || l.indexOf('mpg') > -1)
+        return 'The Fuel Tracker ($9) logs MPG and fuel cost across every truck so you can spot waste fast.';
+    if (l.indexOf('profit') > -1)
+        return 'Profitability PRO ($19) breaks down profit per load and per mile for your whole operation.';
+    if (l.indexOf('mile') > -1 || l.indexOf('calculate') > -1)
+        return 'Add all monthly costs (truck, fuel, insurance, maintenance, pay) and divide by miles run - that is your break-even per mile. Our Load Calculator does it for you.';
+    if (l.indexOf('contact') > -1 || l.indexOf('email') > -1)
+        return 'Reach us anytime at aleksnvkvc@gmail.com.';
+    if (l.indexOf('buy') > -1 || l.indexOf('shop') > -1 || l.indexOf('gumroad') > -1)
+        return 'All tools are on our Gumroad store: loadmargin.gumroad.com';
+    return 'Good question! Check the Products section above, or ask me about pricing, fuel tracking, or cost per mile. 😊';
+}
+function submit(){
+    var v = input.value.trim();
+    if (!v) return;
+    addMsg(v, 'user');
+    input.value = '';
+    setTimeout(function(){ addMsg(reply(v), 'bot'); }, 400);
+}
+send.addEventListener('click', submit);
+input.addEventListener('keypress', function(e){ if (e.key === 'Enter') submit(); });
+
+// Slideshow
+var slides = document.querySelectorAll('#slideshow .slide');
+var dotsBox = document.getElementById('slideDots');
+var cur = 0;
+for (var i = 0; i < slides.length; i++) {
+    (function(idx){
+        var dot = document.createElement('span');
+        if (idx === 0) dot.className = 'active';
+        dot.addEventListener('click', function(){ goSlide(idx); });
+        dotsBox.appendChild(dot);
+    })(i);
+}
+var dots = dotsBox.querySelectorAll('span');
+function goSlide(n){
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+}
+setInterval(function(){ goSlide((cur + 1) % slides.length); }, 4000);
+
+// AI nudge - povremeno iskoci "Need some help?"
+var prompt = document.getElementById('chatPrompt');
+var dismissed = false;
+prompt.addEventListener('click', function(){
+    win.classList.add('active');
+    prompt.classList.remove('show');
+    bubble.classList.remove('nudge');
+    dismissed = true;
+});
+function nudge(){
+    if (dismissed || win.classList.contains('active')) return;
+    prompt.classList.add('show');
+    bubble.classList.add('nudge');
+    setTimeout(function(){
+        prompt.classList.remove('show');
+        bubble.classList.remove('nudge');
+    }, 5000);
+}
+setTimeout(nudge, 6000);           // prvi put nakon 6s
+setInterval(nudge, 25000);         // pa svakih 25s
+// prestani da nudge-uje kad user otvori chat
+bubble.addEventListener('click', function(){ dismissed = true; prompt.classList.remove('show'); bubble.classList.remove('nudge'); });
+</script>
+
+</body>
+</html>
