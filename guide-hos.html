@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hours of service, in plain English — LoadMargin</title>
+<meta name="description" content="The four HOS clocks explained for carriers: the 11-hour driving limit, the 14-hour window, the 30-minute break and the 70-hour cycle — and why an illegal load was never a profitable one.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-hos.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hours of service, in plain English — LoadMargin">
+<meta property="og:description" content="The four HOS clocks explained for carriers: the 11-hour driving limit, the 14-hour window, the 30-minute break and the 70-hour cycle — and why an illegal load was never a profitable one.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-hos.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Hours of service, in plain English","description":"The four HOS clocks explained for carriers: the 11-hour driving limit, the 14-hour window, the 30-minute break and the 70-hour cycle — and why an illegal load was never a profitable one.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hos.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hos.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Hours of service, in plain English","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hos.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Compliance</span>
+    <h1>Hours of service, in plain English</h1>
+    <p class="lede">Four clocks run at once and you are legal only while all four are satisfied. What each one is, what resets it, and how to check a load against them before you accept.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#why">Why this belongs in a profitability tool</a></li><li><a href="#clocks">The four clocks</a></li><li><a href="#drive">The 11-hour driving limit</a></li><li><a href="#window">The 14-hour window</a></li><li><a href="#break">The 30-minute break</a></li><li><a href="#cycle">The 60/70-hour cycle</a></li><li><a href="#restart">The 34-hour restart</a></li><li><a href="#sleeper">Sleeper berth splits</a></li><li><a href="#exceptions">Two exceptions worth knowing</a></li><li><a href="#plan">Planning a load against the clock</a></li><li><a href="#money">What a violation actually costs</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">A load that only works by running illegal was never a profitable load. It was a
+liability with a rate attached. This is the US property-carrying hours-of-service framework in
+plain English, and how to check a run against it before you accept.</p>
+
+<h2 id="why">Why this belongs in a profitability tool</h2>
+<p>Most carriers treat hours of service as a compliance topic — something the ELD handles and the
+   safety manager worries about. That framing costs money.</p>
+<p>The clock is a <strong>capacity constraint</strong>. A driver has 11 hours of driving and 70
+   hours of duty in eight days, and those hours are the scarce resource your business actually
+   sells. A load that consumes an extra shift for the same rate is a worse load, whatever the rate
+   per mile says.</p>
+<p>And a violation is not a fine. It is a CSA score movement, which moves your insurance premium,
+   which moves your cost per mile — on every load you run afterwards.</p>
+
+<h2 id="clocks">The four clocks</h2>
+<p>Four limits run at once. You are legal only while all four are satisfied.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Clock</th><th class="n">Limit</th><th>What resets it</th></tr></thead>
+  <tbody>
+  <tr><td>Driving</td><td class="n">11 hours</td><td>10 consecutive hours off duty</td></tr>
+  <tr><td>On-duty window</td><td class="n">14 hours</td><td>10 consecutive hours off duty</td></tr>
+  <tr><td>Break</td><td class="n">30 min after 8h driving</td><td>Taking the break</td></tr>
+  <tr><td>Cycle</td><td class="n">60h / 7 days or 70h / 8 days</td><td>34 consecutive hours off duty</td></tr>
+  </tbody>
+</table></div>
+<p>The one that catches people is the second. It is a <em>window</em>, not a budget of working
+   hours — and it does not stop.</p>
+
+<h2 id="drive">The 11-hour driving limit</h2>
+<p>After 10 consecutive hours off duty, a driver may drive a maximum of <strong>11 hours</strong>.
+   Then another 10 consecutive hours off before driving again.</p>
+<p>Only actual driving counts. Loading, fuelling and waiting at a dock are on-duty time but not
+   driving time — they do not consume this clock, though they do consume the next one.</p>
+
+<h2 id="window">The 14-hour window</h2>
+<p>All driving must happen within <strong>14 consecutive hours</strong> of coming on duty after a
+   qualifying 10-hour break.</p>
+<div class="keybox">
+  <h3>The 14-hour clock does not pause</h3>
+  <p>This is the rule that most often turns a workable load into an illegal one. Sitting at a
+     receiver for four hours does not stop the window — it just consumes four hours of it. Come on
+     duty at 06:00 and you cannot drive after 20:00, whatever happened in between.</p>
+  <p>Which is why detention is both a cost <em>and</em> a compliance problem. Four unpaid hours at a
+     dock can cost you the second half of your driving day.</p>
+</div>
+
+<h2 id="break">The 30-minute break</h2>
+<p>After <strong>8 cumulative hours of driving time</strong> without at least a 30-minute
+   interruption, a driver must take 30 consecutive minutes before driving again.</p>
+<p>Since the September 2020 revision, that break can be satisfied by <strong>off-duty, sleeper
+   berth, or on-duty-not-driving time</strong> — so a 30-minute fuel stop or a wait at a shipper
+   counts. It no longer has to be off-duty.</p>
+
+<h2 id="cycle">The 60/70-hour cycle</h2>
+<p>The rolling limit on total on-duty hours:</p>
+<ul>
+  <li><strong>60 hours in any 7 consecutive days</strong> — for carriers not operating every day
+      of the week</li>
+  <li><strong>70 hours in any 8 consecutive days</strong> — for carriers that do</li>
+</ul>
+<p>The carrier chooses which applies. It is <em>rolling</em>, not weekly: each day, the hours from
+   eight days ago drop off the back.</p>
+<p>This is the clock that quietly runs out. A driver who works 10 hours a day, six days a week, is
+   at 60 hours by day six and cannot legally start day eight without a restart.</p>
+
+<h2 id="restart">The 34-hour restart</h2>
+<p>Taking <strong>34 consecutive hours off duty</strong> resets the cycle clock to zero.</p>
+<p>There is no limit on how often it can be used, and it does not need to include any particular
+   time of day. That flexibility matters for planning: 34 hours starting Friday evening puts a
+   driver back at a full 70 by Sunday morning.</p>
+
+<h2 id="sleeper">Sleeper berth splits</h2>
+<p>The required 10 hours off can be split, which gives a driver real flexibility around an awkward
+   appointment:</p>
+<ul>
+  <li><strong>7/3 split</strong> — at least 7 consecutive hours in the sleeper berth, plus a
+      separate period of at least 3 hours off duty or in the sleeper</li>
+  <li><strong>8/2 split</strong> — at least 8 consecutive hours in the sleeper, plus at least 2
+      hours off duty or in the sleeper</li>
+</ul>
+<p>Neither period counts against the 14-hour window, which is the point. Used well, a split lets a
+   driver wait out a bad delivery window without burning the day.</p>
+
+<h2 id="exceptions">Two exceptions worth knowing</h2>
+<h3>Adverse driving conditions</h3>
+<p>When conditions that could not have been known before departure arise — weather, an accident
+   closing a road — the driving limit extends from 11 to <strong>13 hours</strong> and the window
+   from 14 to <strong>16 hours</strong>.</p>
+<p>"Could not have been known before departure" does the work in that sentence. A forecast blizzard
+   is not adverse driving conditions; a road closed by a crash in front of you is.</p>
+<h3>Short-haul exception</h3>
+<p>Drivers operating within a <strong>150 air-mile radius</strong> of their reporting location, and
+   returning to it within the workday, can be exempt from the ELD requirement and from keeping
+   records of duty status, subject to conditions.</p>
+
+<h2 id="plan">Planning a load against the clock</h2>
+<p>Before accepting, work through five numbers:</p>
+<ol>
+  <li><strong>Driving time needed.</strong> Total miles ÷ realistic average speed. Use 50–55 mph,
+      not the speed limit — that average includes fuel stops, traffic and scales.</li>
+  <li><strong>Driving time available today.</strong> The smallest of: driving left, window left,
+      cycle left.</li>
+  <li><strong>Is a break due?</strong> If the run needs more driving than remains before the
+      8-hour mark, add 30 minutes.</li>
+  <li><strong>Extra shifts.</strong> Anything beyond today's available driving needs another shift
+      and 10 hours of rest in between.</li>
+  <li><strong>Compare against the appointment.</strong> Total elapsed time versus hours until
+      delivery. If elapsed exceeds the appointment window, the load only works by breaking a rule.</li>
+</ol>
+<div class="keybox">
+  <h3>The cycle is the one that surprises people</h3>
+  <p>A 970-mile run needs about 18.7 driving hours at 52 mph. That is two shifts — fine on the daily
+     clocks. But if the driver has only 12 hours left in the 70-hour cycle, the load is impossible
+     without a 34-hour restart first, and no amount of daily planning fixes it.</p>
+</div>
+
+<h2 id="money">What a violation actually costs</h2>
+<p>The fine is the smallest part.</p>
+<ul>
+  <li><strong>The fine itself</strong> — real, but survivable</li>
+  <li><strong>CSA score</strong> — hours-of-service violations carry weight in the Safety Management
+      System, and the score is visible to brokers and insurers</li>
+  <li><strong>Insurance premium</strong> — the score feeds renewal pricing, and insurance is one of
+      the largest fixed costs in your cost per mile</li>
+  <li><strong>Freight access</strong> — some shippers screen carriers on safety score before they
+      will tender a load</li>
+  <li><strong>Liability exposure</strong> — an out-of-hours driver in an accident changes the legal
+      position entirely</li>
+</ul>
+<p>Which is the connection back to profitability: a violation raises your fixed cost per mile
+   through the insurance line, on every load you run for the next year. A load that causes one was
+   never worth its rate.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Check a run before you accept it</h3>
+    <p>The HOS Planner in the console takes your remaining hours and the trip, and tells you whether
+       the clock allows it. Free, no account.</p>
+  </div>
+  <a href="app.html#hos" class="btn btn-gold">Open the planner →</a>
+</div>
+
+<div class="callout warn" style="margin-top:2rem">
+  <p><strong>This is a planning guide, not legal advice.</strong> It summarises the US federal
+  property-carrying rules as a carrier needs to understand them. The regulations themselves are at
+  49 CFR Part 395 and contain conditions and exceptions this page does not cover. Passenger-carrying
+  rules, state intrastate rules and Canadian rules all differ. Your ELD remains your record of duty
+  status.</p>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Federal Motor Carrier Safety Administration, hours-of-service regulations for property-carrying drivers, 49 CFR §395.3 — 11-hour driving limit, 14-hour window, 30-minute break, 60/70-hour limits.</li><li>The September 2020 HOS revision, which allowed the 30-minute break to be satisfied by on-duty-not-driving time and introduced the 7/3 sleeper split.</li><li>Adverse driving conditions exception: driving limit extends to 13 hours and the window to 16 hours. Short-haul exception radius: 150 air miles.</li><li>Summarised via <a href="https://www.foleyservices.com/hours-of-service-rules/" target="_blank" rel="noopener noreferrer">Foley Carrier Services</a>. Always check the regulation itself before relying on an exception.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Why insurance — which HOS violations move — sits inside every load decision.</span></a><a href="guide-deadhead.html"><span class="k">Guide</span><span class="t">The real cost of deadhead miles</span><span class="d">Empty miles consume hours of service too. Here is what they cost.</span></a><a href="glossary.html"><span class="k">Reference</span><span class="t">Freight glossary</span><span class="d">The vocabulary, defined without jargon.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

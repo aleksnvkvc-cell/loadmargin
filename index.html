@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoadMargin — Know a load's profit before you book it</title>
+<meta name="description" content="LoadMargin turns a rate and a mileage into a real net-profit number. Live load scoring, true cost-per-mile builder, driver pay modelling and lane analysis for trucking carriers.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LoadMargin">
+<meta property="og:title" content="LoadMargin — Know a load's profit before you book it">
+<meta property="og:description" content="Live load scoring, true cost-per-mile builder and lane margin analysis for trucking carriers.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LoadMargin — Know a load's profit before you book it">
+<meta name="twitter:description" content="Live load scoring, true cost-per-mile builder and lane margin analysis for trucking carriers.">
+<meta name="twitter:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#site","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"inLanguage":"en","description":"Free freight profitability tools, 66 written guides and Excel workbooks for US trucking carriers. Every calculation runs in your browser."},{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."}]}</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#calculator" class="nav-link">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>the console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="wrap hero-in">
+
+    <div class="hero-copy">
+      <img class="hero-logo float" src="images/logo-full.png" width="1200" height="578"
+           alt="LoadMargin — smart tools for smarter freight decisions" fetchpriority="high">
+      <h1>Know a load's <em>real profit</em> before you book it</h1>
+      <p>Every rate looks good until you subtract fuel, deadhead, driver pay and the cost of
+         simply owning the truck. LoadMargin does that subtraction in about two seconds —
+         with your numbers, not industry averages.</p>
+      <div class="hero-cta">
+        <a href="app.html" class="btn btn-gold">Open the console →</a>
+        <a href="#calculator" class="btn btn-ghost">Score a load here</a>
+        <button class="btn btn-ghost" onclick="openDemo()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch the 40-second demo
+        </button>
+      </div>
+      <p class="hero-note">Free and unlimited today — the calculator below and the full console
+        run in your browser. No account, no card.</p>
+    </div>
+
+    <div class="hero-card panel">
+      <div class="hc-top">
+        <span class="tag live">Live</span>
+        <span class="hc-lbl">scored by the calculator below</span>
+      </div>
+
+      <div class="hc-verdict" id="hVerdict">
+        <span class="hc-vt" id="hVText">ACCEPT</span>
+        <span class="hc-vs" id="hVSub">Clears the target margin</span>
+      </div>
+
+      <div class="hc-rows">
+        <div class="kv"><span>Line haul offered</span><b id="hRate">$2,400</b></div>
+        <div class="kv"><span>Miles, loaded + empty</span><b id="hMiles">970</b></div>
+        <div class="kv"><span>All-in per total mile</span><b id="hRpm">$2.474</b></div>
+        <div class="kv"><span>Break-even per mile</span><b id="hBe">$2.010</b></div>
+        <div class="kv big"><span>Net profit</span><b id="hNet">$450</b></div>
+        <div class="kv"><span>Margin</span><b id="hMargin">18.8%</b></div>
+      </div>
+
+      <a class="hc-cta" href="#calculator">Change any number &rarr;</a>
+    </div>
+
+    <div class="trust-row">
+      <div><span class="k" data-count="2">0</span><span class="v">Second decision</span></div>
+      <div><span class="k" data-count="9">0</span><span class="v">Cost inputs modelled</span></div>
+      <div><span class="k" data-count="8">0</span><span class="v">Modules</span></div>
+      <div><span class="k" data-count="12">0</span><span class="v">Written guides</span></div>
+      <div><span class="k" data-suffix="%" data-count="100">0</span><span class="v">Free, no account</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CALCULATOR ══════════ -->
+<section id="calculator">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Live tool · no account needed</span>
+      <h2>Load Profitability Calculator</h2>
+      <p class="lede">This is the actual product, running right here. Change any number and the verdict recalculates instantly.
+        Nothing is sent anywhere — the math happens in your browser.</p>
+    </div>
+
+    <div class="calc">
+      <!-- inputs -->
+      <div class="panel calc-form rv">
+        <div class="field">
+          <label for="rate">Line haul rate <span class="hint">what the broker offers</span></label>
+          <div class="inp has-pre"><span class="pre">$</span><input type="number" id="rate" value="2400" min="0" step="10" inputmode="decimal"></div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="loaded">Loaded miles</label>
+            <div class="inp has-suf"><input type="number" id="loaded" value="850" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div>
+          </div>
+          <div class="field">
+            <label for="deadhead">Deadhead <span class="hint">empty</span></label>
+            <div class="inp has-suf"><input type="number" id="deadhead" value="120" min="0" step="5" inputmode="decimal"><span class="suf">mi</span></div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="fuel">Diesel price</label>
+            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fuel" value="3.85" min="0" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div>
+          </div>
+          <div class="field">
+            <label for="mpg">Truck MPG</label>
+            <div class="inp has-suf"><input type="number" id="mpg" value="6.5" min="0.1" step="0.1" inputmode="decimal"><span class="suf">mpg</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Driver pay model</label>
+          <div class="seg" role="group" aria-label="Driver pay model">
+            <button type="button" id="segMile" class="on" onclick="setPayMode('mile')">Per mile</button>
+            <button type="button" id="segPct" onclick="setPayMode('pct')">% of rate</button>
+          </div>
+        </div>
+        <div class="field" id="payWrap">
+          <label for="pay" id="payLabel">Driver pay rate</label>
+          <div class="inp has-pre has-suf" id="payBox"><span class="pre" id="payPre">$</span><input type="number" id="pay" value="0.62" min="0" step="0.01" inputmode="decimal"><span class="suf" id="paySuf">/mi</span></div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fixedcpm">Fixed cost <span class="hint">truck, insurance…</span></label>
+            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fixedcpm" value="0.48" min="0" step="0.01" inputmode="decimal"><span class="suf">/mi</span></div>
+          </div>
+          <div class="field">
+            <label for="maint">Maintenance + tires</label>
+            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="maint" value="0.19" min="0" step="0.01" inputmode="decimal"><span class="suf">/mi</span></div>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:.4rem">
+          <label for="extras">Tolls, lumper, scales, permits</label>
+          <div class="inp has-pre"><span class="pre">$</span><input type="number" id="extras" value="85" min="0" step="5" inputmode="decimal"></div>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
+          <button class="btn btn-ghost btn-sm" onclick="loadPreset('good')">Try a strong lane</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadPreset('bad')">Try a losing lane</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadPreset('reset')">Reset</button>
+        </div>
+      </div>
+
+      <!-- outputs -->
+      <div class="panel calc-out rv rv-d1">
+        <div class="verdict v-accept" id="verdict">
+          <div class="vt"><span id="vIcon">✓</span> <span id="vText">ACCEPT</span></div>
+          <div class="vs" id="vSub">This load clears your target margin.</div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap">
+          <div>
+            <div class="kpi-lab" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.35rem">Net profit on this load</div>
+            <div class="bignum tick" id="netProfit">$0</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.35rem">Margin</div>
+            <div class="bignum tick" id="marginPct" style="font-size:1.9rem">0%</div>
+          </div>
+        </div>
+        <div class="bar"><i id="marginBar" style="width:0%"></i></div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="lab">All-in rate</div><div class="val mono" id="rpm">$0.00</div></div>
+          <div class="kpi"><div class="lab">Break-even</div><div class="val mono" id="berpm">$0.00</div></div>
+          <div class="kpi"><div class="lab">Profit / day</div><div class="val mono" id="perday">$0</div></div>
+        </div>
+
+        <div class="brk">
+          <h3>Where the money goes</h3>
+          <div class="brk-line"><span><i class="dot" style="background:var(--gold)"></i>Revenue</span><b id="oRev">$0</b></div>
+          <div class="brk-line"><span><i class="dot" style="background:#E4614C"></i>Fuel <small class="mono" id="oGal" style="color:var(--tx-3)"></small></span><b id="oFuel">$0</b></div>
+          <div class="brk-line"><span><i class="dot" style="background:#5B9BF0"></i>Driver pay</span><b id="oDriver">$0</b></div>
+          <div class="brk-line"><span><i class="dot" style="background:#8B7CE8"></i>Maintenance</span><b id="oMaint">$0</b></div>
+          <div class="brk-line"><span><i class="dot" style="background:#4BA3A0"></i>Fixed cost</span><b id="oFixed">$0</b></div>
+          <div class="brk-line"><span><i class="dot" style="background:#B0763A"></i>Tolls &amp; fees</span><b id="oExtra">$0</b></div>
+          <div class="brk-line brk-total"><span style="color:#fff;font-weight:600">Total cost</span><b id="oTotal">$0</b></div>
+        </div>
+
+        <div style="margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--line-soft)">
+          <div style="font-size:.85rem;color:var(--tx-2);line-height:1.65" id="advice"></div>
+          <a class="btn btn-gold btn-sm" style="margin-top:1rem;width:100%" href="app.html">Score your whole fleet in the console →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CPM BUILDER ══════════ -->
+<section id="cpm" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel rv" style="padding:clamp(1.5rem,3vw,2.4rem)">
+      <div class="road"><i></i><i></i><i></i></div>
+      <div class="grid g2" style="align-items:center;gap:2rem">
+        <div>
+          <span class="eyebrow">Second live tool</span>
+          <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">Your true cost per mile</h2>
+          <p class="lede" style="font-size:.98rem">The number above is only as good as the fixed cost you feed it.
+             Most carriers guess. Enter your real monthly overhead and get the figure that belongs in the calculator —
+             then push it straight in with one click.</p>
+          <div id="cpmOut" style="margin-top:1.6rem;padding:1.2rem;border-radius:12px;border:1px solid var(--line);background:rgba(227,180,74,.06)">
+            <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.4rem">Your fixed cost per mile</div>
+            <div class="bignum gold tick" id="cpmVal">$0.00</div>
+            <div style="font-size:.84rem;color:var(--tx-2);margin-top:.6rem" id="cpmNote"></div>
+            <button class="btn btn-gold btn-sm" style="margin-top:1rem" onclick="applyCPM()">Apply to calculator ↑</button>
+          </div>
+        </div>
+        <div>
+          <div class="field-row">
+            <div class="field"><label for="c1">Truck payment <span class="hint">/mo</span></label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c1" value="2450" min="0" step="50" inputmode="decimal"></div></div>
+            <div class="field"><label for="c2">Trailer <span class="hint">/mo</span></label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c2" value="620" min="0" step="10" inputmode="decimal"></div></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="c3">Insurance <span class="hint">/mo</span></label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c3" value="1350" min="0" step="50" inputmode="decimal"></div></div>
+            <div class="field"><label for="c4">Permits &amp; plates <span class="hint">/mo</span></label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c4" value="310" min="0" step="10" inputmode="decimal"></div></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="c5">ELD, software, phone</label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c5" value="185" min="0" step="5" inputmode="decimal"></div></div>
+            <div class="field"><label for="c6">Parking, admin, other</label>
+              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c6" value="540" min="0" step="10" inputmode="decimal"></div></div>
+          </div>
+          <div class="field">
+            <label for="cmiles">Miles driven per month <span class="hint">per truck</span></label>
+            <div class="inp has-suf"><input type="number" id="cmiles" value="10500" min="1" step="100" inputmode="decimal"><span class="suf">mi</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MORE TOOLS ══════════ -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Seven more free calculators</span>
+      <h2>The other decisions that move money</h2>
+      <p class="lede">Load scoring is the one you make daily. These are the ones that quietly decide
+        the year — and every one of them runs in your browser, with nothing uploaded and no account.</p>
+    </div>
+    <div class="grid g3 six">
+      <a class="card mod rv" href="calculators.html#fsc">
+        <h3>Fuel surcharge</h3>
+        <p>Recovery from any DOE index, base and peg — plus the gap against the fuel you actually
+           burn, including deadhead. One unexamined input here is worth $10,500 a year.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+      <a class="card mod rv rv-d1" href="calculators.html#deadhead">
+        <h3>Deadhead &amp; backhaul</h3>
+        <p>Whether a cheap return beats driving home empty. Compares two return offers against the
+           real alternative, which is never zero.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+      <a class="card mod rv rv-d2" href="calculators.html#detention">
+        <h3>Detention</h3>
+        <p>What an hour at a dock costs directly, what it costs once lost driving capacity is
+           counted, and how much extra to charge a facility that always makes you wait.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+      <a class="card mod rv" href="calculators.html#takehome">
+        <h3>Owner-operator take-home</h3>
+        <p>Annual gross down to what actually reaches you, with the fixed costs and the tax
+           set-aside most estimates leave out.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+      <a class="card mod rv rv-d1" href="calculators.html#ifta">
+        <h3>IFTA quarterly</h3>
+        <p>Fleet mpg, taxable gallons and net tax across five jurisdictions — enough to know what
+           the quarter costs before the return is due.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+      <a class="card mod rv rv-d2" href="calculators.html#factoring">
+        <h3>Factoring APR</h3>
+        <p>What a factoring or quick-pay discount costs once annualised, at your real invoice
+           volume — including the fees that are not the percentage.</p>
+        <div class="foot"><span class="mono">Open →</span></div>
+      </a>
+    </div>
+    <div class="panel rv" style="margin-top:1.4rem;padding:1.4rem;display:flex;gap:1.2rem;
+         align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px">
+        <h3 style="margin-bottom:.3rem">Maintenance reserve calculator</h3>
+        <p style="color:var(--tx-2);font-size:.9rem;line-height:1.65;margin:0">Twelve months of
+          repair spend into the per-mile figure your cost model needs — and what the reserve should
+          hold each month, so the next big repair is not financed by a credit card.</p>
+      </div>
+      <a href="calculators.html" class="btn btn-ghost">See all seven →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MODULES ══════════ -->
+<section id="modules">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The console · free, no account</span>
+      <h2>Eight modules, one cost model</h2>
+      <p class="lede">Every module reads from the same cost-per-mile engine you configured above. Change your insurance premium once
+        and it moves your load scoring, your lane report and your customer ledger at the same time.
+        All eight are open right now — there is no paid tier holding anything back.</p>
+    </div>
+    <div class="grid g3" id="modGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ HOW ══════════ -->
+<section id="how">
+  <div class="wrap">
+    <div class="grid g2" style="gap:2.6rem;align-items:start">
+      <div class="rv">
+        <span class="eyebrow">Method, not magic</span>
+        <h2>Exactly how the number is built</h2>
+        <p class="lede">No black box. If a carrier's controller asks how the margin was derived, this is the answer —
+          and it is the same formula running in the calculator above.</p>
+        <div class="panel" style="margin-top:1.6rem;padding:1.3rem">
+          <div class="mono" style="font-size:.83rem;line-height:2;color:var(--tx-2)">
+            <div>total_miles  = loaded + deadhead</div>
+            <div>fuel         = (total_miles / mpg) × diesel</div>
+            <div>driver       = miles × cpm <span style="color:var(--tx-3)">| or rate × %</span></div>
+            <div>maintenance  = total_miles × maint_cpm</div>
+            <div>fixed        = total_miles × fixed_cpm</div>
+            <div style="color:var(--gold)">net          = rate − (fuel + driver + maint + fixed + fees)</div>
+            <div style="color:var(--gold)">margin       = net / rate</div>
+          </div>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="panel step rv rv-d1"><div class="n"></div><div>
+          <h3>Build your cost base once</h3>
+          <p>Monthly overhead ÷ monthly miles gives your fixed cost per mile. Every carrier's number is different —
+             that difference is exactly why generic rate-per-mile advice fails.</p></div></div>
+        <div class="panel step rv rv-d2"><div class="n"></div><div>
+          <h3>Score the offer against it</h3>
+          <p>Deadhead is counted as real miles, because it burns real fuel. Driver pay is modelled the way you actually pay —
+             per mile or as a percentage of the line haul.</p></div></div>
+        <div class="panel step rv rv-d3"><div class="n"></div><div>
+          <h3>Get a decision, not a dashboard</h3>
+          <p>Accept, negotiate, or walk — with the counter-offer already calculated. Your dispatcher does not need
+             to interpret a chart while a broker is on the line.</p></div></div>
+        <div class="panel step rv rv-d4"><div class="n"></div><div>
+          <h3>Watch the pattern, not the load</h3>
+          <p>Once loads are scored, the lane, customer and driver reports show which parts of the operation
+             quietly lose money every week.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WORKBOOKS ══════════ -->
+<section id="workbooks">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Workbooks · one-time purchase</span>
+      <h2>The same engine, in a spreadsheet you own</h2>
+      <p class="lede">Not everyone wants a web app. These are the same calculations as the console,
+        built as Excel workbooks with live formulas, sample data and an instructions sheet.
+        Buy once, own it permanently, modify it however you like. <strong class="gold">No subscription,
+        no account, no expiry.</strong></p>
+    </div>
+    <div class="grid g3" id="wbGrid"></div>
+    <div class="panel rv" style="margin-top:1.6rem;padding:1.5rem;display:flex;gap:1.4rem;
+         align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="flex:1;min-width:280px">
+        <h3 style="margin-bottom:.35rem">All seven, one purchase</h3>
+        <p style="color:var(--tx-2);font-size:.9rem;line-height:1.65;margin:0">
+          Every workbook above for <b class="gold mono">$89</b> instead of $118 bought separately.
+          3,362 live formulas, zero hard-coded results, 60-day money-back guarantee.</p>
+      </div>
+      <button class="btn btn-gold" onclick="openWb('bundle')">See the bundle →</button>
+    </div>
+    <p class="fine rv" style="margin-top:1.2rem">
+      Sold through a payment platform acting as merchant of record — it handles VAT and sales tax in
+      your country and issues the receipt. 60-day money-back guarantee on every workbook.
+      <a href="terms.html#licence" style="color:var(--gold)">Licence terms</a> ·
+      <a href="refunds.html" style="color:var(--gold)">Refund policy</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ GUIDES ══════════ -->
+<section id="learn">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Sixty-six written guides · nothing gated</span>
+      <h2>The method, written down</h2>
+      <p class="lede">No email wall, no PDF to request, no "book a demo to learn more". Every figure
+        in them is either derived in front of you or attributed to a source you can check.</p>
+    </div>
+    <div class="grid g3 six">
+      <a class="card mod rv" href="guide-cost-per-mile.html">
+        <span class="kicker">Fundamentals</span>
+        <h3>How to calculate your true cost per mile</h3>
+        <p>The number every freight decision depends on, and the one most carriers get wrong by
+           15–25 cents.</p>
+        <div class="foot"><span class="mono">11 min read →</span></div>
+      </a>
+      <a class="card mod rv rv-d1" href="guide-deadhead.html">
+        <span class="kicker">Fundamentals</span>
+        <h3>The real cost of deadhead miles</h3>
+        <p>Two loads at the same rate per mile: one earns $604, the other $86. And how to price a
+           backhaul properly.</p>
+        <div class="foot"><span class="mono">8 min read →</span></div>
+      </a>
+      <a class="card mod rv rv-d2" href="guide-negotiation.html">
+        <span class="kicker">Operations</span>
+        <h3>Negotiating with numbers</h3>
+        <p>A 5.7% change in the rate is a 75% change in the profit. Your walk-away number, and the
+           one thing never to say.</p>
+        <div class="foot"><span class="mono">11 min read →</span></div>
+      </a>
+      <a class="card mod rv" href="guide-broker-fraud.html">
+        <span class="kicker">Compliance</span>
+        <h3>Vetting brokers, and the fifteen minutes that pays for itself</h3>
+        <p>Fraud costs carriers an estimated $700m–$1bn a year. The routine that catches most of
+           it, and what the January 2026 bond rule changed.</p>
+        <div class="foot"><span class="mono">12 min read →</span></div>
+      </a>
+      <a class="card mod rv rv-d1" href="guide-authority.html">
+        <span class="kicker">Business</span>
+        <h3>What authority really costs</h3>
+        <p>The FMCSA fee is $300. The first year is twelve to forty thousand. Plus the working
+           capital nobody budgets.</p>
+        <div class="foot"><span class="mono">12 min read →</span></div>
+      </a>
+      <a class="card mod rv rv-d2" href="guides.html">
+        <span class="kicker">All of them</span>
+        <h3>Sixty-one more, and a 36-term glossary</h3>
+        <p>Getting authority, 2290, UCR, IRP, inspections, DataQs, cargo claims, the Clearinghouse,
+           audits, buying a truck, LLC vs S-corp, tax, insurance, finding loads, trailer types,
+           maintenance, detention, driver pay, hours of service, IFTA and factoring.</p>
+        <div class="foot"><span class="mono">Browse the guides →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ ASK ══════════ -->
+<section id="ask">
+  <div class="wrap">
+    <div class="panel rv" style="padding:clamp(1.5rem,3vw,2.2rem);display:flex;gap:1.4rem;
+         align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <div style="flex:1;min-width:280px">
+        <span class="eyebrow">Questions</span>
+        <h2 style="font-size:clamp(1.3rem,2.4vw,1.8rem);margin-bottom:.5rem">Ask before you trust any of this</h2>
+        <p style="color:var(--tx-2);line-height:1.75;margin:0;max-width:62ch">The assistant answers
+          <strong>41 written questions</strong> about the method, the numbers and the products —
+          instantly, with no form. What it cannot answer becomes a reply from a person.
+          The <a href="support.html" style="color:var(--gold)">support page</a> covers getting
+          started, where your data lives and what to do when something breaks.</p>
+      </div>
+      <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+        <button class="btn btn-gold" onclick="openAsst()">Open the assistant →</button>
+        <a class="btn btn-ghost" href="support.html">Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section style="padding-bottom:clamp(70px,9vw,120px)">
+  <div class="wrap">
+    <div class="panel shine rv" style="padding:clamp(2rem,5vw,3.4rem);text-align:center">
+      <img src="images/logo-mark.png" alt="" width="520" height="238" style="height:56px;width:auto;margin:0 auto 1.4rem;opacity:.95">
+      <h2 style="margin-bottom:.7rem">Start with the load you were just offered</h2>
+      <p class="lede" style="margin:0 auto 1.8rem">Put the real rate into the calculator above. If the verdict surprises you,
+        that is the entire product argument — and it costs nothing to confirm across your whole fleet.</p>
+      <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+        <a href="app.html" class="btn btn-gold">Open the console — free</a>
+        <a href="guides.html" class="btn btn-ghost">Read the cost-per-mile guide</a>
+        <a href="about.html" class="btn btn-ghost">About LoadMargin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ MODALS ══════════ -->
+<div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('contactModal')" aria-label="Close">&times;</button>
+    <h2 id="contactTitle">Get in touch</h2>
+    <p class="sub">Questions about the method, a number that looks wrong, or a feature your fleet needs —
+      this reaches a person. No mailing list, no card, no account.</p>
+    <div class="form-msg" id="formMsg" role="status"></div>
+    <form id="contactForm" novalidate>
+      <div class="field"><label for="fName">Full name</label>
+        <div class="inp"><input type="text" id="fName" name="name" required autocomplete="name" placeholder="Alex Novak"></div></div>
+      <div class="field"><label for="fEmail">Work email</label>
+        <div class="inp"><input type="email" id="fEmail" name="email" required autocomplete="email" placeholder="alex@carrier.com"></div></div>
+      <div class="field-row">
+        <div class="field"><label for="fCompany">Company</label>
+          <div class="inp"><input type="text" id="fCompany" name="company" required autocomplete="organization" placeholder="Novak Logistics"></div></div>
+        <div class="field"><label for="fTrucks">Fleet size</label>
+          <div class="inp"><select id="fTrucks" name="fleet_size">
+            <option>1–4 trucks</option><option selected>5–24 trucks</option>
+            <option>25–99 trucks</option><option>100–499 trucks</option><option>500+ trucks</option>
+          </select></div></div>
+      </div>
+      <div class="field"><label for="fNote">What would you like to ask? <span class="hint">optional</span></label>
+        <div class="inp"><input type="text" id="fNote" name="message" placeholder="How do you handle percentage driver pay on detention?"></div></div>
+      <button type="submit" class="btn btn-gold" style="width:100%;margin-top:.5rem" id="contactSubmit">Send</button>
+      <p class="fine">We reply to what you write and nothing else — no list, no follow-up sequence.
+        <a href="privacy.html" style="color:var(--gold)">Privacy policy</a>.</p>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+  <div class="modal-box wide">
+    <button class="modal-x" onclick="closeModal('demoModal')" aria-label="Close">&times;</button>
+    <h2 id="demoTitle">LoadMargin in 40 seconds</h2>
+    <p class="sub">A real screen recording of the calculator on this page — same tool, no mock-up.</p>
+    <div class="vid-shell">
+      <video id="demoVideo" controls preload="none" playsinline poster="images/demo-poster.jpg" width="1280" height="720">
+        <source src="images/loadmargin-demo.mp4" type="video/mp4">
+        <source src="images/loadmargin-demo.webm" type="video/webm">
+        Your browser cannot play this video. <a href="#calculator" style="color:var(--gold)">Use the live calculator instead.</a>
+      </video>
+    </div>
+    <div style="display:flex;gap:.7rem;margin-top:1.3rem;flex-wrap:wrap">
+      <a href="#calculator" class="btn btn-gold" onclick="closeModal('demoModal')">Try it yourself</a>
+      <a href="index.html#workbooks" class="btn btn-ghost" onclick="closeModal('demoModal')">See the workbooks</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modModal" role="dialog" aria-modal="true" aria-labelledby="modTitle">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('modModal')" aria-label="Close">&times;</button>
+    <h2 id="modTitle">Module</h2>
+    <p class="sub" id="modPrice"></p>
+    <div id="modBody" style="color:var(--tx-2);font-size:.93rem;line-height:1.75"></div>
+    <div style="display:flex;gap:.6rem;margin-top:1.6rem;flex-wrap:wrap">
+      <a class="btn btn-gold" id="modOpen" href="app.html" style="flex:1;min-width:170px">Open this module →</a>
+      <button class="btn btn-ghost" onclick="closeModal('modModal');openDemo()" style="flex:1;min-width:150px">Watch the demo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ASSISTANT ══════════ -->
+<button class="asst-fab" id="asstFab" onclick="openAsst()" aria-label="Open the LoadMargin assistant">
+  <span class="ping"></span>
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.1A8.4 8.4 0 0 1 4 11.5a8.5 8.5 0 0 1 17 0z"/></svg>
+</button>
+
+<aside class="asst" id="asst" role="dialog" aria-modal="false" aria-label="LoadMargin assistant">
+  <div class="asst-hd">
+    <div class="av">LM</div>
+    <div>
+      <div class="t">LoadMargin Assistant</div>
+      <div class="s">51 answers · instant</div>
+    </div>
+    <button class="x" onclick="closeAsst()" aria-label="Close assistant">&times;</button>
+  </div>
+  <div class="asst-anim" aria-hidden="true">
+    <svg viewBox="0 0 300 26" preserveAspectRatio="none" role="presentation">
+      <defs>
+        <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#5B9BF0"/><stop offset="100%" stop-color="#2C6FD1"/>
+        </linearGradient>
+      </defs>
+      <!-- the road -->
+      <line class="road-line" x1="0" y1="22" x2="300" y2="22"/>
+      <!-- rising margin bars behind the truck -->
+      <g class="bar-rise">
+        <rect x="232" y="14" width="5" height="6" rx="1" fill="#E3B44A"/>
+        <rect x="241" y="11" width="5" height="9" rx="1" fill="#E3B44A"/>
+        <rect x="250" y="7"  width="5" height="13" rx="1" fill="#E3B44A"/>
+        <rect x="259" y="3"  width="5" height="17" rx="1" fill="#34C98A"/>
+      </g>
+      <!-- exhaust trailing behind -->
+      <circle class="spark" cx="70" cy="9" r="1.5"/>
+      <circle class="spark" cx="70" cy="7" r="1.1"/>
+      <circle class="spark" cx="70" cy="11" r="1.3"/>
+      <!-- the truck -->
+      <g class="truck-g">
+        <rect class="truck-body" x="76" y="8" width="46" height="11" rx="2"/>
+        <rect class="truck-body" x="122" y="5"  width="20" height="14" rx="2"/>
+        <rect x="127" y="8" width="9" height="6" rx="1" fill="#0B1E38" opacity=".65"/>
+        <circle class="wheel" cx="88"  cy="20.5" r="3"/>
+        <circle class="wheel" cx="112" cy="20.5" r="3"/>
+        <circle class="wheel" cx="135" cy="20.5" r="3"/>
+      </g>
+    </svg>
+  </div>
+  <div class="asst-body" id="asstBody"></div>
+  <div class="chips" id="asstChips"></div>
+  <form class="asst-in" onsubmit="askAsst();return false">
+    <input id="asstInput" placeholder="Ask about cost per mile, deadhead, refunds…" aria-label="Ask the assistant" autocomplete="off">
+    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+  </form>
+</aside>
+
+<script>
+/* ── IntersectionObserver shim ──────────────────────────────────────
+   iOS before 12.2 and older Android WebView have no IntersectionObserver.
+   Constructing one there throws, which would kill every line of script
+   after it. This stand-in reveals everything immediately and counts every
+   counter to its final value — no animation, but a working page. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+  };
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONFIG — swap FORM_ENDPOINT for your hashed FormSubmit URL
+   after you confirm the first email (keeps your address out
+   of the page source).  https://formsubmit.co
+   ══════════════════════════════════════════════════════════ */
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/aleksnvkvc@gmail.com';
+const TARGET_MARGIN = 0.15;      // 15% is the accept threshold
+const THIN_MARGIN   = 0.05;      // below 5% = reject
+const MILES_PER_DAY = 500;
+
+const $  = id => document.getElementById(id);
+const money = n => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+const money2 = n => '$' + n.toFixed(2);
+const num = id => { const v = parseFloat($(id).value); return isFinite(v) && v>=0 ? v : 0; };
+
+/* ─────────── year ─────────── */
+$('yr').textContent = new Date().getFullYear();
+
+/* ─────────── nav ─────────── */
+function toggleNav(){
+  const l=$('navLinks'), b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+let lastY=0;
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  $('nav').classList.toggle('scrolled', y>20);
+  if(Math.abs(y-lastY)>60){ lastY=y; markActive(); }
+},{passive:true});
+function markActive(){
+  const links=[...document.querySelectorAll('.nav-link')];
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+}
+
+/* ─────────── reveal on scroll ─────────── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}),{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+const observeReveals=()=>document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el));
+
+/* ─────────── animated counters ─────────── */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const el=e.target, to=+el.dataset.count, suf=el.dataset.suffix||'';
+  let t0=null;
+  const step=ts=>{ t0=t0||ts; const p=Math.min((ts-t0)/1100,1);
+    el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;
+    if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step); cio.unobserve(el);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ═══════════ CALCULATOR ═══════════ */
+let payMode='mile';
+function setPayMode(m){
+  payMode=m;
+  $('segMile').classList.toggle('on',m==='mile');
+  $('segPct').classList.toggle('on',m==='pct');
+  if(m==='mile'){
+    $('payLabel').textContent='Driver pay rate'; $('payPre').textContent='$';
+    $('paySuf').textContent='/mi'; $('payBox').classList.add('has-pre');
+    if(parseFloat($('pay').value)>5) $('pay').value='0.62';
+    $('pay').step='0.01';
+  }else{
+    $('payLabel').textContent='Driver share of line haul'; $('payPre').textContent='';
+    $('paySuf').textContent='%'; $('payBox').classList.remove('has-pre');
+    if(parseFloat($('pay').value)<5) $('pay').value='27';
+    $('pay').step='1';
+  }
+  calc();
+}
+
+function flash(el){ el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),260); }
+
+function setHero(t,sub,cls){
+  const h=$('hVerdict'); if(!h) return;
+  h.className='hc-verdict '+cls;
+  $('hVText').textContent=t; $('hVSub').textContent=sub;
+}
+function calc(){
+  const rate=num('rate'), loaded=num('loaded'), dead=num('deadhead');
+  const diesel=num('fuel'), mpg=Math.max(num('mpg'),0.1);
+  const payRate=num('pay'), fixedCpm=num('fixedcpm'), maintCpm=num('maint'), extras=num('extras');
+
+  const miles=loaded+dead;
+  const gal=miles/mpg;
+  const fuelCost=gal*diesel;
+  const driver=payMode==='mile' ? miles*payRate : rate*payRate/100;
+  const maint=miles*maintCpm;
+  const fixed=miles*fixedCpm;
+  const cost=fuelCost+driver+maint+fixed+extras;
+  const net=rate-cost;
+  const margin=rate>0 ? net/rate : 0;
+  const days=Math.max(Math.ceil(miles/MILES_PER_DAY),1);
+
+  $('oRev').textContent=money(rate);
+  $('oFuel').textContent=money(fuelCost);
+  $('oGal').textContent=miles?`· ${gal.toFixed(0)} gal`:'';
+  $('oDriver').textContent=money(driver);
+  $('oMaint').textContent=money(maint);
+  $('oFixed').textContent=money(fixed);
+  $('oExtra').textContent=money(extras);
+  $('oTotal').textContent=money(cost);
+
+  const np=$('netProfit'), mp=$('marginPct');
+  np.textContent=money(net); flash(np);
+  mp.textContent=(margin*100).toFixed(1)+'%'; flash(mp);
+  np.style.color = net>0 ? 'var(--green)' : 'var(--red)';
+  mp.style.color = margin>=TARGET_MARGIN ? 'var(--green)' : margin>=THIN_MARGIN ? 'var(--amber)' : 'var(--red)';
+
+  $('rpm').textContent   = miles ? money2(rate/miles) : '—';
+  $('berpm').textContent = miles ? money2(cost/miles) : '—';
+  $('perday').textContent= money(net/days);
+
+  const bar=$('marginBar');
+  bar.style.width=Math.max(0,Math.min(margin/0.35*100,100)).toFixed(1)+'%';
+  bar.style.background = margin>=TARGET_MARGIN
+    ? 'linear-gradient(90deg,#2AA873,var(--green))'
+    : margin>=THIN_MARGIN ? 'linear-gradient(90deg,#B98422,var(--amber))'
+    : 'linear-gradient(90deg,#B8412F,var(--red))';
+
+  /* The hero card shows the same numbers — it is the engine, not a mock-up. */
+  if($('hNet')){
+    $('hRate').textContent   = money(rate);
+    $('hMiles').textContent  = miles.toLocaleString();
+    $('hRpm').textContent    = miles ? money2(rate/miles) : '—';
+    $('hBe').textContent     = miles ? money2(cost/miles) : '—';
+    $('hNet').textContent    = money(net);
+    $('hMargin').textContent = (margin*100).toFixed(1)+'%';
+    $('hNet').style.color    = net>0 ? 'var(--green)' : 'var(--red)';
+    $('hMargin').style.color = margin>=TARGET_MARGIN ? 'var(--green)'
+                             : margin>=THIN_MARGIN ? 'var(--amber)' : 'var(--red)';
+  }
+
+  const v=$('verdict'), need=cost/(1-TARGET_MARGIN);
+  v.className='verdict';
+  if(margin>=TARGET_MARGIN){
+    v.classList.add('v-accept'); $('vIcon').textContent='✓'; $('vText').textContent='ACCEPT';
+    setHero('ACCEPT','Clears the target margin','v-accept');
+    $('vSub').textContent=`Clears your ${(TARGET_MARGIN*100)|0}% target with ${money(net)} left after every cost.`;
+    $('advice').innerHTML=`At <b class="mono">${money2(rate/miles)}</b> all-in you are <b class="mono">${money2((rate-need)/miles)}</b> per mile above the accept line. Book it.`;
+  }else if(margin>=THIN_MARGIN){
+    v.classList.add('v-warn'); $('vIcon').textContent='!'; $('vText').textContent='NEGOTIATE';
+    setHero('NEGOTIATE','It pays, but thinly','v-warn');
+    $('vSub').textContent=`It pays, but thinly. Ask for ${money(need)} to hit ${(TARGET_MARGIN*100)|0}%.`;
+    $('advice').innerHTML=`You need <b class="mono">${money(need-rate)}</b> more — about <b class="mono">${money2((need-rate)/miles)}</b> per mile. That is a reasonable ask on a ${miles.toFixed(0)}-mile run.`;
+  }else if(net>=0){
+    v.classList.add('v-reject'); $('vIcon').textContent='✕'; $('vText').textContent='REJECT';
+    setHero('REJECT','Worth more parked','v-reject');
+    $('vSub').textContent=`Only ${money(net)} for ${days} day${days>1?'s':''} of truck time. The truck is worth more sitting.`;
+    $('advice').innerHTML=`Break-even is <b class="mono">${money(cost)}</b>. You would need <b class="mono">${money(need)}</b> for this to be worth the hours of service it burns.`;
+  }else{
+    v.classList.add('v-reject'); $('vIcon').textContent='✕'; $('vText').textContent='LOSING LOAD';
+    setHero('LOSING LOAD','This load costs you money to run','v-reject');
+    $('vSub').textContent=`This load costs you ${money(-net)} to run.`;
+    $('advice').innerHTML=`Break-even alone is <b class="mono">${money(cost)}</b> — <b class="mono">${money(cost-rate)}</b> above the offer. Deadhead of ${dead} mi is costing <b class="mono">${money(dead*(diesel/mpg+maintCpm+fixedCpm))}</b> of that.`;
+  }
+}
+['rate','loaded','deadhead','fuel','mpg','pay','fixedcpm','maint','extras']
+  .forEach(id=>$(id).addEventListener('input',calc));
+
+/* Safari before 15.4 ignores scrollIntoView options and throws on some builds. */
+function safeScroll(el){
+  if(!el) return;
+  try{ el.scrollIntoView({behavior:'smooth',block:'start'}); }
+  catch(e){ el.scrollIntoView(true); }
+}
+function loadPreset(k){
+  const P={
+    good : {rate:3450,loaded:920,deadhead:40,fuel:3.72,mpg:7.1,pay:0.60,fixedcpm:0.42,maint:0.17,extras:60},
+    bad  : {rate:1250,loaded:640,deadhead:310,fuel:4.35,mpg:5.6,pay:0.68,fixedcpm:0.61,maint:0.24,extras:180},
+    reset: {rate:2400,loaded:850,deadhead:120,fuel:3.85,mpg:6.5,pay:0.62,fixedcpm:0.48,maint:0.19,extras:85}
+  }[k];
+  if(payMode==='pct') setPayMode('mile');
+  Object.entries(P).forEach(([id,v])=>$(id).value=v);
+  calc();
+  safeScroll($('calculator'));
+}
+
+/* ═══════════ CPM BUILDER ═══════════ */
+function cpm(){
+  const fixedTotal=['c1','c2','c3','c4','c5','c6'].reduce((s,id)=>s+num(id),0);
+  const miles=Math.max(num('cmiles'),1);
+  const v=fixedTotal/miles;
+  const el=$('cpmVal'); el.textContent=money2(v); flash(el);
+  $('cpmNote').innerHTML=`<b class="mono">${money(fixedTotal)}</b> of fixed cost every month ÷ <b class="mono">${miles.toLocaleString('en-US')}</b> miles. Every mile you drive carries this before a drop of fuel.`;
+  return v;
+}
+['c1','c2','c3','c4','c5','c6','cmiles'].forEach(id=>$(id).addEventListener('input',cpm));
+function applyCPM(){
+  $('fixedcpm').value=cpm().toFixed(2);
+  calc();
+  safeScroll($('calculator'));
+  const box=$('fixedcpm').closest('.inp');
+  box.style.transition='box-shadow .3s'; box.style.boxShadow='0 0 0 3px rgba(227,180,74,.45)';
+  setTimeout(()=>box.style.boxShadow='',1400);
+}
+
+/* ═══════════ MODULES ═══════════ */
+const ICONS={
+  score:'<path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/>',
+  cpm:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/>',
+  lane:'<path d="M4 21 8 3M20 21l-4-18M12 5v3M12 12v3M12 19v2"/>',
+  driver:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  fuel:'<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h13M14 9h3a2 2 0 0 1 2 2v6a2 2 0 0 0 2 2"/>',
+  hos:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  cust:'<path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/>',
+  back:'<path d="M3 12h18M3 12l5-5M3 12l5 5"/><path d="M21 6v12"/>'
+};
+const MODULES=[
+  {i:'score',v:'score',n:'Load Profitability Scoring',tag:'live',
+   d:'The engine running on this page. Rate, miles, deadhead, fuel, driver pay and overhead resolved into one accept-or-walk number.',
+   long:'Scores an offer against your own cost base rather than a market average. Deadhead is treated as real cost. Driver pay is modelled per mile or as a percentage of line haul. Returns net profit, margin, all-in rate per mile, break-even rate and the exact counter-offer that would reach your target margin.'},
+  {i:'cpm',v:'cpm',n:'True Cost-Per-Mile Builder',tag:'live',
+   d:'Turns monthly overhead into the per-mile figure every other module depends on. Also live on this page.',
+   long:'Truck and trailer payments, insurance, permits, ELD, parking and admin divided by real monthly miles. Update one premium and the number propagates to load scoring, lane analysis and the customer ledger at once — which is the whole point of keeping one cost model instead of six spreadsheets.'},
+  {i:'lane',v:'lanes',n:'Lane Margin Analyzer',
+   d:'Ranks the lanes you actually run by profit per truck-day, not by revenue.',
+   long:'Aggregates scored loads by origin-destination pair and shows profit per truck-day, average deadhead in and out, and seasonal drift. The lane that books fastest is frequently the lane that earns least — this is where that shows up.'},
+  {i:'driver',v:'drivers',n:'Driver Performance & Pay',
+   d:'Cost per mile by driver: fuel burn, idle, out-of-route miles and pay model.',
+   long:'Compares drivers on the costs they control — MPG, idle hours, out-of-route miles, detention exposure — and models what a pay-package change would do to your cost per mile before you announce it.'},
+  {i:'fuel',v:'fuel',n:'Fuel & MPG Optimizer',
+   d:'Where the diesel actually goes, and what a 0.4 MPG swing is worth annually.',
+   long:'Tracks MPG by truck, driver, season and terrain. Because fuel is modelled as gallons rather than dollars, a price spike and an efficiency drop are never confused with each other. Quantifies fuel-stop routing savings across the fleet.'},
+  {i:'hos',v:'hos',n:'HOS Compliance Planner',
+   d:'Checks a load against the clock before you accept it, not after dispatch.',
+   long:'Validates a proposed run against remaining drive time, 14-hour window, 70-hour cycle and appointment windows, and flags the loads that only work on paper. A load that forces a violation is a load that was never profitable.'},
+  {i:'cust',v:'cust',n:'Customer Profitability Ledger',
+   d:'Which brokers and shippers earn their keep once detention and deadhead are charged to them.',
+   long:'Allocates deadhead, detention, lumper fees and payment terms to the customer that caused them. Produces a ranked list you can take into a rate negotiation with numbers instead of impressions.'},
+  {i:'back',v:'back',n:'Deadhead & Backhaul Reducer',
+   d:'Prices the empty miles and finds the return that makes the round trip work.',
+   long:'Treats a round trip as one economic unit. Scores candidate backhauls against the outbound margin so a thin return that eliminates 300 empty miles is correctly valued above a fat return that adds 200.'}
+];
+$('modGrid').innerHTML=MODULES.map((m,i)=>`
+  <article class="card mod rv rv-d${(i%4)}" onclick="openMod(${i})" tabindex="0"
+           onkeydown="if(event.key==='Enter')openMod(${i})" role="button" aria-label="${m.n} details">
+    <div class="ico"><svg viewBox="0 0 24 24">${ICONS[m.i]}</svg></div>
+    <h3>${m.n}</h3>
+    <p>${m.d}</p>
+    <div class="foot">
+      <span class="tag live">Free &amp; working</span>
+      <span style="font-size:.8rem;color:var(--tx-3)">Open it →</span>
+    </div>
+  </article>`).join('');
+function openMod(i){
+  const m=MODULES[i];
+  $('modTitle').textContent=m.n;
+  $('modPrice').innerHTML='Free, working, and running in your browser right now.';
+  $('modBody').textContent=m.long;
+  $('modOpen').href='app.html#'+(m.v||'dash');
+  $('modOpen').className='btn btn-gold';
+  $('modOpen').style.flex='1'; $('modOpen').style.minWidth='170px';
+  $('modOpen').rel='';
+  $('modOpen').textContent='Open this module →';
+  openModal('modModal');
+}
+
+
+/* ═══════════ WORKBOOKS ═══════════ */
+/* Store links. A key left as STORE means that product is not published yet;
+   the modal then says so instead of offering a buy button that leads nowhere.
+   Mirrors BUY_LINKS in workbooks.html — keep the two in step.            */
+const STORE='https://loadmargin.gumroad.com';
+const BUY_LINKS={
+  fuel:STORE,
+  cpm:'https://loadmargin.gumroad.com/l/ihvinv',
+  driver:STORE,
+  hos:STORE,
+  pro:'https://loadmargin.gumroad.com/l/qgiwbx',
+  dispatch:STORE,
+  route:STORE,
+  bundle:STORE
+};
+function onSale(k){ const u=BUY_LINKS[k]; return !!u && u!==STORE && u.indexOf('/l/')>-1; }
+function setBuy(key,label,price){
+  const b=$('modOpen');
+  b.className='btn btn-gold';
+  b.style.flex='1'; b.style.minWidth='170px';
+  if(onSale(key)){
+    b.textContent=label;
+    b.href=BUY_LINKS[key];
+    b.rel='noopener';
+    return;
+  }
+  b.className='btn btn-ghost';
+  b.textContent='Not on sale yet — email me';
+  b.href='mailto:aleksnvkvc@gmail.com?subject='+
+    encodeURIComponent('LoadMargin: tell me when this is on sale ('+key+')');
+  b.rel='';
+}
+const WORKBOOKS=[
+ {i:'fuel',n:'Fuel & MPG Tracker',p:9,sheets:3,f:297,
+  d:'A fill-up log that turns odometer readings into real MPG and fuel cost per mile, with a dashboard by truck and by driver.',
+  long:'One row per fill-up: date, odometer, gallons, price. Miles driven, MPG, fuel cost and cost per mile calculate themselves from the odometer gap. The dashboard breaks the fleet down by truck and by driver, and a rolling five-fill average smooths out a single short or long run. Includes a simulator showing what a 0.4 MPG improvement is worth across a year.',
+  who:'Anyone who has ever wondered whether a bad fuel month was the price or the truck.'},
+ {i:'cpm',n:'Load Selection Calculator',p:12,sheets:4,f:96,
+  d:'The scoring engine in a workbook: cost base, calculator, and a sheet to compare several offers side by side.',
+  long:'Fill in your cost base once. Then type any offer into the calculator and get net profit, margin, all-in rate per mile, break-even rate, truck-days consumed and the exact counter-offer that would hit your target margin. The compare sheet lines up eight offers at once and names the best by net profit — which is regularly not the one with the highest rate per mile.',
+  who:'Dispatchers and owner-operators who need an answer while the broker is still on the phone.'},
+ {i:'driver',n:'Driver Performance Dashboard',p:14,sheets:3,f:167,
+  d:'A weighted performance index built from safety, fuel, on-time delivery and out-of-route miles.',
+  long:'Scores every driver on what a driver actually controls. Every weight is on a visible settings sheet — change how much safety counts relative to fuel and the whole ranking moves. Includes accident penalties, an out-of-route allowance, conditional formatting that flags problems, and a ranked league table driven by INDEX/MATCH rather than manual sorting.',
+  who:'Fleets deciding who gets the new truck, and who needs a conversation.'},
+ {i:'hos',n:'HOS Compliance Tracker',p:14,sheets:4,f:1108,
+  d:'A daily log checking all four hours-of-service clocks, flagging violations the day they happen.',
+  long:'One row per driver per day. The sheet checks the 11-hour driving limit, the 14-hour window, the 30-minute break and the rolling 70-hour cycle — computing the cycle by summing the last eight days for that driver automatically. Violations turn red immediately and the summary sheet breaks them down by driver and by type.',
+  who:'Carriers who would rather find a violation on a Tuesday than at an audit.'},
+ {i:'pro',n:'Freight Profitability PRO',p:19,sheets:8,f:1130,
+  d:'Every load rolled up by lane, customer, truck and month, from a single cost base.',
+  long:'Log each completed load once. The workbook produces a dashboard plus four roll-up sheets — lanes, customers, trucks and months — each ranked by profit per truck-day rather than by revenue. Includes verdict mix, deadhead share, break-even rate per mile, and a note showing exactly how much refusing the losing loads would have added to net profit.',
+  who:'The carrier who suspects a lane is losing money but cannot prove which one.'},
+ {i:'dispatch',n:'Dispatch Load Optimizer',p:25,sheets:4,f:306,
+  d:'Ranks an entire load board by profit per truck-day and produces today\'s assignment.',
+  long:'Paste in the loads available today. The sheet scores every one against your cost base, flags anything overweight or unprofitable, excludes those from the ranking so a load you cannot legally take never appears at rank one, and produces an assignment list in order — plus the next-best loads greyed out for when one falls through.',
+  who:'A dispatcher with twelve offers on screen and four trucks free.'},
+ {i:'route',n:'Advanced Route Planner',p:25,sheets:5,f:258,
+  d:'Compares route options on total cost rather than distance, pricing weather delay and terrain.',
+  long:'Enter the legs of each route option: distance, realistic average speed, tolls, terrain and a weather risk score. The workbook prices fuel with a terrain penalty, converts weather risk into expected delay hours, prices those hours at what a stopped truck costs you, and names the cheapest route. In the sample data the shortest route costs $139 more than one forty miles longer.',
+  who:'Anyone who has taken a mountain shortcut in February and regretted it.'},
+];
+
+const WB_ICONS={fuel:ICONS.fuel,cpm:ICONS.score,driver:ICONS.driver,hos:ICONS.hos,
+                pro:ICONS.lane,dispatch:ICONS.back,route:ICONS.cpm};
+
+$('wbGrid').innerHTML=WORKBOOKS.map((w,i)=>`
+  <article class="card mod rv rv-d${(i%4)}" onclick="openWb(${i})" tabindex="0"
+           onkeydown="if(event.key==='Enter')openWb(${i})" role="button" aria-label="${w.n} details">
+    <div class="ico"><svg viewBox="0 0 24 24">${WB_ICONS[w.i]}</svg></div>
+    <h3>${w.n}</h3>
+    <p>${w.d}</p>
+    <div class="foot">
+      <span class="price">$${w.p}</span>
+      <span class="tag">${w.sheets} sheets · ${w.f.toLocaleString()} formulas</span>
+    </div>
+  </article>`).join('');
+
+function openWb(i){
+  if(i==='bundle'){
+    $('modTitle').textContent='All seven workbooks';
+    $('modPrice').innerHTML='<span class="mono gold" style="font-size:1.25rem;font-weight:700">$89</span> one-time · saves $29 against buying separately';
+    $('modBody').innerHTML=`<p>Every workbook on this page, in one purchase:</p><ul style="margin:.8rem 0 1rem 1.1rem">${
+      WORKBOOKS.map(w=>`<li style="margin-bottom:.4rem"><b style="color:#fff">${w.n}</b> — ${w.d}</li>`).join('')}</ul>
+      <p>3,362 live formulas across 31 sheets. Every calculation is arithmetic you can check by hand,
+      with sample data included and an instructions sheet in each file. Yours permanently —
+      no subscription, no renewal, no expiry.</p>`;
+    setBuy('bundle','Buy the bundle — $89 →');
+    openModal('modModal');
+    return;
+  }
+  const w=WORKBOOKS[i];
+  $('modTitle').textContent=w.n;
+  $('modPrice').innerHTML=`<span class="mono gold" style="font-size:1.25rem;font-weight:700">$${w.p}</span> one-time · ${w.sheets} sheets · ${w.f.toLocaleString()} live formulas`;
+  $('modBody').innerHTML=`<p>${w.long}</p>
+    <p style="margin-top:1rem;color:var(--tx-3);font-size:.88rem"><b style="color:var(--gold-lt)">Built for:</b> ${w.who}</p>`;
+  setBuy(w.i,'Buy — $'+w.p+' →');
+  openModal('modModal');
+}
+
+/* ═══════════ ASSISTANT ═══════════ */
+/* A scripted assistant: 51 written answers matched by keyword. It costs nothing
+   per message, works with no server, and never invents an answer about pricing
+   or capability. When it does not know something, it says so. */
+const KB=[
+ /* ── what it is ── */
+ {c:'Product',k:['what is','what does','what do you','purpose','about loadmargin','explain','who are you'],q:'What does LoadMargin do?',
+  a:'LoadMargin turns a freight offer into a <strong>net profit number</strong> before you accept it.<br><br>It subtracts fuel (as gallons, not a guess), deadhead, driver pay, maintenance and the fixed cost of owning the truck from the rate, then returns accept, negotiate or walk — with the counter-offer already calculated.<br><br>The calculator on this page is the live engine. Try it.'},
+ {c:'Product',k:['free','cost anything','catch','why free','really free'],q:'Is it really free?',
+  a:'The calculator and the full eight-module console are <strong>free and unlimited</strong>. No account, no card, no trial that expires.<br><br>There is no catch. They run entirely in your browser, so they cost us almost nothing to give away — and letting you test the math on a load you already ran is a better argument than anything we could write.<br><br>The Excel workbooks are a one-time purchase ($9–$25). That is the whole business model.'},
+ {c:'Product',k:['subscription','monthly','recurring','saas','per month'],q:'Is there a subscription?',
+  a:'<strong>No.</strong> There is no monthly plan, no recurring charge and nothing that auto-renews.<br><br>The web tools are free. The workbooks are bought once and yours permanently — you can still open them in ten years without paying anybody.'},
+ {c:'Product',k:['price','pricing','how much','expensive','cost','$'],q:'How much does it cost?',
+  a:'Free for the calculator and the console.<br><br>The workbooks are one-time purchases:<ul><li>Fuel &amp; MPG Tracker — <b>$9</b></li><li>Load Selection Calculator — <b>$12</b></li><li>Driver Performance — <b>$14</b></li><li>HOS Tracker — <b>$14</b></li><li>Profitability PRO — <b>$19</b></li><li>Dispatch Optimizer — <b>$25</b></li><li>Route Planner — <b>$25</b></li></ul>All seven together: <b>$89</b> instead of $118. 60-day money-back guarantee.<br><br>Not every workbook is published in the store yet \u2014 the ones that are not say so on their card, and the button emails me instead of sending you to a shop where the file is not there.'},
+ {c:'Product',k:['workbook','excel','spreadsheet product','xlsx','buy'],q:'What are the workbooks?',
+  a:'Seven Excel files running the same arithmetic as the console — 3,362 live formulas across 31 sheets, with sample data and an instructions sheet in each.<br><br>They exist because not everyone wants a web app. Buy one, modify it however you like, use it on every computer in your business, keep it forever.<br><br>What you may not do is resell or redistribute them.'},
+
+ /* ── the math ── */
+ {c:'The math',k:['calculate','formula','math','derive','how does it work','methodology','accurate','accuracy'],q:'How is profit calculated?',
+  a:'<strong>net = rate − (fuel + driver + maintenance + fixed + fees)</strong><br><br>Where fuel = (loaded + deadhead) ÷ MPG × diesel price, driver is per-mile or a percentage of line haul, and fixed cost per mile comes from your own monthly overhead.<br><br>No weighting, no smoothing, no black box. The full formula is printed in the Method section of this page.'},
+ {c:'The math',k:['cost per mile','cpm','overhead','fixed cost','how do i calculate my cost'],q:'What is cost per mile?',
+  a:'Your monthly fixed costs — truck payment, trailer, insurance, permits, ELD, parking, admin — divided by the miles you actually drive that month.<br><br>It is the money every mile owes before a drop of diesel. Most carriers underestimate it by 15–25 cents, which is exactly the width of the margin they think they have.<br><br>The <strong>Cost-Per-Mile Builder</strong> on this page computes it and pushes it into the calculator. There is also a <a href="guide-cost-per-mile.html" style="color:var(--gold)">full written guide</a>.'},
+ {c:'The math',k:['deadhead','empty','backhaul','empty miles'],q:'How is deadhead handled?',
+  a:'As real cost, because it is. Empty miles burn fuel, wear tyres, consume hours of service and carry the same fixed cost per mile as loaded ones.<br><br>Try the <em>losing lane</em> preset in the calculator — 310 empty miles eat roughly a third of what looked like a workable rate.<br><br>The Backhaul module scores round trips as one economic unit, so a cheap return that kills 300 empty miles correctly beats a rich one that adds 200.'},
+ {c:'The math',k:['driver pay','percentage','percent','per mile','pay model','wage','how do i pay'],q:'Per-mile or percentage driver pay?',
+  a:'Both are modelled. Switch the toggle in the calculator.<br><br>Percentage pay cushions you on cheap freight and costs you on premium freight. The calculator shows that difference immediately, which matters when you are deciding which pay package to offer.<br><br>The Drivers module also has a simulator: change a pay rate and see what it would have cost across every load that driver has already run.'},
+ {c:'The math',k:['margin','target','threshold','15','good margin','should i aim'],q:'What margin should we target?',
+  a:'The tool defaults to <strong>15%</strong> as accept and treats under 5% as reject.<br><br>Treat those as starting points. Dedicated freight with guaranteed volume can justify less; a one-off run into a dead market should demand more.<br><br>For context: ATRI put average truckload operating margins <em>below 1%</em> for 2025. If you are clearing 15% consistently you are doing considerably better than the sector.'},
+ {c:'The math',k:['detention','sitting','waiting','dock'],q:'How is detention priced?',
+  a:'As lost truck-time. Detention hours are charged at the fixed cost the truck would otherwise have absorbed over those hours — fixed cost per mile times the miles it would have covered.<br><br>Four unpaid hours on a $0.52-per-mile truck running 500 miles a day is about <b>$98</b> of cost nobody invoiced for. If the customer pays detention, enter it and it counts as revenue.'},
+ {c:'The math',k:['truck day','truck-day','per day','profit per day','rank lanes'],q:'Why rank by profit per truck-day?',
+  a:'Because revenue ranks lanes badly.<br><br>A three-day lane paying $900 profit looks better than a one-day lane paying $500 — until you notice it consumed three times the truck capacity. Per truck-day, the short lane wins at $500 against $300.<br><br>Truck-days are the scarce resource. That is what you should be ranking on.'},
+ {c:'The math',k:['break even','breakeven','minimum rate','lowest rate'],q:'What is my break-even rate?',
+  a:'Total cost divided by total miles — including deadhead.<br><br>With a typical single-truck cost base that lands around <b>$1.92 a mile</b> all-in. Any load offering less than that loses money on every mile it runs, including the empty ones you drove to reach it.<br><br>The calculator shows your break-even rate per mile on every load you score.'},
+ {c:'The math',k:['counter','negotiate','ask for','how much should i ask'],q:'How do I work out a counter-offer?',
+  a:'<strong>target_rate = total_cost ÷ (1 − target_margin)</strong><br><br>If a load costs you $1,949 all-in and you want 15%, you need $2,293. The calculator does this automatically and shows the exact figure whenever a load comes in as NEGOTIATE.<br><br>Saying "I need $2,293 on this" is worth considerably more on the phone than "that seems low".'},
+
+ /* ── operations ── */
+ {c:'Operations',k:['hos','hours of service','compliance','eld','dot','legal','11 hour','14 hour','70 hour'],q:'What about hours of service?',
+  a:'The HOS Planner checks a load against remaining drive time, the 14-hour window, the 30-minute break and the 70-hour cycle <strong>before</strong> you accept it.<br><br>A load that only works by running illegal was never profitable — it was a liability with a rate attached.<br><br>It is a planning check, not an ELD. It does not model adverse conditions, the short-haul exception or the sleeper-berth split.'},
+ {c:'Operations',k:['fuel','mpg','diesel','gallons','fuel cost'],q:'How is fuel modelled?',
+  a:'In <strong>gallons</strong>, never in cents per mile.<br><br>fuel = (total miles ÷ MPG) × diesel price.<br><br>Keeping price and efficiency separate is diagnostic: if fuel cost per mile rises, gallons tell you instantly whether the market moved or the truck did. A blended number hides both, and they have completely different fixes.'},
+ {c:'Operations',k:['customer','broker','which broker','payment terms','net 30','net 45'],q:'Which customers are actually profitable?',
+  a:'The Customers module charges deadhead, detention and payment terms back to whoever caused them.<br><br>Slow payment is a real cost: money tied up at net-45 instead of net-15 costs you roughly 0.8% of the invoice at a 10% annual cost of capital. Small per load, significant per year.<br><br>The result is regularly uncomfortable — the highest-revenue broker is often not the highest-margin one.'},
+ {c:'Operations',k:['which lane','lane','best lane','worst lane'],q:'Which of my lanes lose money?',
+  a:'The Lanes module groups every load you have booked by origin and destination, then ranks them by profit per truck-day.<br><br>You need a reasonable number of loads before a pattern is trustworthy — twenty is a sensible minimum. Below that you are looking at noise.<br><br>Load the demo fleet in the console to see what the report looks like with 38 loads across 10 lanes.'},
+ {c:'Operations',k:['fleet size','how many trucks','owner operator','one truck','small fleet','large fleet'],q:'Is this sized for my fleet?',
+  a:'The math is identical at every size; the question changes.<br><br><ul><li><b>One truck:</b> should I take this load</li><li><b>Five to fifty:</b> which dispatcher is quietly booking break-even freight</li><li><b>Hundreds:</b> which lane, customer and division combination leaks margin systematically</li></ul>The console has no truck limit. Add as many as you run.'},
+
+ /* ── using it ── */
+ {c:'Using it',k:['start','get started','begin','first step','how do i start','setup'],q:'How do I get started?',
+  a:'About ten minutes, and most of it is finding your real monthly overhead.<br><br><ol style="margin-left:1rem"><li>Open the <b>Cost-Per-Mile Builder</b> and enter your monthly fixed costs</li><li>Click <em>Apply to calculator</em></li><li>Score a load you already ran and compare against your own books</li></ol>If the answer surprises you, that surprise is the whole point.'},
+ {c:'Using it',k:['data','privacy','secure','security','gdpr','store','upload','cloud','where does my data go'],q:'Where does my data go?',
+  a:'<strong>Nowhere.</strong> Everything runs in your browser. Open your dev tools, watch the Network tab, and use the calculator — there is no outbound request carrying your figures.<br><br>The console stores your fleet in your browser\'s local storage. It never reaches us, which also means we cannot recover it. Export a backup from <em>Fleet &amp; Data</em>.'},
+ {c:'Using it',k:['lose data','backup','export','recover','clear','delete'],q:'What happens if I clear my browser?',
+  a:'Your fleet data is gone, and we cannot restore it — we never had a copy.<br><br>That is the honest cost of not uploading your data. Use <em>Fleet &amp; Data → Export backup</em> and keep the JSON file somewhere safe. Import restores it exactly.<br><br>There is also a CSV export if you want the loads in a spreadsheet.'},
+ {c:'Using it',k:['mobile','phone','app','ipad','tablet','install','download'],q:'Does it work on a phone?',
+  a:'Yes — nothing to install. It runs in the browser and is built mobile-first, usable one-handed in the cab.<br><br>That is deliberate: the decision has to be made while the broker is still on the line, not back at the desk.'},
+ {c:'Using it',k:['multiple user','team','share','dispatcher','colleague','same data'],q:'Can my whole team use it?',
+  a:'Each person can use the console on their own device for free, but <strong>the data does not sync between them</strong> — it lives in each browser separately.<br><br>For now, the workaround is the export/import backup: one person maintains the cost model and shares the JSON file.<br><br>Shared accounts are the obvious next thing to build. They do not exist yet, and we are not going to pretend otherwise.'},
+ {c:'Using it',k:['integrat','tms','load board','api','connect','import','dat','sync'],q:'Do you integrate with our TMS?',
+  a:'<strong>No — not today.</strong> There is no live TMS or load-board integration, and we would rather say so plainly than imply otherwise.<br><br>You enter loads manually, or import a backup file. Bulk import from a TMS export and an API are on the roadmap, not in the product.'},
+ {c:'Using it',k:['spreadsheet','excel','sheet','different','why not','already have'],q:'Why not just use a spreadsheet?',
+  a:'Spreadsheets do the arithmetic fine. They fail at three things:<ul><li>They live on one laptop.</li><li>They go stale the moment your insurance renews — silently.</li><li>Nobody opens them while a broker is holding.</li></ul>Which is also why we sell workbooks: if a spreadsheet is what fits your operation, buy a good one rather than building a bad one.'},
+
+ /* ── free tools ── */
+ {c:'Free tools',k:['calculator','calculators','tools','free tool','what tools','other calculator'],q:'What free calculators are there?',
+  a:'Nine, all free and all running in your browser:<ul><li><b>Load calculator</b> — accept, negotiate or reject a single offer</li><li><b>Cost-per-mile builder</b> — your real number, in four minutes</li><li><b>Fuel surcharge</b> — recovery, and the gap against fuel you actually burn</li><li><b>Deadhead &amp; backhaul</b> — is a cheap return better than running empty</li><li><b>Owner-operator take-home</b> — gross to what reaches you</li><li><b>Detention</b> — what an hour at a dock really costs</li><li><b>IFTA quarterly</b> — fleet mpg, taxable gallons, net tax</li><li><b>Factoring APR</b> — the annualised cost of not waiting</li><li><b>Maintenance reserve</b> — twelve months of spend into a per-mile figure</li></ul>Seven of them are on the <a href="calculators.html" style="color:var(--gold)">tools page</a>; the first two are on this page.'},
+ {c:'Free tools',k:['fuel surcharge','fsc','surcharge','doe','peg','diesel index'],q:'How does the fuel surcharge calculator work?',
+  a:'It takes the DOE weekly index, the base price your contract assumes and the peg mpg, and gives you <span class="mono">(index − base) ÷ peg</span> per loaded mile.<br><br>Then it does the part nobody else shows: the fuel you <em>actually</em> burn on <b>total</b> miles at your <b>real</b> mpg, and the gap between the two. A surcharge never covered all your fuel and was never meant to.<br><br><a href="calculators.html#fsc" style="color:var(--gold)">Open it</a> · <a href="guide-fuel-surcharge.html" style="color:var(--gold)">read the guide</a>'},
+ {c:'Free tools',k:['ifta','fuel tax','quarterly','jurisdiction','taxable gallon'],q:'Can it work out my IFTA?',
+  a:'There is an <a href="calculators.html#ifta" style="color:var(--gold)">IFTA estimator</a> for up to five jurisdictions. It computes fleet mpg from your totals, distributes taxable gallons per state, and nets that against what you bought there.<br><br>It is for planning, not for filing. Rates change every quarter and are published by the member jurisdictions — file from the current published rates, never from a remembered figure.'},
+ {c:'Free tools',k:['factoring','factor','quick pay','quickpay','advance','apr','cash flow'],q:'Should I use factoring?',
+  a:'That is arithmetic, not ideology, and the <a href="calculators.html#factoring" style="color:var(--gold)">factoring calculator</a> does it.<br><br>Factoring at 3% against a 30-day payer is a <b>39% annual cost of capital</b>. That sounds fatal until you notice the comparison is not against a bank loan you cannot get — it is against not running the load at all.<br><br>The question is simply whether cash is actually your constraint. If you are turning down loads because the money has not arrived, factor. If you have working capital and factor out of habit, you are giving away 3% of every invoice for nothing.'},
+ {c:'Free tools',k:['detention','dock','waiting','dwell','wait time','sitting'],q:'What does detention actually cost?',
+  a:'About <b>$156 an hour</b> at a typical cost base, against the $40–$75 the market pays.<br><br>Roughly $39 of that is direct — fixed cost, driver pay, idle fuel. The rest is the 53 miles you can no longer drive today, because the 14-hour window does not pause for a slow receiver.<br><br>The <a href="calculators.html#detention" style="color:var(--gold)">detention calculator</a> also tells you how much extra to charge a facility with a known dwell problem, before you accept.'},
+ {c:'Free tools',k:['maintenance','repair','reserve','breakdown','wear','tyre','tire'],q:'How should I budget maintenance?',
+  a:'As a <b>reserve</b>, not as last month\'s invoices. Maintenance arrives in lumps — eleven quiet months and then a $9,400 week — so a model built on recent bills is wrong in both directions.<br><br>Take twelve months of everything (tyres, PM, brakes, aftertreatment, roadside, trailer), divide by twelve months of miles, and charge that per mile every month. For most trucks it lands between <b>15 and 25 cents</b>.<br><br><a href="calculators.html#maintenance" style="color:var(--gold)">Build your figure</a> · <a href="guide-maintenance.html" style="color:var(--gold)">read the guide</a>'},
+
+ /* ── learning ── */
+ {c:'Learn',k:['guide','guides','article','read','learn','explain','documentation','blog'],q:'Where can I learn the method?',
+  a:'There are <b>sixty-six written guides</b> and a 36-term glossary, all free and none gated behind an email:<ul><li>The numbers: cost per mile, deadhead, fuel, maintenance, detention, negotiation, driver pay</li><li>Compliance: hours of service, ELD, IFTA, IRP, UCR, 2290, CSA, cargo claims, the Clearinghouse, audits, inspections</li><li>Operations: finding loads, rate cons, dispatchers, trailer types, tires, trip planning, accessorials</li><li>Business: authority, LLC vs S-corp, buying a truck, financing, tax, insurance, hiring your first driver</li></ul>Every figure in them is either derived in front of you or attributed to a source you can check.<br><br><a href="guides.html" style="color:var(--gold)">Browse the guides →</a>'},
+ {c:'Learn',k:['authority','mc number','usdot','start trucking','own authority','lease on','startup cost'],q:'What does getting authority cost?',
+  a:'The FMCSA filing fee is <b>$300</b> and the USDOT number is free. The first year is <b>twelve to forty thousand</b>, and insurance is 70–80% of the difference.<br><br>The number nobody budgets is working capital: you pay for fuel today and get paid in 30–45 days, so a typical single truck is about <b>$8,600 in the hole</b> in week four before a dollar arrives.<br><br>The <a href="guide-authority.html" style="color:var(--gold)">authority guide</a> itemises all of it, and compares honestly against leasing on.'},
+ {c:'Learn',k:['fraud','scam','double broker','double-broker','identity','safer','vet','verify broker','not paying'],q:'How do I check a broker is real?',
+  a:'Fifteen minutes, same routine every time. The step that catches the most: <b>call the phone number listed on SAFER, not the one in the email.</b> Whoever is impersonating a broker controls the email — they do not control what FMCSA has on file.<br><br>Also check the operation classification actually says <em>Broker</em>. A company with carrier-only authority arranging your load is, by definition, unauthorised brokering, and the money chain behind you has no legal basis.<br><br><a href="guide-broker-fraud.html" style="color:var(--gold)">The full routine →</a>'},
+ {c:'Learn',k:['negotiate','negotiation','counter','ask for more','broker call','haggle','push back'],q:'How do I negotiate a better rate?',
+  a:'Have the number before the call. Three of them, actually: variable break-even, full break-even, and your target rate.<br><br><span class="mono">target = cost ÷ (1 − margin)</span> — a division, not an addition. Every carrier who "adds 20%" is quietly running at 16.7%.<br><br>Then state a number rather than a feeling. "I need $2,550 on that" is a position; "that\'s a little low" is an invitation to explain why it is not. And never ask <em>"what can you do?"</em> — it concedes the anchor.<br><br><a href="guide-negotiation.html" style="color:var(--gold)">The whole approach →</a>'},
+ {c:'Learn',k:['glossary','term','jargon','definition','what does mean','abbreviation','acronym'],q:'What do all these freight terms mean?',
+  a:'There is a <a href="glossary.html" style="color:var(--gold)">36-term glossary</a> covering everything used on this site — deadhead, detention, accessorials, RPM, all-in rate, truck-day, TONU, peg mpg, and the rest.<br><br>Defined without jargon, with the arithmetic included where the arithmetic is the actual meaning.'},
+
+ {c:'Learn',k:['csa','safety score','basic','inspection','dot inspection','roadside','sms','percentile'],q:'What is a CSA score and does it matter?',
+  a:'It is a <b>percentile</b>, not a grade \u2014 a ranking against carriers your size. A score of 80 in Vehicle Maintenance means 80% of comparable carriers have a better record than you.<br><br>It matters because of money rather than regulation: <b>92% of trucking underwriters price insurance off it</b>. Approaching a threshold costs 10\u201330%; crossing one costs 30\u201350%.<br><br>The useful part: violations carry a 3\u00d7 multiplier for six months, 2\u00d7 to twelve, 1\u00d7 to twenty-four, then vanish. A bad score is temporary if you actually fix the cause.<br><br><a href="guide-csa.html" style="color:var(--gold)">The seven BASICs and the thresholds \u2192</a>'},
+ {c:'Learn',k:['insurance','premium','liability','cargo insurance','physical damage','bobtail','underwriter','coverage'],q:'What should insurance cost me?',
+  a:'For an owner-operator with their own authority in 2026: <b>$4,800\u2013$10,800</b> liability only, <b>$10,800\u2013$21,600+</b> for a full package, and <b>$21,600\u2013$42,000+</b> on a new authority or a blemished record.<br><br>The thing most people get wrong is timing. Almost everything that sets your price \u2014 clean record, no lapses, accurate classification, CSA score \u2014 was decided in the twelve months <em>before</em> the quote. Shopping harder at renewal moves it far less than a clean year does.<br><br>And never let a policy lapse. On the next quote that reads worse than a minor claim.<br><br><a href="guide-insurance.html" style="color:var(--gold)">What each coverage does, and nine ways to lower it \u2192</a>'},
+ {c:'Learn',k:['tax','taxes','per diem','irs','deduction','quarterly','self-employment','write off','accountant','s-corp','llc'],q:'How much should I set aside for tax?',
+  a:'<b>25\u201330% of net profit</b>, moved to a separate account the week the settlement lands \u2014 not calculated in April.<br><br>Self-employment tax alone is <b>15.3%</b>, because you pay both halves of Social Security and Medicare. On $70,000 of profit that is about $9,890 before any income tax.<br><br>The deduction most drivers underclaim is <b>per diem</b>: $80 a full day away from home, 80% deductible for DOT-regulated drivers, and you need proof of the <em>days</em>, not receipts for meals \u2014 your ELD already has it. 280 nights is roughly $17,920 deductible.<br><br><a href="guide-taxes.html" style="color:var(--gold)">Quarterly dates, what is deductible, and when an S-corp pays \u2192</a>'},
+ {c:'Learn',k:['lease purchase','lease-purchase','rent to own','walk away','lease truck','no money down'],q:'Is a lease-purchase worth it?',
+  a:'Sometimes \u2014 and the difference is about nine clauses, not the advertised gross.<br><br>Run the arithmetic first. A lease driver can gross three times a company driver and take home <em>less</em>, because the gross is real and the deductions are the whole story. Ask for <b>twelve weeks of actual settlement statements from three current drivers</b>. A carrier running an honest programme can produce them.<br><br>On \u201cwalk-away lease\u201d \u2014 OOIDA, who read these contracts constantly, say they have <em>never seen one</em>. Find the actual clause, not the recruiter\u2019s description of it.<br><br><a href="guide-lease-purchase.html" style="color:var(--gold)">The eleven clauses to read before signing \u2192</a>'},
+ {c:'Learn',k:['weight','overweight','axle','scale','tandem','80000','bridge formula','payload','heavy'],q:'How do I stop getting overweight tickets?',
+  a:'Almost every overweight ticket is a <b>distribution</b> problem, not a loading one \u2014 under 80,000 gross with one axle group over.<br><br>Three limits apply at once: <b>12,000 lb</b> steer, <b>34,000 lb</b> drives, <b>34,000 lb</b> trailer. They add to exactly 80,000, so there is no slack anywhere.<br><br>The fix at the scale: drives heavy \u2192 slide the trailer tandems <b>forward</b>; trailer heavy \u2192 slide them <b>back</b>. Roughly 250\u2013400 lb per hole. And fuel <em>before</em> you scale \u2014 300 gallons is about 2,100 lb, mostly on the steer and drives.<br><br><a href="guide-weight.html" style="color:var(--gold)">Working out your real payload \u2192</a>'},
+
+ {c:'Learn',k:['cargo claim','claim','damaged freight','carmack','damage','shortage','bill of lading','bol','released value','salvage'],q:'How do I handle a cargo claim?',
+  a:'Check <b>the date first</b>. The claimant has nine months from delivery to file a written claim \u2014 past that it is time-barred and needs no defence at all.<br><br>Then acknowledge it within <b>30 days</b> and decide within <b>120</b>, even if you intend to deny. Ignoring a claim is a violation in itself.<br><br>Most claims are actually won or lost at pickup. A clean bill of lading hands the claimant their first element \u2014 that the freight was in good condition when you took it. Two minutes of looking, a written exception and a timestamped photograph is the highest-value habit in this whole area.<br><br><a href="guide-cargo-claims.html" style="color:var(--gold)">The five defences and the full timeline \u2192</a>'},
+ {c:'Learn',k:['eld','elog','e-log','logbook','exempt','exemption','short haul','short-haul','150 air','paper log','pre-2000'],q:'Do I have to run an ELD?',
+  a:'Probably \u2014 the exemptions are narrower than people think, and they are <b>daily tests</b>, not a status you hold.<br><br>The common one is short-haul: within <b>150 air miles</b> of your reporting location, released within <b>14 hours</b>, 11 hours driving, back to the same yard. Fail any part on any day and that day needed a record of duty status.<br><br>The most misunderstood one: the pre-2000 exemption is the <b>engine</b> model year off the engine plate \u2014 not the truck\u2019s year and not the build date. Photograph the plate and keep it in the cab.<br><br><a href="guide-eld.html" style="color:var(--gold)">Every exemption, and what you still have to keep \u2192</a>'},
+ {c:'Learn',k:['clearinghouse','drug test','alcohol test','random testing','consortium','ctpa','c/tpa','sap','return to duty','downgrade','cdl downgrade'],q:'What do I have to do about the Clearinghouse?',
+  a:'Two things, and the second is the one people miss.<br><br><b>Join a consortium.</b> An owner-operator cannot run their own random testing \u2014 you must designate a C/TPA in the Clearinghouse. Roughly $50\u2013$150 a year.<br><br><b>Run the annual query by 5 January</b> for the previous year, on yourself, and keep the confirmation. It takes minutes and it is the most-missed obligation in the whole area \u2014 missed mostly by people with nothing to hide.<br><br>Since 18 November 2024 the stakes changed: a driver in prohibited status has the commercial privilege <b>downgraded by the state</b>, not just their employment affected.<br><br><a href="guide-clearinghouse.html" style="color:var(--gold)">The six test types and the return-to-duty process \u2192</a>'},
+
+ {c:'Learn',k:['new entrant','safety audit','audit','dot audit','corrective action','cap','revoked','driver qualification','dq file'],q:'How do I pass the new entrant safety audit?',
+  a:'Treat it as an inspection of your <b>filing</b>, not your truck. It happens within your first 12 months and there are <b>sixteen violations that fail it on their own</b> \u2014 five of them drug and alcohol programme failures, and the most common is simply not being in a consortium.<br><br>Build four folders on day one: driver qualification (including one on yourself), drug and alcohol, vehicle maintenance, hours of service. Then self-audit by taking each automatic failure and pointing at the document that disproves it.<br><br>If you do fail, you get <b>60 days</b> as a property carrier to remedy it. Miss that and the authority is revoked, not suspended.<br><br><a href="guide-new-entrant-audit.html" style="color:var(--gold)">The sixteen failures and a ninety-day plan \u2192</a>'},
+ {c:'Learn',k:['fuel buying','cheap fuel','fuel card','pump price','net of tax','fuel stop','idling','idle','detour','discount fuel'],q:'How do I buy fuel cheaper?',
+  a:'Stop comparing pump prices. Under IFTA the tax comes back to you, so the only comparable number is <b>pump price minus that state\u2019s fuel tax</b> \u2014 and state diesel taxes differ by far more than the price signs do. The stop with the cheapest sign is regularly not the cheapest fuel.<br><br>Then check the detour before you take it: <span class="mono">break-even miles = (gallons \u00d7 price difference) \u00f7 your cost per mile</span>. A twelve-mile detour at $1.85 CPM costs $22.20 to save $8.40.<br><br>And the biggest lever is not the buy at all. Going from 6.5 to 7.0 mpg over 100,000 miles saves about <b>$3,956</b> \u2014 more than any fuel card deal.<br><br><a href="guide-fuel-buying.html" style="color:var(--gold)">The full method, plus idling costed per mile \u2192</a>'},
+
+ /* ── trust ── */
+ {c:'Trust',k:['trust','believe','prove','verify','check','how do i know'],q:'Why should I trust the numbers?',
+  a:'Do not. Verify them.<br><br>The formula is <a href="about.html#method" style="color:var(--gold)">printed in full</a>. The calculator is free and unlimited. Put in a load you already ran and check the result against your own books.<br><br>The same arithmetic exists in four independent implementations — the browser, the spreadsheets, a Python backend and a SQL view — and they are checked against each other and agree to the cent.'},
+ {c:'Trust',k:['who built','company','team','behind','founder','registered'],q:'Who is behind this?',
+  a:'<b>One person, not a company.</b> Aleksandar Novakovi\u0107, in Smederevo, Serbia. There is no registered legal entity behind this, and the <a href="legal.html#entity" style="color:var(--gold)">legal information page</a> says so in full rather than hiding it behind corporate wording.<br><br>The workbooks are sold on Gumroad, which handles the payment \u2014 this site has no checkout and never sees a card.<br><br>You will notice this site has no customer count, no "revenue tracked" figure and no testimonials. Those would have to be invented, and anyone senior enough to matter can tell.'},
+ {c:'Trust',k:['refund','guarantee','money back','return'],q:'What is the refund policy?',
+  a:'<strong>60 days, any reason,</strong> on every workbook purchase.<br><br>Not "unused" — you cannot unsee a spreadsheet. Use it, put a month of real loads through it, and if it did not earn its price, ask for the money back. We do not ask you to delete your copy.<br><br>The purchase happens on Gumroad, so Gumroad issues the refund \u2014 email works and is usually faster to start. EU and UK consumers also have a statutory 14-day right of withdrawal on top of the guarantee.'},
+ {c:'Trust',k:['support','help','contact','email','talk','call','sales','person','bug'],q:'How do I reach a human?',
+  a:'Email <a href="mailto:aleksnvkvc@gmail.com" style="color:var(--gold)">aleksnvkvc@gmail.com</a>. It reaches a person, not a queue.<br><br>If a calculation looks wrong, that is the message we most want to receive — the same arithmetic runs in four places and an error in one is worth hunting down in all of them.'},
+];
+
+const CHIP_GROUPS=[
+ ['Product',   ['Is it really free?','Is there a subscription?','How much does it cost?','What are the workbooks?','What does LoadMargin do?']],
+ ['Free tools',['What free calculators are there?','How does the fuel surcharge calculator work?','What does detention actually cost?','Should I use factoring?','Can it work out my IFTA?','How should I budget maintenance?']],
+ ['The math',  ['How is profit calculated?','What is cost per mile?','How is deadhead handled?','What is my break-even rate?','How do I work out a counter-offer?','What margin should we target?','Per-mile or percentage driver pay?','How is detention priced?','Why rank by profit per truck-day?']],
+ ['Operations',['What about hours of service?','How is fuel modelled?','Which of my lanes lose money?','Which customers are actually profitable?','Is this sized for my fleet?']],
+ ['Learn',     ['Where can I learn the method?','How do I buy fuel cheaper?','How do I pass the new entrant safety audit?','Do I have to run an ELD?','What do I have to do about the Clearinghouse?','How do I handle a cargo claim?','What should insurance cost me?','How much should I set aside for tax?','What is a CSA score and does it matter?','Is a lease-purchase worth it?','How do I stop getting overweight tickets?','How do I negotiate a better rate?','How do I check a broker is real?','What does getting authority cost?','What do all these freight terms mean?']],
+ ['Using it',  ['How do I get started?','Where does my data go?','What happens if I clear my browser?','Can my whole team use it?','Do you integrate with our TMS?','Does it work on a phone?','Why not just use a spreadsheet?']],
+ ['Trust',     ['Why should I trust the numbers?','Who is behind this?','What is the refund policy?','How do I reach a human?']],
+];
+let CHIP_CAT='Product';
+
+let asstStarted=false;
+function openAsst(){
+  $('asst').classList.add('show'); $('asstFab').style.display='none';
+  if(!asstStarted){
+    asstStarted=true;
+    bot("Hi — I'm the LoadMargin assistant. I answer <strong>51 written questions</strong> about the method, the numbers and the products, instantly and without a form.<br><br>Pick a category below, or just type what you want to know.");
+    renderChips();
+  }
+  setTimeout(()=>$('asstInput').focus(),260);
+}
+function closeAsst(){ $('asst').classList.remove('show'); $('asstFab').style.display='grid'; }
+function renderChips(){
+  const cats=CHIP_GROUPS.map(([c])=>
+    `<button class="chip cat${c===CHIP_CAT?' on':''}" type="button" onclick="setChipCat('${c}')">${c}</button>`).join('');
+  const qs=(CHIP_GROUPS.find(g=>g[0]===CHIP_CAT)||CHIP_GROUPS[0])[1];
+  $('asstChips').innerHTML=
+    `<div class="chip-cats">${cats}</div>`+
+    `<div class="chip-qs">${qs.map(c=>
+      `<button class="chip" type="button" onclick="askAsst(${JSON.stringify(c).replace(/"/g,'&quot;')})">${c}</button>`).join('')}</div>`;
+}
+function setChipCat(c){ CHIP_CAT=c; renderChips(); }
+function push(cls,html){
+  const d=document.createElement('div'); d.className='msg '+cls; d.innerHTML=html;
+  $('asstBody').appendChild(d); $('asstBody').scrollTop=$('asstBody').scrollHeight; return d;
+}
+const bot=h=>push('bot',h);
+function typing(){
+  const d=document.createElement('div'); d.className='typing'; d.innerHTML='<i></i><i></i><i></i>';
+  $('asstBody').appendChild(d); $('asstBody').scrollTop=$('asstBody').scrollHeight; return d;
+}
+function match(q){
+  const s=q.toLowerCase();
+  let best=null,score=0;
+  KB.forEach(e=>{
+    let sc=0;
+    e.k.forEach(k=>{ if(s.includes(k)) sc+=k.length; });
+    if(s.includes(e.q.toLowerCase().slice(0,18))) sc+=30;
+    if(sc>score){score=sc;best=e;}
+  });
+  return score>=2?best:null;
+}
+function askAsst(preset){
+  const inp=$('asstInput');
+  const q=(preset||inp.value).trim();
+  if(!q) return;
+  inp.value='';
+  push('me',q.replace(/[<>]/g,''));
+  const t=typing();
+  setTimeout(()=>{
+    t.remove();
+    const hit=match(q);
+    if(hit) bot(hit.a);
+    else bot("I don't have a written answer for that one. I cover 51 questions and I would rather say so than invent something about pricing or capability.<br><br>Two things that will get you further: the <strong>Q&amp;A section</strong> on this page goes deeper, and <a href='mailto:aleksnvkvc@gmail.com' style='color:var(--gold)'>emailing a person</a> gets you anything I cannot answer.<br><br><em>Try a category below, or ask about: cost per mile, deadhead, fuel surcharges, detention, IFTA, factoring, broker vetting, hours of service, refunds or data privacy.</em>");
+    $('asstBody').scrollTop=$('asstBody').scrollHeight;
+  }, 380+Math.random()*380);
+}
+
+/* ═══════════ MODALS ═══════════ */
+function openModal(id){ $(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){
+  $(id).classList.remove('show'); document.body.style.overflow='';
+  if(id==='demoModal'){ const v=$('demoVideo'); if(v){ v.pause(); } }
+}
+function openContact(){ openModal('contactModal'); setTimeout(()=>$('fName').focus(),200); }
+function openDemo(){ openModal('demoModal'); }
+addEventListener('click',e=>{ if(e.target.classList.contains('modal')) closeModal(e.target.id); });
+addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  document.querySelectorAll('.modal.show').forEach(m=>closeModal(m.id));
+  if($('asst').classList.contains('show')) closeAsst();
+});
+
+/* ═══════════ TRIAL FORM ═══════════ */
+$('contactForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=e.target, msg=$('formMsg'), btn=$('contactSubmit');
+  msg.className='form-msg';
+  const name=$('fName').value.trim(), email=$('fEmail').value.trim(), company=$('fCompany').value.trim();
+  if(!name||!company){ msg.className='form-msg err'; msg.textContent='Please fill in your name and company.'; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)){
+    msg.className='form-msg err'; msg.textContent='That email address does not look valid.'; return; }
+
+  btn.disabled=true; btn.textContent='Sending…';
+  const payload={
+    name, email, company,
+    fleet_size:$('fTrucks').value,
+    message:$('fNote').value.trim()||'(none)',
+    _subject:`LoadMargin enquiry — ${company}`,
+    _template:'table'
+  };
+  try{
+    const r=await fetch(FORM_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    msg.className='form-msg ok';
+    msg.innerHTML=`<strong>Got it, ${name.split(' ')[0]}.</strong> You will get a reply from a person, usually within a day.`;
+    f.reset(); btn.textContent='Sent ✓';
+    setTimeout(()=>{btn.disabled=false;btn.textContent='Send';},4000);
+  }catch(err){
+    msg.className='form-msg err';
+    msg.innerHTML=`We could not submit the form just now. Email us directly at
+      <a href="mailto:aleksnvkvc@gmail.com?subject=LoadMargin%20enquiry&body=${encodeURIComponent(`Name: ${name}\nCompany: ${company}\nFleet: ${$('fTrucks').value}\n\n${$('fNote').value}`)}"
+         style="color:var(--gold);font-weight:600">aleksnvkvc@gmail.com</a> and we will reply directly.`;
+    btn.disabled=false; btn.textContent='Try again';
+  }
+});
+
+/* ═══════════ INIT ═══════════ */
+calc(); cpm();
+observeReveals();
+markActive();
+</script>
+</body>
+</html>

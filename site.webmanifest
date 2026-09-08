@@ -1,0 +1,16 @@
+{
+  "name": "LoadMargin — freight profitability tools",
+  "short_name": "LoadMargin",
+  "description": "Score a load before you accept it. Every calculation runs in your browser.",
+  "start_url": "app.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#030A16",
+  "theme_color": "#030A16",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "images/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

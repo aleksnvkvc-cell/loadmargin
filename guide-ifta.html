@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFTA explained: the calculation, the dates, the audit trap | LoadMargin</title>
+<meta name="description" content="IFTA is a settlement system, not a tax. The three-step calculation, a fully worked quarter, taxable versus total miles, the records an auditor will ask for, and what a 4.0 mpg audit adjustment costs.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-ifta.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IFTA explained: the calculation, the dates, the audit trap | LoadMargin">
+<meta property="og:description" content="IFTA is a settlement system, not a tax. The three-step calculation, a fully worked quarter, taxable versus total miles, the records an auditor will ask for, and what a 4.0 mpg audit adjustment costs.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-ifta.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"IFTA, without the folklore","description":"IFTA is a settlement system, not a tax. The three-step calculation, a fully worked quarter, taxable versus total miles, the records an auditor will ask for, and what a 4.0 mpg audit adjustment costs.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-ifta.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-ifta.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"IFTA, without the folklore","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-ifta.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Compliance</span>
+    <h1>IFTA, without the folklore</h1>
+    <p class="lede">One licence, one quarterly return, three formulas. And one audit failure mode that turns a $150 bill into a four-figure one.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#why">Why IFTA exists</a></li><li><a href="#who">Who has to register</a></li><li><a href="#dates">The four dates</a></li><li><a href="#calc">The calculation, step by step</a></li><li><a href="#worked">A worked quarter</a></li><li><a href="#miles">Taxable miles versus total miles</a></li><li><a href="#records">What you must keep</a></li><li><a href="#penalties">What it costs to get it wrong</a></li><li><a href="#cpm">What IFTA does to your cost per mile</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">IFTA is not a tax. It is a settlement system for a tax you have already paid at
+the pump, redistributed to the states you actually drove through. Understanding that one sentence
+makes the whole filing obvious.</p>
+
+<h2 id="why">Why IFTA exists</h2>
+<p>Fuel tax is charged by the state, and the state charges it <strong>where you buy</strong>. A truck
+   fuels in one jurisdiction and burns most of it in three others. Before 1996 that meant a separate
+   permit and a separate return for every state a carrier touched.</p>
+<p>The International Fuel Tax Agreement replaced that with one licence, one set of decals and one
+   quarterly return, filed with your base jurisdiction. It covers the 48 contiguous US states and
+   10 Canadian provinces. Your base jurisdiction collects what you owe, or refunds what you
+   overpaid, and settles with everyone else on your behalf.</p>
+<div class="pullq">Fuel tax follows the miles, not the pump. IFTA is the machinery that moves the
+money from where you bought the diesel to where you burned it.</div>
+
+<h2 id="who">Who has to register</h2>
+<p>You need an IFTA licence if you operate a <strong>qualified motor vehicle</strong> in two or more
+   member jurisdictions. A qualified motor vehicle is one used to transport persons or property
+   that meets any of:</p>
+<ul>
+  <li>Two axles and a gross vehicle weight over <strong>26,000 lb</strong>; or</li>
+  <li><strong>Three or more axles</strong>, regardless of weight; or</li>
+  <li>A combination weight over <strong>26,000 lb</strong>.</li>
+</ul>
+<p>Recreational vehicles are exempt. A truck that never leaves its home state does not need IFTA —
+   it pays fuel tax at the pump and that is the end of it.</p>
+
+<h2 id="dates">The four dates</h2>
+<p>The return is due on the <strong>last day of the month following the quarter</strong>. There are
+   no exceptions worth planning around, and a weekend or holiday only ever moves the deadline
+   forward to the next business day in some jurisdictions — never rely on it.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Quarter</th><th>Period</th><th>Return due</th></tr></thead>
+  <tbody>
+  <tr><td>Q1</td><td>January – March</td><td class="n">30 April</td></tr>
+  <tr><td>Q2</td><td>April – June</td><td class="n">31 July</td></tr>
+  <tr><td>Q3</td><td>July – September</td><td class="n">31 October</td></tr>
+  <tr><td>Q4</td><td>October – December</td><td class="n">31 January</td></tr>
+  </tbody>
+</table></div>
+<div class="keybox">
+  <h3>File even when you owe nothing</h3>
+  <p>A zero return is still a return. A quarter with no interstate movement still has to be filed,
+     and a quarter where you cannot pay still has to be filed — the late-filing penalty and the
+     interest on unpaid tax are separate things, and filing on time stops the first one.</p>
+</div>
+
+<h2 id="calc">The calculation, step by step</h2>
+<p>Three steps. The whole quarter reduces to this.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">1.  fleet_mpg      = total_miles ÷ total_gallons_purchased</p>
+  <p style="font-family:var(--mono);margin:0 0 .6rem">2.  taxable_gal[s] = miles_in_state[s] ÷ fleet_mpg</p>
+  <p style="font-family:var(--mono);margin:0">3.  net_tax[s]     = (taxable_gal[s] − tax_paid_gal[s]) × rate[s]</p>
+</div>
+<p>Note what step 1 does: it computes <strong>one fleet-wide mpg for the whole quarter</strong> and
+   applies it to every state. IFTA does not care that you got 7.1 mpg across Kansas and 5.4 mpg over
+   the Grapevine. It divides your total miles by your total gallons and uses that everywhere.</p>
+<p>Step 3 is where the settlement happens. <span class="mono">taxable_gal</span> is the fuel the
+   state says you burned there. <span class="mono">tax_paid_gal</span> is the fuel you actually
+   bought there, on which you already paid that state's tax at the pump. The difference, times the
+   state's rate, is what you owe — or, if negative, a credit.</p>
+
+<h2 id="worked">A worked quarter</h2>
+<p>One truck, one quarter. 24,800 total miles, 4,000 gallons purchased.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0">fleet_mpg = 24,800 ÷ 4,000 = 6.20 mpg</p>
+</div>
+<div class="tw2"><table>
+  <thead><tr><th>State</th><th class="n">Miles</th><th class="n">Taxable gal</th><th class="n">Gal bought</th><th class="n">Rate</th><th class="n">Net tax</th></tr></thead>
+  <tbody>
+  <tr><td>Illinois</td><td class="n">6,200</td><td class="n">1,000.0</td><td class="n">1,450</td><td class="n">$0.5470</td><td class="n pos">−$246.15</td></tr>
+  <tr><td>Indiana</td><td class="n">3,100</td><td class="n">500.0</td><td class="n">280</td><td class="n">$0.5900</td><td class="n neg">$129.80</td></tr>
+  <tr><td>Ohio</td><td class="n">4,650</td><td class="n">750.0</td><td class="n">400</td><td class="n">$0.4700</td><td class="n neg">$164.50</td></tr>
+  <tr><td>Pennsylvania</td><td class="n">5,580</td><td class="n">900.0</td><td class="n">620</td><td class="n">$0.7410</td><td class="n neg">$207.48</td></tr>
+  <tr><td>Missouri</td><td class="n">5,270</td><td class="n">850.0</td><td class="n">1,250</td><td class="n">$0.2700</td><td class="n pos">−$108.00</td></tr>
+  <tr class="tot"><td>Total</td><td class="n">24,800</td><td class="n">4,000.0</td><td class="n">4,000</td><td class="n">—</td><td class="n neg">$147.63</td></tr>
+  </tbody>
+</table></div>
+<p>Read the pattern. Illinois and Missouri show credits because the truck fuelled there and drove
+   elsewhere. Pennsylvania shows the largest bill because it has the highest rate in the set and the
+   driver bought almost nothing there. The net for the quarter is $147.63 owed.</p>
+<div class="keybox">
+  <h3>The one lever you control</h3>
+  <p>Total taxable gallons always equal total gallons purchased — the system is closed. So IFTA is
+     not a cost you can reduce by buying less fuel. It is a cost you shift by choosing
+     <strong>where</strong> to buy: pump price plus that state's fuel tax, compared across your
+     route, is the real decision. A cheap pump price in a high-tax state can still be the right
+     buy, and a cheap pump price in a state you barely drive through is a credit you have to wait
+     three months to see.</p>
+</div>
+
+<h2 id="miles">Taxable miles versus total miles</h2>
+<p>These are not the same number, and mixing them up is the most common filing error.</p>
+<p><strong>Total miles</strong> are every mile the qualified vehicle turned in the quarter, in every
+   jurisdiction, including non-IFTA ones.</p>
+<p><strong>Taxable miles</strong> are total miles less anything the jurisdiction exempts. Exemptions
+   vary by state and commonly include specific toll roads, off-highway or private-property miles,
+   and certain fuel-trip-permit miles. There is no universal list — the exemptions are set by each
+   jurisdiction, and a mile exempt in one state is taxable in the next.</p>
+<p>Fleet mpg in step 1 is computed on <strong>total</strong> miles. Step 2 distributes on
+   <strong>taxable</strong> miles per state. Getting that backwards changes every line of the return.</p>
+
+<h2 id="records">What you must keep</h2>
+<p>The filing is the easy part; the audit is not. IFTA record retention is four years from the
+   return due date or filing date, whichever is later, and the records have to support every number
+   on the return.</p>
+<ul>
+  <li><strong>Distance records</strong> for every trip: date, origin, destination, route, beginning
+      and ending odometer, and miles by jurisdiction. GPS or ELD data satisfies this if it is
+      retained and readable.</li>
+  <li><strong>Fuel receipts</strong> for every purchase claimed as tax-paid: date, seller name and
+      address, gallons, price per gallon, unit number and purchaser name. A receipt missing the
+      unit number is a receipt an auditor can strike.</li>
+  <li><strong>Bulk fuel records</strong> if you have your own tank: withdrawals by vehicle, plus
+      inventory reconciliation.</li>
+</ul>
+<div class="keybox">
+  <h3>The audit failure mode</h3>
+  <p>An auditor who cannot verify your mileage does not throw out the return — they recompute it at
+     a <strong>standard mpg, typically 4.0</strong>. At 4.0 mpg the same 24,800 miles generate 6,200
+     taxable gallons instead of 4,000. You are then billed the tax on 2,200 gallons you never
+     burned, plus penalty and interest. That is the real cost of a shoebox of receipts.</p>
+</div>
+
+<h2 id="penalties">What it costs to get it wrong</h2>
+<p>The late-filing penalty is <strong>$50 or 10% of the tax due, whichever is greater</strong>, and
+   it applies to the return, not to the amount. A return filed a day late on a quarter where you
+   owed nothing still attracts the $50.</p>
+<p>Interest accrues separately on unpaid tax, per jurisdiction, per month. Repeated late filing
+   leads to licence revocation, and a revoked IFTA licence means the decals come off and the truck
+   is limited to its base state or to trip permits bought at the border — which is a fine, a delay
+   and a fee at every crossing.</p>
+
+<h2 id="cpm">What IFTA does to your cost per mile</h2>
+<p>Most carriers never put IFTA in their cost model at all, because the quarterly settlement is
+   small and lumpy. That is a mistake of accounting, not of size: the fuel tax was always part of
+   the cost of a mile, it was simply paid at the pump.</p>
+<p>The clean way to handle it: <strong>your fuel cost per mile should be the pump price including
+   tax</strong> — which is what the DOE index reports and what your receipts show — and the
+   quarterly IFTA settlement is then a small true-up, positive or negative, that belongs in
+   overhead rather than in the per-mile figure.</p>
+<p>Double-counting is the risk. If you model diesel at a tax-inclusive price <em>and</em> add an
+   IFTA line to cost per mile, you have charged the same tax twice and every load looks worse than
+   it is.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Track it as you go, not in the last week of the month</h3>
+    <p>The IFTA sheet in the Fuel Tracker workbook keeps miles by jurisdiction and fuel purchases in
+       one place, so the quarterly return is a summary rather than a reconstruction.</p>
+  </div>
+  <a href="workbooks.html#fuel" class="btn btn-gold">See the workbook →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>IFTA qualified-vehicle definition, the three-step calculation and the quarterly due dates follow the International Fuel Tax Agreement as summarised by current filing guidance; confirm details with your base jurisdiction, which administers the licence.</li><li>Late-filing penalty of $50 or 10% of tax due, whichever is greater, plus interest on unpaid tax, is the standard IFTA provision.</li><li>Tax rates in the worked example are illustrative round figures for a single quarter. Rates change quarterly and are published by the IFTA member jurisdictions — never file from a rate you remembered.</li><li>The four-year retention period and the standard-mpg audit adjustment are IFTA record-keeping provisions; the 4.0 mpg figure is the commonly applied default.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-fuel-surcharge.html"><span class="k">Guide</span><span class="t">Fuel surcharges explained</span><span class="d">The other half of the fuel picture, and the peg that quietly moves thousands.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Where fuel tax belongs in the cost model, and how not to count it twice.</span></a><a href="workbooks.html#fuel"><span class="k">Workbook</span><span class="t">Fuel &amp; IFTA tracker</span><span class="d">Miles by jurisdiction and fuel purchases in one sheet.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

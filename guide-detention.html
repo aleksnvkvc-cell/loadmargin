@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detention pay: what an hour at the dock really costs | LoadMargin</title>
+<meta name="description" content="Detention pay covers about a quarter of what a detained hour costs. The full arithmetic, why detention gets billed and not collected, ten accessorials carriers leave unbilled, and how to price dwell risk before accepting a load.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-detention.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Detention pay: what an hour at the dock really costs | LoadMargin">
+<meta property="og:description" content="Detention pay covers about a quarter of what a detained hour costs. The full arithmetic, why detention gets billed and not collected, ten accessorials carriers leave unbilled, and how to price dwell risk before accepting a load.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-detention.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Detention, and the hour you cannot bill for","description":"Detention pay covers about a quarter of what a detained hour costs. The full arithmetic, why detention gets billed and not collected, ten accessorials carriers leave unbilled, and how to price dwell risk before accepting a load.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-detention.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-detention.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Detention, and the hour you cannot bill for","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-detention.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>Detention, and the hour you cannot bill for</h1>
+    <p class="lede">A detained hour costs about $156. The market pays $40 to $75 for it. Here is the whole calculation, and how to price the wait before you accept the load.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What detention actually costs</a></li><li><a href="#clock">The clock you cannot bill for</a></li><li><a href="#math">The real cost of a detained hour</a></li><li><a href="#rates">What detention typically pays</a></li><li><a href="#collect">Why detention is billed and not collected</a></li><li><a href="#accessorials">The accessorials most carriers leave on the table</a></li><li><a href="#score">Scoring a load with detention risk</a></li><li><a href="#policy">A detention policy that works</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Detention pay is not compensation. At the rates the market pays, it is a partial
+refund on a loss you have already taken — and the part it never refunds is the hours of service
+the wait consumed.</p>
+
+<h2 id="what">What detention actually costs</h2>
+<p>A truck sitting at a dock is losing money in three separate ways at once, and only one of them
+   shows up on the invoice.</p>
+<ol>
+  <li><strong>Fixed cost keeps running.</strong> The truck payment, the insurance, the permits and
+      the overhead accrue per day regardless of whether the wheels turn.</li>
+  <li><strong>Hours of service are consumed.</strong> The 14-hour on-duty window does not pause for
+      a slow receiver. Every hour at the dock is an hour permanently removed from that day's
+      driving capacity.</li>
+  <li><strong>The next load moves out of reach.</strong> A three-hour wait does not delay you three
+      hours. It frequently delays you a full day, because the delivery appointment you could have
+      made is now tomorrow's.</li>
+</ol>
+<div class="pullq">Detention pay compensates you for the first of those three. The second and third
+are usually larger, and nobody bills for them.</div>
+
+<h2 id="clock">The clock you cannot bill for</h2>
+<p>This is the part that makes detention structurally worse than it looks.</p>
+<p>The 14-hour window starts when the driver goes on duty and runs continuously until it expires.
+   It does not stop for loading, for a dock queue, for lumper paperwork, or for anything except the
+   qualifying sleeper-berth splits. Eleven of those fourteen hours may be spent driving; the other
+   three are the entire budget for fuelling, inspections, scaling and every dock in the day.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Hour of the 14</th><th>Clean day</th><th>Day with 3h detention</th></tr></thead>
+  <tbody>
+  <tr><td>Pre-trip, fuel</td><td class="n">0.75 h</td><td class="n">0.75 h</td></tr>
+  <tr><td>At shipper</td><td class="n">1.00 h</td><td class="n">4.00 h</td></tr>
+  <tr><td>Driving</td><td class="n">11.00 h</td><td class="n">8.25 h</td></tr>
+  <tr><td>Break (30 min)</td><td class="n">0.50 h</td><td class="n">0.50 h</td></tr>
+  <tr><td>At receiver, post-trip</td><td class="n">0.75 h</td><td class="n">0.50 h</td></tr>
+  <tr class="tot"><td>Window used</td><td class="n">14.00 h</td><td class="n">14.00 h</td></tr>
+  <tr><td>Miles at 58 mph</td><td class="n">638</td><td class="n neg">479</td></tr>
+  </tbody>
+</table></div>
+<p>Three hours at a dock cost <strong>159 miles of earning capacity</strong> on that day. At a
+   $2.20 net contribution per mile, that is <strong>$350</strong> — and the detention cheque, if it
+   arrives at all, will be $50 to $150.</p>
+
+<h2 id="math">The real cost of a detained hour</h2>
+<p>Work it from the truck's daily economics rather than from a per-hour rate, because the per-hour
+   rate is the thing being disputed.</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Annual fixed cost of the truck</td><td class="n">$50,900</td></tr>
+  <tr><td>Operating days per year</td><td class="n">260</td></tr>
+  <tr class="tot"><td>Fixed cost per operating day</td><td class="n">$195.77</td></tr>
+  <tr><td>÷ the 14-hour on-duty window</td><td class="n">$13.98 per hour</td></tr>
+  <tr><td>Driver pay for the waiting hour (if paid)</td><td class="n">$22.00</td></tr>
+  <tr><td>Idle fuel, 0.8 gal/h at $3.85</td><td class="n">$3.08</td></tr>
+  <tr class="tot"><td>Direct cost of one detained hour</td><td class="n">$39.06</td></tr>
+  <tr><td>Lost contribution — 53 miles not driven × $2.20</td><td class="n">$116.60</td></tr>
+  <tr class="tot"><td>Full economic cost of one detained hour</td><td class="n neg">$155.66</td></tr>
+  </tbody>
+</table></div>
+<p>The direct cost is $39. That is the number a broker will argue about. The number that matters to
+   your year is <strong>$156</strong>, and it is the one that never appears in a detention
+   negotiation because the opportunity cost is invisible from the other side of the phone.</p>
+<div class="keybox">
+  <h3>Which number to use, and when</h3>
+  <p>Use the <strong>direct cost</strong> when you are deciding whether a specific wait was worth
+     absorbing on a load you already committed to — the fixed cost is sunk either way.</p>
+  <p>Use the <strong>full economic cost</strong> when you are deciding whether to take a load from a
+     facility with known dwell problems, or when setting a policy. That decision is made before the
+     day is committed, so the lost capacity is real.</p>
+</div>
+
+<h2 id="rates">What detention typically pays</h2>
+<p>Common market terms, which are conventions rather than rules — every one of these is negotiable
+   and every one of them is written into the rate confirmation or it does not exist:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Term</th><th>Common range</th><th>What to watch</th></tr></thead>
+  <tbody>
+  <tr><td>Free time before detention starts</td><td class="n">2 hours</td><td>Some shippers write 3 or 4. Push back — that is the whole giveaway</td></tr>
+  <tr><td>Detention rate</td><td class="n">$40 – $75 / hour</td><td>Below the full economic cost in every case</td></tr>
+  <tr><td>Billing increment</td><td class="n">15 min – 1 hour</td><td>Hourly increments round in the shipper's favour</td></tr>
+  <tr><td>Cap</td><td class="n">$300 – $600 / day</td><td>An uncapped clause is worth real money on a bad facility</td></tr>
+  <tr><td>Truck order not used</td><td class="n">$150 – $350</td><td>Frequently omitted. Always ask for it</td></tr>
+  <tr><td>Layover</td><td class="n">$150 – $350 / night</td><td>Distinct from detention; both can apply</td></tr>
+  </tbody>
+</table></div>
+<p>Notice that the top of the detention range, $75 an hour, is still less than half the full
+   economic cost of $156. Detention is not a profit centre and no clause will make it one. Its
+   purpose is to make the shipper's dwell time <em>expensive enough to fix</em>.</p>
+
+<h2 id="collect">Why detention is billed and not collected</h2>
+<p>Carriers routinely bill detention and routinely do not get paid for it. The reasons are almost
+   always procedural, and all four are fixable before the truck ever arrives.</p>
+<ol>
+  <li><strong>No time stamps the shipper agreed to.</strong> A driver's word is not evidence. In-and
+      out times must be signed on the bill of lading, or captured by a gate system, or documented
+      by geofenced ELD data with the arrival and departure recorded.</li>
+  <li><strong>The clause was never in the confirmation.</strong> If detention terms are not written
+      on the rate confirmation before dispatch, you are asking for a favour afterwards.</li>
+  <li><strong>It was billed late.</strong> Many contracts require accessorial claims within a fixed
+      window — often 7 to 30 days. Bill it with the original invoice, not as an afterthought.</li>
+  <li><strong>The driver did not notify anyone in real time.</strong> Most terms require notice at
+      the point free time expires. A call logged at hour 2 is worth several hundred dollars; the
+      same call at hour 5 is worth nothing.</li>
+</ol>
+<div class="keybox">
+  <h3>Four fields, most of the money</h3>
+  <p>Arrival time, departure time, a signature, and the notification timestamp. If those four exist
+     for every stop, detention collection stops being a negotiation and becomes an invoice. If any
+     one is missing, it is a negotiation you will usually lose.</p>
+</div>
+
+<h2 id="accessorials">The accessorials most carriers leave on the table</h2>
+<p>Detention is the famous one. These are the ones that quietly go unbilled:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Accessorial</th><th class="n">Typical</th><th>When it applies</th></tr></thead>
+  <tbody>
+  <tr><td>Extra stop-off</td><td class="n">$50 – $150 each</td><td>Every stop beyond the first pick and last drop</td></tr>
+  <tr><td>Driver assist / hand unload</td><td class="n">$100 – $250</td><td>Anything beyond dropping the trailer</td></tr>
+  <tr><td>Lumper fee</td><td class="n">at cost + admin</td><td>Reimbursable; get the receipt at the dock</td></tr>
+  <tr><td>Tarping</td><td class="n">$50 – $150</td><td>Flatbed; varies with load height</td></tr>
+  <tr><td>Reconsignment / diversion</td><td class="n">$100 – $300 + miles</td><td>Destination changed after dispatch</td></tr>
+  <tr><td>Redelivery</td><td class="n">$150 – $400</td><td>Receiver refused or closed on arrival</td></tr>
+  <tr><td>Trailer detention / per diem</td><td class="n">$25 – $75 / day</td><td>Your trailer held beyond the agreed window</td></tr>
+  <tr><td>Team service</td><td class="n">premium on line haul</td><td>Priced into the rate, not billed separately</td></tr>
+  <tr><td>Hazmat</td><td class="n">$100 – $300</td><td>Placarded freight</td></tr>
+  <tr><td>Weekend / after-hours delivery</td><td class="n">$100 – $250</td><td>Outside the receiver's standard window</td></tr>
+  </tbody>
+</table></div>
+<p>Two stop-offs, one driver assist and a tarp on a single load is $300 to $700. On a fleet running
+   forty loads a week, systematically not billing half of them is a six-figure annual number.</p>
+
+<h2 id="score">Scoring a load with detention risk</h2>
+<p>The right way to handle a facility with a bad reputation is not to refuse it. It is to
+   <strong>price the expected wait into the load before accepting</strong>.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">expected_detention_cost = p(delay) × hours × full_hourly_cost</p>
+  <p style="font-family:var(--mono);margin:0">adjusted_net = normal_net − expected_detention_cost + expected_detention_pay</p>
+</div>
+<p>A facility that detains you three hours on 60% of visits, at $156 an hour full cost and $50 an
+   hour paid after two hours free:</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Expected cost</td><td class="n">0.60 × 3 × $156 = −$280.80</td></tr>
+  <tr><td>Expected pay</td><td class="n">0.60 × 1 × $50 = +$30.00</td></tr>
+  <tr class="tot"><td>Net adjustment to the load</td><td class="n neg">−$250.80</td></tr>
+  </tbody>
+</table></div>
+<p>That load needs <strong>$251 more</strong> than an identical load from a facility that loads in
+   an hour. Not a refusal — a price. The calculator on this site has a detention and idle field for
+   exactly this: put your expected wait in before you accept, not your actual wait afterwards.</p>
+
+<h2 id="policy">A detention policy that works</h2>
+<ol>
+  <li><strong>Terms on every confirmation.</strong> Free time, hourly rate, increment, cap, TONU and
+      layover — before dispatch, in writing, no exceptions for a good broker.</li>
+  <li><strong>Driver notifies at free-time expiry.</strong> Set it as a hard rule with a timestamped
+      message, not a phone call nobody logged.</li>
+  <li><strong>Signed in and out times on every BOL.</strong> If the facility will not sign, the
+      driver photographs the gate log or the dock clock with the phone's timestamp on.</li>
+  <li><strong>Bill accessorials with the original invoice.</strong> Never separately, never later.</li>
+  <li><strong>Track dwell by facility, not by broker.</strong> The broker did not make you wait; the
+      receiver did. After twenty visits you will know which four facilities cost you a day a month,
+      and those are the ones to reprice or drop.</li>
+</ol>
+<p>That last point is the one with compounding value. A carrier who can say <em>"your Columbus DC
+   averages 3.4 hours against a 2-hour free window across our last eleven visits, here are the
+   timestamps"</em> is not complaining. They are negotiating, and they usually win.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Price the wait before you accept</h3>
+    <p>The load calculator has a detention and idle input. Enter the wait you expect at that
+       facility and watch the verdict change before you commit the truck.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Detention, layover, TONU and accessorial ranges are common commercial conventions in North American truckload freight. They are negotiated terms, not published rates — treat them as a starting point for your own confirmations.</li><li>Hours-of-service arithmetic follows the FMCSA 11-hour driving limit, 14-hour on-duty window and 30-minute break rule. See the <a href="guide-hos.html">hours-of-service guide</a>.</li><li>The cost tables use the same illustrative single-truck cost base as the rest of this site: $50,900 annual fixed, 260 operating days, $3.85 diesel, $2.20 net contribution per mile. Substitute your own figures — the method is the point, not the numbers.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-hos.html"><span class="k">Guide</span><span class="t">Hours of service, in plain English</span><span class="d">Why the 14-hour window is what makes detention expensive.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Where the $195 per day and the $2.20 per mile come from.</span></a><a href="guide-negotiation.html"><span class="k">Guide</span><span class="t">Negotiating with numbers</span><span class="d">How to turn a dwell record into a higher rate.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

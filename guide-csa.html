@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSA scores explained: thresholds, weighting and cost | LoadMargin</title>
+<meta name="description" content="A CSA score is a percentile, not a grade. The seven BASICs, the intervention thresholds, how severity and recency weighting work, why small carriers swing hardest, and what crossing a threshold costs in insurance.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-csa.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSA scores explained: thresholds, weighting and cost | LoadMargin">
+<meta property="og:description" content="A CSA score is a percentile, not a grade. The seven BASICs, the intervention thresholds, how severity and recency weighting work, why small carriers swing hardest, and what crossing a threshold costs in insurance.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-csa.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"CSA scores, and what they really cost","description":"A CSA score is a percentile, not a grade. The seven BASICs, the intervention thresholds, how severity and recency weighting work, why small carriers swing hardest, and what crossing a threshold costs in insurance.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-csa.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-csa.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-05"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"CSA scores, and what they really cost","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-csa.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Compliance</span>
+    <h1>CSA scores, and what they really cost</h1>
+    <p class="lede">It is not a safety rating — it is a ranking against carriers your size. And 92% of trucking underwriters price your insurance off it.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 5 September 2026</span>
+      <span>12 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What a CSA score actually is</a></li><li><a href="#basics">The seven BASICs</a></li><li><a href="#thresholds">The thresholds that trigger intervention</a></li><li><a href="#severity">Severity weighting: not all violations cost the same</a></li><li><a href="#time">Time weighting, and why last month hurts three times as much</a></li><li><a href="#peer">The part nobody explains: you are ranked against peers</a></li><li><a href="#money">What a bad score costs in money</a></li><li><a href="#inspection">Surviving the inspection itself</a></li><li><a href="#fix">Fixing a score that is already high</a></li><li><a href="#dispute">Disputing a violation</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">A CSA score is not a safety rating. It is a percentile — a ranking against carriers
+your size — and almost every consequence that follows from it is financial rather than regulatory.
+Ninety-two per cent of commercial trucking underwriters price your insurance off it.</p>
+
+<h2 id="what">What a CSA score actually is</h2>
+<p><strong>Compliance, Safety, Accountability</strong> is FMCSA's programme for identifying carriers
+   worth investigating. The scoring engine behind it is the <strong>Safety Measurement System</strong>,
+   and what it produces is not a grade out of a hundred. It is a percentile.</p>
+<p>A score of 80 in Vehicle Maintenance does not mean you passed 80% of inspections. It means
+   <strong>80% of carriers your size have a better maintenance record than you do</strong>. You can
+   improve every month and still see the number rise, because everyone else improved faster.</p>
+<div class="pullq">You are not being measured against a standard. You are being ranked against your
+competitors — which means the score moves when they change, not only when you do.</div>
+
+<h2 id="basics">The seven BASICs</h2>
+<p>Each is scored separately. A carrier can be clean in six and in trouble in one.</p>
+<div class="tw2"><table>
+  <thead><tr><th>BASIC</th><th>What feeds it</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Unsafe Driving</strong></td><td>Moving violations found at roadside — speeding, following too close, seat belt, phone use</td></tr>
+  <tr><td><strong>Crash Indicator</strong></td><td>State-reported crashes involving a fatality, an injury, or any vehicle towed away</td></tr>
+  <tr><td><strong>Hours of Service</strong></td><td>Log and ELD violations, form-and-manner errors, driving beyond the limits</td></tr>
+  <tr><td><strong>Vehicle Maintenance</strong></td><td>Equipment defects — brakes, tyres, lights, load securement</td></tr>
+  <tr><td><strong>Controlled Substances / Alcohol</strong></td><td>Positive tests, refusals, programme violations</td></tr>
+  <tr><td><strong>Hazardous Materials</strong></td><td>HM placarding, packaging and paperwork violations</td></tr>
+  <tr><td><strong>Driver Fitness</strong></td><td>Licensing, medical certification and qualification-file violations</td></tr>
+  </tbody>
+</table></div>
+<p>Two of these behave differently from the rest. <strong>Crash Indicator</strong> counts crashes
+   regardless of who was at fault — a car turning into your trailer still counts. And
+   <strong>Hazardous Materials</strong> only applies if you run placarded freight, which is a reason
+   some carriers stay out of it entirely.</p>
+
+<h2 id="thresholds">The thresholds that trigger intervention</h2>
+<p>Cross one and FMCSA starts paying attention — warning letters first, then investigation.</p>
+<div class="tw2"><table>
+  <thead><tr><th>BASIC</th><th class="n">Threshold</th><th>Why it is set there</th></tr></thead>
+  <tbody>
+  <tr><td>Unsafe Driving</td><td class="n">65th</td><td>Strongest statistical link to future crashes</td></tr>
+  <tr><td>Hours of Service</td><td class="n">65th</td><td>Same</td></tr>
+  <tr><td>Crash Indicator</td><td class="n">60th</td><td>Lowest threshold of the general set</td></tr>
+  <tr><td>Hazardous Materials</td><td class="n">60th</td><td>Consequence of failure is higher</td></tr>
+  <tr><td>Vehicle Maintenance</td><td class="n">80th</td><td>Very common violations, so the bar is higher</td></tr>
+  <tr><td>Controlled Substances / Alcohol</td><td class="n">80th</td><td>Rare events</td></tr>
+  <tr><td>Driver Fitness</td><td class="n">80th</td><td>Mostly paperwork</td></tr>
+  </tbody>
+</table></div>
+<p>Passenger carriers face tighter thresholds, starting around the 50th percentile. For freight, the
+   two at 65 are the ones to watch — they are the categories a dispatcher's decisions actually
+   influence.</p>
+
+<h2 id="severity">Severity weighting: not all violations cost the same</h2>
+<p>Every violation carries a severity weight from <strong>1 to 10</strong>. This is where carriers
+   misjudge risk badly — a stack of trivial write-ups is not the same as one serious one.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Violation</th><th class="n">Severity</th></tr></thead>
+  <tbody>
+  <tr><td>No fire extinguisher</td><td class="n">1</td></tr>
+  <tr><td>Tyre tread depth</td><td class="n">3</td></tr>
+  <tr><td>Inoperative brakes</td><td class="n">8</td></tr>
+  <tr><td>Operating under a disqualified CDL</td><td class="n">10</td></tr>
+  <tr><td>Positive drug test</td><td class="n">10</td></tr>
+  </tbody>
+</table></div>
+<p>One brake violation weighs as much as roughly eight missing fire extinguishers. The practical
+   consequence: <strong>a pre-trip that checks brakes and tyres properly is worth more than one that
+   checks everything superficially.</strong></p>
+
+<h2 id="time">Time weighting, and why last month hurts three times as much</h2>
+<p>Recency multiplies. The same violation counts for three times as much in its first six months as
+   it will in its second year.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Age of violation</th><th class="n">Multiplier</th></tr></thead>
+  <tbody>
+  <tr><td>0 – 6 months</td><td class="n">3×</td></tr>
+  <tr><td>6 – 12 months</td><td class="n">2×</td></tr>
+  <tr><td>12 – 24 months</td><td class="n">1×</td></tr>
+  <tr><td>Over 24 months</td><td class="n">drops off entirely</td></tr>
+  </tbody>
+</table></div>
+<div class="keybox">
+  <h3>Two things follow from this, and both are useful</h3>
+  <p><strong>A bad score is temporary.</strong> Everything you did more than two years ago is gone.
+     A carrier who cleans up genuinely will see the number fall on its own — not instantly, but
+     reliably, and fastest between months six and twelve.</p>
+  <p><strong>Clean inspections help, but not by cancelling anything.</strong> They add inspections
+     with no violations to your denominator, which dilutes the rate. Volume of clean inspections is
+     the only lever that works quickly, and it is why carriers who avoid scales are usually making
+     their score worse, not better.</p>
+</div>
+
+<h2 id="peer">The part nobody explains: you are ranked against peers</h2>
+<p>Carriers are grouped by inspection volume, then ranked within the group. That has consequences
+   that feel unfair until you see the mechanism.</p>
+<ul>
+  <li><strong>A small carrier's score is volatile.</strong> With eight inspections on record, one
+      violation moves the percentile enormously. A 400-truck fleet absorbs the same violation
+      without noticing.</li>
+  <li><strong>Moving between peer groups changes your score without any change in behaviour.</strong>
+      Grow past a group boundary and you are suddenly compared to a different set.</li>
+  <li><strong>You need a minimum number of inspections before a BASIC is scored at all.</strong> A
+      brand-new carrier has no percentile in most categories, which is not the same as a good one —
+      brokers and insurers read a blank differently from a clean record.</li>
+</ul>
+
+<h2 id="money">What a bad score costs in money</h2>
+<p>The regulatory consequence is a warning letter, then possibly an investigation. The financial
+   consequence arrives much faster and hits much harder.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Where it bites</th><th>Effect</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Insurance premiums</strong></td><td>Approaching a threshold: <b>10–30%</b> increase. Above it: <b>30–50%+</b></td></tr>
+  <tr><td><strong>Broker access</strong></td><td>Many brokers screen on CSA and simply stop offering you freight — usually without telling you why</td></tr>
+  <tr><td><strong>Shipper contracts</strong></td><td>Direct contracts routinely set a CSA ceiling as a condition</td></tr>
+  <tr><td><strong>Inspection frequency</strong></td><td>A high score makes you more likely to be pulled in, which creates more chances to score again</td></tr>
+  </tbody>
+</table></div>
+<p>Put a number on the insurance effect. On the <a href="guide-insurance.html">illustrative
+   owner-operator premium</a> of about $16,000 a year, crossing a threshold at a 40% increase is
+   <strong>$6,400 a year</strong> — roughly what two decent loads a month earn in net profit.</p>
+<div class="keybox">
+  <h3>The compounding trap</h3>
+  <p>A high score means more inspections. More inspections mean more chances to find something. More
+     findings mean a higher score. Carriers describe this as being targeted; it is really just the
+     loop closing on itself. The only exit is a run of <strong>clean</strong> inspections, which is
+     why hiding from scales makes it worse.</p>
+</div>
+
+<h2 id="inspection">Surviving the inspection itself</h2>
+<p>Most roadside violations are found in a handful of places, and nearly all of them are visible at
+   a pre-trip if the pre-trip is real.</p>
+<ol>
+  <li><strong>Brakes.</strong> Out-of-adjustment slack adjusters, air leaks, worn linings. Severity 8,
+      and the single most common serious finding.</li>
+  <li><strong>Tyres.</strong> Tread depth, sidewall damage, flat or audibly leaking, mismatched duals.</li>
+  <li><strong>Lights and reflectors.</strong> Trivially cheap to fix, and a large share of write-ups.</li>
+  <li><strong>Load securement.</strong> Straps, chains, working load limits, edge protection.</li>
+  <li><strong>Paperwork.</strong> Medical card, annual inspection, registration, IFTA decals, ELD
+      instruction sheet and blank logs in the cab.</li>
+</ol>
+<p>Two behavioural points matter more than any checklist. <strong>The driver's demeanour changes the
+   depth of the inspection</strong> — calm, organised and cooperative shortens it. And
+   <strong>a clean inspection is worth having on record</strong>, so pulling into an open scale with
+   a truck you are confident in is doing your score a favour, not risking it.</p>
+
+<h2 id="fix">Fixing a score that is already high</h2>
+<p>In order of how quickly each one moves the number:</p>
+<ol>
+  <li><strong>Stop the bleeding in the top BASIC.</strong> Work out which category is over threshold
+      and what is actually driving it. It is usually one repeated violation type, not a spread.</li>
+  <li><strong>Accumulate clean inspections.</strong> The fastest lever available. Run legal, run
+      inspection-ready, and go through open scales.</li>
+  <li><strong>Fix the maintenance programme, not the last truck.</strong> If brakes appear twice,
+      the interval is wrong, not the mechanic.</li>
+  <li><strong>Wait out the multipliers.</strong> At six months a violation drops from 3× to 2×.
+      At twelve, to 1×. At twenty-four it is gone. That happens whether or not you do anything, and
+      it is why panic is rarely warranted.</li>
+  <li><strong>Deal with the driver, honestly.</strong> If one driver generates most of the
+      violations, no maintenance policy fixes the score.</li>
+</ol>
+
+<h2 id="dispute">Disputing a violation</h2>
+<p>Violations can be challenged through FMCSA's <strong>DataQs</strong> system. It is worth using —
+   and worth understanding what it can and cannot do.</p>
+<p><strong>Worth disputing:</strong> factual errors (wrong USDOT number, wrong driver, wrong vehicle,
+   duplicate entries), violations later dismissed in court, and crashes that were plainly not your
+   fault where the report says otherwise.</p>
+<p><strong>Not worth disputing:</strong> a violation that was correctly recorded because it was
+   correctly found. A dispute is not an appeal against the rule.</p>
+<p>Submit with evidence — repair receipts, court disposition, photographs, the inspection report
+   number. Vague disagreement gets closed. Check your record regularly rather than annually: errors
+   are easier to correct while the paperwork still exists, and the 3× multiplier means an error in
+   its first six months is costing you the most.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>An inspection is a cost like any other</h3>
+    <p>A violation that raises your premium 40% is a cost per mile, not an event. Put your real
+       insurance figure into the cost-per-mile builder and see what it does to your break-even.</p>
+  </div>
+  <a href="index.html#cpm" class="btn btn-gold">Build your cost per mile →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>CSA / Safety Measurement System structure: seven BASICs, intervention thresholds (65th percentile for Unsafe Driving and Hours of Service, 60th for Crash Indicator and Hazardous Materials, 80th for Vehicle Maintenance, Controlled Substances and Driver Fitness, lower for passenger carriers), severity weighting 1–10, time weighting 3× / 2× / 1× and the 24-month drop-off, and peer-group percentile ranking — as published in current FMCSA SMS methodology summaries.</li><li>Severity examples (no fire extinguisher 1, tyre tread 3, inoperative brakes 8, disqualified CDL 10, positive drug test 10) are from the same published weighting tables.</li><li>Insurance impact — 92% of commercial trucking underwriters using CSA/SMS data, premium increases of 10–30% approaching a threshold and 30–50%+ above one — is a current industry figure, not an FMCSA publication.</li><li>The $6,400 example applies the 40% figure to the illustrative $16,000 premium used in the <a href="guide-insurance.html">insurance guide</a>. It is arithmetic, not a quote.</li><li>FMCSA revised the SMS methodology in recent years and continues to do so; confirm current thresholds and categories at fmcsa.dot.gov before relying on them. Nothing here is legal advice.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-insurance.html"><span class="k">Guide</span><span class="t">What insurance actually costs, and what moves it</span><span class="d">The single largest place a CSA score turns into money.</span></a><a href="guide-hos.html"><span class="k">Guide</span><span class="t">Hours of service, in plain English</span><span class="d">One of the two BASICs with the tightest threshold.</span></a><a href="guide-maintenance.html"><span class="k">Guide</span><span class="t">Maintenance is a reserve, not an invoice</span><span class="d">The programme behind the Vehicle Maintenance BASIC.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot freight vs contract freight | LoadMargin</title>
+<meta name="description" content="The two markets your loads come from — the volatile spot market and steadier contract freight — how their rates move against each other, and how a small carrier balances the freedom of spot with the stability of contract.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-spot-vs-contract.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spot freight vs contract freight | LoadMargin">
+<meta property="og:description" content="The two markets your loads come from — the volatile spot market and steadier contract freight — how their rates move against each other, and how a small carrier balances the freedom of spot with the stability of contract.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-spot-vs-contract.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Spot vs contract, the two markets you sell into","description":"The two markets your loads come from — the volatile spot market and steadier contract freight — how their rates move against each other, and how a small carrier balances the freedom of spot with the stability of contract.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-spot-vs-contract.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-spot-vs-contract.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Spot vs contract, the two markets you sell into","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-spot-vs-contract.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>Spot vs contract, the two markets you sell into</h1>
+    <p class="lede">Every load is priced in one of two markets: the spot market, where rates swing with the week, or contract freight, locked for months. They move against each other, and knowing which you are in — and when — is how you avoid selling cheap at the bottom.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 8 September 2026</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#two">The two markets</a></li><li><a href="#spot">The spot market: freedom and volatility</a></li><li><a href="#contract">Contract freight: stability and its price</a></li><li><a href="#cycle">How they move against each other</a></li><li><a href="#small">What a small carrier actually does</a></li><li><a href="#timing">Timing, and not getting caught out</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Freight is priced in two markets, and most owner-operators live entirely in one without
+naming it. The <strong>spot market</strong> is today's price for today's load; <strong>contract
+freight</strong> is a rate locked for months. They behave differently, they move against each other, and
+knowing which you are selling into changes how you price and when you commit.</p>
+<h2 id="two">The two markets</h2>
+<p>The same lane can pay two different rates depending on which market the load comes from. Understanding
+   the difference is the difference between reacting to rates and reading them.</p>
+<div class="pullq">Spot and contract are not two kinds of load. They are two ways of pricing the same
+freight &mdash; one by the week, one by the season &mdash; and they rarely agree.</div>
+<h2 id="spot">The spot market: freedom and volatility</h2>
+<p>Spot is the <a href="guide-load-boards.html">load-board</a> market: one-off loads priced by today's
+   supply and demand. It offers <strong>freedom</strong> &mdash; you take what you want, when you want,
+   and in a hot market spot rates spike above contract. It also carries <strong>volatility</strong>
+   &mdash; in a soft market spot collapses, sometimes below your cost, and you feel every swing. Spot is
+   where a nimble carrier wins in good times and bleeds in bad ones.</p>
+<h2 id="contract">Contract freight: stability and its price</h2>
+<p>Contract freight is a committed rate over a period &mdash; steadier, more predictable, easier to plan
+   and finance around. The price of that stability is that you are <strong>locked in</strong>: when spot
+   spikes, your contract rate does not, and you watch others earn more. When spot collapses, though, your
+   contract holds &mdash; and that is when it earns its keep. Contract trades upside for a floor.</p>
+<h2 id="cycle">How they move against each other</h2>
+<div class="keybox">
+  <h3>The cruel timing of the freight cycle</h3>
+  <p>Spot and contract move on different clocks. Spot reacts immediately; contract lags. In a hot market,
+     spot runs above contract, and carriers rush to grab spot &mdash; just as shippers push to lock cheap
+     contracts for later. When the market turns, spot craters below contract, and the carriers who locked
+     good contracts are protected while the all-spot carriers scramble. Then it reverses. The trap is
+     always chasing the market you are in <em>now</em> as if it will last.</p>
+</div>
+<h2 id="small">What a small carrier actually does</h2>
+<p>A one-truck operation rarely lands big direct contracts on day one, so most start almost entirely on
+   spot. That is fine &mdash; but the goal is to build toward a <strong>mix</strong>:</p>
+<ul>
+  <li>A base of steadier, repeatable freight &mdash; a few brokers or a
+      <a href="guide-load-boards.html">direct shipper</a> who give you regular lanes &mdash; for a floor</li>
+  <li>Spot to fill the gaps and to catch the upside when the market runs</li>
+</ul>
+<p>The mix is the point. All spot is a rollercoaster; all contract can leave money on the table. A floor of
+   steady freight plus spot on top is how a small carrier gets both a predictable base and the upside.</p>
+<h2 id="timing">Timing, and not getting caught out</h2>
+<p>You cannot forecast the market, but you can avoid its classic mistakes: do not commit your whole
+   capacity to cheap freight at the bottom just because you are scared, and do not assume a hot spot
+   market will still be hot next quarter. Keep your <a href="guide-cost-per-mile.html">walk-away number</a>
+   fixed to your costs, not to the market's mood, and let it &mdash; not fear or greed &mdash; decide what
+   you haul.</p>
+<div class="art-cta"><div><h3>Your cost sets the floor, not the market</h3><p>In either market, the load either beats your cost per mile or it does not. Keep the number fixed and let it decide.</p></div><a href="guide-cost-per-mile.html" class="btn btn-gold">Cost per mile, properly &rarr;</a></div>
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>General description of the spot and contract freight markets: spot as one-off freight priced by current supply and demand (higher volatility, higher peaks and lower troughs) versus contract freight as rates committed over a period (greater stability, less upside). Spot and contract rates move on different timelines and often diverge across the freight cycle; small carriers commonly start on spot and build toward a mix of steady base freight plus spot.</li><li>Market-behaviour descriptions are general patterns, not forecasts or survey data, and vary by lane, commodity and cycle. This is an operations overview, not a prediction of rates.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-load-boards.html"><span class="k">Guide</span><span class="t">Finding loads without living on the board</span><span class="d">Where spot freight comes from.</span></a><a href="guide-negotiation.html"><span class="k">Guide</span><span class="t">Negotiating with numbers</span><span class="d">Your walk-away number in any market.</span></a><a href="guide-seasonality.html"><span class="k">Guide</span><span class="t">Freight seasonality and the cycle</span><span class="d">When the two markets swing.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

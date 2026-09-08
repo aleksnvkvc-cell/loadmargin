@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotshot trucking: the economics | LoadMargin</title>
+<meta name="description" content="Running a one-ton dually and a gooseneck instead of a Class 8 — the lower entry cost, the lower rates, the payload ceiling, and an honest look at whether hotshot actually nets more than a used semi.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-hotshot.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hotshot trucking: the economics | LoadMargin">
+<meta property="og:description" content="Running a one-ton dually and a gooseneck instead of a Class 8 — the lower entry cost, the lower rates, the payload ceiling, and an honest look at whether hotshot actually nets more than a used semi.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-hotshot.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Hotshot trucking, and whether the math works","description":"Running a one-ton dually and a gooseneck instead of a Class 8 — the lower entry cost, the lower rates, the payload ceiling, and an honest look at whether hotshot actually nets more than a used semi.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hotshot.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hotshot.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Hotshot trucking, and whether the math works","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-hotshot.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>Hotshot trucking, and whether the math works</h1>
+    <p class="lede">Hotshot looks like the cheap way into trucking — a pickup and a trailer instead of a $100k semi. The entry cost is genuinely lower. Whether it earns more per year is a different question, and the honest answer is: often not.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 8 September 2026</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What hotshot actually is</a></li><li><a href="#appeal">The real appeal: entry cost</a></li><li><a href="#rules">The rules still apply</a></li><li><a href="#payload">The payload ceiling</a></li><li><a href="#rates">Rates, and why they run lower</a></li><li><a href="#cost">The costs people forget</a></li><li><a href="#verdict">The honest verdict</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Hotshot trucking &mdash; a heavy-duty pickup pulling a gooseneck or flatbed trailer
+&mdash; is marketed as the affordable way to start hauling freight. The entry cost really is lower than
+a Class 8 semi. But lower entry cost is not the same as higher income, and the difference is where a
+lot of hotshot dreams meet the arithmetic.</p>
+
+<h2 id="what">What hotshot actually is</h2>
+<p>A one-ton dually (a 3500-class pickup) pulling a gooseneck or bumper-pull trailer, hauling smaller
+   loads &mdash; often flatbed-style freight like steel, equipment, machinery and building materials
+   that does not fill a full semi. It sits between a cargo van and a full tractor-trailer.</p>
+
+<h2 id="appeal">The real appeal: entry cost</h2>
+<p>The honest advantage is capital. A used dually and a gooseneck is a fraction of the price of a
+   sleeper tractor and a trailer, so the debt and the insurance are lower, and the barrier to starting
+   is real for someone without $80,000&ndash;$150,000 for a Class 8 setup.</p>
+<div class="pullq">Hotshot lowers the cost to <em>start</em>. It does not lower your cost per mile, and
+it lowers the revenue you can earn per mile of driving. Those two facts decide everything.</div>
+
+<h2 id="rules">The rules still apply</h2>
+<p>A common misunderstanding: hotshot is not a regulatory loophole. If you are for-hire and interstate,
+   and especially over <strong>10,001 lb combined</strong>, most of the same rules apply &mdash; USDOT
+   number, operating authority, insurance, and often a CDL depending on the combined weight rating.</p>
+<div class="keybox">
+  <h3>The CDL line</h3>
+  <p>A combination rated over <strong>26,001 lb</strong> generally requires a CDL, and many real
+     hotshot setups cross that line once you count the trailer's rating. Below it you may avoid the
+     CDL but you also cap your payload hard. Either way you still need authority, insurance, IFTA,
+     UCR, ELD where applicable, and the rest &mdash; the compliance cost is not much smaller than a
+     semi's.</p>
+</div>
+
+<h2 id="payload">The payload ceiling</h2>
+<p>The hard limit is what you can legally and safely carry. A hotshot rig hauls a few thousand to
+   maybe ten-plus thousand pounds &mdash; far less than a semi's ~45,000 lb of payload. That ceiling
+   means:</p>
+<ul>
+  <li>You cannot take the heavy, high-paying full loads a semi can</li>
+  <li>You compete for smaller, partial and expedited freight</li>
+  <li>Your revenue per trip is capped by the trailer, not by the market</li>
+</ul>
+
+<h2 id="rates">Rates, and why they run lower</h2>
+<p>Hotshot freight generally pays less per mile than heavy flatbed on a semi, because the loads are
+   lighter and the barrier to entry is lower &mdash; more people can buy a used dually than a semi, so
+   more compete. The rate can spike for genuinely expedited or specialised runs, but the steady-state
+   rate is below what a Class 8 flatbed earns.</p>
+
+<h2 id="cost">The costs people forget</h2>
+<p>Hotshot economics get oversold because the costs get undercounted:</p>
+<ul>
+  <li><strong>Pickups wear out doing this.</strong> A one-ton truck run hard at freight miles depreciates
+      and needs work &mdash; it was not built for a million miles like a Class 8 engine.</li>
+  <li><strong>Fuel economy is not dramatically better</strong> once you are loaded and fighting wind
+      with a gooseneck.</li>
+  <li><strong>Insurance and authority</strong> cost nearly the same as a small semi operation.</li>
+  <li><strong>Deadhead hurts more</strong> when your loaded revenue per mile is already lower.</li>
+</ul>
+<p>Run your <a href="guide-cost-per-mile.html">cost per mile</a> honestly and the gap between the low
+   entry cost and the modest net becomes visible fast.</p>
+
+<h2 id="verdict">The honest verdict</h2>
+<p>Hotshot is a legitimate way in for someone who has the truck already, wants lower startup risk, or
+   likes the lighter, more local flatbed niche. It is <em>not</em> a shortcut to more money than a
+   used semi &mdash; the lower rates and the payload ceiling usually mean lower annual net, not higher.</p>
+<p>If the goal is to earn the most, a used Class 8 flatbed generally out-earns a hotshot once both are
+   running. If the goal is to start with less capital and less risk, hotshot has a real place. Choose
+   on which of those goals is actually yours, on your own numbers &mdash; not on the low sticker price.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Run the number before you buy the truck</h3>
+    <p>Put a realistic hotshot rate, payload and cost per mile into the calculator and compare it to a
+       semi. Decide on the net, not the entry price.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator &rarr;</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>General description of hotshot trucking: a heavy-duty pickup (one-ton/3500 class) pulling a gooseneck or flatbed trailer hauling smaller/partial flatbed freight. Regulatory requirements (USDOT number, operating authority, insurance, IFTA, UCR, ELD where applicable) generally apply to for-hire interstate operation, and a CDL is generally required for combinations rated over 26,001 lb.</li><li>Rate, payload and cost characterisations are general patterns, not survey figures, and vary by market, freight type and equipment. Payload for hotshot rigs is a fraction of a Class 8 semi's roughly 45,000-lb capacity.</li><li>This is an operations overview, not legal or financial advice. Confirm CDL and authority requirements for your specific equipment weight ratings with FMCSA and your state.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Compare hotshot and semi on net.</span></a><a href="guide-trailer-types.html"><span class="k">Guide</span><span class="t">Dry van, reefer or flatbed</span><span class="d">Where hotshot flatbed freight fits.</span></a><a href="guide-authority.html"><span class="k">Guide</span><span class="t">What authority really costs</span><span class="d">The compliance cost is similar to a semi.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

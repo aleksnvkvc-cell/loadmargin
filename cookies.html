@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookies &amp; Local Storage — LoadMargin</title>
+<meta name="description" content="This site sets no cookies. What the fleet console stores in your browser, why it needs no consent banner, and how to clear it.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/cookies.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookies &amp; Local Storage — LoadMargin">
+<meta property="og:description" content="This site sets no cookies. What the fleet console stores in your browser, why it needs no consent banner, and how to clear it.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/cookies.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Cookies &amp; Local Storage","item":"https://aleksnvkvc-cell.github.io/loadmargin/cookies.html"}],"@context":"https://schema.org"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="legal-hero">
+  <div class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Cookies &amp; Local Storage</h1>
+    <p class="lede">We set no cookies at all. Here is exactly what the application does store in your browser, and why that is not the same thing.</p>
+    <div class="legal-meta">
+      <span>Version 1.0</span>
+      <span>Last updated 26 August 2026</span>
+      <span>Governing law: Republic of Serbia</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#summary">1. The short version</a></li><li><a href="#what">2. What is actually stored</a></li><li><a href="#why">3. Why none of it needs a consent banner</a></li><li><a href="#fonts">4. The one third-party request</a></li><li><a href="#control">5. How to clear it</a></li><li><a href="#changes">6. Changes</a></li><li><a href="#contact">7. Contact</a></li></ul></aside>
+    <div class="legal-body">
+
+<h2 id="summary">1. The short version</h2>
+<p><strong>This site sets no cookies.</strong> No analytics, no advertising pixels, no tracking, no
+   consent banner — because there is nothing to consent to.</p>
+<p>The fleet console stores your data in your browser's local storage, which is not a cookie and is
+   never transmitted anywhere. That is the whole story, and the rest of this page is the detail
+   behind it.</p>
+
+<h2 id="what">2. What is actually stored</h2>
+<div class="legal-wrap-t"><table>
+  <thead><tr><th>Name</th><th>Type</th><th>What it holds</th><th>Lifetime</th></tr></thead>
+  <tbody>
+  <tr><td><code>lm.v1</code></td><td>localStorage</td>
+      <td>Your trucks, drivers, customers, booked loads and thresholds in the fleet console</td>
+      <td>Until you clear it</td></tr>
+  </tbody>
+</table></div>
+<p>That is the complete list &mdash; <strong>one key, in your own browser</strong>. You can verify
+   it: open the developer tools on any page of this site, look under Application &rarr; Storage, and
+   count what is there.</p>
+<p>None of it is transmitted anywhere. None of it identifies you across sites. There is no
+   advertising identifier, because there is no advertising. There are <strong>no cookies at all</strong>
+   &mdash; not one, not even a functional one.</p>
+
+<h2 id="why">3. Why none of it needs a consent banner</h2>
+<p>The ePrivacy Directive — and Serbian law following it — requires consent before storing
+   information on a user's device, <strong>except</strong> where the storage is strictly necessary
+   to provide a service the user has explicitly requested.</p>
+<p>Every item in the table above exists solely to make a feature you asked for work:</p>
+<ul>
+  <li><code>lm.v1</code> holds the fleet you entered. Without it, the console forgets everything the
+      moment you reload, which is not a product.</li>
+</ul>
+<p>None of them profiles you, tracks you between sites, or feeds anything to a third party. So the
+   exemption applies, and a banner asking permission to remember your own trucks would be
+   compliance theatre rather than privacy.</p>
+<p>If analytics are ever added, this page changes first and a real consent mechanism appears with
+   it — one that works before you choose, not one that loads the tracker and then asks.</p>
+
+<h2 id="fonts">4. The one third-party request</h2>
+<p>The site loads its typefaces from <strong>Google Fonts</strong>. That is a request from your
+   browser to a Google server, and Google therefore sees your IP address and browser details. No
+   cookie is set by that request, but it is a data transfer and German courts have treated it as
+   one requiring a legal basis.</p>
+<p>We are disclosing it rather than ignoring it, and it is on the list to remove: the fonts can be
+   served from this site instead, at which point no request to Google happens at all. When that
+   ships, this section says so.</p>
+<p>The full picture of who receives what is in the
+   <a href="privacy.html#third">privacy policy</a>.</p>
+
+<h2 id="control">5. How to clear it</h2>
+<p>Everything listed in section 2 lives in your own browser and you can delete it without asking us:</p>
+<ul>
+  <li><strong>In the app:</strong> <em>Fleet &amp; Data → Erase everything</em>. Export a backup
+      first — we have no copy and cannot restore it.</li>
+  <li><strong>Chrome / Edge:</strong> Settings → Privacy and security → Third-party cookies →
+      See all site data and permissions → find this site → Delete.</li>
+  <li><strong>Firefox:</strong> Settings → Privacy &amp; Security → Cookies and Site Data →
+      Manage Data.</li>
+  <li><strong>Safari:</strong> Settings → Privacy → Manage Website Data.</li>
+</ul>
+<p>Browser privacy modes and "block all site data" settings will also stop the console from
+   remembering anything. The application handles that without breaking; it simply will not persist.</p>
+
+<h2 id="changes">6. Changes</h2>
+<p>If storage changes, this page changes with it and the version and date at the top move. We will
+   not quietly add a tracker and leave this page as it is.</p>
+
+<h2 id="contact">7. Contact</h2>
+<p>Questions: <a href="mailto:aleksnvkvc@gmail.com">aleksnvkvc@gmail.com</a></p>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.legal-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>

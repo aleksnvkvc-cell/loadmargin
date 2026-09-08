@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About LoadMargin — the cost model behind the number</title>
+<meta name="description" content="Who LoadMargin is built for, how the profitability model works, what we deliberately do not claim, and how freight data is handled.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/about.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About LoadMargin">
+<meta property="og:description" content="The cost model behind the number — and what we deliberately do not claim.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/about.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"About","item":"https://aleksnvkvc-cell.github.io/loadmargin/about.html"}],"@context":"https://schema.org"}</script>
+<style>
+.about-hero{padding:clamp(120px,15vh,170px) 0 clamp(40px,5vw,64px)}
+.about-hero h1{font-size:clamp(2rem,4.6vw,3.1rem);max-width:18ch;margin-bottom:1.1rem}
+.about-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--gold-lt),var(--gold) 55%,var(--gold-dk));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.prose{min-width:0}
+.prose p{color:var(--tx-2);margin-bottom:1.05rem;font-size:1rem;line-height:1.8;max-width:68ch;overflow-wrap:break-word}
+.prose p strong{color:var(--gold-lt);font-weight:600}
+.prose h3{margin:2rem 0 .7rem;font-size:1.12rem}
+.pull{border-left:2px solid var(--gold);padding:.3rem 0 .3rem 1.3rem;margin:1.8rem 0;
+  font-family:var(--disp);font-size:1.12rem;color:#fff;line-height:1.55;max-width:60ch}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:.9rem;margin:1.8rem 0}
+.mini div{background:rgba(6,18,35,.6);border:1px solid var(--line-soft);border-radius:11px;padding:1.1rem}
+.mini .k{font-family:var(--mono);color:var(--gold);font-size:1.25rem;font-weight:700;display:block;margin-bottom:.25rem}
+.mini .v{font-size:.83rem;color:var(--tx-2);line-height:1.5}
+.no-list{list-style:none;margin:1.2rem 0}
+.no-list li{display:flex;gap:.75rem;align-items:flex-start;padding:.5rem 0;color:var(--tx-2);font-size:.95rem;line-height:1.65}
+.no-list li::before{content:'—';color:var(--gold);flex:0 0 auto;font-family:var(--mono)}
+.no-list li>span{flex:1;min-width:0}
+
+.toc{position:sticky;top:100px}
+.toc ul{list-style:none}
+.toc a{display:block;padding:.5rem .8rem;border-left:2px solid var(--line-soft);color:var(--tx-3);
+  text-decoration:none;font-size:.88rem;transition:.2s}
+.toc a:hover,.toc a.on{color:var(--gold);border-left-color:var(--gold);background:rgba(227,180,74,.05)}
+.about-grid{display:grid;grid-template-columns:210px minmax(0,1fr);gap:3rem;align-items:start}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:1.5rem}.toc{position:static;display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="index.html#calculator">Open <span>calculator</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="about-hero">
+  <div class="wrap">
+    <span class="eyebrow">About</span>
+    <h1>A freight decision is <em>an arithmetic problem</em> that nobody has time to do</h1>
+    <p class="lede">LoadMargin exists because the gap between a rate that looks acceptable and a rate that
+      actually pays is usually twenty cents a mile — and twenty cents a mile, across a fleet, is the difference
+      between a good year and a lender conversation.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap about-grid">
+    <aside class="toc">
+      <ul>
+        <li><span><a href="#why" class="on">Why it exists</a></span></li>
+        <li><span><a href="#who">Who it is for</a></span></li>
+        <li><span><a href="#method">Methodology</a></span></li>
+        <li><span><a href="#honest">What we don't claim</a></span></li>
+        <li><span><a href="#security">Data &amp; security</a></span></li>
+        <li><span><a href="#roadmap">Roadmap</a></span></li>
+        <li><span><a href="#contact">Contact</a></span></li>
+      </ul>
+    </aside>
+
+    <div class="prose">
+      <div id="why" class="rv">
+        <h2>Why it exists</h2>
+        <p>Ask ten carriers what a mile costs them and you will get ten confident answers, most of them wrong by
+          fifteen to twenty-five cents. Not through carelessness — the number is genuinely awkward to compute. It moves
+          when insurance renews, when a truck comes off warranty, when a driver's pay package changes, and when
+          monthly miles drop because a customer went quiet.</p>
+        <p>So the industry substitutes a proxy: <strong>rate per mile</strong>. It is easy to say out loud and it is
+          wrong often enough to be dangerous, because it ignores the two costs that decide most loads —
+          <strong>deadhead</strong> and <strong>the fixed cost of simply owning the truck</strong>.</p>
+        <div class="pull">A load does not become profitable because the rate per mile sounded good.
+          It becomes profitable when the rate exceeds every cost that the load causes.</div>
+        <p>LoadMargin is that subtraction, made fast enough to do while a broker is still on the phone.</p>
+      </div>
+
+      <div id="who" class="rv" style="margin-top:3rem">
+        <h2>Who it is for</h2>
+        <div class="mini">
+          <div><span class="k">1–4</span><span class="v">Owner-operators who feel the mistake immediately and personally.</span></div>
+          <div><span class="k">5–99</span><span class="v">Small and mid-size fleets where one dispatcher's habit sets the margin.</span></div>
+          <div><span class="k">100+</span><span class="v">Carriers where the leak is systematic and worth a custom cost model.</span></div>
+        </div>
+        <p>The tool is the same at every size. What changes is the question. An owner-operator asks
+          <em>should I take this load</em>. A fleet of forty asks <em>which of my dispatchers is quietly booking
+          break-even freight</em>. A carrier of four hundred asks <em>which division, lane and customer combination
+          is destroying margin at scale</em> — and needs the answer in a format a CFO will accept.</p>
+      </div>
+
+      <div id="method" class="rv" style="margin-top:3rem">
+        <h2>Methodology</h2>
+        <p>There is one model and it is public. Every module reads from it; none of them applies a private adjustment.</p>
+        <div class="panel" style="padding:1.3rem;margin:1.4rem 0">
+          <div class="mono" style="font-size:.84rem;line-height:2;color:var(--tx-2)">
+            <div>total_miles  = loaded + deadhead</div>
+            <div>fuel         = (total_miles / mpg) × diesel_price</div>
+            <div>driver       = total_miles × pay_cpm <span style="color:var(--tx-3)">| rate × pay_pct</span></div>
+            <div>maintenance  = total_miles × maintenance_cpm</div>
+            <div>fixed        = total_miles × (monthly_overhead / monthly_miles)</div>
+            <div style="color:var(--gold)">net          = rate − (fuel + driver + maintenance + fixed + fees)</div>
+            <div style="color:var(--gold)">margin       = net / rate</div>
+          </div>
+        </div>
+        <h3>Three decisions that make it accurate</h3>
+        <ul class="no-list">
+          <li><span><strong>Fuel is modelled in gallons, not dollars per mile.</strong> A price spike and an efficiency
+            drop have different causes and different fixes; collapsing them into one number hides both.</span></li>
+          <li><span><strong>Deadhead is a first-class cost.</strong> Empty miles burn fuel, consume hours of service and
+            carry the same fixed cost per mile as loaded ones. Most models treat them as a footnote.</span></li>
+          <li><span><strong>Fixed cost is yours, not the industry's.</strong> Overhead divided by <em>your</em> monthly miles.
+            Two carriers on the same lane with the same truck can have a nine-cent gap, and that gap decides the load.</span></li>
+        </ul>
+        <p>The thresholds — accept at 15% margin, reject below 5% — are defaults, not doctrine. They are the point
+          where a load stops paying for the truck-day it consumes. A carrier with different economics sets their own.</p>
+      </div>
+
+      <div id="honest" class="rv" style="margin-top:3rem">
+        <h2>What we deliberately do not claim</h2>
+        <p>Freight software has an honesty problem, so here is the short version of ours.</p>
+        <ul class="no-list">
+          <li><span>We do not publish a customer count, a dollar figure of "revenue tracked", or an average profit
+            improvement percentage. We would have to invent them, and anyone senior enough to matter can tell.</span></li>
+          <li><span>We do not claim live load-board or TMS integration. Bulk import from a TMS export exists on
+            Fleet Licence and above; an API exists on Fleet Scale and above. Live integration is on the roadmap.</span></li>
+          <li><span>We do not claim the model predicts the market. It prices the load in front of you against
+            the costs you actually carry. Rate forecasting is a different product and a harder one.</span></li>
+          <li><span>We do not use testimonials we cannot attribute to a real, contactable customer.</span></li>
+        </ul>
+        <div class="pull">The calculator is free and unlimited on the homepage precisely because the fastest way
+          to settle an accuracy argument is to let you run last week's load through it.</div>
+      </div>
+
+      <div id="security" class="rv" style="margin-top:3rem">
+        <h2>Data &amp; security</h2>
+        <p><strong>The public calculator sends nothing anywhere.</strong> It is client-side JavaScript. Open your
+          browser's network tab while you use it and you will see no outbound request — this is verifiable in
+          thirty seconds, and verifying it beats believing it.</p>
+        <p><strong>The workbooks send nothing either.</strong> They are Excel files. Once downloaded they sit on
+          your computer, they do not phone home, and they keep working whether or not this website is still
+          online.</p>
+        <ul class="no-list">
+          <li><span><strong>There is no server and no database.</strong> This site is static files. There is
+            nowhere for your freight data to be stored even in principle.</span></li>
+          <li><span><strong>No accounts, no sign-in, no analytics, no cookies.</strong> Nothing to profile
+            you with.</span></li>
+          <li><span><strong>No resale, no aggregation, no benchmarking product</strong> built from anyone's
+            numbers &mdash; there are no numbers here to build one from.</span></li>
+        </ul>
+      </div>
+
+      <div id="roadmap" class="rv" style="margin-top:3rem">
+        <h2>Roadmap</h2>
+        <p>Stated plainly, so nobody buys a promise as if it were a feature.</p>
+        <div class="mini">
+          <div><span class="k">Now</span><span class="v">All eight modules working in the browser console, plus the free calculator on the homepage.</span></div>
+          <div><span class="k">Next</span><span class="v">The remaining workbooks on sale, and more written guides.</span></div>
+          <div><span class="k">Later</span><span class="v">Ideas, not commitments: lane rate context, and a way for a fleet to share one dataset. Neither is built, neither is sold, and neither should influence what you buy today.</span></div>
+        </div>
+      </div>
+
+      <div id="contact" class="rv" style="margin-top:3rem">
+        <h2>Contact</h2>
+        <p>Questions about the method, a number that looks wrong, or a straight argument about the
+          methodology — all welcome, all answered by a person. There is only one person, so it is
+          always the same one.</p>
+        <div class="panel" style="padding:1.6rem;margin-top:1.2rem">
+          <div style="display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.4rem">Direct</div>
+              <a href="mailto:aleksnvkvc@gmail.com?subject=LoadMargin%20enquiry" class="mono gold"
+                 style="font-size:1.02rem;text-decoration:none">aleksnvkvc@gmail.com</a>
+            </div>
+            <a href="app.html" class="btn btn-gold">Open the console →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── IntersectionObserver shim ──────────────────────────────────────
+   iOS before 12.2 and older Android WebView have no IntersectionObserver.
+   Constructing one there throws, which would kill every line of script
+   after it. This stand-in reveals everything immediately and counts every
+   counter to its final value — no animation, but a working page. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+  };
+}
+
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.prose > div[id]').forEach(s=>{ if(scrollY>=s.offsetTop-160) cur=s.id; });
+  document.querySelectorAll('.toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

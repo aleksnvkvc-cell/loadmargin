@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cargo claims and the Carmack Amendment | LoadMargin</title>
+<meta name="description" content="The claimant proves three things; you either fit one of five defences or you pay. The deadlines, why a clean bill of lading hands over the first element, released value, and how to document a pickup so a claim dies at element one.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-cargo-claims.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cargo claims and the Carmack Amendment | LoadMargin">
+<meta property="og:description" content="The claimant proves three things; you either fit one of five defences or you pay. The deadlines, why a clean bill of lading hands over the first element, released value, and how to document a pickup so a claim dies at element one.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-cargo-claims.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Cargo claims, and the two minutes at pickup","description":"The claimant proves three things; you either fit one of five defences or you pay. The deadlines, why a clean bill of lading hands over the first element, released value, and how to document a pickup so a claim dies at element one.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-cargo-claims.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-cargo-claims.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-06"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Cargo claims, and the two minutes at pickup","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-cargo-claims.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Compliance</span>
+    <h1>Cargo claims, and the two minutes at pickup</h1>
+    <p class="lede">Carriers lose claims they could have won because nobody wrote two words on a delivery receipt. The structure is fixed, and most of it is decided before the truck moves.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 6 September 2026</span>
+      <span>12 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#law">The law that governs every claim</a></li><li><a href="#prima">What the claimant has to prove</a></li><li><a href="#defences">Your five defences</a></li><li><a href="#clock">The clocks, and the one that ends it</a></li><li><a href="#released">Released value: capping your exposure in advance</a></li><li><a href="#bol">The bill of lading is the whole case</a></li><li><a href="#pickup">At pickup: the two minutes that decide a claim a year later</a></li><li><a href="#delivery">At delivery: how to note an exception properly</a></li><li><a href="#respond">Responding to a claim</a></li><li><a href="#insurance">Where your cargo policy fits</a></li><li><a href="#cost">What a claim really costs</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">A cargo claim is not a negotiation about fairness. It is a legal process with a
+fixed structure: the claimant proves three things, and then you either fit one of five defences or
+you pay. Carriers lose claims they could have won because nobody wrote two words on a delivery
+receipt.</p>
+
+<h2 id="law">The law that governs every claim</h2>
+<p>Interstate cargo liability in the US runs on the <strong>Carmack Amendment</strong>
+   (<span class="mono">49 U.S.C. § 14706</span>), which dates to 1906 and pre-empts most state law
+   claims about damaged freight.</p>
+<p>Carmack makes the carrier liable for the <strong>actual loss</strong> to the goods — near
+   strict liability. Whether you were careless barely enters into it. The trade-off is that the
+   defences and the deadlines are equally rigid, and they work in your favour if you know them.</p>
+<div class="pullq">Carmack is not asking whether you were at fault. It is asking whether the freight
+arrived in the condition it left in — and if not, whether one of five specific things caused it.</div>
+
+<h2 id="prima">What the claimant has to prove</h2>
+<p>Before you owe anything, the claimant must establish three elements:</p>
+<ol>
+  <li><strong>The cargo was given to you in good condition.</strong></li>
+  <li><strong>It arrived damaged, short, or not at all.</strong></li>
+  <li><strong>A specific amount of loss.</strong></li>
+</ol>
+<p>Only then does the burden shift to you.</p>
+<div class="keybox">
+  <h3>Element one is where most claims are actually won</h3>
+  <p>A <strong>clean bill of lading</strong> — signed by your driver with no exceptions noted — is
+     normally treated as evidence that the freight was in good condition when you took it. You
+     signed for it that way.</p>
+  <p>Which means the two minutes at pickup matter more than anything you do later. If pallets were
+     already crushed, cases already wet, seals already broken, and the driver noted it, element one
+     fails and the claim usually dies there. If the driver signed clean, you have handed the
+     claimant their first element.</p>
+</div>
+
+<h2 id="defences">Your five defences</h2>
+<p>Carmack recognises exactly five. Nothing else works, and "we were careful" is not on the list.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Defence</th><th>What it covers</th><th>In practice</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Act of God</strong></td><td>Natural events beyond human control</td><td>Tornado, flood, lightning. Not ordinary bad weather you chose to drive in</td></tr>
+  <tr><td><strong>Act of the public enemy</strong></td><td>Military action, armed conflict</td><td>Effectively never applies in domestic freight</td></tr>
+  <tr><td><strong>Act of the shipper</strong></td><td>Bad packaging, bad loading, bad labelling</td><td><b>The one that matters.</b> Shipper-loaded and sealed, inadequate packaging, mislabelled</td></tr>
+  <tr><td><strong>Act of public authority</strong></td><td>Seizure, quarantine, destruction by government</td><td>Agricultural holds, customs, law-enforcement seizure</td></tr>
+  <tr><td><strong>Inherent vice</strong></td><td>The nature of the goods themselves</td><td>Produce that ripens, chemicals that separate, metal that oxidises</td></tr>
+  </tbody>
+</table></div>
+<p>Note what is missing: theft is not a defence. Neither is a subcontractor's mistake, an accident
+   that was not your fault, or a mechanical failure. Those are exactly what cargo insurance is for.</p>
+<div class="keybox">
+  <h3>"Shipper load and count" is not a magic phrase</h3>
+  <p>Writing <strong>SLC</strong> or <strong>STC</strong> on the bill of lading helps — it signals you
+     did not load it and could not verify the count. But it is not automatic protection. It works
+     when you genuinely had no opportunity to observe the loading, and it works far better combined
+     with a photograph of how the trailer was loaded and a note of the seal number.</p>
+</div>
+
+<h2 id="clock">The clocks, and the one that ends it</h2>
+<div class="tw2"><table>
+  <thead><tr><th>Event</th><th class="n">Deadline</th><th>Whose obligation</th></tr></thead>
+  <tbody>
+  <tr><td>File a written claim</td><td class="n">9 months from delivery</td><td>Claimant — from the reasonable delivery date if the freight never arrived</td></tr>
+  <tr><td>Acknowledge the claim</td><td class="n">30 days</td><td class="neg">You</td></tr>
+  <tr><td>Pay, decline or offer a compromise</td><td class="n">120 days</td><td class="neg">You</td></tr>
+  <tr><td>Status update, if still unresolved</td><td class="n">every 60 days</td><td class="neg">You</td></tr>
+  <tr><td>File suit after denial</td><td class="n">2 years</td><td>Claimant</td></tr>
+  </tbody>
+</table></div>
+<p>These are minimums set by regulation; a contract may give the claimant longer but not shorter.</p>
+<div class="keybox">
+  <h3>The nine months is your friend and the 30 days is your risk</h3>
+  <p><strong>A claim filed on day 275 is fine. On day 280 it is time-barred.</strong> Check the date
+     on every claim before you engage with the substance of it — a late claim needs no defence.</p>
+  <p>But your own 30-day acknowledgement and 120-day decision are obligations. Ignoring a claim does
+     not make it go away; it makes you look unreasonable in front of whoever decides it later, and
+     it is a regulatory violation in its own right.</p>
+</div>
+
+<h2 id="released">Released value: capping your exposure in advance</h2>
+<p>By default you are liable for the full actual value. A <strong>released value</strong> agreement
+   caps it — say $2.00 a pound — in exchange for a lower rate.</p>
+<p>Courts only enforce it if you did it properly. All of the following must be true:</p>
+<ul>
+  <li>The shipper was offered a <strong>genuine choice</strong> between full value and released value</li>
+  <li>The choice was made in <strong>writing</strong></li>
+  <li>The agreed limitation is <strong>on the bill of lading</strong></li>
+  <li>The rates for each option were reasonable and available</li>
+</ul>
+<p>A released-value line buried in your terms with no choice offered will not survive a challenge.
+   If you want the protection, build it into the rate confirmation as an explicit option, priced.</p>
+
+<h2 id="bol">The bill of lading is the whole case</h2>
+<p>Eighteen months later, when a claim is being decided, nobody remembers the load. The document
+   decides it. What should be on it:</p>
+<ul>
+  <li><strong>Piece count and description</strong> matching what you actually received</li>
+  <li><strong>Any exception, written at the moment it is observed</strong> — not later</li>
+  <li><strong>Seal number</strong> at pickup, and confirmation the same seal was intact at delivery</li>
+  <li><strong>SLC / STC</strong> where genuinely applicable</li>
+  <li><strong>Temperature</strong> setting and mode for reefer freight, and who specified it</li>
+  <li><strong>Signatures with printed names and times</strong> at both ends</li>
+</ul>
+<p>A signature nobody can read, with no time and no printed name, is worth much less than one with
+   both. This costs nothing and it is skipped constantly.</p>
+
+<h2 id="pickup">At pickup: the two minutes that decide a claim a year later</h2>
+<ol>
+  <li><strong>Look at the freight before signing.</strong> Crushed corners, water staining, torn
+      shrink wrap, leaning pallets, open cases.</li>
+  <li><strong>Write exceptions on the BOL before you sign it.</strong> "3 cases crushed", "pallet 4
+      leaning", "packaging torn". Specific and short.</li>
+  <li><strong>Photograph it.</strong> Wide shot of the loaded trailer, close-ups of anything noted.
+      Timestamped, on the driver's phone. This is the single highest-value habit on this page.</li>
+  <li><strong>Record the seal number</strong> and photograph the sealed doors.</li>
+  <li><strong>If shipper-loaded and you could not observe, write SLC</strong> and photograph how it
+      was loaded before the doors close.</li>
+  <li><strong>For reefer: set point, continuous or cycle, and pre-cool confirmed</strong> — all
+      written down, with the setting the shipper specified.</li>
+</ol>
+
+<h2 id="delivery">At delivery: how to note an exception properly</h2>
+<p>A driver who accepts a signature saying "damaged" with no detail has produced a document that
+   helps the claimant and not you.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Weak</th><th>Strong</th></tr></thead>
+  <tbody>
+  <tr><td>"Damaged"</td><td>"2 cases on pallet 6 crushed, top layer only, remainder accepted"</td></tr>
+  <tr><td>"Short"</td><td>"Received 18 of 20 pallets, seal intact at delivery, seal #4471902"</td></tr>
+  <tr><td>"Refused"</td><td>"Receiver refused at 14:20, reason given: temperature. Reefer showing 34°F, set point 34°F, continuous"</td></tr>
+  </tbody>
+</table></div>
+<p>Photograph the exception before the freight leaves your trailer. Once it is on their dock,
+   proving where the damage happened becomes considerably harder.</p>
+
+<h2 id="respond">Responding to a claim</h2>
+<ol>
+  <li><strong>Check the date first.</strong> Over nine months from delivery and it is time-barred.</li>
+  <li><strong>Acknowledge within 30 days</strong>, in writing, even if you intend to deny it.</li>
+  <li><strong>Pull the file</strong> — BOL, POD, photographs, seal record, ELD track, temperature
+      download, driver's notes.</li>
+  <li><strong>Test the three elements.</strong> Was the BOL clean at pickup? Is the damage actually
+      documented at delivery? Have they proven a specific amount, with invoices?</li>
+  <li><strong>Check the amount claimed.</strong> Carmack pays <em>actual loss</em>, normally the
+      wholesale or invoice value — not retail, not lost profit, not the shipper's inconvenience.
+      Claims arrive inflated routinely.</li>
+  <li><strong>Check for salvage.</strong> Damaged goods often have residual value, and it reduces
+      the claim. Ask what happened to the freight.</li>
+  <li><strong>Identify your defence, if you have one</strong>, and say which of the five it is.</li>
+  <li><strong>Decide within 120 days</strong> — pay, deny with reasons, or offer a compromise.</li>
+</ol>
+<div class="keybox">
+  <h3>Two things worth knowing about the money</h3>
+  <p><strong>Do not let a broker set off a claim against your unpaid invoices without agreement.</strong>
+     Whether they may depends on your contract. Read it before accepting a deduction.</p>
+  <p><strong>Small claims are often cheaper to pay than to fight</strong> — and that is a legitimate
+     commercial decision. Just make it deliberately, having checked the deadline and the amount,
+     rather than by default.</p>
+</div>
+
+<h2 id="insurance">Where your cargo policy fits</h2>
+<p>Cargo insurance covers your Carmack liability, subject to its own limits and — importantly — its
+   own exclusions. The gaps that catch carriers:</p>
+<ul>
+  <li><strong>Unattended vehicle theft.</strong> Excluded or heavily restricted in many policies.
+      This is the most common uncovered loss there is.</li>
+  <li><strong>Reefer breakdown.</strong> Usually needs a specific endorsement, and often requires a
+      working temperature download to prove the unit ran.</li>
+  <li><strong>High-value or targeted commodities.</strong> Electronics, pharmaceuticals, alcohol,
+      copper — check the schedule before accepting the load, not after.</li>
+  <li><strong>Your deductible.</strong> A $2,500 deductible means small claims are entirely yours.</li>
+</ul>
+<p>See the <a href="guide-insurance.html">insurance guide</a> for how the policy sits alongside the
+   rest of your cover.</p>
+
+<h2 id="cost">What a claim really costs</h2>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Claim paid, after salvage</td><td class="n">$4,200</td></tr>
+  <tr><td>Your cargo deductible</td><td class="n">$1,000 of it is yours</td></tr>
+  <tr><td>Administrative time — documentation, correspondence (10 h)</td><td class="n">$350</td></tr>
+  <tr><td>Effect on next renewal</td><td class="n">a claims record is priced</td></tr>
+  <tr><td>Effect on the customer relationship</td><td class="n">frequently the largest item</td></tr>
+  </tbody>
+</table></div>
+<p>The pattern is the same as everywhere else on this site: the visible number is not the expensive
+   part. A claim handled promptly and documented well often keeps the customer. One handled by
+   ignoring letters for four months does not, whatever the legal outcome.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Price the risk into the load</h3>
+    <p>High-value freight, shipper-loaded trailers and reefer work carry claim risk that ordinary
+       dry van does not. Put the expected cost in the fees field before you accept it.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Carmack Amendment, 49 U.S.C. § 14706 — the three-element prima facie case, the five common-law defences (act of God, act of the public enemy, act of the shipper, act of public authority, inherent vice), and the burden-shifting structure.</li><li>Time limits: minimum nine months from delivery to file a written claim, 30 days for the carrier to acknowledge, 120 days to pay, decline or compromise with status updates every 60 days thereafter, and two years from denial to file suit. These are regulatory minimums; contracts may extend but not shorten them.</li><li>Released-value limitation is enforceable only where the carrier offered a genuine choice between full and released value, the choice was made in writing, and the limitation appears on the bill of lading.</li><li>The cost table is an illustrative model, not a survey figure.</li><li>Nothing here is legal advice. Cargo claims are litigated, contract terms vary, and case law develops. Take a substantial or disputed claim to a transportation attorney rather than relying on a web page.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-insurance.html"><span class="k">Guide</span><span class="t">Insurance, and the year before the quote</span><span class="d">Where the cargo policy sits, and the exclusions that catch people.</span></a><a href="guide-detention.html"><span class="k">Guide</span><span class="t">Detention and accessorials</span><span class="d">The same documentation habits protect both.</span></a><a href="guide-broker-fraud.html"><span class="k">Guide</span><span class="t">Vetting brokers and avoiding freight fraud</span><span class="d">The other way a load turns into a loss.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

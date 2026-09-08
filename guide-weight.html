@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truck weight limits, axles and scaling | LoadMargin</title>
+<meta name="description" content="Almost every overweight ticket is a distribution problem. The three federal limits, what the bridge formula really says, which way to slide the tandems and by how much, fuel weight, and what an overweight ticket costs twelve months later.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-weight.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Truck weight limits, axles and scaling | LoadMargin">
+<meta property="og:description" content="Almost every overweight ticket is a distribution problem. The three federal limits, what the bridge formula really says, which way to slide the tandems and by how much, fuel weight, and what an overweight ticket costs twelve months later.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-weight.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Weight, axles and the ninety-second fix","description":"Almost every overweight ticket is a distribution problem. The three federal limits, what the bridge formula really says, which way to slide the tandems and by how much, fuel weight, and what an overweight ticket costs twelve months later.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-weight.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-weight.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-05"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Weight, axles and the ninety-second fix","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-weight.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>Weight, axles and the ninety-second fix</h1>
+    <p class="lede">You can be 78,000 pounds gross and still be overweight. The scale does not weigh your truck — it weighs each axle group, one at a time.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 5 September 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#limits">The three federal limits</a></li><li><a href="#bridge">The bridge formula, in plain English</a></li><li><a href="#legal">Why 80,000 lb is not always your limit</a></li><li><a href="#sliding">Sliding the tandems: the only lever you have at the scale</a></li><li><a href="#fifth">The fifth wheel, and the axle nobody thinks about</a></li><li><a href="#fuel">Fuel weight, and why you scale before you top off</a></li><li><a href="#scaling">Scaling properly, the first time</a></li><li><a href="#overweight">What being overweight actually costs</a></li><li><a href="#payload">Working out your real payload</a></li><li><a href="#permits">When you need a permit</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Almost every overweight ticket is a distribution problem, not a loading problem.
+The truck is under 80,000 pounds and one axle group is over — which is fixable in about ninety
+seconds, if you know which way to slide and by how much.</p>
+
+<h2 id="limits">The three federal limits</h2>
+<p>On the Interstate system, three numbers apply at once. You must satisfy all three.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Where</th><th class="n">Federal limit</th></tr></thead>
+  <tbody>
+  <tr><td>Steer axle (single)</td><td class="n">12,000 lb</td></tr>
+  <tr><td>Drive tandem</td><td class="n">34,000 lb</td></tr>
+  <tr><td>Trailer tandem</td><td class="n">34,000 lb</td></tr>
+  <tr class="tot"><td>Gross vehicle weight</td><td class="n">80,000 lb</td></tr>
+  </tbody>
+</table></div>
+<p>Note that 12,000 + 34,000 + 34,000 is 80,000 exactly. There is no slack anywhere: being legal on
+   gross and illegal on an axle is not only possible, it is the normal way to get a ticket.</p>
+<p>The 12,000 lb steer limit is federal. Many tractors are rated higher and many states allow more
+   on a steer with appropriate tyres — but tyre rating governs too, and the sticker on the sidewall
+   is a limit no permit overrides.</p>
+<div class="pullq">You can be 78,000 pounds gross and still be overweight. The scale does not weigh
+your truck — it weighs each axle group, one at a time.</div>
+
+<h2 id="bridge">The bridge formula, in plain English</h2>
+<p>The Federal Bridge Gross Weight Formula exists to stop concentrated weight destroying bridges. The
+   principle is simple: <strong>the closer together a group of axles is, the less weight it may
+   carry.</strong> Spread the same load over more distance and more axles, and you may carry more.</p>
+<p>That is why the 34,000 lb tandem limit assumes a normal tandem spacing, and why a standard
+   five-axle tractor-trailer at legal spacing tops out at 80,000. It is also why closing your
+   trailer tandems all the way forward can put you out of compliance even when the axle scale
+   reading looks acceptable.</p>
+<p>In practice, for a standard 5-axle van or reefer running interstate, you almost never need to
+   compute the formula. You need the three axle limits above and the 80,000 gross. The formula
+   matters when you are running specialised configurations, multiple trailers, or short wheelbases —
+   and there it is worth doing properly rather than approximating.</p>
+
+<h2 id="legal">Why 80,000 lb is not always your limit</h2>
+<ul>
+  <li><strong>State roads are not federal roads.</strong> Off the Interstate, state limits apply and
+      they differ. Some are lower.</li>
+  <li><strong>Frost laws.</strong> In spring thaw, northern states cut allowable weights sharply on
+      designated routes, sometimes by 35–50%. They are seasonal, posted, and enforced.</li>
+  <li><strong>Bridges post their own limits</strong>, which override everything.</li>
+  <li><strong>Your equipment has ratings.</strong> GAWR on each axle, GVWR on the vehicle, and a load
+      rating on every tyre. The lowest applicable number wins, always.</li>
+  <li><strong>Some states allow more</strong> with permits or on designated routes, and a handful
+      have grandfathered higher limits.</li>
+</ul>
+<div class="keybox">
+  <h3>The rule that keeps you out of trouble</h3>
+  <p><strong>The binding limit is the lowest of: federal, state, bridge posting, axle rating and
+     tyre rating.</strong> Not whichever one you remembered. A permit can raise a legal limit; it
+     cannot raise a tyre's load rating.</p>
+</div>
+
+<h2 id="sliding">Sliding the tandems: the only lever you have at the scale</h2>
+<p>Once the trailer is loaded and sealed, you cannot move the freight. You can move the axles under
+   it — and that is what fixes most weight problems.</p>
+<div class="keybox">
+  <h3>Which way to slide</h3>
+  <p><strong>Drives heavy, trailer light → slide the trailer tandems FORWARD.</strong> Moving the
+     trailer axles toward the nose shifts weight off the drives onto the trailer tandems.</p>
+  <p><strong>Trailer heavy, drives light → slide the trailer tandems BACK.</strong></p>
+  <p>Rule of thumb: <strong>each hole moves roughly 250–400 lb</strong> between the two groups,
+     depending on the trailer. Learn your own trailer's figure once — weigh, slide one hole, weigh
+     again — and you will never guess again.</p>
+</div>
+<p>Two things people get wrong. First, sliding the trailer tandems <strong>does not change your
+   gross weight</strong> — it only redistributes between drives and trailer. If you are over 80,000,
+   no amount of sliding helps and freight has to come off. Second, sliding affects your
+   <strong>legal trailer length</strong> in some states (California's 40-foot kingpin-to-axle rule
+   being the famous one), so the legal slide position is not always the one that balances best.</p>
+
+<h2 id="fifth">The fifth wheel, and the axle nobody thinks about</h2>
+<p>Sliding the fifth wheel moves weight between the <strong>steer</strong> and the
+   <strong>drives</strong> — a different pair from the trailer tandems.</p>
+<ul>
+  <li><strong>Fifth wheel forward</strong> → more weight on the steer, less on the drives</li>
+  <li><strong>Fifth wheel back</strong> → less on the steer, more on the drives</li>
+</ul>
+<p>Steer overweight is less common but it happens on heavy-nose loads, and it is the one drivers
+   forget they can fix. It also matters for handling: too light on the steer is a steering and
+   braking problem long before it is a legal one.</p>
+<p>Set the fifth wheel once for the tractor and leave it, unless you have a specific reason. It is
+   the coarse adjustment; the trailer tandems are the fine one.</p>
+
+<h2 id="fuel">Fuel weight, and why you scale before you top off</h2>
+<p>Diesel weighs roughly <strong>7 lb per gallon</strong>. Two 150-gallon tanks full is about
+   <strong>2,100 lb</strong> — more than 2.5% of your gross limit, and it sits mostly on the steer
+   and drives.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Fuel state</th><th class="n">Approx. weight</th><th>Effect</th></tr></thead>
+  <tbody>
+  <tr><td>300 gal full</td><td class="n">2,100 lb</td><td>Mostly on steer and drives</td></tr>
+  <tr><td>150 gal half</td><td class="n">1,050 lb</td><td></td></tr>
+  <tr><td>Difference</td><td class="n">1,050 lb</td><td>Enough to put drives over on a heavy load</td></tr>
+  </tbody>
+</table></div>
+<div class="keybox">
+  <h3>The sequence that avoids a re-weigh fee</h3>
+  <p><strong>Fuel first, then scale.</strong> If you scale on half tanks and then put 150 gallons in,
+     you have added about 1,050 lb that the ticket does not know about — and most of it landed on
+     the drives.</p>
+  <p>If you cannot fuel first, at least know what your fuel state was when you weighed, and account
+     for it.</p>
+</div>
+
+<h2 id="scaling">Scaling properly, the first time</h2>
+<ol>
+  <li><strong>Fuel to the level you will actually run at.</strong></li>
+  <li><strong>Pull onto a certified scale (CAT or similar) and get all three groups</strong> — steer,
+      drives, trailer — not just gross.</li>
+  <li><strong>Compare each group to its limit</strong>, not to 80,000.</li>
+  <li><strong>If a group is over, slide</strong> — trailer tandems for drives-vs-trailer, fifth wheel
+      for steer-vs-drives.</li>
+  <li><strong>Re-weigh.</strong> The re-weigh at the same scale is usually a fraction of the first
+      ticket, which is the whole reason to use the same scale.</li>
+  <li><strong>Keep the ticket.</strong> It is your evidence if a DOT scale disagrees, and it is a
+      deductible expense.</li>
+</ol>
+<p>Scale when the load is heavy, when it is unevenly distributed, when you did not watch it loaded,
+   or when the bill of lading weight looks optimistic. A $14 scale ticket against a four-figure fine
+   is not a close decision.</p>
+
+<h2 id="overweight">What being overweight actually costs</h2>
+<p>Fines vary enormously by state and by how far over you are — from under a hundred dollars for a
+   small overage to several thousand, with some states charging per pound over. But the fine is
+   rarely the biggest cost.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Cost</th><th>Notes</th></tr></thead>
+  <tbody>
+  <tr><td>The fine itself</td><td>Wide range by state; escalates steeply with the overage</td></tr>
+  <tr><td>Being held until legal</td><td>You may not be permitted to move. Hours or a day gone</td></tr>
+  <tr><td>Getting legal</td><td>Off-loading, a second truck, or a permit purchased at a bad moment</td></tr>
+  <tr><td>The lost day</td><td>At roughly $196 of fixed cost a day plus lost contribution — see the <a href="guide-detention.html">detention guide</a></td></tr>
+  <tr><td>CSA</td><td>Size and weight violations feed your record — see the <a href="guide-csa.html">CSA guide</a></td></tr>
+  <tr><td>Insurance</td><td>A worse CSA record shows up at renewal</td></tr>
+  </tbody>
+</table></div>
+<p>That last pair is what makes an overweight ticket disproportionate. A $300 fine that helps push a
+   BASIC over threshold can cost thousands at renewal, twelve months later, in a way nobody
+   connects back to the scale.</p>
+
+<h2 id="payload">Working out your real payload</h2>
+<p>Do this once for your own tractor and trailer and write it on something you keep in the cab.</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Legal gross limit</td><td class="n">80,000 lb</td></tr>
+  <tr><td>Tractor, wet, with full fuel</td><td class="n">−18,500 lb</td></tr>
+  <tr><td>Trailer, empty</td><td class="n">−14,500 lb</td></tr>
+  <tr><td>Driver, gear, chains, straps</td><td class="n">−600 lb</td></tr>
+  <tr class="tot"><td>Available payload</td><td class="n">46,400 lb</td></tr>
+  </tbody>
+</table></div>
+<p>Those tare weights are illustrative — a day cab is lighter, a heavy-spec sleeper with an APU is
+   heavier, a reefer is heavier than a dry van. <strong>Weigh your own empty combination once</strong>,
+   fuelled, and you will know your true payload for the life of the equipment.</p>
+<p>Then when a broker says 45,000 lb of product, you know instantly whether it fits — rather than
+   finding out at the scale after you have committed the day to it.</p>
+
+<h2 id="permits">When you need a permit</h2>
+<p>Overweight or oversize permits are issued <strong>by each state</strong>, for a specific route,
+   for a specific period. Practical points:</p>
+<ul>
+  <li><strong>Get them before you move</strong>, not after being stopped. A permit does not retro-fix
+      a violation.</li>
+  <li><strong>They are route-specific.</strong> Deviating from the permitted route voids it.</li>
+  <li><strong>Each state is separate.</strong> A four-state run needs four permits.</li>
+  <li><strong>Price the permit and the extra time into the load</strong> before accepting. Permitted
+      loads pay more for a reason, and the reason is that they cost more to run.</li>
+  <li><strong>A permit does not override equipment ratings.</strong> Tyres, axles and the bridge
+      posting still bind.</li>
+</ul>
+
+<div class="art-cta">
+  <div>
+    <h3>Price the scale stop and the permit into the load</h3>
+    <p>Scale tickets, permits and the hours a weight problem costs are real costs. Put them in the
+       fees field before you accept, not in your accounting afterwards.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Federal Interstate weight limits — 12,000 lb single steer axle, 34,000 lb tandem axle groups, 80,000 lb gross — and the Federal Bridge Gross Weight Formula are set in 23 U.S.C. 127 and administered by FHWA. State limits, grandfathered exceptions and posted bridge limits vary; confirm for the states on your route.</li><li>Tandem-slide effect of roughly 250–400 lb per hole is a working rule of thumb and varies by trailer. Measure your own once by weighing, sliding one hole and re-weighing.</li><li>Diesel at approximately 7 lb per gallon; tare and payload figures in the worked example are illustrative for a typical sleeper and dry van. Weigh your own empty combination.</li><li>Overweight fines vary by state and by overage, from under a hundred dollars to several thousand; some states assess per pound. No single national figure exists, so none is quoted here.</li><li>California's 40-foot kingpin-to-rear-axle rule is one example of a state length restriction that interacts with tandem position; it is not the only one.</li><li>Nothing here is legal advice. Weight enforcement is state-specific — confirm limits and permit requirements with the relevant state DOT before relying on them.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-csa.html"><span class="k">Guide</span><span class="t">CSA scores, and what they really cost</span><span class="d">Where a weight violation shows up twelve months later.</span></a><a href="guide-detention.html"><span class="k">Guide</span><span class="t">Detention, and the hour you cannot bill for</span><span class="d">What a lost hour at a scale is actually worth.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Scale tickets and permits belong in the fees line.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

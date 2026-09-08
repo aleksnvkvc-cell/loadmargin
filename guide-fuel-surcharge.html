@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuel surcharges explained: the DOE index and the formula | LoadMargin</title>
+<meta name="description" content="How a fuel surcharge is actually calculated, what the DOE weekly diesel index really measures, how the peg mpg quietly moves thousands of dollars, and why a surcharge never covers all your fuel.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-surcharge.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fuel surcharges explained: the DOE index and the formula | LoadMargin">
+<meta property="og:description" content="How a fuel surcharge is actually calculated, what the DOE weekly diesel index really measures, how the peg mpg quietly moves thousands of dollars, and why a surcharge never covers all your fuel.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-surcharge.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Fuel surcharges, and the number nobody negotiates","description":"How a fuel surcharge is actually calculated, what the DOE weekly diesel index really measures, how the peg mpg quietly moves thousands of dollars, and why a surcharge never covers all your fuel.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-surcharge.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-surcharge.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Fuel surcharges, and the number nobody negotiates","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-surcharge.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Fundamentals</span>
+    <h1>Fuel surcharges, and the number nobody negotiates</h1>
+    <p class="lede">A surcharge is not extra money. It is a mechanism for moving diesel price risk onto the shipper — and one unexamined input in it decides whether it works.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What a fuel surcharge is</a></li><li><a href="#index">The DOE index it is pegged to</a></li><li><a href="#formula">The formula, in one line</a></li><li><a href="#peg">Choosing a base price and a peg mpg</a></li><li><a href="#table">Reading a surcharge matrix</a></li><li><a href="#gap">Where the surcharge stops covering fuel</a></li><li><a href="#allin">Why you should always quote all-in</a></li><li><a href="#mistakes">Four mistakes that cost real money</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">A fuel surcharge is not extra money. It is a mechanism for moving one specific
+risk — the price of diesel between the day a rate was agreed and the day the truck runs — off the
+carrier and onto the shipper. Treated as extra money, it quietly hides a loss.</p>
+
+<h2 id="what">What a fuel surcharge is</h2>
+<p>Line haul rates are negotiated in advance, sometimes months in advance on a contract lane. Diesel
+   is not. It moves weekly, and it has moved by more than a dollar a gallon inside a single year
+   more than once in the last decade.</p>
+<p>Rather than reprice every lane every week, the industry splits the rate in two:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0">all-in rate  =  line haul  +  fuel surcharge</p>
+</div>
+<p>The line haul is meant to cover everything that does not move week to week — the truck, the
+   driver, maintenance, insurance, overhead and margin. The surcharge is meant to cover the
+   <em>movement</em> in diesel, and nothing else.</p>
+<div class="pullq">A surcharge is compensation for a risk you no longer carry. It is not profit, and
+a lane whose line haul only works because the surcharge is high is a lane that fails the moment
+diesel falls.</div>
+
+<h2 id="index">The DOE index it is pegged to</h2>
+<p>Nearly every surcharge in North American freight is pegged to one number: the
+   <strong>US Energy Information Administration weekly retail on-highway diesel price</strong>,
+   usually called the DOE or EIA index.</p>
+<p>What it actually is, since a lot of money rides on a figure most people have never looked up:</p>
+<ul>
+  <li>It is the <strong>cash, self-serve price at the pump including taxes</strong>, for ultra-low
+      sulfur diesel, captured at 8:00 a.m. local time on Monday.</li>
+  <li>It comes from a sample of <strong>590 retail outlets</strong> drawn from a frame of roughly
+      73,000 service stations and 9,500 truck stops in the contiguous United States.</li>
+  <li>It is published <strong>around 10:00 a.m. Eastern on Tuesday</strong>, reporting Monday's
+      prices — Wednesday when Tuesday is a federal holiday.</li>
+  <li>It is issued nationally, by PADD region, and separately for California. Alaska and Hawaii are
+      outside the survey.</li>
+</ul>
+<p>Two consequences follow that carriers routinely miss. First, the index is a <strong>retail pump
+   price</strong> — if you buy on a fuel network at a discount, the index overstates what you pay,
+   and that gap is yours to keep. Second, it is <strong>a week behind</strong>. In a rising market
+   your surcharge is always chasing; in a falling market it is briefly generous.</p>
+
+<h2 id="formula">The formula, in one line</h2>
+<p>Every surcharge scheme in use is a variation on the same arithmetic:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">fsc_per_mile = (doe_price − base_price) ÷ peg_mpg</p>
+  <p style="font-family:var(--mono);margin:0">fsc_total    = fsc_per_mile × miles</p>
+</div>
+<p>Three inputs, all negotiated, none of them handed down from anywhere:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Input</th><th>Typical</th><th>What it means</th></tr></thead>
+  <tbody>
+  <tr><td>DOE price</td><td class="n">this week's index</td><td>The published national or regional average</td></tr>
+  <tr><td>Base price</td><td class="n">$1.20 – $1.50</td><td>The diesel price the line haul rate already assumes</td></tr>
+  <tr><td>Peg mpg</td><td class="n">5.0 – 6.5</td><td>The fuel economy the surcharge assumes your truck gets</td></tr>
+  </tbody>
+</table></div>
+<p>A worked example at a $3.85 index, a $1.25 base and a 6.0 peg:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .4rem">(3.85 − 1.25) ÷ 6.0  =  $0.4333 per mile</p>
+  <p style="font-family:var(--mono);margin:0">850 miles × 0.4333    =  $368.33 surcharge</p>
+</div>
+
+<h2 id="peg">Choosing a base price and a peg mpg</h2>
+<p>These two numbers decide whether the surcharge protects you or quietly transfers money away from
+   you, and they are the part of the negotiation nobody argues about.</p>
+<p><strong>The base price is a claim about your line haul.</strong> Setting a base of $1.25 asserts
+   that the line haul rate already covers diesel up to $1.25 a gallon. If the rate was actually
+   built on $3.00 diesel, a $1.25 base means the shipper is paying a surcharge for fuel you were
+   already being paid for — pleasant, but it will be discovered. If the rate was built on $3.85
+   diesel and the base is $1.25, you are being paid twice for the same gallon and the lane is
+   priced above the market without either side realising why.</p>
+<p><strong>The peg mpg is where the money actually leaks.</strong> The peg divides. A higher peg
+   means a smaller surcharge.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Peg mpg</th><th class="n">FSC per mile</th><th class="n">On 850 miles</th><th class="n">Vs 6.0 peg</th></tr></thead>
+  <tbody>
+  <tr><td>5.0</td><td class="n">$0.5200</td><td class="n">$442.00</td><td class="n pos">+$73.67</td></tr>
+  <tr><td>5.5</td><td class="n">$0.4727</td><td class="n">$401.82</td><td class="n pos">+$33.49</td></tr>
+  <tr class="tot"><td>6.0</td><td class="n">$0.4333</td><td class="n">$368.33</td><td class="n">—</td></tr>
+  <tr><td>6.5</td><td class="n">$0.4000</td><td class="n">$340.00</td><td class="n neg">−$28.33</td></tr>
+  <tr><td>7.0</td><td class="n">$0.3714</td><td class="n">$315.71</td><td class="n neg">−$52.62</td></tr>
+  </tbody>
+</table></div>
+<p>A shipper moving the peg from 6.0 to 7.0 has cut your surcharge by <strong>$52.62 on one load</strong>
+   without touching the headline rate. Across two hundred loads a year that is $10,524. Nothing on
+   the rate confirmation changed.</p>
+<div class="keybox">
+  <h3>The only honest peg</h3>
+  <p>The peg should be <strong>the mpg your fleet actually achieves</strong>, measured tank to tank,
+     not the number on the OEM brochure. If your real figure is 6.2 and you agreed a peg of 7.0,
+     the surcharge under-recovers on every single mile, permanently.</p>
+</div>
+
+<h2 id="table">Reading a surcharge matrix</h2>
+<p>Many shippers do not use the formula directly. They publish a <strong>matrix</strong>: a table of
+   diesel price bands against cents per mile, usually stepping in 5-cent or 10-cent bands of diesel.</p>
+<div class="tw2"><table>
+  <thead><tr><th>DOE price band</th><th class="n">FSC per mile</th><th class="n">Implied peg mpg</th></tr></thead>
+  <tbody>
+  <tr><td>$3.50 – $3.599</td><td class="n">$0.38</td><td class="n">6.05</td></tr>
+  <tr><td>$3.60 – $3.699</td><td class="n">$0.39</td><td class="n">6.13</td></tr>
+  <tr><td>$3.70 – $3.799</td><td class="n">$0.41</td><td class="n">6.02</td></tr>
+  <tr><td>$3.80 – $3.899</td><td class="n">$0.42</td><td class="n">6.11</td></tr>
+  <tr><td>$3.90 – $3.999</td><td class="n">$0.44</td><td class="n">6.03</td></tr>
+  </tbody>
+</table></div>
+<p>The third column is the useful one and it is never printed. Take the midpoint of each band, take
+   the stated base price, and divide: <span class="mono">(midpoint − base) ÷ fsc_per_mile</span>
+   gives you the peg mpg the matrix is really using. If that number drifts upward as diesel rises,
+   the matrix is <strong>regressive</strong> — it recovers proportionally less exactly when fuel
+   hurts most.</p>
+<p>Check the bands at the top of the table specifically. Some matrices simply stop at a ceiling, so
+   above $5.00 diesel there is no additional recovery at all.</p>
+
+<h2 id="gap">Where the surcharge stops covering fuel</h2>
+<p>Even a fair surcharge under-recovers, for a structural reason: <strong>the surcharge pays on
+   loaded miles, and you burn fuel on all of them</strong>.</p>
+<p>A load with 850 loaded miles and 120 miles of deadhead, at $3.85 diesel and a true 6.2 mpg:</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Fuel actually burned</td><td class="n">(850 + 120) ÷ 6.2 × $3.85 = <strong>$602.34</strong></td></tr>
+  <tr><td>Surcharge received</td><td class="n">850 × $0.4333 = <strong>$368.33</strong></td></tr>
+  <tr class="tot"><td>Uncovered fuel</td><td class="n neg">$234.01</td></tr>
+  </tbody>
+</table></div>
+<p>Of that gap, roughly $74 is deadhead nobody is paying for and the rest is the base price — the
+   part the line haul is supposed to carry. That is the design working as intended. The failure mode
+   is forgetting it, seeing $368 of surcharge on the confirmation and treating fuel as handled.</p>
+<div class="pullq">The surcharge covers the movement in diesel above the base. It never covered all
+of your fuel, and it was never meant to.</div>
+
+<h2 id="allin">Why you should always quote all-in</h2>
+<p>Two offers on the same lane:</p>
+<div class="tw2"><table>
+  <thead><tr><th></th><th class="n">Broker A</th><th class="n">Broker B</th></tr></thead>
+  <tbody>
+  <tr><td>Line haul</td><td class="n">$2,400</td><td class="n">$2,150</td></tr>
+  <tr><td>Fuel surcharge</td><td class="n">$0</td><td class="n">$368</td></tr>
+  <tr class="tot"><td>All-in</td><td class="n">$2,400</td><td class="n">$2,518</td></tr>
+  <tr><td>Rate per loaded mile quoted</td><td class="n">$2.82</td><td class="n">$2.53</td></tr>
+  <tr><td>All-in per loaded mile</td><td class="n">$2.82</td><td class="n pos">$2.96</td></tr>
+  </tbody>
+</table></div>
+<p>Broker B's quoted rate per mile is <strong>29 cents lower</strong> and Broker B is paying you
+   <strong>$118 more</strong>. Carriers turn down loads over this every week.</p>
+<p>The rule is simple and it removes an entire category of mistake: <strong>compare all-in, always,
+   and confirm in writing whether a quoted rate includes fuel.</strong> The calculator on this site
+   takes a single rate figure for exactly this reason — enter the all-in.</p>
+
+<h2 id="mistakes">Four mistakes that cost real money</h2>
+<ol>
+  <li><strong>Treating surcharge as margin.</strong> A month with high diesel shows high surcharge
+      revenue and identical profit. If your reporting counts it as revenue growth, you will conclude
+      the lane improved when nothing changed.</li>
+  <li><strong>Accepting the peg without checking your own mpg.</strong> The single most expensive
+      unexamined number in a contract. Measure tank to tank over a quarter, then negotiate.</li>
+  <li><strong>Not knowing which index week applies.</strong> "The DOE" is not specific enough. The
+      contract should say national or regional, and which week — Monday's publication for loads
+      picking up that week is the common convention, but it must be written down.</li>
+  <li><strong>Forgetting the surcharge on accessorial-heavy runs.</strong> Multi-stop and layover
+      loads burn fuel on repositioning that no surcharge scheme pays for. Score those on total
+      miles, not on the stops.</li>
+</ol>
+
+<div class="art-cta">
+  <div>
+    <h3>Work out your real recovery</h3>
+    <p>The fuel surcharge calculator computes your surcharge from any index, base and peg, and shows
+       the gap against the fuel you actually burn including deadhead.</p>
+  </div>
+  <a href="calculators.html#fsc" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>US Energy Information Administration, <em>Methodology for EIA Weekly On-Highway Diesel Fuel Price Estimates</em> — survey size, publication timing, PADD coverage and ULSD pump-price definition.</li><li>Base price and peg-mpg ranges are the conventions in common commercial use; they are negotiated terms, not published standards.</li><li>All worked figures were computed with the calculators on this site and can be reproduced there.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">The number the base price is supposed to be consistent with.</span></a><a href="guide-deadhead.html"><span class="k">Guide</span><span class="t">The real cost of deadhead miles</span><span class="d">The miles no surcharge scheme pays for.</span></a><a href="calculators.html#fsc"><span class="k">Tool</span><span class="t">Fuel surcharge calculator</span><span class="d">Index, base and peg in, recovery gap out.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

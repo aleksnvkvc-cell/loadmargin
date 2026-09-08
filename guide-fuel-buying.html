@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuel buying, net of tax | LoadMargin</title>
+<meta name="description" content="The pump price is not the price. Why IFTA makes cross-border pump comparisons wrong, how to compare fuel net of state tax, retail-minus versus cost-plus fuel cards, the break-even detour formula, and idling costed in cents per mile.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-buying.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fuel buying, net of tax | LoadMargin">
+<meta property="og:description" content="The pump price is not the price. Why IFTA makes cross-border pump comparisons wrong, how to compare fuel net of state tax, retail-minus versus cost-plus fuel cards, the break-even detour formula, and idling costed in cents per mile.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-buying.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Buying fuel, net of tax","description":"The pump price is not the price. Why IFTA makes cross-border pump comparisons wrong, how to compare fuel net of state tax, retail-minus versus cost-plus fuel cards, the break-even detour formula, and idling costed in cents per mile.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-buying.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-buying.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-06"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Buying fuel, net of tax","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-fuel-buying.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>Buying fuel, net of tax</h1>
+    <p class="lede">Drivers cross a state line to save eleven cents a gallon and lose money on the trip. The sign is not lying — it is answering a different question from the one you are asking.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 6 September 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#problem">The pump price is not the price</a></li><li><a href="#net">Net-of-tax: the only comparable number</a></li><li><a href="#worked">A worked example that reverses the answer</a></li><li><a href="#discount">Retail-minus, cost-plus, and which you actually have</a></li><li><a href="#outofroute">The out-of-route mile that eats the saving</a></li><li><a href="#split">Splitting the buy</a></li><li><a href="#mpg">The cheapest gallon is the one you do not burn</a></li><li><a href="#idle">Idling, in cents per mile</a></li><li><a href="#routine">A weekly fuel routine</a></li><li><a href="#surcharge">How this interacts with the fuel surcharge</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Fuel is the largest variable cost in trucking and the one most often optimised
+backwards. Drivers cross a state line to save eleven cents a gallon and lose money on the trip,
+because the number on the sign is not the number they pay.</p>
+
+<h2 id="problem">The pump price is not the price</h2>
+<p>Diesel at the pump includes state fuel tax. Under <a href="guide-ifta.html">IFTA</a>, the tax you
+   owe is based on where you <em>drove</em>, not where you bought — so tax paid at the pump in one
+   state becomes a credit against tax owed everywhere you ran.</p>
+<p>Which means the tax portion washes out. What you actually paid for the diesel is the pump price
+   <strong>minus</strong> the tax that will come back to you.</p>
+<div class="pullq">Comparing pump prices across state lines is comparing two numbers that each
+contain a different tax. The sign is not lying — it is answering a different question.</div>
+
+<h2 id="net">Net-of-tax: the only comparable number</h2>
+<p>The comparison you want is one line:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0">net price = pump price − state fuel tax per gallon</p>
+</div>
+<p>State diesel tax rates vary enormously — from near zero to well over thirty cents a gallon, and
+   they change quarterly. Any comparison that ignores a thirty-cent spread while chasing an
+   eleven-cent one is going to be wrong more often than it is right.</p>
+<div class="keybox">
+  <h3>Two conditions before this is worth doing</h3>
+  <p><strong>You must actually be filing IFTA.</strong> The credit only exists if you claim it. If
+     you are running intrastate and not on IFTA, the pump price <em>is</em> your price and none of
+     this applies.</p>
+  <p><strong>The current quarter's rates.</strong> Rates are republished every quarter. Working from
+     last year's table produces confident, wrong answers — use the current IFTA rate sheet or a tool
+     that pulls it.</p>
+</div>
+
+<h2 id="worked">A worked example that reverses the answer</h2>
+<p>Three stops on the same run, illustrative numbers:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Stop</th><th class="n">Pump price</th><th class="n">State tax</th><th class="n">Net price</th></tr></thead>
+  <tbody>
+  <tr><td>State A</td><td class="n">$3.65</td><td class="n">$0.29</td><td class="n pos">$3.36</td></tr>
+  <tr><td>State B</td><td class="n">$3.55</td><td class="n">$0.12</td><td class="n">$3.43</td></tr>
+  <tr><td>State C</td><td class="n">$3.60</td><td class="n">$0.17</td><td class="n">$3.43</td></tr>
+  </tbody>
+</table></div>
+<p>State B has the cheapest sign by ten cents. State A is the cheapest fuel by seven. On a 150-gallon
+   fill that is <strong>$10.50</strong> in the wrong direction, on a decision that felt obviously
+   right at the time.</p>
+<p>Do this every fill, twice a week, fifty weeks, and the arithmetic gets serious.</p>
+
+<h2 id="discount">Retail-minus, cost-plus, and which you actually have</h2>
+<p>Fuel card programmes come in two shapes and they behave differently:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Type</th><th>What it means</th><th>Behaviour</th></tr></thead>
+  <tbody>
+  <tr><td><strong>Retail minus</strong></td><td>A discount off the posted cash price</td><td>Looks large at expensive stops. The stop sets the base, so a high posted price can eat the discount</td></tr>
+  <tr><td><strong>Cost plus</strong></td><td>The stop's cost of the fuel, plus a fixed margin</td><td>Narrower headline, far more predictable, and usually better where you have volume</td></tr>
+  </tbody>
+</table></div>
+<p>A "50 cents off" retail-minus deal at a stop posting 40 cents above the local average is a ten-cent
+   saving. Compare programmes on the <strong>final price paid at the stops you actually use</strong>,
+   not on the advertised discount.</p>
+<ul>
+  <li>Check whether the discount applies to the <strong>cash</strong> or the <strong>credit</strong>
+      posted price</li>
+  <li>Check the <strong>transaction fee</strong> per fill — a fixed fee is a real per-gallon cost on
+      small buys</li>
+  <li>Check whether the discount is <strong>capped by gallons</strong> per transaction or per month</li>
+  <li>Check the <strong>network</strong>. A brilliant rate at stops that are not on your lanes is
+      not a rate</li>
+</ul>
+
+<h2 id="outofroute">The out-of-route mile that eats the saving</h2>
+<p>The most common self-inflicted loss on this page. Before detouring for cheap fuel:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">saving = gallons × price difference</p>
+  <p style="font-family:var(--mono);margin:0">cost   = extra miles × your cost per mile</p>
+</div>
+<p>At a cost per mile of $1.85 — see <a href="guide-cost-per-mile.html">cost per mile</a> for how to
+   get your real number — a twelve-mile detour costs <strong>$22.20</strong>. A 120-gallon fill at
+   seven cents better saves <strong>$8.40</strong>.</p>
+<p>You lost $13.80 and you feel like you saved money, because the saving is visible on the receipt
+   and the cost is not visible anywhere.</p>
+<div class="keybox">
+  <h3>The rule of thumb, and why it is a bad rule</h3>
+  <p>A common shortcut is "never detour more than five miles for fuel". It is roughly right at a
+     typical fill size and typical cost per mile, and it is exactly the kind of borrowed number this
+     site exists to argue with.</p>
+  <p>Work out your own break-even once: <span class="mono">breakeven miles = (gallons × price
+     difference) ÷ cost per mile</span>. Write it on a card. It changes only when your cost per mile
+     does.</p>
+</div>
+
+<h2 id="split">Splitting the buy</h2>
+<p>You do not have to fill in one place. Two useful patterns:</p>
+<ul>
+  <li><strong>Buy enough to reach the cheap state, then fill there.</strong> Fifty gallons at the
+      expensive stop to get you across, then a full fill on the net-cheapest fuel on the route.</li>
+  <li><strong>Never fill full immediately before scaling.</strong> Fuel is weight — roughly 7 lb a
+      gallon, so 200 gallons is about 1,400 lb, mostly on the steer and drives. On a heavy load that
+      is the difference between legal and an <a href="guide-weight.html">overweight ticket</a>.</li>
+</ul>
+<p>The counterweight to both: every extra stop costs time, and time on a 14-hour clock is not free.
+   Two fuel stops in a day where one would do is twenty minutes you did not have on a tight delivery.</p>
+
+<h2 id="mpg">The cheapest gallon is the one you do not burn</h2>
+<p>Buying better moves the price by a few cents. Burning less moves the quantity, and the quantity is
+   the bigger lever.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Change</th><th class="n">Typical effect</th></tr></thead>
+  <tbody>
+  <tr><td>Speed 68 mph instead of 62 mph</td><td class="n neg">meaningfully worse mpg — aerodynamic drag rises with the square of speed</td></tr>
+  <tr><td>Tyres 10 psi under pressure</td><td class="n neg">measurably worse mpg, and shorter tyre life</td></tr>
+  <tr><td>Trailer gap and skirts</td><td class="n pos">an aerodynamic gain on highway miles</td></tr>
+  <tr><td>Progressive shifting and steady throttle</td><td class="n pos">the largest driver-controlled variable there is</td></tr>
+  </tbody>
+</table></div>
+<p>Run the arithmetic on your own truck rather than trusting a percentage. At 100,000 miles a year and
+   $3.60 diesel, going from 6.5 to 7.0 mpg saves about <strong>$3,956</strong> — more than almost any
+   fuel card deal on offer, and it costs nothing but discipline.</p>
+<p>This is also why the peg mpg in a fuel surcharge matters so much; the
+   <a href="guide-fuel-surcharge.html">fuel surcharge guide</a> works that through.</p>
+
+<h2 id="idle">Idling, in cents per mile</h2>
+<p>An idling truck burns roughly <strong>0.8 gallons an hour</strong> and travels nowhere. At $3.60
+   that is $2.88 an hour.</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>6 hours a night, 5 nights a week, 48 weeks</td><td class="n">1,440 hours</td></tr>
+  <tr><td>At 0.8 gal/hr</td><td class="n">1,152 gallons</td></tr>
+  <tr><td>At $3.60</td><td class="n neg">$4,147 a year</td></tr>
+  <tr><td>Spread over 110,000 miles</td><td class="n neg">3.8 cents per mile</td></tr>
+  </tbody>
+</table></div>
+<p>Idling also accrues engine hours, which pulls forward every service interval — so the number above
+   understates it. An APU or a bunk heater is a capital decision you can now actually evaluate,
+   because you have the annual figure to compare it against.</p>
+
+<h2 id="routine">A weekly fuel routine</h2>
+<ol>
+  <li><strong>Plan the fills with the load</strong>, not at the low-fuel light. The light is where
+      bad decisions get made.</li>
+  <li><strong>Compare net of tax</strong>, using the current quarter's rates.</li>
+  <li><strong>Check the detour against your break-even miles</strong> before turning off.</li>
+  <li><strong>Keep every receipt</strong> — gallons, date, state, and the odometer. This is your IFTA
+      filing and your audit defence in one.</li>
+  <li><strong>Reconcile monthly</strong>: gallons bought against miles run gives your real mpg. It
+      will differ from the dash readout.</li>
+  <li><strong>Put the real mpg into your cost per mile</strong>, and recheck it every quarter. A
+      quarter-mpg drift is a maintenance signal before it is a fuel signal.</li>
+</ol>
+
+<h2 id="surcharge">How this interacts with the fuel surcharge</h2>
+<p>Fuel surcharge is calculated from a published index and a peg — it does not care where you bought.
+   So every cent you save on the buy, and every tenth of an mpg you gain, is kept in full. It does not
+   reduce your surcharge.</p>
+<p>That is the whole reason this is worth the attention: fuel buying is one of the few places in
+   freight where the saving is entirely yours and nobody negotiates it away from you.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Use your real mpg and your real diesel price</h3>
+    <p>The calculator prices fuel from the miles, the mpg and the price you enter. Reconciled numbers
+       in, honest margin out.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Net-of-tax fuel purchasing: under IFTA, fuel tax is owed on miles driven in each jurisdiction and tax paid at the pump is credited, so the comparable cost of a gallon across state lines is the pump price less the state fuel tax per gallon. Concept and worked structure per ProMiles, "Fuel Purchase Optimization Explained".</li><li>State diesel tax rates vary widely and are republished quarterly on the IFTA rate sheet. Use the current quarter, not a stored table.</li><li>Fuel price, tax, mpg, cost-per-mile and idling figures in the examples are illustrative inputs chosen to show the arithmetic, not market data or survey results. Substitute your own.</li><li>Idling consumption of roughly 0.8 gallons per hour is a widely used planning figure; actual consumption varies by engine, load, ambient temperature and accessory use.</li><li>Fuel card discount structures (retail-minus versus cost-plus, transaction fees, gallon caps, network coverage) are described generically; terms differ by provider and by negotiated agreement.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-ifta.html"><span class="k">Guide</span><span class="t">IFTA, without the folklore</span><span class="d">Where the fuel tax credit actually comes from.</span></a><a href="guide-fuel-surcharge.html"><span class="k">Guide</span><span class="t">Fuel surcharges, and the number nobody negotiates</span><span class="d">Why the peg mpg is worth more than the buy price.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">The number that decides whether the detour is worth it.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
