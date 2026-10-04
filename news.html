@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LoadMargin — Know a load's profit before you book it</title>
-<meta name="description" content="LoadMargin turns a rate and a mileage into a real net-profit number. Live load scoring, true cost-per-mile builder, driver pay modelling and lane analysis for trucking carriers.">
-<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/">
+<title>Freight news worth your time — sources I follow | LoadMargin</title>
+<meta name="description" content="The freight industry sources worth keeping an eye on: regulation, rates, fuel and safety.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/news.html">
 <meta name="theme-color" content="#030A16">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="manifest" href="site.webmanifest">
@@ -13,9 +13,9 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LoadMargin">
-<meta property="og:title" content="LoadMargin — Know a load's profit before you book it">
-<meta property="og:description" content="Live load scoring, true cost-per-mile builder and lane margin analysis for trucking carriers.">
-<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/">
+<meta property="og:title" content="Freight news worth your time — sources I follow | LoadMargin">
+<meta property="og:description" content="The freight industry sources worth keeping an eye on: regulation, rates, fuel and safety.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/news.html">
 <meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LoadMargin — Know a load's profit before you book it">
@@ -40,7 +40,7 @@
       <span class="brand-tx">LOAD<span>MARGIN</span></span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#calculator" class="nav-link">Calculator</a></li>
+      <li><a href="index.html#calculator" class="nav-link">Calculator</a></li>
       <li><a href="calculators.html">Tools</a></li>
       <li><a href="how-it-works.html">How it works</a></li>
       <li><a href="workbooks.html">Workbooks</a></li>
@@ -66,253 +66,10 @@
 <main id="top">
 
 <!-- ══════════ HERO ══════════ -->
-<section class="hero">
-  <div class="wrap hero-in">
-
-    <div class="hero-copy">
-      <span class="hero-kicker"><span class="dot"></span>Freight profitability for owner-operators &amp; small fleets</span>
-      <h1>Know a load's <em>real profit</em> before you book it.</h1>
-      <p>Every rate looks good until you subtract <span class="vibrant-subtle">fuel, deadhead, driver pay</span> and the cost of
-         simply owning the truck. LoadMargin does that subtraction in about <span class="vibrant-subtle">two seconds</span> —
-         with <span class="vibrant">your numbers</span>, not industry averages.</p>
-      <div class="hero-cta">
-        <a href="#calculator" class="btn btn-gold btn-lg">Score a load — free →</a>
-        <a href="app.html" class="btn btn-ghost btn-lg">Open the console</a>
-        <button class="btn btn-ghost" onclick="openDemo()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Watch the 40-second demo
-        </button>
-      </div>
-      <p class="hero-note"><span class="vibrant-pulse">✓ Free and unlimited today</span> — the calculator below and the full console
-        run in your browser. <span class="vibrant-pulse">✓ No account, no card.</span></p>
-    </div>
-
-    <div class="hero-side">
-    <div class="hero-card panel">
-      <div class="hc-top">
-        <span class="tag live">Live</span>
-        <span class="hc-lbl">scored by the calculator below</span>
-      </div>
-
-      <div class="hc-verdict" id="hVerdict">
-        <span class="hc-vt" id="hVText">ACCEPT</span>
-        <span class="hc-vs" id="hVSub">Clears the target margin</span>
-      </div>
-
-      <div class="hc-rows">
-        <div class="kv"><span>Line haul offered</span><b id="hRate">$2,400</b></div>
-        <div class="kv"><span>Miles, loaded + empty</span><b id="hMiles">970</b></div>
-        <div class="kv"><span>All-in per total mile</span><b id="hRpm">$2.474</b></div>
-        <div class="kv"><span>Break-even per mile</span><b id="hBe">$2.010</b></div>
-        <div class="kv big"><span>Net profit</span><b id="hNet">$450</b></div>
-        <div class="kv"><span>Margin</span><b id="hMargin">18.8%</b></div>
-      </div>
-
-      <a class="hc-cta" href="#calculator">Change any number &rarr;</a>
-    </div>
-      <div class="hero-side-cmp">
-
-      <div class="impact-comparison">
-        <div class="impact-load reject">
-          <div class="impact-badge">REJECT</div>
-          <div class="impact-rate">$2,400</div>
-          <div class="impact-label">Line haul</div>
-          <div class="impact-result loss">−$150</div>
-          <div class="impact-label-result">Net profit</div>
-        </div>
-
-        <div class="impact-vs">
-          <div class="impact-vs-label">vs</div>
-          <div class="impact-vs-difference">
-            <div class="vibrant">$637</div>
-            <div style="font-size: 0.85rem; opacity: 0.7;">difference</div>
-          </div>
-        </div>
-
-        <div class="impact-load accept">
-          <div class="impact-badge accept">ACCEPT</div>
-          <div class="impact-rate">$2,400</div>
-          <div class="impact-label">Line haul</div>
-          <div class="impact-result accept">+$487</div>
-          <div class="impact-label-result">Net profit</div>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <div class="trust-row">
-      <div><span class="k" data-count="2">0</span><span class="v">Second decision</span></div>
-      <div><span class="k" data-count="9">0</span><span class="v">Cost inputs modelled</span></div>
-      <div><span class="k" data-count="8">0</span><span class="v">Modules</span></div>
-      <div><span class="k" data-count="66">0</span><span class="v">Written guides</span></div>
-      <div><span class="k" data-suffix="%" data-count="100">0</span><span class="v">Free, no account</span></div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════ CALCULATOR ══════════ -->
-<section id="calculator">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow"><span class="vibrant-subtle">Live tool</span> · <span class="vibrant-pulse">no account needed</span></span>
-      <h2><span class="vibrant">Load Profitability</span> Calculator</h2>
-      <p class="lede">This is the <span class="vibrant">actual product</span>, running right here. Change any number and the verdict <span class="vibrant-subtle">recalculates instantly</span>.
-        <span class="vibrant-pulse">✓ Nothing is sent anywhere</span> — the math happens in your browser.</p>
-    </div>
-
-    <div class="calc">
-      <!-- inputs -->
-      <div class="panel calc-form rv">
-        <div class="field">
-          <label for="rate">Line haul rate <span class="hint">what the broker offers</span></label>
-          <div class="inp has-pre"><span class="pre">$</span><input type="number" id="rate" value="2400" min="0" step="10" inputmode="decimal"></div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="loaded">Loaded miles</label>
-            <div class="inp has-suf"><input type="number" id="loaded" value="850" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div>
-          </div>
-          <div class="field">
-            <label for="deadhead">Deadhead <span class="hint">empty</span></label>
-            <div class="inp has-suf"><input type="number" id="deadhead" value="120" min="0" step="5" inputmode="decimal"><span class="suf">mi</span></div>
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="fuel">Diesel price</label>
-            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fuel" value="3.85" min="0" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div>
-          </div>
-          <div class="field">
-            <label for="mpg">Truck MPG</label>
-            <div class="inp has-suf"><input type="number" id="mpg" value="6.5" min="0.1" step="0.1" inputmode="decimal"><span class="suf">mpg</span></div>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Driver pay model</label>
-          <div class="seg" role="group" aria-label="Driver pay model">
-            <button type="button" id="segMile" class="on" onclick="setPayMode('mile')">Per mile</button>
-            <button type="button" id="segPct" onclick="setPayMode('pct')">% of rate</button>
-          </div>
-        </div>
-        <div class="field" id="payWrap">
-          <label for="pay" id="payLabel">Driver pay rate</label>
-          <div class="inp has-pre has-suf" id="payBox"><span class="pre" id="payPre">$</span><input type="number" id="pay" value="0.62" min="0" step="0.01" inputmode="decimal"><span class="suf" id="paySuf">/mi</span></div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="fixedcpm">Fixed cost <span class="hint">truck, insurance…</span></label>
-            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fixedcpm" value="0.48" min="0" step="0.01" inputmode="decimal"><span class="suf">/mi</span></div>
-          </div>
-          <div class="field">
-            <label for="maint">Maintenance + tires</label>
-            <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="maint" value="0.19" min="0" step="0.01" inputmode="decimal"><span class="suf">/mi</span></div>
-          </div>
-        </div>
-        <div class="field" style="margin-bottom:.4rem">
-          <label for="extras">Tolls, lumper, scales, permits</label>
-          <div class="inp has-pre"><span class="pre">$</span><input type="number" id="extras" value="85" min="0" step="5" inputmode="decimal"></div>
-        </div>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem">
-          <button class="btn btn-ghost btn-sm" onclick="loadPreset('good')">Try a strong lane</button>
-          <button class="btn btn-ghost btn-sm" onclick="loadPreset('bad')">Try a losing lane</button>
-          <button class="btn btn-ghost btn-sm" onclick="loadPreset('reset')">Reset</button>
-        </div>
-      </div>
-
-      <!-- outputs -->
-      <div class="panel calc-out rv rv-d1">
-        <div class="verdict v-accept" id="verdict">
-          <div class="vt"><span id="vIcon">✓</span> <span id="vText">ACCEPT</span></div>
-          <div class="vs" id="vSub">This load clears your target margin.</div>
-        </div>
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap">
-          <div>
-            <div class="kpi-lab" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.35rem">Net profit on this load</div>
-            <div class="bignum tick" id="netProfit">$0</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.35rem">Margin</div>
-            <div class="bignum tick" id="marginPct" style="font-size:1.9rem">0%</div>
-          </div>
-        </div>
-        <div class="bar"><i id="marginBar" style="width:0%"></i></div>
-
-        <div class="kpi-row">
-          <div class="kpi"><div class="lab">All-in rate</div><div class="val mono" id="rpm">$0.00</div></div>
-          <div class="kpi"><div class="lab">Break-even</div><div class="val mono" id="berpm">$0.00</div></div>
-          <div class="kpi"><div class="lab">Profit / day</div><div class="val mono" id="perday">$0</div></div>
-        </div>
-
-        <div class="brk">
-          <h3>Where the money goes</h3>
-          <div class="brk-line"><span><i class="dot" style="background:var(--gold)"></i>Revenue</span><b id="oRev">$0</b></div>
-          <div class="brk-line"><span><i class="dot" style="background:#E4614C"></i>Fuel <small class="mono" id="oGal" style="color:var(--tx-3)"></small></span><b id="oFuel">$0</b></div>
-          <div class="brk-line"><span><i class="dot" style="background:#5B9BF0"></i>Driver pay</span><b id="oDriver">$0</b></div>
-          <div class="brk-line"><span><i class="dot" style="background:#8B7CE8"></i>Maintenance</span><b id="oMaint">$0</b></div>
-          <div class="brk-line"><span><i class="dot" style="background:#4BA3A0"></i>Fixed cost</span><b id="oFixed">$0</b></div>
-          <div class="brk-line"><span><i class="dot" style="background:#B0763A"></i>Tolls &amp; fees</span><b id="oExtra">$0</b></div>
-          <div class="brk-line brk-total"><span style="color:#fff;font-weight:600">Total cost</span><b id="oTotal">$0</b></div>
-        </div>
-
-        <div style="margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--line-soft)">
-          <div style="font-size:.85rem;color:var(--tx-2);line-height:1.65" id="advice"></div>
-          <a class="btn btn-gold btn-sm" style="margin-top:1rem;width:100%" href="app.html">Score your whole fleet in the console →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════ CPM BUILDER ══════════ -->
-<section id="cpm" style="padding-top:0">
-  <div class="wrap">
-    <div class="panel rv" style="padding:clamp(1.5rem,3vw,2.4rem)">
-      <div class="road"><i></i><i></i><i></i></div>
-      <div class="grid g2" style="align-items:center;gap:2rem">
-        <div>
-          <span class="eyebrow">Second live tool</span>
-          <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">Your true cost per mile</h2>
-          <p class="lede" style="font-size:.98rem">The number above is only as good as the fixed cost you feed it.
-             Most carriers guess. Enter your real monthly overhead and get the figure that belongs in the calculator —
-             then push it straight in with one click.</p>
-          <div id="cpmOut" style="margin-top:1.6rem;padding:1.2rem;border-radius:12px;border:1px solid var(--line);background:rgba(227,180,74,.06)">
-            <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.4rem">Your fixed cost per mile</div>
-            <div class="bignum gold tick" id="cpmVal">$0.00</div>
-            <div style="font-size:.84rem;color:var(--tx-2);margin-top:.6rem" id="cpmNote"></div>
-            <button class="btn btn-gold btn-sm" style="margin-top:1rem" onclick="applyCPM()">Apply to calculator ↑</button>
-          </div>
-        </div>
-        <div>
-          <div class="field-row">
-            <div class="field"><label for="c1">Truck payment <span class="hint">/mo</span></label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c1" value="2450" min="0" step="50" inputmode="decimal"></div></div>
-            <div class="field"><label for="c2">Trailer <span class="hint">/mo</span></label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c2" value="620" min="0" step="10" inputmode="decimal"></div></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label for="c3">Insurance <span class="hint">/mo</span></label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c3" value="1350" min="0" step="50" inputmode="decimal"></div></div>
-            <div class="field"><label for="c4">Permits &amp; plates <span class="hint">/mo</span></label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c4" value="310" min="0" step="10" inputmode="decimal"></div></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label for="c5">ELD, software, phone</label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c5" value="185" min="0" step="5" inputmode="decimal"></div></div>
-            <div class="field"><label for="c6">Parking, admin, other</label>
-              <div class="inp has-pre"><span class="pre">$</span><input type="number" id="c6" value="540" min="0" step="10" inputmode="decimal"></div></div>
-          </div>
-          <div class="field">
-            <label for="cmiles">Miles driven per month <span class="hint">per truck</span></label>
-            <div class="inp has-suf"><input type="number" id="cmiles" value="10500" min="1" step="100" inputmode="decimal"><span class="suf">mi</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════ MORE TOOLS ══════════ -->
 
@@ -328,57 +85,53 @@
 <!-- ══════════ ASK ══════════ -->
 
 <!-- ══════════ FREIGHT NEWS ══════════ -->
-
-<!-- ══════════ CTA ══════════ -->
-<!-- ══════════ EXPLORE ══════════ -->
-<section id="explore">
+<section id="news" style="padding-top:clamp(110px,12vw,150px)">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">Everything else · one click away</span>
-      <h2>Where to go next</h2>
-      <p class="lede">The calculator above is the core. Each of these has its own page, so you can go straight to the part you need.</p>
+      <span class="eyebrow">Freight news worth your time</span>
+      <h1 style="font-size:clamp(2rem,4.4vw,3.2rem);margin:.4rem 0 .8rem">Where I keep an eye on the industry</h1>
+      <p class="lede">No feed to go stale here — just the sources that actually move, updated daily by the
+        people who cover this for a living. Open the ones that fit your lanes.</p>
     </div>
-    <div class="grid g3 six">
-      <a class="card mod rv" href="calculators.html">
-        <h3>Free calculators</h3>
-        <p>ETA &amp; hours of service, fuel surcharge, deadhead, detention, IFTA, factoring, take-home and maintenance reserve.</p>
-        <div class="foot"><span class="mono">8 calculators →</span></div>
-      </a>
-      <a class="card mod rv rv-d1" href="app.html">
-        <h3>Fleet console</h3>
-        <p>Eight modules on one cost model: load scoring, lanes, drivers, fuel, HOS, customers and deadhead. Free, no account.</p>
-        <div class="foot"><span class="mono">Open the console →</span></div>
-      </a>
-      <a class="card mod rv rv-d2" href="how-it-works.html">
-        <h3>How it works</h3>
-        <p>The exact formula behind every verdict, and what each of the eight console modules does.</p>
-        <div class="foot"><span class="mono">See the method →</span></div>
-      </a>
-      <a class="card mod rv" href="workbooks.html">
-        <h3>Excel workbooks</h3>
-        <p>The same engine in a spreadsheet you own. Seven one-time-purchase workbooks, no subscription.</p>
-        <div class="foot"><span class="mono">From $9 →</span></div>
-      </a>
-      <a class="card mod rv rv-d1" href="guides.html">
-        <h3>Guides</h3>
-        <p>66 written guides on cost per mile, compliance, taxes, insurance and running the business. Nothing gated.</p>
-        <div class="foot"><span class="mono">Read the guides →</span></div>
-      </a>
-      <a class="card mod rv rv-d2" href="work.html">
-        <h3>Work with me</h3>
-        <p>Cost-per-mile setup, new-authority packs and monthly support for owner-operators and small fleets.</p>
-        <div class="foot"><span class="mono">Services →</span></div>
-      </a>
+    <div class="grid g3" style="gap:1.1rem;margin-top:1.4rem">
+      <a class="card mod rv" href="https://www.freightwaves.com/news" target="_blank" rel="noopener">
+        <span class="kicker">Market &amp; rates</span><h3>FreightWaves</h3>
+        <p>Daily freight-market news, rate and capacity trends — the pulse of what your next load pays.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
+      <a class="card mod rv rv-d1" href="https://www.overdriveonline.com/" target="_blank" rel="noopener">
+        <span class="kicker">Owner-operators</span><h3>Overdrive</h3>
+        <p>News and how-to written for owner-operators and small fleets — business, equipment, regulations.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
+      <a class="card mod rv rv-d2" href="https://landline.media/" target="_blank" rel="noopener">
+        <span class="kicker">Advocacy</span><h3>Land Line</h3>
+        <p>OOIDA's newsroom — the rule changes and enforcement news that hit small carriers first.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
+      <a class="card mod rv" href="https://www.ccjdigital.com/" target="_blank" rel="noopener">
+        <span class="kicker">Fleets</span><h3>Commercial Carrier Journal</h3>
+        <p>Fleet operations, compliance and technology — a step up as you add trucks.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
+      <a class="card mod rv rv-d1" href="https://www.ttnews.com/" target="_blank" rel="noopener">
+        <span class="kicker">Industry</span><h3>Transport Topics</h3>
+        <p>Broad trucking-industry news and data, from freight demand to policy in Washington.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
+      <a class="card mod rv rv-d2" href="https://www.fmcsa.dot.gov/newsroom" target="_blank" rel="noopener">
+        <span class="kicker">Official · regulations</span><h3>FMCSA Newsroom</h3>
+        <p>The source itself — rulemakings, deadlines and safety notices, straight from the regulator.</p>
+        <div class="foot"><span class="mono">Open &rarr;</span></div></a>
     </div>
+    <p class="fine" style="margin-top:1.1rem;font-size:.8rem;color:var(--tx-3)">Independent sources, linked
+      for convenience — not affiliated with LoadMargin. For the how and why behind the headlines, the
+      <a href="guides.html" style="color:var(--gold)">66 guides</a> break it down.</p>
   </div>
 </section>
 
+<!-- ══════════ CTA ══════════ -->
 <section style="padding-bottom:clamp(70px,9vw,120px)">
   <div class="wrap">
     <div class="panel shine rv" style="padding:clamp(2rem,5vw,3.4rem);text-align:center">
       <img src="images/logo-mark.png" alt="" width="520" height="238" style="height:56px;width:auto;margin:0 auto 1.4rem;opacity:.95">
       <h2 style="margin-bottom:.7rem">Start with the <span class="vibrant">load you were just offered</span></h2>
-      <p class="lede" style="margin:0 auto 1.8rem">Put the <span class="vibrant">real rate</span> into the calculator above. If the verdict <span class="vibrant-subtle">surprises you</span>,
+      <p class="lede" style="margin:0 auto 1.8rem">Put the <span class="vibrant">real rate</span> into the <a href="index.html#calculator">calculator</a>. If the verdict <span class="vibrant-subtle">surprises you</span>,
         that is the entire product argument — and it <span class="vibrant-pulse">costs nothing</span> to confirm across your whole fleet.</p>
       <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
         <a href="app.html" class="btn btn-gold">Open the console — free</a>
@@ -469,11 +222,11 @@
       <video id="demoVideo" controls preload="none" playsinline poster="images/demo-poster.jpg" width="1280" height="720">
         <source src="images/loadmargin-demo.mp4" type="video/mp4">
         <source src="images/loadmargin-demo.webm" type="video/webm">
-        Your browser cannot play this video. <a href="#calculator" style="color:var(--gold)">Use the live calculator instead.</a>
+        Your browser cannot play this video. <a href="index.html#calculator" style="color:var(--gold)">Use the live calculator instead.</a>
       </video>
     </div>
     <div style="display:flex;gap:.7rem;margin-top:1.3rem;flex-wrap:wrap">
-      <a href="#calculator" class="btn btn-gold" onclick="closeModal('demoModal')">Try it yourself</a>
+      <a href="index.html#calculator" class="btn btn-gold" onclick="closeModal('demoModal')">Try it yourself</a>
       <a href="workbooks.html" class="btn btn-ghost" onclick="closeModal('demoModal')">See the workbooks</a>
     </div>
   </div>
@@ -803,7 +556,7 @@ const ICONS={
 };
 const MODULES=[
   {i:'score',v:'score',n:'Load Profitability Scoring',tag:'live',
-   d:'The engine running on this page. Rate, miles, deadhead, fuel, driver pay and overhead resolved into one accept-or-walk number.',
+   d:'The engine behind the calculator on the home page. Rate, miles, deadhead, fuel, driver pay and overhead resolved into one accept-or-walk number.',
    long:'Scores an offer against your own cost base rather than a market average. Deadhead is treated as real cost. Driver pay is modelled per mile or as a percentage of line haul. Returns net profit, margin, all-in rate per mile, break-even rate and the exact counter-offer that would reach your target margin.'},
   {i:'cpm',v:'cpm',n:'True Cost-Per-Mile Builder',tag:'live',
    d:'Turns monthly overhead into the per-mile figure every other module depends on. Also live on this page.',
