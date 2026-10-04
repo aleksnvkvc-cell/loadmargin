@@ -48,11 +48,10 @@
     const html = document.documentElement;
     if (theme === 'light') {
       html.setAttribute('data-theme', 'light');
-      document.body.style.colorScheme = 'light';
     } else {
       html.removeAttribute('data-theme');
-      document.body.style.colorScheme = 'dark';
     }
+    html.style.colorScheme = theme === 'light' ? 'light' : 'dark';
 
     // Update toggle state
     const toggle = document.getElementById('themeToggle');
@@ -65,13 +64,15 @@
   /**
    * Init theme system
    */
-  function initTheme() {
-    // Check stored preference
-    const stored = localStorage.getItem(STORAGE_KEY);
-    const auto = getAutoTheme();
-    const theme = stored || auto;
+  // Safe storage (private mode / blocked storage must not break the toggle)
+  function readPref() { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
+  function writePref(v) { try { v ? localStorage.setItem(STORAGE_KEY, v) : localStorage.removeItem(STORAGE_KEY); } catch (e) {} }
 
-    applyTheme(theme);
+  // Apply immediately (script is loaded in <head>, before first paint) — no dark flash
+  applyTheme(readPref() || getAutoTheme());
+
+  function initTheme() {
+    applyTheme(readPref() || getAutoTheme());
 
     // Listen for toggle
     const toggle = document.getElementById('themeToggle');
@@ -79,15 +80,14 @@
       toggle.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme') || 'dark';
         const next = current === 'light' ? 'dark' : 'light';
-        localStorage.setItem(STORAGE_KEY, next);
+        writePref(next);
         applyTheme(next);
       });
     }
 
     // Check theme every hour (in case time changed)
     setInterval(() => {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (!stored) { // Only auto-switch if no manual preference
+      if (!readPref()) { // Only auto-switch if no manual preference
         const auto = getAutoTheme();
         applyTheme(auto);
       }
@@ -104,12 +104,12 @@
   // Expose API for manual use
   window.themeManager = {
     set: (theme) => {
-      localStorage.setItem(STORAGE_KEY, theme);
+      writePref(theme);
       applyTheme(theme);
     },
-    get: () => localStorage.getItem(STORAGE_KEY) || getAutoTheme(),
+    get: () => readPref() || getAutoTheme(),
     auto: () => {
-      localStorage.removeItem(STORAGE_KEY);
+      writePref(null);
       applyTheme(getAutoTheme());
     },
     getTimeZone: getUserTimeZone
