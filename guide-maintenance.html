@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance cost per mile: the reserve, not the invoice | LoadMargin</title>
+<meta name="description" content="Why maintenance breaks cost models, how to build a twelve-month rolling cost per mile, what the big-ticket items really cost, why a $2,400 breakdown costs $5,295, and how truck age moves the number.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-maintenance.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maintenance cost per mile: the reserve, not the invoice | LoadMargin">
+<meta property="og:description" content="Why maintenance breaks cost models, how to build a twelve-month rolling cost per mile, what the big-ticket items really cost, why a $2,400 breakdown costs $5,295, and how truck age moves the number.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-maintenance.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Maintenance is a reserve, not an invoice","description":"Why maintenance breaks cost models, how to build a twelve-month rolling cost per mile, what the big-ticket items really cost, why a $2,400 breakdown costs $5,295, and how truck age moves the number.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-maintenance.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-maintenance.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Maintenance is a reserve, not an invoice","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-maintenance.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Fundamentals</span>
+    <h1>Maintenance is a reserve, not an invoice</h1>
+    <p class="lede">Eleven quiet months and then a $9,400 week. A cost model built on recent invoices is wrong in both directions — and most confidently wrong right before a major repair.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#why">Why maintenance breaks cost models</a></li><li><a href="#reserve">The reserve, not the invoice</a></li><li><a href="#build">Building your own number</a></li><li><a href="#components">What the big items actually cost</a></li><li><a href="#tyres">Tyres deserve their own line</a></li><li><a href="#age">How the number moves with truck age</a></li><li><a href="#downtime">The cost that is not the repair</a></li><li><a href="#pm">What preventive maintenance is worth</a></li><li><a href="#track">Tracking it so the number stays honest</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Maintenance is the line that makes cost models lie. Not because it is large, but
+because it arrives in lumps: eleven quiet months and then a $9,400 week. A model built on last
+month's invoices is wrong in both directions, and it is wrong most confidently right before a
+major repair.</p>
+
+<h2 id="why">Why maintenance breaks cost models</h2>
+<p>Fuel is smooth. Driver pay is smooth. Insurance is a monthly number. Maintenance is not — it is a
+   sequence of small routine costs punctuated by occasional large ones, and the large ones dominate
+   the total.</p>
+<p>A carrier who models maintenance from recent invoices does one of two things. In a quiet stretch
+   they under-cost every load, quote too cheaply, and appear more profitable than they are. In the
+   month of a major repair they over-cost every load, refuse rates they should have taken, and
+   conclude the lane went bad.</p>
+<div class="pullq">You do not have a maintenance expense. You have a maintenance reserve that you
+occasionally spend. Model the reserve; the invoices are just withdrawals.</div>
+
+<h2 id="reserve">The reserve, not the invoice</h2>
+<p>The correct treatment is to charge every mile a fixed amount and accumulate it, exactly as you
+   would if you were setting money aside — because you should be.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">maintenance_cpm = (12-month total repair + tyre + PM spend) ÷ 12-month miles</p>
+  <p style="font-family:var(--mono);margin:0">monthly_reserve = maintenance_cpm × miles_this_month</p>
+</div>
+<p>Two rules make this work:</p>
+<ol>
+  <li><strong>Use twelve months, minimum.</strong> Anything shorter is dominated by whether a major
+      item happened to fall inside the window. Twenty-four months is better once you have it.</li>
+  <li><strong>Include everything.</strong> Tyres, oil services, DOT inspections, brakes, the
+      breakdown that ended in a tow, the trailer. Excluding "unusual" items guarantees the number is
+      too low, because unusual items are most of the total.</li>
+</ol>
+<p>If you genuinely have no history, the commonly used starting figures are
+   <strong>$0.15 to $0.25 per mile</strong> for a well-maintained truck of moderate age, running
+   higher for older equipment and for vocational work. Start at the top of that band rather than the
+   bottom — a reserve that turns out to be too large is a pleasant problem.</p>
+
+<h2 id="build">Building your own number</h2>
+<p>A worked example over twelve months on a truck that ran 118,000 miles:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Category</th><th class="n">12-month spend</th><th class="n">Per mile</th></tr></thead>
+  <tbody>
+  <tr><td>Preventive services (oil, filters, greasing)</td><td class="n">$2,640</td><td class="n">$0.0224</td></tr>
+  <tr><td>Tyres (steer, drive, trailer)</td><td class="n">$5,900</td><td class="n">$0.0500</td></tr>
+  <tr><td>Brakes and air system</td><td class="n">$2,300</td><td class="n">$0.0195</td></tr>
+  <tr><td>Aftertreatment — DPF, DEF, sensors</td><td class="n">$3,850</td><td class="n">$0.0326</td></tr>
+  <tr><td>Engine and cooling</td><td class="n">$2,100</td><td class="n">$0.0178</td></tr>
+  <tr><td>Drivetrain, suspension, steering</td><td class="n">$1,950</td><td class="n">$0.0165</td></tr>
+  <tr><td>Electrical, lights, minor</td><td class="n">$1,180</td><td class="n">$0.0100</td></tr>
+  <tr><td>Trailer</td><td class="n">$1,540</td><td class="n">$0.0131</td></tr>
+  <tr><td>Roadside, towing, mobile call-outs</td><td class="n">$1,620</td><td class="n">$0.0137</td></tr>
+  <tr class="tot"><td>Total</td><td class="n">$23,080</td><td class="n">$0.1956</td></tr>
+  </tbody>
+</table></div>
+<p>Roughly <strong>19.6 cents per mile</strong>. That is the figure that belongs in the cost model
+   every single month, including the eleven months when almost nothing broke.</p>
+<div class="keybox">
+  <h3>Sanity check on the reserve</h3>
+  <p>At 19.6 cents on 118,000 miles a year, the reserve accumulates <strong>$1,923 a month</strong>.
+     If your actual cash balance never gets near that, the reserve is fiction and the next big
+     repair will be financed by a credit card at a rate that makes factoring look cheap.</p>
+</div>
+
+<h2 id="components">What the big items actually cost</h2>
+<p>Indicative parts-and-labour ranges for a Class 8 tractor. The point of this table is not
+   precision — it is that four of these items exceed a month's revenue on a single truck.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Item</th><th class="n">Typical range</th><th>Rough interval</th></tr></thead>
+  <tbody>
+  <tr><td>PM service (A service)</td><td class="n">$250 – $450</td><td>Every 15–25k miles</td></tr>
+  <tr><td>DOT annual inspection</td><td class="n">$150 – $350</td><td>Annual</td></tr>
+  <tr><td>Brake job, one axle</td><td class="n">$700 – $1,400</td><td>150–300k miles</td></tr>
+  <tr><td>DPF cleaning</td><td class="n">$400 – $900</td><td>150–250k miles</td></tr>
+  <tr><td>DPF replacement</td><td class="n">$3,000 – $7,000</td><td>Failure-driven</td></tr>
+  <tr><td>Turbocharger</td><td class="n">$2,500 – $5,000</td><td>Failure-driven</td></tr>
+  <tr><td>Clutch</td><td class="n">$2,500 – $4,500</td><td>400–700k miles</td></tr>
+  <tr><td>Transmission rebuild</td><td class="n">$5,000 – $9,000</td><td>Failure-driven</td></tr>
+  <tr><td>Engine in-frame overhaul</td><td class="n">$18,000 – $30,000</td><td>800k – 1.2M miles</td></tr>
+  </tbody>
+</table></div>
+<p>The in-frame is the item that decides whether a cost model was honest. At $24,000 over 1,000,000
+   miles it is <strong>2.4 cents per mile</strong> that must be reserved from day one, on a truck
+   that will not need it for six years. Carriers who do not reserve it discover the number at the
+   worst possible moment, and typically trade the truck rather than fix it — which is the same money
+   with a worse outcome.</p>
+
+<h2 id="tyres">Tyres deserve their own line</h2>
+<p>Tyres are the one large maintenance item that is genuinely predictable, which makes them the best
+   place to prove the reserve method works.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Position</th><th class="n">Count</th><th class="n">Cost each</th><th class="n">Life</th><th class="n">Per mile</th></tr></thead>
+  <tbody>
+  <tr><td>Steer</td><td class="n">2</td><td class="n">$550</td><td class="n">100,000</td><td class="n">$0.0110</td></tr>
+  <tr><td>Drive</td><td class="n">8</td><td class="n">$450</td><td class="n">250,000</td><td class="n">$0.0144</td></tr>
+  <tr><td>Trailer</td><td class="n">8</td><td class="n">$380</td><td class="n">200,000</td><td class="n">$0.0152</td></tr>
+  <tr class="tot"><td>Total tyre cost per mile</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">$0.0406</td></tr>
+  </tbody>
+</table></div>
+<p>Four cents a mile, every mile, forever. Add casing value if you retread and the number falls; run
+   them past the wear bars and it rises, because a roadside blowout costs a service call, a tyre at
+   emergency pricing, and half a day.</p>
+<div class="keybox">
+  <h3>The cheapest maintenance there is</h3>
+  <p>Correct inflation pressure affects tyre life, fuel economy and blowout risk simultaneously. It
+     costs nothing and takes five minutes at a pre-trip. It is the highest-return maintenance action
+     available to a small carrier, and it is the one most consistently skipped.</p>
+</div>
+
+<h2 id="age">How the number moves with truck age</h2>
+<p>Maintenance cost per mile is not constant across a truck's life. A rough shape, useful for
+   planning rather than as a benchmark:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Truck age</th><th class="n">Indicative maint. CPM</th><th>What dominates</th></tr></thead>
+  <tbody>
+  <tr><td>0 – 2 years / under 300k</td><td class="n">$0.08 – $0.12</td><td>PM and tyres; most failures under warranty</td></tr>
+  <tr><td>3 – 5 years / 300–700k</td><td class="n">$0.15 – $0.22</td><td>Aftertreatment, brakes, first big-ticket items</td></tr>
+  <tr><td>6 – 8 years / 700k – 1.1M</td><td class="n">$0.22 – $0.35</td><td>Overhaul territory, drivetrain, rising downtime</td></tr>
+  <tr><td>9+ years</td><td class="n">$0.30 – $0.50+</td><td>Highly variable; downtime often exceeds parts</td></tr>
+  </tbody>
+</table></div>
+<p>This is the real content of the buy-versus-keep decision, and it is usually argued with the wrong
+   comparison. The right one is not "payment versus repair bill". It is:</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">keep:    maintenance_cpm + downtime_cpm</p>
+  <p style="font-family:var(--mono);margin:0">replace: payment_cpm + newer_maintenance_cpm + downtime_cpm</p>
+</div>
+<p>An older truck with 30 cents of maintenance and 6 cents of downtime is costing 36 cents a mile.
+   A newer truck at 40 cents of payment and 10 cents of maintenance costs 50. The old truck is
+   cheaper — right up until the downtime figure moves, and downtime is the variable that moves
+   fastest and gets measured least.</p>
+
+<h2 id="downtime">The cost that is not the repair</h2>
+<p>A three-day breakdown is not a $2,400 repair. It is a $2,400 repair plus three days of a truck
+   that earns nothing and costs its fixed rate regardless.</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Repair invoice</td><td class="n">$2,400</td></tr>
+  <tr><td>Tow</td><td class="n">$650</td></tr>
+  <tr><td>Fixed cost, 3 days at $195.77</td><td class="n">$587.31</td></tr>
+  <tr><td>Lost contribution, 3 days × 550 miles × $0.75</td><td class="n">$1,237.50</td></tr>
+  <tr><td>Driver retained / hotel / repositioning</td><td class="n">$420</td></tr>
+  <tr class="tot"><td>True cost of the event</td><td class="n neg">$5,294.81</td></tr>
+  </tbody>
+</table></div>
+<p>The invoice was 45% of it. This is why preventive maintenance economics are so lopsided, and why
+   "we fixed it cheap" is frequently the more expensive outcome.</p>
+
+<h2 id="pm">What preventive maintenance is worth</h2>
+<p>Compare two policies over 118,000 miles a year.</p>
+<div class="tw2"><table>
+  <thead><tr><th></th><th class="n">Reactive</th><th class="n">Scheduled PM</th></tr></thead>
+  <tbody>
+  <tr><td>PM services per year</td><td class="n">3 × $320 = $960</td><td class="n">6 × $320 = $1,920</td></tr>
+  <tr><td>Roadside breakdowns per year</td><td class="n">3.5</td><td class="n">1.2</td></tr>
+  <tr><td>Cost per breakdown event</td><td class="n">$5,295</td><td class="n">$5,295</td></tr>
+  <tr><td>Breakdown cost</td><td class="n">$18,532</td><td class="n">$6,354</td></tr>
+  <tr class="tot"><td>Total</td><td class="n">$19,492</td><td class="n">$8,274</td></tr>
+  <tr><td>Per mile</td><td class="n">$0.165</td><td class="n">$0.070</td></tr>
+  </tbody>
+</table></div>
+<p>The breakdown frequencies here are illustrative, not measured — the point is the shape. Doubling
+   PM spend to halve or better the breakdown rate wins by a wide margin, because a PM service costs
+   $320 and a breakdown costs $5,295. You do not need the frequencies to be precise for the
+   conclusion to hold; you need the ratio to be roughly right, and it is.</p>
+<p>The practical version: a PM schedule tied to mileage, an inspection habit at every pre-trip, and
+   a rule that a small noise gets looked at at the yard rather than at 2 a.m. on a shoulder.</p>
+
+<h2 id="track">Tracking it so the number stays honest</h2>
+<p>Four fields per event, and the number maintains itself:</p>
+<ul>
+  <li><strong>Date and odometer</strong> — lets you compute intervals and per-mile cost properly.</li>
+  <li><strong>Category</strong> — PM, tyres, brakes, aftertreatment, engine, drivetrain, trailer,
+      roadside. Eight buckets is plenty and it is enough to see where the money goes.</li>
+  <li><strong>Planned or unplanned</strong> — the single most informative field, because the ratio
+      between them tells you whether your PM programme is working.</li>
+  <li><strong>Downtime hours</strong> — the cost nobody records and the one that decides buy-versus-keep.</li>
+</ul>
+<p>Recompute the twelve-month rolling cost per mile monthly and feed it straight into the cost model.
+   When it moves, you find out from your own data rather than from a surprise, and the load
+   calculator is telling the truth again the same day.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Put the reserve in, not last month's invoices</h3>
+    <p>The cost-per-mile builder has a maintenance field. Use your rolling twelve-month figure —
+       for most trucks it is between 15 and 25 cents, and it is almost never zero.</p>
+  </div>
+  <a href="index.html#cpm" class="btn btn-gold">Build your cost per mile →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Component cost ranges, service intervals and tyre lives are indicative Class 8 figures for planning. Actual costs vary enormously by make, spec, duty cycle, region and whether work is done in-house.</li><li>The 15–25 cents per mile starting band and the age-versus-cost table are working planning ranges, not published benchmarks. Replace them with your own twelve-month rolling figure as soon as you have one.</li><li>Downtime and preventive-maintenance comparison tables are illustrative models built on the stated assumptions, using the $195.77 per day fixed cost from the cost base used across this site. The breakdown frequencies are assumptions, and are labelled as such.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Where the maintenance reserve belongs in the model.</span></a><a href="guide-authority.html"><span class="k">Guide</span><span class="t">What authority really costs</span><span class="d">The other fixed costs that accrue whether the truck moves or not.</span></a><a href="workbooks.html#fuel"><span class="k">Workbook</span><span class="t">Fuel &amp; maintenance tracking</span><span class="d">Log events by category and get the rolling per-mile figure automatically.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

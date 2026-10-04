@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOT Audit Readiness Check — free | LoadMargin</title>
+<meta name="description" content="A free self-check for small US carriers: score how ready you are for a new-entrant or safety audit across driver files, drug & alcohol, HOS, vehicles, authority and records — with the gaps to fix first. Nothing uploaded.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/audit-check.html">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<style>
+  :root{--bg:#030A16;--panel:#0A1628;--panel2:#0d1b30;--line:#1b2a3f;--tx:#e8eef7;--tx2:#a9b6c9;--tx3:#6f8098;--gold:#E3B44A;--blue:#2C6FD1;--pos:#3fbf7f;--neg:#e0655a;--warn:#e0a53a;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:15px;line-height:1.55}
+  h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;margin:0}
+  a{color:var(--gold)}
+  .wrap{max-width:900px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.6rem)}
+  header{border-bottom:1px solid var(--line);padding:1rem 0;position:sticky;top:0;background:rgba(3,10,22,.92);backdrop-filter:blur(8px);z-index:20}
+  .brand{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+  .logo{width:34px;height:34px;border-radius:8px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
+  .brand b{font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;font-size:1.05rem}
+  .brand b span{color:var(--gold)}
+  .tag{color:var(--tx3);font-size:.82rem;margin-left:.2rem;text-decoration:none}
+  .spacer{flex:1}
+  .hero{padding:2rem 0 1rem}
+  .eyebrow{color:var(--gold);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+  h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.4rem 0 .6rem}
+  .lede{color:var(--tx2);font-size:1.02rem;max-width:62ch}
+  .layout{display:grid;grid-template-columns:1fr 300px;gap:1.4rem;align-items:start;padding-bottom:3rem}
+  .sec{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;margin-bottom:1rem}
+  .sec h2{font-size:1.02rem;color:var(--gold);margin-bottom:.2rem}
+  .sec .sub{color:var(--tx3);font-size:.82rem;margin-bottom:.8rem}
+  .item{padding:.7rem 0;border-top:1px solid var(--line)}
+  .item:first-of-type{border-top:0}
+  .item .q{display:block;color:var(--tx);font-size:.93rem;margin-bottom:.5rem;line-height:1.5}
+  .item .q .g{font-size:.8rem;margin-left:.3rem;white-space:nowrap}
+  .opts{display:flex;gap:.4rem;flex-wrap:wrap}
+  .opts label{cursor:pointer}
+  .opts input{position:absolute;opacity:0;width:0;height:0}
+  .opts span{display:inline-block;padding:.32rem .7rem;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--tx2);background:var(--panel2);transition:.15s}
+  .opts input:checked + span{border-color:transparent;color:#0c1220;font-weight:600}
+  .opts .yes input:checked + span{background:var(--pos)}
+  .opts .part input:checked + span{background:var(--warn)}
+  .opts .no input:checked + span{background:var(--neg);color:#fff}
+  .opts .na input:checked + span{background:var(--tx3);color:#0c1220}
+  .panelScore{position:sticky;top:84px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.3rem}
+  .gauge{text-align:center;margin-bottom:.6rem}
+  .gauge .n{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:700;line-height:1}
+  .band{text-align:center;font-weight:600;padding:.4rem;border-radius:8px;margin:.4rem 0 1rem;font-size:.9rem}
+  .band.ready{background:rgba(63,191,127,.15);color:#8fe0b4}
+  .band.risk{background:rgba(224,165,58,.15);color:#f0cd8a}
+  .band.no{background:rgba(224,101,90,.16);color:#f0a49c}
+  .gaps h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3);margin-bottom:.5rem}
+  .gaps ul{list-style:none;margin:0;padding:0}
+  .gaps li{font-size:.85rem;color:var(--tx2);padding:.4rem 0;border-top:1px solid var(--line);line-height:1.45}
+  .gaps li:first-child{border-top:0}
+  .gaps li b{color:var(--warn)}
+  .gaps li.crit b{color:var(--neg)}
+  .gaps a{font-size:.8rem}
+  .cta{margin-top:1.1rem;border-top:1px solid var(--line);padding-top:1rem}
+  .cta p{font-size:.85rem;color:var(--tx2);margin:0 0 .6rem;line-height:1.5}
+  .btn{display:inline-block;background:var(--gold);color:#1a1305;border:0;border-radius:9px;padding:.55rem .9rem;font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;text-decoration:none;text-align:center}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--tx)}
+  .foot{color:var(--tx3);font-size:.8rem;line-height:1.7;padding:1.5rem 0 3rem;border-top:1px solid var(--line)}
+  @media(max-width:780px){.layout{grid-template-columns:1fr}.panelScore{position:static;order:-1}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo"><svg width="22" height="22" viewBox="0 0 64 64"><path d="M14 44V20h7v18h11v6z" fill="#2C6FD1"/><path d="M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z" fill="#E3B44A"/></svg></span>
+      <b>LOAD<span>MARGIN</span></b>
+      <span class="spacer"></span>
+      <a href="index.html" class="tag">&larr; Home</a>
+      <a href="guides.html" class="tag">Guides</a>
+      <a href="work.html" class="tag">Work with me</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="eyebrow">Free · nothing uploaded</span>
+    <h1>DOT Audit Readiness Check</h1>
+    <p class="lede">Answer honestly and see how ready you are for a new-entrant or safety audit — and,
+      more useful, the exact gaps to close first. Everything runs in your browser; nothing is saved or sent.</p>
+  </div>
+
+  <div class="layout">
+    <div id="form"></div>
+
+    <aside class="panelScore">
+      <div class="gauge"><span class="n" id="score">—</span><span style="color:var(--tx3)"> / 100</span></div>
+      <div class="band" id="band">Answer the questions →</div>
+      <div class="gaps">
+        <h3>Fix these first</h3>
+        <ul id="gaps"><li style="border:0;color:var(--tx3)">Your weakest areas will appear here as you answer.</li></ul>
+      </div>
+      <div class="cta">
+        <p id="ctaText">Want a second pair of eyes before the auditor's? I check your file against exactly this list.</p>
+        <a class="btn" href="work.html#contact">Compliance tune-up — $199 &rarr;</a>
+        <a class="btn ghost" href="work.html#service" style="margin-top:.5rem;display:block">See all services</a>
+      </div>
+    </aside>
+  </div>
+
+  <p class="foot">
+    This is a self-check for planning, not legal advice or a guarantee of passing. Requirements change and
+    depend on your operation — confirm against the current FMCSA rules or ask a professional. For the how and
+    why behind each item, the <a href="guides.html">guides</a> break it down.
+  </p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var ITEMS=[
+    {s:"Driver qualification files", d:"What the auditor pulls first.", items:[
+      {id:"dq_med", w:3, q:"Every driver's medical certificate is current and on file", g:"guide-dot-physical.html"},
+      {id:"dq_mvr", w:2, q:"An MVR was pulled at hire and reviewed within the last 12 months", g:"guide-new-entrant-audit.html"},
+      {id:"dq_app", w:2, q:"A completed employment application is on file for each driver", g:"guide-new-entrant-audit.html"},
+      {id:"dq_cdl", w:1, q:"CDL, road test or equivalent documented for each driver", g:"guide-new-entrant-audit.html"}
+    ]},
+    {s:"Drug & alcohol program", d:"The fastest way to fail if missing.", items:[
+      {id:"da_pre", w:3, q:"A pre-employment drug test was passed before each driver drove", g:"guide-drug-alcohol-program.html"},
+      {id:"da_random", w:3, q:"You're enrolled in a random testing consortium (2026: 50% drug / 10% alcohol)", g:"guide-drug-alcohol-program.html"},
+      {id:"da_ch_pre", w:3, q:"A full Clearinghouse query was run at hire for each driver", g:"guide-clearinghouse.html"},
+      {id:"da_ch_yr", w:3, q:"A limited Clearinghouse query was run in the last 12 months", g:"guide-clearinghouse.html"}
+    ]},
+    {s:"Hours of service", d:"Logs and the paper behind them.", items:[
+      {id:"hos_eld", w:2, q:"An ELD is in use and drivers are trained on it", g:"guide-eld.html"},
+      {id:"hos_docs", w:2, q:"Supporting documents and logs are kept for at least 6 months", g:"guide-hos.html"}
+    ]},
+    {s:"Vehicles", d:"Inspections and the record of them.", items:[
+      {id:"veh_annual", w:3, q:"Every vehicle has a current annual DOT inspection", g:"guide-maintenance.html"},
+      {id:"veh_dvir", w:2, q:"Drivers complete DVIRs and defects are repaired and recorded", g:"guide-maintenance.html"},
+      {id:"veh_rec", w:1, q:"Maintenance records are kept for each vehicle", g:"guide-maintenance.html"}
+    ]},
+    {s:"Authority & filings", d:"Active, current, and on file.", items:[
+      {id:"au_ins", w:2, q:"Authority is active and insurance is on file (BMC-91)", g:"guide-insurance.html"},
+      {id:"au_150", w:2, q:"MCS-150 was updated within the last 24 months", g:"guide-mcs150.html"},
+      {id:"au_ifta", w:2, q:"IFTA is registered and quarterly returns are filed on time", g:"guide-ifta.html"}
+    ]},
+    {s:"Records", d:"Small things auditors still check.", items:[
+      {id:"rec_acc", w:1, q:"An accident register is maintained (even if it's empty)", g:"guide-new-entrant-audit.html"},
+      {id:"rec_csa", w:1, q:"You monitor your CSA / SMS scores", g:"guide-csa.html"}
+    ]}
+  ];
+  var state={};
+
+  function render(){
+    var html="";
+    for(var i=0;i<ITEMS.length;i++){
+      var sec=ITEMS[i];
+      html+='<div class="sec"><h2>'+sec.s+'</h2><div class="sub">'+sec.d+'</div>';
+      for(var j=0;j<sec.items.length;j++){
+        var it=sec.items[j], n=it.id;
+        html+='<div class="item"><span class="q">'+it.q+
+          (it.g?' <a class="g" href="'+it.g+'" target="_blank" rel="noopener">why &rarr;</a>':'')+'</span>'+
+          '<div class="opts">'+
+            opt(n,"yes","Yes")+opt(n,"part","Partly")+opt(n,"no","No")+opt(n,"na","N/A")+
+          '</div></div>';
+      }
+      html+='</div>';
+    }
+    document.getElementById("form").innerHTML=html;
+    document.getElementById("form").addEventListener("change",function(e){
+      if(e.target && e.target.name){ state[e.target.name]=e.target.value; compute(); }
+    });
+  }
+  function opt(name,val,label){
+    var cls=val==="yes"?"yes":val==="part"?"part":val==="no"?"no":"na";
+    return '<label class="'+cls+'"><input type="radio" name="'+name+'" value="'+val+'"><span>'+label+'</span></label>';
+  }
+
+  function compute(){
+    var got=0,max=0,gaps=[];
+    for(var i=0;i<ITEMS.length;i++){
+      for(var j=0;j<ITEMS[i].items.length;j++){
+        var it=ITEMS[i].items[j], v=state[it.id];
+        if(!v || v==="na") continue;
+        max+=it.w;
+        var f=v==="yes"?1:v==="part"?0.5:0;
+        got+=it.w*f;
+        if(f<1) gaps.push({q:it.q,g:it.g,w:it.w,crit:(v==="no"&&it.w>=3)});
+      }
+    }
+    var el=document.getElementById("score"), bd=document.getElementById("band");
+    if(max===0){ el.textContent="—"; bd.className="band"; bd.textContent="Answer the questions →";
+      document.getElementById("gaps").innerHTML='<li style="border:0;color:var(--tx3)">Your weakest areas will appear here as you answer.</li>'; return; }
+    var pct=Math.round(got/max*100);
+    el.textContent=pct;
+    el.style.color = pct>=85?"var(--pos)":pct>=60?"var(--warn)":"var(--neg)";
+    if(pct>=85){ bd.className="band ready"; bd.textContent="Audit-ready — keep it current"; }
+    else if(pct>=60){ bd.className="band risk"; bd.textContent="At risk — close the gaps below"; }
+    else { bd.className="band no"; bd.textContent="Not ready — act before an audit finds it"; }
+    gaps.sort(function(a,b){ return (b.crit-a.crit)|| (b.w-a.w); });
+    var g=document.getElementById("gaps");
+    if(!gaps.length){ g.innerHTML='<li style="border:0;color:var(--pos)">No gaps flagged. Nice.</li>'; }
+    else{
+      var h="";
+      for(var k=0;k<gaps.length && k<8;k++){
+        h+='<li'+(gaps[k].crit?' class="crit"':'')+'><b>'+(gaps[k].crit?'Critical':'Gap')+'</b> — '+gaps[k].q+
+           (gaps[k].g?' <a href="'+gaps[k].g+'" target="_blank" rel="noopener">fix &rarr;</a>':'')+'</li>';
+      }
+      g.innerHTML=h;
+    }
+    var ct=document.getElementById("ctaText");
+    ct.textContent = pct>=85
+      ? "Solid. If you want it kept current every month so it never slips, that's what a retainer is for."
+      : "That's a list you don't want an auditor writing for you. I check your file against exactly this and hand you the fixes in order.";
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

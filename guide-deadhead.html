@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The real cost of deadhead miles — LoadMargin</title>
+<meta name="description" content="Why empty miles are the most misread number in freight, what one actually costs, and how to price a backhaul so a cheap return does not get refused for the wrong reason.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-deadhead.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The real cost of deadhead miles — LoadMargin">
+<meta property="og:description" content="Why empty miles are the most misread number in freight, what one actually costs, and how to price a backhaul so a cheap return does not get refused for the wrong reason.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-deadhead.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"The real cost of deadhead miles","description":"Why empty miles are the most misread number in freight, what one actually costs, and how to price a backhaul so a cheap return does not get refused for the wrong reason.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-deadhead.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-deadhead.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"The real cost of deadhead miles","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-deadhead.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Fundamentals</span>
+    <h1>The real cost of deadhead miles</h1>
+    <p class="lede">Empty miles do not appear on a rate confirmation. They appear in your bank account. Here is the arithmetic, and how to price a backhaul properly.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What deadhead actually is</a></li><li><a href="#why">Why it is the most misread number in freight</a></li><li><a href="#cost">What an empty mile really costs</a></li><li><a href="#example">The same rate, two outcomes</a></li><li><a href="#rpm">Why rate per mile lies about it</a></li><li><a href="#backhaul">Pricing a backhaul properly</a></li><li><a href="#cheap">When a cheap return beats a rich one</a></li><li><a href="#reduce">Five ways to cut it</a></li><li><a href="#target">What percentage is normal</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Deadhead does not appear on a rate confirmation. It appears in your bank account.
+It is the single most commonly underestimated cost in trucking, and the arithmetic showing why
+takes about four minutes.</p>
+
+<h2 id="what">What deadhead actually is</h2>
+<p><strong>Deadhead is any mile the truck runs empty.</strong> Driving from where you delivered to
+   where the next load picks up. Repositioning after a customer cancels. Running home at the end of
+   a week because there was nothing going that direction.</p>
+<p>Some people call it non-revenue miles, which is more honest: the truck is working, burning fuel
+   and consuming hours of service, and nobody is paying for it.</p>
+
+<h2 id="why">Why it is the most misread number in freight</h2>
+<p>Two reasons, and they compound.</p>
+<p>The first is that <strong>deadhead is invisible at the moment of decision</strong>. The rate
+   confirmation says 850 miles. The broker says 850 miles. Nothing in the conversation mentions the
+   120 miles you will drive to reach the pickup, because from the broker's side those miles do not
+   exist.</p>
+<p>The second is that <strong>rate per mile — the industry's default shorthand — silently divides
+   by the wrong number</strong>. When somebody says "that's $2.82 a mile", they have divided the
+   rate by loaded miles. The truck ran 970.</p>
+<div class="pullq">Every mile costs the same whether the trailer is full or empty. The trailer does
+not know. The fuel gauge does not know. Only the invoice knows.</div>
+
+<h2 id="cost">What an empty mile really costs</h2>
+<p>An empty mile costs everything a loaded mile costs, minus nothing:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Component</th><th class="n">Per mile</th><th>Runs when empty?</th></tr></thead>
+  <tbody>
+  <tr><td>Fuel ($3.85 ÷ 6.5 mpg)</td><td class="n">$0.592</td><td>Yes — slightly less, since the trailer is lighter</td></tr>
+  <tr><td>Driver pay</td><td class="n">$0.620</td><td>Yes — most carriers pay all miles</td></tr>
+  <tr><td>Maintenance and tyres</td><td class="n">$0.190</td><td>Yes — wear is wear</td></tr>
+  <tr><td>Fixed cost of the truck</td><td class="n">$0.520</td><td>Yes — the payment does not pause</td></tr>
+  <tr class="tot"><td>Total per empty mile</td><td class="n">$1.922</td><td></td></tr>
+  </tbody>
+</table></div>
+<p>Empty running is marginally more fuel-efficient because the load is lighter — perhaps five to
+   eight per cent. That is the entire discount. Everything else is charged in full.</p>
+<div class="keybox">
+  <h3>The number worth memorising</h3>
+  <p>At a typical cost base, <strong>every empty mile costs roughly $1.90</strong>. A hundred miles
+     of deadhead is about <strong>$190</strong> gone before the load has earned a cent.</p>
+  <p>Work out your own figure once — it is your all-in cost per mile — and the arithmetic on any
+     offer becomes something you can do in your head.</p>
+</div>
+
+<h2 id="example">The same rate, two outcomes</h2>
+<p>Two loads. Identical rate, identical loaded miles, identical truck. The only difference is how
+   far you drive to reach the pickup.</p>
+<div class="tw2"><table>
+  <thead><tr><th></th><th class="n">Load A</th><th class="n">Load B</th></tr></thead>
+  <tbody>
+  <tr><td>Line haul rate</td><td class="n">$2,400</td><td class="n">$2,400</td></tr>
+  <tr><td>Loaded miles</td><td class="n">850</td><td class="n">850</td></tr>
+  <tr><td>Deadhead miles</td><td class="n">40</td><td class="n">310</td></tr>
+  <tr><td>Total miles</td><td class="n">890</td><td class="n">1,160</td></tr>
+  <tr><td>Fuel</td><td class="n">−$527</td><td class="n">−$687</td></tr>
+  <tr><td>Driver pay</td><td class="n">−$552</td><td class="n">−$719</td></tr>
+  <tr><td>Maintenance</td><td class="n">−$169</td><td class="n">−$220</td></tr>
+  <tr><td>Fixed cost</td><td class="n">−$463</td><td class="n">−$603</td></tr>
+  <tr><td>Tolls and fees</td><td class="n">−$85</td><td class="n">−$85</td></tr>
+  <tr class="tot"><td>Net profit</td><td class="n">$604</td><td class="n">$86</td></tr>
+  <tr><td>Margin</td><td class="n">25.2%</td><td class="n">3.6%</td></tr>
+  <tr><td>Rate per <em>loaded</em> mile</td><td class="n">$2.82</td><td class="n">$2.82</td></tr>
+  <tr><td>Rate per <em>total</em> mile</td><td class="n">$2.70</td><td class="n">$2.07</td></tr>
+  </tbody>
+</table></div>
+<p>Look at the last two rows. By the number the industry quotes, these loads are <strong>identical
+   at $2.82 a mile</strong>. By the number that pays your bills, one earns $604 and the other
+   earns $86 — and Load B consumed an extra day of truck time to do it.</p>
+<p>That $518 gap is not an unusual case. It is a 270-mile difference in deadhead, which is an
+   ordinary Tuesday.</p>
+
+<h2 id="rpm">Why rate per mile lies about it</h2>
+<p>Rate per mile is not wrong as arithmetic. It is wrong as a <em>denominator choice</em>.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">what everyone quotes:  rate ÷ loaded_miles</p>
+  <p style="font-family:var(--mono);margin:0">what the truck runs:   rate ÷ (loaded + deadhead)</p>
+</div>
+<p>The gap between those two figures is exactly the size of your deadhead problem on that load. In
+   the example above it is 12 cents on Load A and <strong>75 cents on Load B</strong>.</p>
+<p>Call the second one your <strong>all-in rate per mile</strong>. It is the only version worth
+   comparing between loads, and it is what the calculator on this site reports.</p>
+
+<h2 id="backhaul">Pricing a backhaul properly</h2>
+<p>Here is where most carriers lose money without noticing: they evaluate the return leg
+   <strong>on its own</strong>, as though refusing it were free.</p>
+<p>It is not. If you refuse every return, you still drive home — empty, at $1.92 a mile.</p>
+<p>The correct comparison is between three whole outcomes:</p>
+<ol>
+  <li><strong>Outbound, then deadhead home.</strong> The baseline. Whatever the outbound earned,
+      minus the cost of the empty return.</li>
+  <li><strong>Outbound, then return load A.</strong> The whole round trip, both legs together.</li>
+  <li><strong>Outbound, then return load B.</strong> Same again.</li>
+</ol>
+<p>Score the trip, never the leg.</p>
+
+<h2 id="cheap">When a cheap return beats a rich one</h2>
+<p>You have delivered 850 miles from home. Two returns are offered.</p>
+<div class="tw2"><table>
+  <thead><tr><th></th><th class="n">Empty home</th><th class="n">Return A</th><th class="n">Return B</th></tr></thead>
+  <tbody>
+  <tr><td>Return rate</td><td class="n">$0</td><td class="n">$1,650</td><td class="n">$2,100</td></tr>
+  <tr><td>Loaded miles home</td><td class="n">0</td><td class="n">790</td><td class="n">930</td></tr>
+  <tr><td>Deadhead to reach it</td><td class="n">850</td><td class="n">60</td><td class="n">240</td></tr>
+  <tr><td>Total return miles</td><td class="n">850</td><td class="n">850</td><td class="n">1,170</td></tr>
+  <tr><td>Cost of the return leg</td><td class="n">−$1,634</td><td class="n">−$1,634</td><td class="n">−$2,249</td></tr>
+  <tr class="tot"><td>Return leg net</td><td class="n">−$1,634</td><td class="n">$16</td><td class="n">−$149</td></tr>
+  <tr><td>Better than empty by</td><td class="n">—</td><td class="n">$1,650</td><td class="n">$1,485</td></tr>
+  </tbody>
+</table></div>
+<p>Return B pays <strong>$450 more</strong> and looks like the obvious choice. It is the worse
+   choice by <strong>$165</strong>, because reaching it costs 180 extra empty miles and the longer
+   route adds 140 loaded miles of cost the extra rate does not cover.</p>
+<div class="pullq">A cheap return that eliminates 300 empty miles beats a rich return that adds 200.
+The rate is not the variable that decides it.</div>
+<p>Note also that <em>both</em> returns beat driving home empty by roughly $1,500. Even Return A, at
+   a barely-break-even $16 on its own leg, is worth taking — because the alternative is not zero,
+   it is minus $1,634.</p>
+
+<h2 id="reduce">Five ways to cut it</h2>
+<ol>
+  <li><strong>Price the round trip before you accept the outbound.</strong> A good rate into a dead
+      market is not a good rate. If you know the region has no outbound freight, the deadhead home
+      belongs in the outbound decision.</li>
+  <li><strong>Track deadhead as a percentage, per lane.</strong> Lanes have persistent patterns. A
+      lane that averages 22% deadhead is not unlucky; it is structurally expensive, and it should
+      be priced that way or dropped.</li>
+  <li><strong>Trade rate for position.</strong> Taking $150 less to deliver somewhere with freight
+      is profitable if it saves 200 empty miles — that is $380 of cost avoided for $150 given up.</li>
+  <li><strong>Widen the pickup radius rather than the rate.</strong> A load 40 miles further out at
+      the same rate is usually better than one 40 miles closer at 10 cents less.</li>
+  <li><strong>Measure it honestly.</strong> Most carriers do not know their deadhead percentage.
+      You cannot manage a number you have never calculated.</li>
+</ol>
+
+<h2 id="target">What percentage is normal</h2>
+<p>Deadhead is usually expressed as empty miles ÷ total miles:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Range</th><th>Reading</th></tr></thead>
+  <tbody>
+  <tr><td>Under 8%</td><td>Very good. Usually dedicated freight or a dense operating area.</td></tr>
+  <tr><td>8–12%</td><td>Normal for a well-run truckload operation.</td></tr>
+  <tr><td>12–18%</td><td>Worth attention. Often one or two lanes doing the damage.</td></tr>
+  <tr><td>Over 18%</td><td>Something structural. Usually a region with no outbound freight, or a habit of chasing rate over position.</td></tr>
+  </tbody>
+</table></div>
+<p>These are working rules of thumb from operating experience, not a published statistic — treat
+   them as a place to start rather than a benchmark to hit. Specialised equipment legitimately runs
+   higher, and your own trend over time tells you more than any industry figure.</p>
+<p>The number that matters is your own, measured monthly. The Lanes report in the console shows
+   deadhead percentage per lane, which is where the fixable cases hide.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Try the losing-lane preset</h3>
+    <p>The calculator has a preset with 310 miles of deadhead built in. Watch what it does to a rate
+       that looks perfectly reasonable.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Cost figures use the same illustrative single-truck cost base as the <a href="guide-cost-per-mile.html">cost-per-mile guide</a>: $0.52 fixed, $0.19 maintenance, $0.62 driver pay per mile, diesel $3.85 at 6.5 mpg.</li><li>Deadhead percentage ranges are working rules of thumb from carrier operations, not a published industry statistic. Measure your own.</li><li>All worked examples were computed with the calculator on this site and can be reproduced there.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">The number every one of these calculations depends on, worked through end to end.</span></a><a href="guide-hos.html"><span class="k">Guide</span><span class="t">Hours of service, in plain English</span><span class="d">The four clocks, what resets them, and why an illegal load was never profitable.</span></a><a href="glossary.html"><span class="k">Reference</span><span class="t">Freight glossary</span><span class="d">Deadhead, detention, accessorials — the vocabulary, defined without jargon.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

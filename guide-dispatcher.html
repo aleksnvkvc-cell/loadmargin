@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using a dispatcher, or self-dispatching | LoadMargin</title>
+<meta name="description" content="What a truck dispatcher does, what the 5–10% really costs you per mile, the honest case for and against, and how to tell a dispatcher who earns their cut from one who just books cheap freight fast.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-dispatcher.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using a dispatcher, or self-dispatching | LoadMargin">
+<meta property="og:description" content="What a truck dispatcher does, what the 5–10% really costs you per mile, the honest case for and against, and how to tell a dispatcher who earns their cut from one who just books cheap freight fast.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-dispatcher.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"A dispatcher, or do it yourself?","description":"What a truck dispatcher does, what the 5–10% really costs you per mile, the honest case for and against, and how to tell a dispatcher who earns their cut from one who just books cheap freight fast.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-dispatcher.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-dispatcher.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-09-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"A dispatcher, or do it yourself?","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-dispatcher.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Operations</span>
+    <h1>A dispatcher, or do it yourself?</h1>
+    <p class="lede">A dispatcher takes 5–10% to find your loads and handle the phone. Whether that is a bargain or a leak depends entirely on whether they negotiate better than you would — here is how to judge it, in money.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 8 September 2026</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#what">What a dispatcher actually does</a></li><li><a href="#cost">What the percentage costs in cents per mile</a></li><li><a href="#for">The honest case for a dispatcher</a></li><li><a href="#against">The honest case against</a></li><li><a href="#bad">The dispatcher who costs you money</a></li><li><a href="#legal">The compliance line a dispatcher must not cross</a></li><li><a href="#decide">How to decide, in numbers</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">A dispatcher finds your loads, negotiates, handles the broker calls and the
+paperwork, and takes a percentage of the revenue. Whether that percentage is money well spent or a
+quiet leak comes down to one question: do they get you better loads than you would get yourself? Often
+yes. Sometimes very much no.</p>
+
+<h2 id="what">What a dispatcher actually does</h2>
+<p>A dispatcher is a back-office service, not a boss. Typically they:</p>
+<ul>
+  <li>Find loads on the boards and through their broker contacts</li>
+  <li>Negotiate the rate</li>
+  <li>Handle the broker setup and rate cons</li>
+  <li>Sort out problems &mdash; a missed appointment, a detention claim</li>
+  <li>Sometimes handle paperwork and invoicing</li>
+</ul>
+<p>They work <em>for</em> you. You own the authority, the truck and the risk; they are hired help.</p>
+
+<h2 id="cost">What the percentage costs in cents per mile</h2>
+<p>The fee is usually <strong>5&ndash;10% of gross</strong>, sometimes a flat weekly amount. Put it in
+   cents per mile so you can see it against everything else:</p>
+<div class="tw2"><table>
+  <tbody>
+  <tr><td>Gross at $2.10/mile, 8% dispatch fee</td><td class="n neg">about 17&cent;/mile</td></tr>
+  <tr><td>Same, 10%</td><td class="n neg">about 21&cent;/mile</td></tr>
+  <tr><td>Flat $500/week over 2,500 miles</td><td class="n neg">20&cent;/mile</td></tr>
+  </tbody>
+</table></div>
+<p>Seventeen to twenty-one cents a mile is a large number &mdash; comparable to your maintenance or a
+   chunk of your fixed cost. It is only worth it if the dispatcher <strong>adds more than that</strong>
+   in better rates and saved time.</p>
+
+<h2 id="for">The honest case for a dispatcher</h2>
+<ul>
+  <li><strong>You cannot drive and work the phones at once.</strong> Hours spent booking are hours not
+      driving; a dispatcher keeps the truck moving.</li>
+  <li><strong>A good one negotiates better than a tired driver</strong> at 8pm, and has broker
+      relationships you do not.</li>
+  <li><strong>They absorb the admin</strong> &mdash; setups, rate cons, problem calls.</li>
+  <li><strong>For a new carrier</strong>, they shortcut the learning curve on rates and lanes.</li>
+</ul>
+
+<h2 id="against">The honest case against</h2>
+<ul>
+  <li><strong>The percentage is real money</strong>, every load, forever.</li>
+  <li><strong>You do not learn your own market</strong> &mdash; dependency is a risk if the dispatcher
+      leaves or underperforms.</li>
+  <li><strong>Their incentive is volume, not your margin</strong> &mdash; a dispatcher paid on gross
+      is paid to keep you moving, even on a load that barely pays.</li>
+</ul>
+
+<h2 id="bad">The dispatcher who costs you money</h2>
+<div class="keybox">
+  <h3>The tell: books fast and cheap</h3>
+  <p>A weak dispatcher earns their percentage by booking <em>quickly</em>, not by booking <em>well</em>
+     &mdash; taking the first board load at the posted rate so the truck moves and their fee is
+     earned. That is a service you are paying 8% for that you could do yourself, badly, for free.</p>
+  <p>The test is simple: are the loads they book better than what you see on the board yourself, after
+     their cut? If a dispatcher takes 8% and books the same loads you would have, they are a 17&cent;
+     per mile leak. If they consistently beat the board by more than their fee, they are worth it.</p>
+</div>
+
+<h2 id="legal">The compliance line a dispatcher must not cross</h2>
+<p>A dispatcher works under <em>your</em> authority as your agent. They are not a broker and must not
+   act like one &mdash; re-brokering your freight, or brokering to other carriers, without proper
+   broker authority is a real problem. Make sure the arrangement is a genuine dispatch service for your
+   authority, not someone using you to move freight they should be brokering with a licence and a bond.</p>
+
+<h2 id="decide">How to decide, in numbers</h2>
+<ol>
+  <li>Work out the dispatch fee in <strong>cents per mile</strong> at your typical rate.</li>
+  <li>Ask whether their loads beat the public board by <strong>more than that</strong>, after the fee.</li>
+  <li>Value your <strong>own time</strong> &mdash; driving hours are worth more than booking hours.</li>
+  <li>Start with a <strong>trial and a clear exit</strong>; compare a month with them against a month
+      of self-dispatch on your own numbers.</li>
+</ol>
+<p>Self-dispatching keeps the whole rate and teaches you your market, at the cost of your time and a
+   steeper learning curve. A genuinely good dispatcher is worth their cut. A mediocre one is a tax on
+   every mile. Judge them in cents per mile, not on the convenience.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>Put the dispatch fee in your cost per mile</h3>
+    <p>5&ndash;10% of gross is 17&ndash;21&cent; a mile of real cost. It belongs in your number, and it
+       makes the &ldquo;do they earn it&rdquo; question answerable.</p>
+  </div>
+  <a href="guide-cost-per-mile.html" class="btn btn-gold">Cost per mile, properly &rarr;</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>General description of truck dispatch services: finding loads, negotiating, handling broker setup and rate confirmations, and problem resolution, for a fee typically of 5–10% of gross revenue or a flat weekly amount. A dispatcher operates as the carrier's agent under the carrier's own operating authority and is distinct from a licensed, bonded freight broker.</li><li>Cents-per-mile figures are illustrative calculations on the stated assumptions, not survey data. The compliance distinction between dispatching under a carrier's authority and brokering freight (which requires broker authority and a surety bond) is real; arrangements that amount to unlicensed brokering carry legal risk.</li><li>This is an operations overview, not legal advice. Verify any dispatch arrangement's structure and confirm broker/authority requirements with FMCSA or counsel.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-negotiation.html"><span class="k">Guide</span><span class="t">Negotiating with numbers</span><span class="d">What a good dispatcher does for you.</span></a><a href="guide-load-boards.html"><span class="k">Guide</span><span class="t">Finding loads without living on the board</span><span class="d">The self-dispatch alternative.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Where the dispatch fee lands.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

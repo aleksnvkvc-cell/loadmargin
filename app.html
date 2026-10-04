@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LoadMargin — Fleet Console</title>
+<meta name="description" content="The LoadMargin application: load scoring, cost per mile, lanes, drivers, fuel, HOS, customers and backhaul — one cost model, running in your browser.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/app.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/app.css">
+<script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Console","item":"https://aleksnvkvc-cell.github.io/loadmargin/app.html"}],"@context":"https://schema.org"}</script>
+</head>
+<body class="app">
+
+<div class="scrim" id="scrim" onclick="closeSide()"></div>
+
+<div class="app-shell">
+  <!-- ══════ SIDEBAR ══════ -->
+  <aside class="side" id="side">
+    <div class="side-top">
+      <img src="images/logo-mark.png" alt="">
+      <div class="n">LOAD<span>MARGIN</span></div>
+    </div>
+    <nav class="side-nav" id="sideNav"></nav>
+    <div class="side-bot">
+      <button class="btn btn-ghost btn-sm" style="width:100%" onclick="go('data')">Fleet &amp; data</button>
+      <a class="btn btn-ghost btn-sm" style="width:100%" href="index.html">← Back to site</a>
+      <div style="display:flex;gap:.5rem;justify-content:center;padding-top:.5rem;flex-wrap:wrap">
+        <a href="privacy.html" style="font-size:.72rem;color:var(--tx-3);text-decoration:none">Privacy</a>
+        <span style="color:var(--tx-3);font-size:.72rem">·</span>
+        <a href="terms.html" style="font-size:.72rem;color:var(--tx-3);text-decoration:none">Terms</a>
+        <span style="color:var(--tx-3);font-size:.72rem">·</span>
+        <a href="legal.html" style="font-size:.72rem;color:var(--tx-3);text-decoration:none">Legal</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══════ MAIN ══════ -->
+  <div class="app-main">
+    <header class="app-head">
+      <button class="burger" onclick="openSide()" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <div>
+        <h1 id="vTitle">Dashboard</h1>
+      </div>
+      <span class="sub" id="vSubtitle"></span>
+      <div class="sp">
+        <button class="btn btn-ghost btn-sm" onclick="go('score')">+ Score a load</button>
+      </div>
+    </header>
+    <div class="app-body" id="appBody">
+
+      <!-- DASHBOARD -->
+      <section class="view on vmax" id="v-dash">
+        <div class="tiles" id="dashTiles"></div>
+        <div class="cols">
+          <div class="box">
+            <h2>Margin on the last 20 booked loads</h2>
+            <p class="hint">Each bar is one load. The dashed line is your accept threshold.</p>
+            <div id="dashChart"></div>
+          </div>
+          <div class="box">
+            <h2>Where the money went</h2>
+            <p class="hint">Total cost split across every booked load.</p>
+            <div id="dashSplit"></div>
+          </div>
+        </div>
+        <div class="cols">
+          <div class="box"><h2>Best lanes by profit per truck-day</h2><div id="dashBest"></div></div>
+          <div class="box"><h2>Loads that lost money</h2><div id="dashWorst"></div></div>
+        </div>
+        <div class="box" id="dashAlertsBox"><h3>What needs attention</h3><div id="dashAlerts"></div></div>
+      </section>
+
+      <!-- SCORE -->
+      <section class="view vmax" id="v-score">
+        <div class="cols">
+          <div class="box">
+            <h2>Load details</h2>
+            <p class="hint">Pick the truck and driver and their cost model is applied automatically.</p>
+            <div class="frm">
+              <div class="field"><label for="s_truck">Truck</label><div class="inp"><select id="s_truck"></select></div></div>
+              <div class="field"><label for="s_driver">Driver</label><div class="inp"><select id="s_driver"></select></div></div>
+              <div class="field"><label for="s_cust">Customer</label><div class="inp"><select id="s_cust"></select></div></div>
+              <div class="field"><label for="s_date">Pickup date</label><div class="inp"><input type="date" id="s_date"></div></div>
+            </div>
+            <div class="frm" style="margin-top:.8rem">
+              <div class="field"><label for="s_origin">Origin</label><div class="inp"><input type="text" id="s_origin" placeholder="Chicago, IL"></div></div>
+              <div class="field"><label for="s_dest">Destination</label><div class="inp"><input type="text" id="s_dest" placeholder="Dallas, TX"></div></div>
+            </div>
+            <div class="frm" style="margin-top:.8rem">
+              <div class="field"><label for="s_rate">Line haul rate</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="s_rate" value="2400" step="10" inputmode="decimal"></div></div>
+              <div class="field"><label for="s_loaded">Loaded miles</label><div class="inp has-suf"><input type="number" id="s_loaded" value="850" step="10" inputmode="decimal"><span class="suf">mi</span></div></div>
+              <div class="field"><label for="s_dead">Deadhead</label><div class="inp has-suf"><input type="number" id="s_dead" value="120" step="5" inputmode="decimal"><span class="suf">mi</span></div></div>
+            </div>
+            <div class="frm" style="margin-top:.8rem">
+              <div class="field"><label for="s_diesel">Diesel</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="s_diesel" value="3.85" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div>
+              <div class="field"><label for="s_extras">Tolls &amp; fees</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="s_extras" value="85" step="5" inputmode="decimal"></div></div>
+              <div class="field"><label for="s_det">Detention</label><div class="inp has-suf"><input type="number" id="s_det" value="0" step="0.5" inputmode="decimal"><span class="suf">hrs</span></div></div>
+            </div>
+            <div class="row-act">
+              <button class="btn btn-gold btn-sm" onclick="bookLoad()">Book this load</button>
+              <button class="btn btn-ghost btn-sm" onclick="go('backhaul')">Find a backhaul</button>
+              <button class="btn btn-ghost btn-sm" onclick="go('hos')">Check hours of service</button>
+            </div>
+          </div>
+          <div class="box" id="scoreOut"></div>
+        </div>
+        <div class="box">
+          <h2>Booked loads</h2>
+          <p class="hint">Every module below reads from this list.</p>
+          <div id="loadTable"></div>
+        </div>
+      </section>
+
+      <!-- CPM -->
+      <section class="view vmax" id="v-cpm">
+        <div class="box">
+          <h2>Fixed cost per mile, per truck</h2>
+          <p class="hint">Monthly overhead divided by monthly miles. This number feeds load scoring, lanes, customers — everything.</p>
+          <div id="cpmEditor"></div>
+        </div>
+        <div class="box"><h2>Fleet comparison</h2><div id="cpmCompare"></div></div>
+      </section>
+
+      <!-- LANES -->
+      <section class="view vmax" id="v-lanes">
+        <div class="tiles" id="laneTiles"></div>
+        <div class="box"><h2>Lanes ranked by profit per truck-day</h2>
+          <p class="hint">Revenue ranks lanes badly. A 3-day lane at $900 profit beats a 1-day lane at $500 only if you ignore the truck-days it consumes.</p>
+          <div id="laneTable"></div></div>
+        <div class="box"><h2>Profit per truck-day by lane</h2><div id="laneChart"></div></div>
+      </section>
+
+      <!-- DRIVERS -->
+      <section class="view vmax" id="v-drivers">
+        <div class="tiles" id="drvTiles"></div>
+        <div class="box"><h2>Driver scorecard</h2>
+          <p class="hint">Compared on the costs a driver actually controls: fuel burn, out-of-route miles and detention exposure.</p>
+          <div id="drvTable"></div></div>
+        <div class="box"><h2>What a pay change would cost</h2>
+          <p class="hint">Model a rate change across every load this driver has run.</p>
+          <div id="paySim"></div></div>
+      </section>
+
+      <!-- FUEL -->
+      <section class="view vmax" id="v-fuel">
+        <div class="tiles" id="fuelTiles"></div>
+        <div class="box"><h2>Fuel by truck</h2>
+          <p class="hint">Modelled in gallons, so a price spike and an efficiency drop never get confused.</p>
+          <div id="fuelTable"></div></div>
+        <div class="box"><h2>What one MPG is worth</h2><div id="mpgSim"></div></div>
+      </section>
+
+      <!-- HOS -->
+      <section class="view vmax" id="v-hos">
+        <div class="cols">
+          <div class="box">
+            <h2>Hours of service check</h2>
+            <p class="hint">US property-carrying rules: 11 hours driving, 14-hour window, 30-minute break at 8 hours, 70 hours in 8 days.</p>
+            <div class="frm">
+              <div class="field"><label for="h_drive">Driving used today</label><div class="inp has-suf"><input type="number" id="h_drive" value="3" step="0.25" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+              <div class="field"><label for="h_window">On-duty in 14h window</label><div class="inp has-suf"><input type="number" id="h_window" value="4" step="0.25" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+              <div class="field"><label for="h_cycle">Used of 70h cycle</label><div class="inp has-suf"><input type="number" id="h_cycle" value="42" step="0.5" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+              <div class="field"><label for="h_break">Since last 30-min break</label><div class="inp has-suf"><input type="number" id="h_break" value="3" step="0.25" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+            </div>
+            <div class="frm" style="margin-top:.8rem">
+              <div class="field"><label for="h_miles">Trip miles</label><div class="inp has-suf"><input type="number" id="h_miles" value="970" step="10" min="0" inputmode="decimal"><span class="suf">mi</span></div></div>
+              <div class="field"><label for="h_speed">Average speed</label><div class="inp has-suf"><input type="number" id="h_speed" value="52" step="1" min="1" inputmode="decimal"><span class="suf">mph</span></div></div>
+              <div class="field"><label for="h_load">Load / unload time</label><div class="inp has-suf"><input type="number" id="h_load" value="2" step="0.5" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+              <div class="field"><label for="h_appt">Appointment in</label><div class="inp has-suf"><input type="number" id="h_appt" value="26" step="1" min="0" inputmode="decimal"><span class="suf">hrs</span></div></div>
+            </div>
+          </div>
+          <div class="box" id="hosOut"></div>
+        </div>
+      </section>
+
+      <!-- CUSTOMERS -->
+      <section class="view vmax" id="v-cust">
+        <div class="tiles" id="custTiles"></div>
+        <div class="box"><h2>Customer profitability</h2>
+          <p class="hint">Deadhead, detention and payment terms charged back to whoever caused them.</p>
+          <div id="custTable"></div></div>
+        <div class="box"><h2>Revenue rank vs. margin rank</h2>
+          <p class="hint">When a customer sits far higher on the left than the right, they are buying your capacity cheaply.</p>
+          <div id="custChart"></div></div>
+      </section>
+
+      <!-- BACKHAUL -->
+      <section class="view vmax" id="v-back">
+        <div class="cols">
+          <div class="box">
+            <h2>Outbound leg</h2>
+            <div class="frm">
+              <div class="field"><label for="b_truck">Truck</label><div class="inp"><select id="b_truck"></select></div></div>
+              <div class="field"><label for="b_driver">Driver</label><div class="inp"><select id="b_driver"></select></div></div>
+            </div>
+            <div class="frm" style="margin-top:.8rem">
+              <div class="field"><label for="b_rate">Rate</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="b_rate" value="2400" step="10" inputmode="decimal"></div></div>
+              <div class="field"><label for="b_loaded">Loaded miles</label><div class="inp has-suf"><input type="number" id="b_loaded" value="850" step="10" inputmode="decimal"><span class="suf">mi</span></div></div>
+              <div class="field"><label for="b_dead">Deadhead out</label><div class="inp has-suf"><input type="number" id="b_dead" value="120" step="5" inputmode="decimal"><span class="suf">mi</span></div></div>
+            </div>
+            <h3 style="margin-top:1.4rem">Candidate returns</h3>
+            <p class="hint">Add every return you are being offered. Empty miles home are counted whether or not you take one.</p>
+            <div id="backList"></div>
+            <div class="row-act">
+              <button class="btn btn-ghost btn-sm" onclick="addBack()">+ Add a return offer</button>
+            </div>
+          </div>
+          <div class="box" id="backOut"></div>
+        </div>
+      </section>
+
+      <!-- DATA -->
+      <section class="view vmax" id="v-data">
+        <div class="box">
+          <h2>Thresholds</h2>
+          <p class="hint">These drive every verdict in the application.</p>
+          <div class="frm">
+            <div class="field"><label for="cfg_target">Accept at margin</label><div class="inp has-suf"><input type="number" id="cfg_target" step="1" min="0" max="90" inputmode="decimal"><span class="suf">%</span></div></div>
+            <div class="field"><label for="cfg_thin">Reject below</label><div class="inp has-suf"><input type="number" id="cfg_thin" step="1" min="0" max="90" inputmode="decimal"><span class="suf">%</span></div></div>
+            <div class="field"><label for="cfg_mpd">Miles per driving day</label><div class="inp has-suf"><input type="number" id="cfg_mpd" step="10" min="50" inputmode="decimal"><span class="suf">mi</span></div></div>
+            <div class="field"><label for="cfg_diesel">Default diesel</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="cfg_diesel" step="0.01" min="0" inputmode="decimal"><span class="suf">/gal</span></div></div>
+          </div>
+        </div>
+        <div class="cols3">
+          <div class="box"><h2>Trucks</h2><div id="truckList"></div>
+            <div class="row-act"><button class="btn btn-ghost btn-sm" onclick="addTruck()">+ Add truck</button></div></div>
+          <div class="box"><h2>Drivers</h2><div id="driverList"></div>
+            <div class="row-act"><button class="btn btn-ghost btn-sm" onclick="addDriver()">+ Add driver</button></div></div>
+          <div class="box"><h2>Customers</h2><div id="customerList"></div>
+            <div class="row-act"><button class="btn btn-ghost btn-sm" onclick="addCustomer()">+ Add customer</button></div></div>
+        </div>
+        <div class="box">
+          <h2>Your data</h2>
+          <p class="hint">Everything lives in this browser only. Nothing is uploaded, which also means clearing site data erases it — export a backup.</p>
+          <div class="row-act">
+            <button class="btn btn-gold btn-sm" onclick="exportJSON()">Export backup (.json)</button>
+            <button class="btn btn-ghost btn-sm" onclick="document.getElementById('importFile').click()">Import backup</button>
+            <button class="btn btn-ghost btn-sm" onclick="exportCSV()">Export loads (.csv)</button>
+            <button class="btn btn-ghost btn-sm" onclick="seedDemo()">Load demo fleet</button>
+            <button class="btn btn-ghost btn-sm" onclick="wipe()">Erase everything</button>
+          </div>
+          <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(this)">
+          <p class="note" id="storeInfo"></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   LoadMargin Fleet Console
+   One cost model. Every module reads from it.
+   Storage: browser localStorage, key lm.v1 — nothing leaves the device.
+   ═══════════════════════════════════════════════════════════════ */
+
+const KEY='lm.v1';
+const $=id=>document.getElementById(id);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const uid=p=>p+'_'+Math.random().toString(36).slice(2,9);
+const money=n=>(n<0?'-$':'$')+Math.abs(Math.round(n)).toLocaleString('en-US');
+const money2=n=>(n<0?'-$':'$')+Math.abs(n).toFixed(2);
+const pct=n=>(n*100).toFixed(1)+'%';
+const nz=v=>{const x=parseFloat(v);return isFinite(x)?x:0;};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
+const avg=(a,f)=>a.length?sum(a,f)/a.length:0;
+
+/* ─────────── store ─────────── */
+/* Older Safari and Android WebView have no structuredClone (2022). */
+function cloneBlank(){ return JSON.parse(JSON.stringify(BLANK)); }
+
+const BLANK={
+  settings:{targetMargin:0.15,thinMargin:0.05,milesPerDay:500,diesel:3.85},
+  trucks:[],drivers:[],customers:[],loads:[]
+};
+let DB=cloneBlank();
+
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){
+      const p=JSON.parse(raw);
+      DB={...cloneBlank(),...p,settings:{...BLANK.settings,...(p.settings||{})}};
+      ['trucks','drivers','customers','loads'].forEach(k=>{ if(!Array.isArray(DB[k])) DB[k]=[]; });
+      return true;
+    }
+  }catch(e){ console.warn('store read failed',e); }
+  return false;
+}
+let storageOK=true;
+function save(){
+  try{ localStorage.setItem(KEY,JSON.stringify(DB)); storageOK=true; }
+  catch(e){ storageOK=false; toast('Could not save — this browser is blocking storage. Export a backup.','bad'); }
+}
+
+/* ─────────── the engine ─────────── */
+/* Safari before 15.4 ignores scrollIntoView options. */
+function safeScroll(el,opts){
+  if(!el) return;
+  try{ el.scrollIntoView(opts||{behavior:'smooth',block:'start'}); }
+  catch(e){ el.scrollIntoView(true); }
+}
+function truckOf(id){ return DB.trucks.find(t=>t.id===id)||DB.trucks[0]||null; }
+function driverOf(id){ return DB.drivers.find(d=>d.id===id)||DB.drivers[0]||null; }
+function custOf(id){ return DB.customers.find(c=>c.id===id)||null; }
+
+/** Fixed cost per mile for a truck = monthly overhead / monthly miles. */
+function truckCPM(t){
+  if(!t) return 0;
+  const f=t.fixed||{};
+  const total=nz(f.truck)+nz(f.trailer)+nz(f.insurance)+nz(f.permits)+nz(f.eld)+nz(f.other);
+  const miles=Math.max(nz(t.monthlyMiles),1);
+  return total/miles;
+}
+function truckFixedTotal(t){
+  const f=(t&&t.fixed)||{};
+  return nz(f.truck)+nz(f.trailer)+nz(f.insurance)+nz(f.permits)+nz(f.eld)+nz(f.other);
+}
+
+/**
+ * The single scoring function. Everything in this application — dashboard,
+ * lanes, drivers, customers, backhaul — resolves through here.
+ */
+function score(L){
+  const S=DB.settings;
+  const t=truckOf(L.truckId), d=driverOf(L.driverId);
+  const mpg=Math.max(nz(t&&t.mpg)||6.5,0.1);
+  const maintCpm=nz(t&&t.maintCpm);
+  const fixedCpm=truckCPM(t);
+
+  const loaded=nz(L.loaded), dead=nz(L.deadhead);
+  const miles=loaded+dead;
+  const diesel=nz(L.diesel)||S.diesel;
+  const rate=nz(L.rate);
+
+  const detHrs=nz(L.detentionHrs);
+  const detPay=nz(L.detentionPay);          // what the customer actually paid for it
+  const revenue=rate+detPay;
+
+  const gal=miles/mpg;
+  const fuel=gal*diesel;
+  const driver=(d&&d.payMode==='pct') ? revenue*nz(d.payRate)/100 : miles*nz(d&&d.payRate);
+  const maint=miles*maintCpm;
+  const fixed=miles*fixedCpm;
+  const extras=nz(L.extras);
+
+  // Detention burns truck-hours the fleet still pays for. Charge the fixed
+  // cost the truck would otherwise have absorbed over those hours:
+  // fixed cost per mile x the miles it would have covered in that time.
+  const milesPerHour=S.milesPerDay/11;
+  const idleCost=detHrs*fixedCpm*milesPerHour;
+  const cost=fuel+driver+maint+fixed+extras+idleCost;
+
+  const net=revenue-cost;
+  const margin=revenue>0?net/revenue:0;
+  const driveDays=Math.max(miles/Math.max(S.milesPerDay,1),0);
+  const days=Math.max(Math.ceil(driveDays+(detHrs/11)),1);
+
+  return {
+    truck:t,driver:d,miles,loaded,dead,gal,diesel,mpg,
+    revenue,rate,detPay,detHrs,
+    fuel,driver_:driver,maint,fixed,extras,idleCost,cost,
+    net,margin,days,
+    rpm: miles?revenue/miles:0,
+    breakEvenRpm: miles?cost/miles:0,
+    perDay: net/days,
+    deadPct: miles?dead/miles:0,
+    fixedCpm,maintCpm,
+    verdict: verdictOf(margin,net),
+    targetRate: cost/(1-S.targetMargin)
+  };
+}
+function targetRateFor(cost){ return cost/(1-DB.settings.targetMargin); }
+function verdictOf(margin,net){
+  if(net<0) return 'LOSING';
+  if(margin>=DB.settings.targetMargin) return 'ACCEPT';
+  if(margin>=DB.settings.thinMargin) return 'NEGOTIATE';
+  return 'REJECT';
+}
+const VPILL={ACCEPT:'ok',NEGOTIATE:'mid',REJECT:'bad',LOSING:'bad'};
+
+/* scored cache for the load list */
+function scoredLoads(){ return DB.loads.map(L=>({L,s:score(L)})); }
+
+/* ─────────── ui helpers ─────────── */
+let toastT;
+function toast(msg,kind){
+  const t=$('toast'); t.textContent=msg; t.className='toast show '+(kind||'ok');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.className='toast',3200);
+}
+function emptyState(msg,cta){
+  return `<div class="empty">
+    <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+    <div>${msg}</div>${cta?`<div style="margin-top:1rem">${cta}</div>`:''}</div>`;
+}
+function selOpts(arr,sel,labeler){
+  return arr.map(x=>`<option value="${esc(x.id)}"${x.id===sel?' selected':''}>${esc(labeler(x))}</option>`).join('');
+}
+
+/* ═══════════ NAVIGATION ═══════════ */
+const VIEWS=[
+  {g:'Decide'},
+  {id:'dash',   t:'Dashboard',        s:'Fleet margin at a glance',            ic:'<path d="M3 13h8V3H3zM13 21h8V11h-8zM13 7h8V3h-8zM3 21h8v-4H3z"/>'},
+  {id:'score',  t:'Score & Book',     s:'Price a load before you accept it',   ic:'<path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/>'},
+  {id:'hos',    t:'HOS Planner',      s:'Does the clock allow this run?',      ic:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'},
+  {id:'back',   t:'Backhaul',         s:'Score the round trip, not the leg',   ic:'<path d="M3 12h18M3 12l5-5M3 12l5 5"/><path d="M21 6v12"/>'},
+  {g:'Analyse'},
+  {id:'cpm',    t:'Cost per Mile',    s:'The number everything else uses',     ic:"<circle cx='12' cy='12' r='9'/><path d='M12 7v10M9.5 9.5h5M9.5 14.5h5'/>"},
+  {id:'lanes',  t:'Lanes',            s:'Profit per truck-day by lane',        ic:'<path d="M4 21 8 3M20 21l-4-18M12 5v3M12 12v3M12 19v2"/>'},
+  {id:'drivers',t:'Drivers',          s:'The costs a driver controls',         ic:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'},
+  {id:'fuel',   t:'Fuel & MPG',       s:'Gallons, not guesses',                ic:'<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h13M14 9h3a2 2 0 0 1 2 2v6a2 2 0 0 0 2 2"/>'},
+  {id:'cust',   t:'Customers',        s:'Who actually earns their keep',       ic:'<path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/>'},
+  {g:'Setup'},
+  {id:'data',   t:'Fleet & Data',     s:'Trucks, drivers, customers, backup',  ic:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>'}
+];
+let CUR='dash';
+function buildNav(){
+  const n=$('sideNav'); n.innerHTML='';
+  VIEWS.forEach(v=>{
+    if(v.g){ n.appendChild(el('div','side-grp',esc(v.g))); return; }
+    const b=el('button','side-a'+(v.id===CUR?' on':''),
+      `<svg viewBox="0 0 24 24">${v.ic}</svg><span>${esc(v.t)}</span><span class="badge" id="bdg-${v.id}"></span>`);
+    b.dataset.view=v.id;
+    b.onclick=()=>go(v.id);
+    n.appendChild(b);
+  });
+}
+function go(id){
+  if(!VIEWS.some(v=>v.id===id)) id='dash';
+  CUR=id;
+  document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+  const target=$('v-'+(id==='cust'?'cust':id==='back'?'back':id));
+  if(target) target.classList.add('on');
+  document.querySelectorAll('.side-a').forEach(b=>b.classList.toggle('on',b.dataset.view===id));
+  const v=VIEWS.find(x=>x.id===id)||{};
+  $('vTitle').textContent=v.t||'Dashboard';
+  $('vSubtitle').textContent=v.s||'';
+  location.hash=id;
+  render(id);
+  $('appBody').scrollTop=0;
+  closeSide();
+}
+function openSide(){ $('side').classList.add('open'); $('scrim').classList.add('on'); }
+function closeSide(){ $('side').classList.remove('open'); $('scrim').classList.remove('on'); }
+addEventListener('keydown',e=>{ if(e.key==='Escape') closeSide(); });
+
+/* ═══════════ RENDER DISPATCH ═══════════ */
+function render(id){
+  refreshBadges();
+  ({dash:renderDash,score:renderScore,cpm:renderCPM,lanes:renderLanes,drivers:renderDrivers,
+    fuel:renderFuel,hos:renderHOS,cust:renderCust,back:renderBack,data:renderData}[id]||renderDash)();
+}
+function refreshBadges(){
+  const b=id=>$('bdg-'+id);
+  if(b('score')) b('score').textContent=DB.loads.length||'';
+  if(b('data'))  b('data').textContent=DB.trucks.length?DB.trucks.length+'T':'';
+  if(b('lanes')) b('lanes').textContent=laneRows().length||'';
+  if(b('cust'))  b('cust').textContent=custRows().length||'';
+}
+function rerender(){ save(); render(CUR); }
+
+/* ═══════════ CHARTS (inline svg, no libraries) ═══════════ */
+function barChart(data,{h=170,fmt=money,color}={}){
+  if(!data.length) return emptyState('Nothing to chart yet.');
+  const w=Math.max(data.length*46,320), pad={l:8,r:8,t:16,b:26};
+  const vals=data.map(d=>d.v);
+  const max=Math.max(...vals,0), min=Math.min(...vals,0);
+  const span=(max-min)||1;
+  const y=v=>pad.t+(max-v)/span*(h-pad.t-pad.b);
+  const bw=Math.max((w-pad.l-pad.r)/data.length-10,8);
+  const zero=y(0);
+  const bars=data.map((d,i)=>{
+    const x=pad.l+i*((w-pad.l-pad.r)/data.length)+5;
+    const yy=d.v>=0?y(d.v):zero, hh=Math.max(Math.abs(y(d.v)-zero),1);
+    const c=color?color(d):(d.v>=0?'#34C98A':'#E4614C');
+    return `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${bw.toFixed(1)}" height="${hh.toFixed(1)}" rx="3" fill="${c}"><title>${esc(d.label)}: ${fmt(d.v)}</title></rect>
+      <text class="ax" x="${(x+bw/2).toFixed(1)}" y="${h-8}" text-anchor="middle">${esc(d.short||d.label).slice(0,7)}</text>`;
+  }).join('');
+  return `<div class="tw" style="border:0"><svg class="chart" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img">
+    <line class="gl" x1="${pad.l}" y1="${zero}" x2="${w-pad.r}" y2="${zero}"/>
+    <g class="bars">${bars}</g></svg></div>`;
+}
+function marginChart(rows){
+  if(!rows.length) return emptyState('Book a load and the chart fills in.');
+  const h=180,w=Math.max(rows.length*30,320),pad={l:34,r:8,t:14,b:24};
+  const tgt=DB.settings.targetMargin;
+  const max=Math.max(...rows.map(r=>r.m),tgt,0.25), min=Math.min(...rows.map(r=>r.m),0);
+  const span=(max-min)||1;
+  const y=v=>pad.t+(max-v)/span*(h-pad.t-pad.b);
+  const bw=Math.max((w-pad.l-pad.r)/rows.length-6,6);
+  const zero=y(0);
+  const bars=rows.map((r,i)=>{
+    const x=pad.l+i*((w-pad.l-pad.r)/rows.length)+3;
+    const yy=r.m>=0?y(r.m):zero, hh=Math.max(Math.abs(y(r.m)-zero),1);
+    const c=r.m>=tgt?'#34C98A':r.m>=DB.settings.thinMargin?'#E0A93B':'#E4614C';
+    return `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${bw.toFixed(1)}" height="${hh.toFixed(1)}" rx="2" fill="${c}"><title>${esc(r.label)}: ${pct(r.m)}</title></rect>`;
+  }).join('');
+  return `<div class="tw" style="border:0"><svg class="chart" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img">
+    <line class="gl" x1="${pad.l}" y1="${zero}" x2="${w-pad.r}" y2="${zero}"/>
+    <line x1="${pad.l}" y1="${y(tgt)}" x2="${w-pad.r}" y2="${y(tgt)}" stroke="#E3B44A" stroke-width="1" stroke-dasharray="4 4" opacity=".8"/>
+    <text class="ax" x="4" y="${y(tgt)+3}" fill="#E3B44A">${(tgt*100).toFixed(0)}%</text>
+    <text class="ax" x="4" y="${zero+3}">0%</text>
+    <g class="bars">${bars}</g></svg></div>`;
+}
+function splitChart(parts){
+  const tot=sum(parts,p=>p.v);
+  if(tot<=0) return emptyState('No costs recorded yet.');
+  let x=0;
+  const segs=parts.map(p=>{
+    const wpc=p.v/tot*100, s=`<div title="${esc(p.label)}" style="width:${wpc}%;background:${p.c}"></div>`;
+    x+=wpc; return s;
+  }).join('');
+  const legend=parts.map(p=>`<div class="kv"><span><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:${p.c};margin-right:.5rem"></i>${esc(p.label)}</span><b>${money(p.v)} · ${(p.v/tot*100).toFixed(1)}%</b></div>`).join('');
+  return `<div style="display:flex;height:12px;border-radius:99px;overflow:hidden;margin-bottom:1rem">${segs}</div>${legend}`;
+}
+
+/* ═══════════ SORTABLE TABLE ═══════════ */
+const SORT={};
+function table(key,cols,rows,opts={}){
+  if(!rows.length) return emptyState(opts.empty||'No data yet.',opts.cta);
+  const st=SORT[key]||(SORT[key]={i:(opts.sort===undefined?0:opts.sort),dir:opts.dir||-1});
+  const sorted=[...rows].sort((a,b)=>{
+    const A=a.cells[st.i], B=b.cells[st.i];
+    const av=A&&A.sv!==undefined?A.sv:(A?A.v:''), bv=B&&B.sv!==undefined?B.sv:(B?B.v:'');
+    if(typeof av==='number'&&typeof bv==='number') return (av-bv)*st.dir;
+    return String(av).localeCompare(String(bv))*st.dir;
+  });
+  const head=cols.map((c,i)=>`<th class="${c.n?'n ':''}${c.nosort?'no ':''}${st.i===i?'s':''}"
+      ${c.nosort?'':`onclick="sortBy('${key}',${i})"`}>${esc(c.t)}${c.nosort?'':` <span class="ar">${st.i===i?(st.dir<0?'▼':'▲'):'↕'}</span>`}</th>`).join('');
+  const body=sorted.map(r=>`<tr>${r.cells.map((c,i)=>`<td class="${cols[i].n?'n':''}">${c==null?'':(c.h!==undefined?c.h:esc(c.v))}</td>`).join('')}</tr>`).join('');
+  return `<div class="tw"><table class="t"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+function sortBy(key,i){
+  const st=SORT[key]||(SORT[key]={i,dir:-1});
+  if(st.i===i) st.dir*=-1; else {st.i=i;st.dir=-1;}
+  render(CUR);
+}
+
+/* ═══════════ DASHBOARD ═══════════ */
+function renderDash(){
+  const S=scoredLoads();
+  if(!S.length){
+    $('dashTiles').innerHTML='';
+    $('dashChart').innerHTML=emptyState('No loads booked yet.',
+      '<button class="btn btn-gold btn-sm" onclick="go(\'score\')">Score your first load</button> <button class="btn btn-ghost btn-sm" onclick="seedDemo()">Load a demo fleet</button>');
+    ['dashSplit','dashBest','dashWorst','dashAlerts'].forEach(i=>$(i).innerHTML='');
+    return;
+  }
+  const rev=sum(S,x=>x.s.revenue), cost=sum(S,x=>x.s.cost), net=rev-cost;
+  const margin=rev?net/rev:0;
+  const days=sum(S,x=>x.s.days);
+  const miles=sum(S,x=>x.s.miles), dead=sum(S,x=>x.s.dead);
+  const losers=S.filter(x=>x.s.net<0);
+
+  $('dashTiles').innerHTML=[
+    {l:'Booked loads',v:S.length,d:`${DB.trucks.length} truck${DB.trucks.length===1?'':'s'}`},
+    {l:'Revenue',v:money(rev),d:'line haul + detention',k:'gold'},
+    {l:'Net profit',v:money(net),d:`${pct(margin)} margin`,k:net>=0?'pos':'neg'},
+    {l:'Profit per truck-day',v:money(days?net/days:0),d:`${days} truck-day${days===1?'':'s'}`,k:net>=0?'pos':'neg'},
+    {l:'Deadhead',v:pct(miles?dead/miles:0),d:`${Math.round(dead).toLocaleString()} empty miles`,k:(dead/miles)>0.12?'neg':''},
+    {l:'Loads that lost money',v:losers.length,d:losers.length?money(sum(losers,x=>x.s.net)):'none',k:losers.length?'neg':'pos'}
+  ].map(t=>`<div class="tile ${t.k||''}"><div class="l">${t.l}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join('');
+
+  const recent=[...S].sort((a,b)=>String(a.L.date).localeCompare(String(b.L.date))).slice(-20);
+  $('dashChart').innerHTML=marginChart(recent.map(x=>({m:x.s.margin,label:`${x.L.origin||'?'} → ${x.L.dest||'?'}`})));
+
+  $('dashSplit').innerHTML=splitChart([
+    {label:'Fuel',v:sum(S,x=>x.s.fuel),c:'#E4614C'},
+    {label:'Driver pay',v:sum(S,x=>x.s.driver_),c:'#5B9BF0'},
+    {label:'Maintenance',v:sum(S,x=>x.s.maint),c:'#8B7CE8'},
+    {label:'Fixed cost',v:sum(S,x=>x.s.fixed),c:'#4BA3A0'},
+    {label:'Tolls & fees',v:sum(S,x=>x.s.extras),c:'#B0763A'},
+    {label:'Detention idle',v:sum(S,x=>x.s.idleCost),c:'#6B7F9B'}
+  ].filter(p=>p.v>0));
+
+  const lanes=laneRows().sort((a,b)=>b.perDay-a.perDay);
+  $('dashBest').innerHTML= lanes.length? lanes.slice(0,5).map(l=>
+    `<div class="kv"><span>${esc(l.lane)} <span class="pill mut">${l.n}×</span></span><b class="${l.perDay>=0?'pos':'neg'}">${money(l.perDay)}/day</b></div>`).join('')
+    : emptyState('Not enough loads yet.');
+
+  $('dashWorst').innerHTML= losers.length? [...losers].sort((a,b)=>a.s.net-b.s.net).slice(0,5).map(x=>
+    `<div class="kv"><span>${esc(x.L.origin||'?')} → ${esc(x.L.dest||'?')}<br><span style="color:var(--tx-3);font-size:.76rem">${esc((custOf(x.L.customerId)||{}).name||'no customer')}</span></span><b class="neg">${money(x.s.net)}</b></div>`).join('')
+    : `<div class="kv"><span>Every booked load covered its costs.</span><b class="pos">✓</b></div>`;
+
+  const alerts=[];
+  if(miles&&dead/miles>0.12) alerts.push(['mid',`Deadhead is ${pct(dead/miles)} of all miles. Every point above 10% is roughly ${money(sum(S,x=>x.s.fixedCpm+x.s.maintCpm)/S.length*miles*0.01)} across this period.`]);
+  if(losers.length) alerts.push(['bad',`${losers.length} load${losers.length===1?'':'s'} ran at a loss, costing ${money(-sum(losers,x=>x.s.net))} in total.`]);
+  const thin=S.filter(x=>x.s.net>=0&&x.s.margin<DB.settings.targetMargin);
+  if(thin.length) alerts.push(['mid',`${thin.length} load${thin.length===1?'':'s'} came in under your ${pct(DB.settings.targetMargin)} target. Raising those to target is worth ${money(sum(thin,x=>targetRateFor(x.s.cost)-x.s.revenue))}.`]);
+  const noCpm=DB.trucks.filter(t=>truckCPM(t)<=0);
+  if(noCpm.length) alerts.push(['bad',`${noCpm.length} truck${noCpm.length===1?' has':'s have'} no fixed cost set. Every margin involving ${noCpm.length===1?'it is':'them is'} overstated.`]);
+  const cust=custRows().filter(c=>c.margin<0);
+  if(cust.length) alerts.push(['bad',`${cust.map(c=>esc(c.name)).join(', ')} ${cust.length===1?'is':'are'} unprofitable once deadhead and detention are charged back.`]);
+  if(!alerts.length) alerts.push(['ok','Nothing is flagged. Every truck has a cost model and every load cleared its costs.']);
+  $('dashAlerts').innerHTML=alerts.map(([k,t])=>`<div class="kv"><span><span class="pill ${k}">${k==='ok'?'OK':k==='mid'?'WATCH':'FIX'}</span> ${t}</span></div>`).join('');
+}
+
+/* ═══════════ SCORE & BOOK ═══════════ */
+function fillSelects(){
+  const tks=DB.trucks, drs=DB.drivers, cus=DB.customers;
+  const set=(id,arr,lab,extra)=>{
+    const e=$(id); if(!e) return;
+    const cur=e.value;
+    e.innerHTML=(extra||'')+selOpts(arr,cur,lab);
+    if(cur&&arr.some(x=>x.id===cur)) e.value=cur;
+  };
+  set('s_truck',tks,t=>t.name); set('b_truck',tks,t=>t.name);
+  set('s_driver',drs,d=>`${d.name} · ${d.payMode==='pct'?d.payRate+'%':'$'+(+d.payRate).toFixed(2)+'/mi'}`);
+  set('b_driver',drs,d=>d.name);
+  set('s_cust',cus,c=>c.name,'<option value="">— no customer —</option>');
+}
+function readScoreForm(){
+  return {
+    truckId:$('s_truck').value, driverId:$('s_driver').value, customerId:$('s_cust').value,
+    date:$('s_date').value, origin:$('s_origin').value.trim(), dest:$('s_dest').value.trim(),
+    rate:nz($('s_rate').value), loaded:nz($('s_loaded').value), deadhead:nz($('s_dead').value),
+    diesel:nz($('s_diesel').value), extras:nz($('s_extras').value),
+    detentionHrs:nz($('s_det').value), detentionPay:0
+  };
+}
+function renderScore(){
+  fillSelects();
+  if(!$('s_date').value) $('s_date').value=new Date().toISOString().slice(0,10);
+  if(!DB.trucks.length){
+    $('scoreOut').innerHTML=emptyState('Add a truck first — scoring needs its cost model.',
+      '<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Set up the fleet</button> <button class="btn btn-ghost btn-sm" onclick="seedDemo()">Load demo fleet</button>');
+    $('loadTable').innerHTML='';
+    return;
+  }
+  scoreNow();
+  renderLoadTable();
+}
+function scoreNow(){
+  if(!DB.trucks.length) return;
+  const L=readScoreForm(), s=score(L);
+  const need=targetRateFor(s.cost);
+  const vk=VPILL[s.verdict];
+  const advice = s.verdict==='ACCEPT'
+      ? `You are <b>${money2(s.rpm-s.breakEvenRpm)}</b> per mile above break-even. Book it.`
+    : s.verdict==='NEGOTIATE'
+      ? `Ask for <b>${money(need)}</b> — that is <b>${money(need-s.revenue)}</b> more, about <b>${money2((need-s.revenue)/Math.max(s.miles,1))}</b> per mile.`
+    : s.verdict==='REJECT'
+      ? `Only ${money(s.net)} for ${s.days} truck-day${s.days>1?'s':''}. Break-even is <b>${money(s.cost)}</b>; target is <b>${money(need)}</b>.`
+      : `This costs you <b>${money(-s.net)}</b> to run. ${s.dead} empty miles alone burn <b>${money(s.dead*(s.diesel/s.mpg+s.maintCpm+s.fixedCpm))}</b>.`;
+
+  $('scoreOut').innerHTML=`
+    <div class="verdict v-${s.verdict==='ACCEPT'?'accept':s.verdict==='NEGOTIATE'?'warn':'reject'}" style="margin-bottom:1rem">
+      <div class="vt">${s.verdict==='ACCEPT'?'✓':s.verdict==='NEGOTIATE'?'!':'✕'} ${s.verdict}</div>
+      <div class="vs">${advice}</div>
+    </div>
+    <div class="tiles" style="margin-bottom:1rem">
+      <div class="tile ${s.net>=0?'pos':'neg'}"><div class="l">Net profit</div><div class="v">${money(s.net)}</div><div class="d">${pct(s.margin)} margin</div></div>
+      <div class="tile"><div class="l">All-in rate</div><div class="v">${money2(s.rpm)}</div><div class="d">break-even ${money2(s.breakEvenRpm)}</div></div>
+      <div class="tile ${s.perDay>=0?'pos':'neg'}"><div class="l">Per truck-day</div><div class="v">${money(s.perDay)}</div><div class="d">${s.days} day${s.days>1?'s':''}</div></div>
+    </div>
+    <div class="kv"><span>Revenue</span><b>${money(s.revenue)}</b></div>
+    <div class="kv"><span>Fuel · ${s.gal.toFixed(0)} gal @ ${s.mpg} mpg</span><b>${money(s.fuel)}</b></div>
+    <div class="kv"><span>Driver pay</span><b>${money(s.driver_)}</b></div>
+    <div class="kv"><span>Maintenance · ${money2(s.maintCpm)}/mi</span><b>${money(s.maint)}</b></div>
+    <div class="kv"><span>Fixed cost · ${money2(s.fixedCpm)}/mi</span><b>${money(s.fixed)}</b></div>
+    <div class="kv"><span>Tolls &amp; fees</span><b>${money(s.extras)}</b></div>
+    ${s.idleCost>0?`<div class="kv"><span>Detention idle · ${s.detHrs}h</span><b>${money(s.idleCost)}</b></div>`:''}
+    <div class="kv" style="border-top:1px solid var(--line);margin-top:.4rem;padding-top:.6rem"><span style="color:#fff;font-weight:600">Total cost</span><b>${money(s.cost)}</b></div>
+    <p class="note">Deadhead is <b>${pct(s.deadPct)}</b> of the ${Math.round(s.miles).toLocaleString()} miles this load puts on the truck.</p>`;
+}
+['s_truck','s_driver','s_rate','s_loaded','s_dead','s_diesel','s_extras','s_det']
+  .forEach(id=>document.addEventListener('input',e=>{ if(e.target.id===id&&CUR==='score') scoreNow(); }));
+document.addEventListener('change',e=>{ if(['s_truck','s_driver','s_cust'].includes(e.target.id)&&CUR==='score') scoreNow(); });
+
+function bookLoad(){
+  if(!DB.trucks.length){ toast('Add a truck first.','bad'); return go('data'); }
+  const L=readScoreForm();
+  if(!L.origin||!L.dest){ toast('Origin and destination are needed so lanes can be grouped.','bad'); return; }
+  if(L.rate<=0||L.loaded<=0){ toast('Rate and loaded miles must be greater than zero.','bad'); return; }
+  L.id=uid('ld');
+  DB.loads.push(L); save();
+  toast(`Booked ${L.origin} → ${L.dest} · ${money(score(L).net)} net`);
+  renderLoadTable(); refreshBadges();
+}
+function delLoad(id){
+  DB.loads=DB.loads.filter(l=>l.id!==id); save(); render(CUR); toast('Load removed');
+}
+function renderLoadTable(){
+  const S=scoredLoads();
+  $('loadTable').innerHTML=table('loads',
+    [{t:'Date'},{t:'Lane'},{t:'Customer'},{t:'Truck'},{t:'Miles',n:1},{t:'Rate',n:1},{t:'Net',n:1},{t:'Margin',n:1},{t:'',nosort:1}],
+    S.map(({L,s})=>({cells:[
+      {v:L.date||'—',sv:L.date||''},
+      {v:`${L.origin||'?'} → ${L.dest||'?'}`},
+      {v:(custOf(L.customerId)||{}).name||'—'},
+      {v:(s.truck||{}).name||'—'},
+      {v:Math.round(s.miles).toLocaleString(),sv:s.miles},
+      {v:money(s.revenue),sv:s.revenue},
+      {h:`<b class="${s.net>=0?'pos':'neg'}">${money(s.net)}</b>`,sv:s.net},
+      {h:`<span class="pill ${VPILL[s.verdict]}">${pct(s.margin)}</span>`,sv:s.margin},
+      {h:`<button class="ico-btn" onclick="delLoad('${L.id}')">Delete</button>`,sv:0}
+    ]})),
+    {sort:0,dir:-1,empty:'No loads booked yet. Score one above and press Book.'});
+}
+
+/* ═══════════ COST PER MILE ═══════════ */
+function renderCPM(){
+  if(!DB.trucks.length){ $('cpmEditor').innerHTML=emptyState('No trucks yet.','<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Add a truck</button>'); $('cpmCompare').innerHTML=''; return; }
+  $('cpmEditor').innerHTML=DB.trucks.map(t=>{
+    const f=t.fixed||{}, cpm=truckCPM(t), tot=truckFixedTotal(t);
+    return `<div class="box" style="margin-bottom:1rem;background:rgba(3,10,22,.4)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem">
+        <h3 style="margin:0">${esc(t.name)}</h3>
+        <div style="text-align:right"><div style="font-size:.67rem;letter-spacing:.11em;text-transform:uppercase;color:var(--tx-3)">Fixed cost per mile</div>
+        <div class="v gold" style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--gold)">${money2(cpm)}</div></div>
+      </div>
+      <div class="frm">
+        ${[['truck','Truck payment'],['trailer','Trailer'],['insurance','Insurance'],['permits','Permits &amp; plates'],['eld','ELD &amp; software'],['other','Parking, admin, other']]
+          .map(([k,lab])=>`<div class="field"><label>${lab} <span class="hint">/mo</span></label>
+            <div class="inp has-pre"><span class="pre">$</span><input type="number" min="0" step="10" value="${nz(f[k])}" inputmode="decimal"
+              oninput="setFixed('${t.id}','${k}',this.value)"></div></div>`).join('')}
+        <div class="field"><label>Miles per month</label>
+          <div class="inp has-suf"><input type="number" min="1" step="100" value="${nz(t.monthlyMiles)}" inputmode="decimal"
+            oninput="setTruck('${t.id}','monthlyMiles',this.value)"><span class="suf">mi</span></div></div>
+        <div class="field"><label>Maintenance + tires</label>
+          <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" min="0" step="0.01" value="${nz(t.maintCpm)}" inputmode="decimal"
+            oninput="setTruck('${t.id}','maintCpm',this.value)"><span class="suf">/mi</span></div></div>
+        <div class="field"><label>Truck MPG</label>
+          <div class="inp has-suf"><input type="number" min="0.1" step="0.1" value="${nz(t.mpg)}" inputmode="decimal"
+            oninput="setTruck('${t.id}','mpg',this.value)"><span class="suf">mpg</span></div></div>
+      </div>
+      <p class="note"><b>${money(tot)}</b> of fixed cost every month ÷ <b>${nz(t.monthlyMiles).toLocaleString()}</b> miles.
+        Drive 10% fewer miles and this rises to <b>${money2(tot/Math.max(nz(t.monthlyMiles)*0.9,1))}</b> — which is why a slow month hurts twice.</p>
+    </div>`;
+  }).join('');
+
+  const rows=DB.trucks.map(t=>{
+    const cpm=truckCPM(t), used=DB.loads.filter(l=>l.truckId===t.id);
+    const miles=sum(used.map(l=>score(l)),s=>s.miles);
+    return {cells:[
+      {v:t.name},
+      {v:money(truckFixedTotal(t)),sv:truckFixedTotal(t)},
+      {v:nz(t.monthlyMiles).toLocaleString(),sv:nz(t.monthlyMiles)},
+      {h:`<b class="${cpm>0?'':'neg'}">${money2(cpm)}</b>`,sv:cpm},
+      {v:money2(nz(t.maintCpm)),sv:nz(t.maintCpm)},
+      {h:`<b>${money2(cpm+nz(t.maintCpm))}</b>`,sv:cpm+nz(t.maintCpm)},
+      {v:used.length+' · '+Math.round(miles).toLocaleString()+' mi',sv:used.length}
+    ]};
+  });
+  $('cpmCompare').innerHTML=table('cpm',
+    [{t:'Truck'},{t:'Fixed / mo',n:1},{t:'Miles / mo',n:1},{t:'Fixed CPM',n:1},{t:'Maint CPM',n:1},{t:'Cost before fuel',n:1},{t:'Loads run',n:1}],
+    rows,{sort:3,dir:-1});
+}
+function setFixed(id,k,v){ const t=truckOf(id); if(!t)return; t.fixed=t.fixed||{}; t.fixed[k]=nz(v); save(); softCPM(); }
+function setTruck(id,k,v){ const t=truckOf(id); if(!t)return; t[k]=nz(v); save(); softCPM(); }
+let cpmT;
+function softCPM(){ clearTimeout(cpmT); cpmT=setTimeout(()=>{ if(CUR==='cpm'){ const a=document.activeElement; const key=a&&a.getAttribute&&a.getAttribute('oninput'); renderCPM(); if(key){ const again=[...document.querySelectorAll('#cpmEditor input')].find(i=>i.getAttribute('oninput')===key); if(again){ again.focus(); again.setSelectionRange(again.value.length,again.value.length);} } } },420); }
+
+/* ═══════════ LANES ═══════════ */
+function laneRows(){
+  const m=new Map();
+  scoredLoads().forEach(({L,s})=>{
+    const key=`${L.origin||'?'} → ${L.dest||'?'}`;
+    const r=m.get(key)||{lane:key,n:0,rev:0,net:0,miles:0,dead:0,days:0,cost:0};
+    r.n++; r.rev+=s.revenue; r.net+=s.net; r.miles+=s.miles; r.dead+=s.dead; r.days+=s.days; r.cost+=s.cost;
+    m.set(key,r);
+  });
+  return [...m.values()].map(r=>({...r,
+    margin:r.rev?r.net/r.rev:0, perDay:r.days?r.net/r.days:0,
+    rpm:r.miles?r.rev/r.miles:0, deadPct:r.miles?r.dead/r.miles:0}));
+}
+function renderLanes(){
+  const rows=laneRows();
+  if(!rows.length){ $('laneTiles').innerHTML=''; $('laneTable').innerHTML=emptyState('Book a few loads and lanes appear here.'); $('laneChart').innerHTML=''; return; }
+  const best=[...rows].sort((a,b)=>b.perDay-a.perDay)[0];
+  const worst=[...rows].sort((a,b)=>a.perDay-b.perDay)[0];
+  const busiest=[...rows].sort((a,b)=>b.n-a.n)[0];
+  $('laneTiles').innerHTML=[
+    {l:'Lanes run',v:rows.length,d:`${sum(rows,r=>r.n)} loads`},
+    {l:'Best per truck-day',v:money(best.perDay),d:best.lane,k:'pos'},
+    {l:'Worst per truck-day',v:money(worst.perDay),d:worst.lane,k:worst.perDay<0?'neg':''},
+    {l:'Most run lane',v:busiest.n+'×',d:`${busiest.lane} · ${money(busiest.perDay)}/day`,k:'gold'}
+  ].map(t=>`<div class="tile ${t.k||''}"><div class="l">${t.l}</div><div class="v">${t.v}</div><div class="d">${esc(t.d)}</div></div>`).join('');
+
+  $('laneTable').innerHTML=table('lanes',
+    [{t:'Lane'},{t:'Loads',n:1},{t:'Revenue',n:1},{t:'Net',n:1},{t:'Margin',n:1},{t:'All-in RPM',n:1},{t:'Deadhead',n:1},{t:'Profit / truck-day',n:1}],
+    rows.map(r=>({cells:[
+      {v:r.lane},{v:r.n,sv:r.n},{v:money(r.rev),sv:r.rev},
+      {h:`<b class="${r.net>=0?'pos':'neg'}">${money(r.net)}</b>`,sv:r.net},
+      {h:`<span class="pill ${r.margin>=DB.settings.targetMargin?'ok':r.margin>=DB.settings.thinMargin?'mid':'bad'}">${pct(r.margin)}</span>`,sv:r.margin},
+      {v:money2(r.rpm),sv:r.rpm},
+      {h:`<span class="${r.deadPct>0.15?'warn':''}">${pct(r.deadPct)}</span>`,sv:r.deadPct},
+      {h:`<b class="${r.perDay>=0?'pos':'neg'}">${money(r.perDay)}</b>`,sv:r.perDay}
+    ]})),{sort:7,dir:-1});
+
+  $('laneChart').innerHTML=barChart(
+    [...rows].sort((a,b)=>b.perDay-a.perDay).slice(0,14).map(r=>({label:r.lane,short:r.lane.split(' → ')[0],v:Math.round(r.perDay)})));
+}
+
+/* ═══════════ DRIVERS ═══════════ */
+function driverRows(){
+  return DB.drivers.map(d=>{
+    const mine=scoredLoads().filter(x=>x.L.driverId===d.id);
+    const miles=sum(mine,x=>x.s.miles), dead=sum(mine,x=>x.s.dead);
+    const rev=sum(mine,x=>x.s.revenue), net=sum(mine,x=>x.s.net);
+    const pay=sum(mine,x=>x.s.driver_), gal=sum(mine,x=>x.s.gal);
+    const det=sum(mine,x=>x.s.detHrs);
+    return {d,n:mine.length,miles,dead,rev,net,pay,gal,det,
+      mpg:gal?miles/gal:0, deadPct:miles?dead/miles:0,
+      margin:rev?net/rev:0, payCpm:miles?pay/miles:0, netPerMile:miles?net/miles:0};
+  });
+}
+function renderDrivers(){
+  const rows=driverRows().filter(r=>r.n>0);
+  if(!rows.length){ $('drvTiles').innerHTML=''; $('drvTable').innerHTML=emptyState('No loads assigned to drivers yet.'); $('paySim').innerHTML=''; return; }
+  const best=[...rows].sort((a,b)=>b.netPerMile-a.netPerMile)[0];
+  const thirsty=[...rows].filter(r=>r.mpg>0).sort((a,b)=>a.mpg-b.mpg)[0];
+  $('drvTiles').innerHTML=[
+    {l:'Drivers with loads',v:rows.length,d:`${sum(rows,r=>r.n)} loads`},
+    {l:'Best net per mile',v:money2(best.netPerMile),d:best.d.name,k:'pos'},
+    {l:'Lowest MPG',v:thirsty?thirsty.mpg.toFixed(2):'—',d:thirsty?thirsty.d.name:'',k:'neg'},
+    {l:'Detention hours',v:sum(rows,r=>r.det).toFixed(1),d:'time the truck sat',k:sum(rows,r=>r.det)>10?'neg':''}
+  ].map(t=>`<div class="tile ${t.k||''}"><div class="l">${t.l}</div><div class="v">${t.v}</div><div class="d">${esc(t.d)}</div></div>`).join('');
+
+  $('drvTable').innerHTML=table('drv',
+    [{t:'Driver'},{t:'Pay model'},{t:'Loads',n:1},{t:'Miles',n:1},{t:'MPG',n:1},{t:'Deadhead',n:1},{t:'Detention h',n:1},{t:'Pay CPM',n:1},{t:'Net / mile',n:1}],
+    rows.map(r=>({cells:[
+      {v:r.d.name},
+      {v:r.d.payMode==='pct'?r.d.payRate+'% of rate':money2(nz(r.d.payRate))+'/mi'},
+      {v:r.n,sv:r.n},
+      {v:Math.round(r.miles).toLocaleString(),sv:r.miles},
+      {h:`<span class="${r.mpg&&r.mpg<6?'warn':''}">${r.mpg?r.mpg.toFixed(2):'—'}</span>`,sv:r.mpg},
+      {h:`<span class="${r.deadPct>0.15?'warn':''}">${pct(r.deadPct)}</span>`,sv:r.deadPct},
+      {v:r.det.toFixed(1),sv:r.det},
+      {v:money2(r.payCpm),sv:r.payCpm},
+      {h:`<b class="${r.netPerMile>=0?'pos':'neg'}">${money2(r.netPerMile)}</b>`,sv:r.netPerMile}
+    ]})),{sort:8,dir:-1});
+
+  $('paySim').innerHTML=`
+    <div class="frm">
+      <div class="field"><label for="ps_drv">Driver</label><div class="inp"><select id="ps_drv" onchange="runPaySim()">${
+        rows.map(r=>`<option value="${esc(r.d.id)}">${esc(r.d.name)}</option>`).join('')}</select></div></div>
+      <div class="field"><label for="ps_mode">New pay model</label><div class="inp"><select id="ps_mode" onchange="runPaySim()">
+        <option value="mile">Per mile</option><option value="pct">% of rate</option></select></div></div>
+      <div class="field"><label for="ps_rate">New rate</label><div class="inp"><input type="number" id="ps_rate" value="0.68" step="0.01" min="0" inputmode="decimal" oninput="runPaySim()"></div></div>
+    </div>
+    <div id="psOut" style="margin-top:1rem"></div>`;
+  runPaySim();
+}
+function runPaySim(){
+  const id=$('ps_drv')&&$('ps_drv').value; if(!id) return;
+  const mode=$('ps_mode').value, rate=nz($('ps_rate').value);
+  const mine=DB.loads.filter(l=>l.driverId===id);
+  if(!mine.length){ $('psOut').innerHTML='<p class="note">No loads for this driver.</p>'; return; }
+  const before=sum(mine.map(score),s=>s.driver_);
+  const after=sum(mine.map(L=>{
+    const s=score(L);
+    return mode==='pct' ? s.revenue*rate/100 : s.miles*rate;
+  }),x=>x);
+  const diff=after-before;
+  const miles=sum(mine.map(score),s=>s.miles);
+  const d=DB.drivers.find(x=>x.id===id);
+  $('psOut').innerHTML=`
+    <div class="kv"><span>Paid today across ${mine.length} load${mine.length===1?'':'s'}</span><b>${money(before)}</b></div>
+    <div class="kv"><span>Paid at the new model</span><b>${money(after)}</b></div>
+    <div class="kv"><span>Difference</span><b class="${diff<=0?'pos':'neg'}">${diff>0?'+':''}${money(diff)}</b></div>
+    <div class="kv"><span>Effect on cost per mile</span><b class="${diff<=0?'pos':'neg'}">${diff>0?'+':''}${money2(miles?diff/miles:0)}/mi</b></div>
+    <p class="note">${diff>0
+      ? `Raising ${esc(d?d.name:'this driver')} costs <b>${money(diff)}</b> over the loads already run. Annualised at this volume that is roughly <b>${money(diff*12/Math.max(mine.length/4,1))}</b> — decide whether retention is worth that.`
+      : `This saves <b>${money(-diff)}</b> over the loads already run, but a cut moves the retention risk, which this model cannot price.`}</p>`;
+}
+
+/* ═══════════ FUEL & MPG ═══════════ */
+function renderFuel(){
+  const S=scoredLoads();
+  if(!S.length){ $('fuelTiles').innerHTML=''; $('fuelTable').innerHTML=emptyState('No loads booked yet.'); $('mpgSim').innerHTML=''; return; }
+  const gal=sum(S,x=>x.s.gal), cost=sum(S,x=>x.s.fuel), miles=sum(S,x=>x.s.miles);
+  const fleetMpg=gal?miles/gal:0;
+  const rev=sum(S,x=>x.s.revenue);
+  $('fuelTiles').innerHTML=[
+    {l:'Gallons burned',v:Math.round(gal).toLocaleString(),d:`${Math.round(miles).toLocaleString()} miles`},
+    {l:'Fuel spend',v:money(cost),d:`${pct(rev?cost/rev:0)} of revenue`,k:'neg'},
+    {l:'Fleet MPG',v:fleetMpg.toFixed(2),d:'miles ÷ gallons',k:'gold'},
+    {l:'Fuel per mile',v:money2(miles?cost/miles:0),d:'at the prices paid'}
+  ].map(t=>`<div class="tile ${t.k||''}"><div class="l">${t.l}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join('');
+
+  const rows=DB.trucks.map(t=>{
+    const mine=S.filter(x=>x.L.truckId===t.id);
+    const g=sum(mine,x=>x.s.gal), m=sum(mine,x=>x.s.miles), c=sum(mine,x=>x.s.fuel);
+    const dead=sum(mine,x=>x.s.dead);
+    return {t,n:mine.length,g,m,c,dead, mpg:g?m/g:0, perMile:m?c/m:0, deadGal:g&&m?dead/Math.max(nz(t.mpg),0.1):0};
+  }).filter(r=>r.n>0);
+  $('fuelTable').innerHTML=table('fuel',
+    [{t:'Truck'},{t:'Loads',n:1},{t:'Miles',n:1},{t:'Gallons',n:1},{t:'MPG',n:1},{t:'Fuel cost',n:1},{t:'Fuel / mile',n:1},{t:'Burned empty',n:1}],
+    rows.map(r=>({cells:[
+      {v:r.t.name},{v:r.n,sv:r.n},
+      {v:Math.round(r.m).toLocaleString(),sv:r.m},
+      {v:Math.round(r.g).toLocaleString(),sv:r.g},
+      {h:`<b class="${r.mpg<6?'warn':'pos'}">${r.mpg.toFixed(2)}</b>`,sv:r.mpg},
+      {v:money(r.c),sv:r.c},{v:money2(r.perMile),sv:r.perMile},
+      {h:`<span class="warn">${Math.round(r.deadGal).toLocaleString()} gal</span>`,sv:r.deadGal}
+    ]})),{sort:4,dir:1,empty:'No fuel recorded — book loads first.'});
+
+  const annualMiles=sum(DB.trucks,t=>nz(t.monthlyMiles))*12;
+  $('mpgSim').innerHTML=`
+    <div class="frm">
+      <div class="field"><label for="mp_gain">MPG improvement</label>
+        <div class="inp has-suf"><input type="number" id="mp_gain" value="0.4" step="0.1" min="0.1" inputmode="decimal" oninput="runMpgSim()"><span class="suf">mpg</span></div></div>
+      <div class="field"><label for="mp_price">Diesel price</label>
+        <div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="mp_price" value="${DB.settings.diesel}" step="0.01" min="0" inputmode="decimal" oninput="runMpgSim()"><span class="suf">/gal</span></div></div>
+      <div class="field"><label for="mp_miles">Fleet miles per year</label>
+        <div class="inp has-suf"><input type="number" id="mp_miles" value="${Math.round(annualMiles)||120000}" step="1000" min="1" inputmode="decimal" oninput="runMpgSim()"><span class="suf">mi</span></div></div>
+    </div>
+    <div id="mpgOut" style="margin-top:1rem"></div>`;
+  runMpgSim(fleetMpg);
+}
+let FLEET_MPG=6.5;
+function runMpgSim(setMpg){
+  if(setMpg) FLEET_MPG=setMpg||6.5;
+  const base=FLEET_MPG>0?FLEET_MPG:6.5;
+  const gain=nz($('mp_gain').value), price=nz($('mp_price').value), miles=nz($('mp_miles').value);
+  const galNow=miles/base, galThen=miles/(base+gain);
+  const saved=(galNow-galThen)*price;
+  $('mpgOut').innerHTML=`
+    <div class="kv"><span>At ${base.toFixed(2)} mpg</span><b>${Math.round(galNow).toLocaleString()} gal · ${money(galNow*price)}</b></div>
+    <div class="kv"><span>At ${(base+gain).toFixed(2)} mpg</span><b>${Math.round(galThen).toLocaleString()} gal · ${money(galThen*price)}</b></div>
+    <div class="kv"><span>Saved per year</span><b class="pos">${money(saved)}</b></div>
+    <p class="note">A <b>${gain.toFixed(1)} mpg</b> improvement is worth <b>${money(saved)}</b> a year at ${money2(price)} diesel across ${Math.round(miles).toLocaleString()} miles —
+      <b>${money2(miles?saved/miles:0)}</b> per mile off your cost base. Compare that to what an idle-reduction policy or a tyre programme costs.</p>`;
+}
+
+/* ═══════════ HOS PLANNER ═══════════ */
+const HOS={DRIVE:11,WINDOW:14,BREAK:8,CYCLE:70};
+function computeHOS(i){
+  const driveLeft=Math.max(HOS.DRIVE-i.driveUsed,0);
+  const windowLeft=Math.max(HOS.WINDOW-i.windowUsed,0);
+  const cycleLeft=Math.max(HOS.CYCLE-i.cycleUsed,0);
+  const breakLeft=Math.max(HOS.BREAK-i.sinceBreak,0);
+  const driveNeeded=i.miles/Math.max(i.speed,1);
+  const totalNeeded=driveNeeded+i.loadHrs;
+
+  const todayDrive=Math.min(driveLeft,windowLeft,cycleLeft);
+  const needsBreak=driveNeeded>breakLeft;
+  const breakCost=needsBreak?0.5:0;
+
+  // whole days needed: 11h driving per day after a 10h reset
+  const remainingAfterToday=Math.max(driveNeeded-todayDrive,0);
+  const extraDays=Math.ceil(remainingAfterToday/HOS.DRIVE);
+  const restHours=extraDays*10;
+  const elapsed=Math.min(driveNeeded,todayDrive)+i.loadHrs+breakCost+restHours+remainingAfterToday;
+
+  const cycleShort=driveNeeded>cycleLeft;
+  const feasible=!cycleShort && elapsed<=i.apptIn;
+  const issues=[];
+  if(cycleShort) issues.push(`Only ${cycleLeft.toFixed(1)}h left in the 70-hour cycle but the run needs ${driveNeeded.toFixed(1)}h of driving. A 34-hour restart is required first.`);
+  if(needsBreak) issues.push(`A 30-minute break is due after ${breakLeft.toFixed(1)}h more driving.`);
+  if(extraDays>0) issues.push(`The run cannot finish today — it needs ${extraDays} more shift${extraDays>1?'s':''} and ${restHours}h of required rest.`);
+  if(!feasible && !cycleShort) issues.push(`Realistic arrival is ${elapsed.toFixed(1)}h away but the appointment is in ${i.apptIn}h — short by ${(elapsed-i.apptIn).toFixed(1)}h.`);
+  return {driveLeft,windowLeft,cycleLeft,breakLeft,driveNeeded,totalNeeded,todayDrive,needsBreak,extraDays,restHours,elapsed,feasible,cycleShort,issues};
+}
+function renderHOS(){ runHOS(); }
+function runHOS(){
+  const i={
+    driveUsed:nz($('h_drive').value), windowUsed:nz($('h_window').value),
+    cycleUsed:nz($('h_cycle').value), sinceBreak:nz($('h_break').value),
+    miles:nz($('h_miles').value), speed:nz($('h_speed').value)||50,
+    loadHrs:nz($('h_load').value), apptIn:nz($('h_appt').value)
+  };
+  const r=computeHOS(i);
+  const kind=r.cycleShort?'reject':r.feasible?'accept':'warn';
+  const label=r.cycleShort?'CYCLE EXHAUSTED':r.feasible?'LEGAL AND ON TIME':'WILL NOT MAKE IT LEGALLY';
+  $('hosOut').innerHTML=`
+    <div class="verdict v-${kind}" style="margin-bottom:1rem">
+      <div class="vt">${r.cycleShort?'✕':r.feasible?'✓':'!'} ${label}</div>
+      <div class="vs">${r.feasible
+        ? `Arrives about ${r.elapsed.toFixed(1)}h from now, ${(i.apptIn-r.elapsed).toFixed(1)}h before the appointment.`
+        : `This load only works by breaking the clock. That is not a profitable load — it is a liability with a rate attached.`}</div>
+    </div>
+    <div class="tiles" style="margin-bottom:1rem">
+      <div class="tile"><div class="l">Driving left today</div><div class="v">${r.driveLeft.toFixed(1)}h</div><div class="d">of ${HOS.DRIVE}h</div></div>
+      <div class="tile"><div class="l">14h window left</div><div class="v">${r.windowLeft.toFixed(1)}h</div><div class="d">on-duty clock</div></div>
+      <div class="tile ${r.cycleLeft<10?'neg':''}"><div class="l">70h cycle left</div><div class="v">${r.cycleLeft.toFixed(1)}h</div><div class="d">8-day rolling</div></div>
+    </div>
+    <div class="kv"><span>Driving time this run needs</span><b>${r.driveNeeded.toFixed(1)}h</b></div>
+    <div class="kv"><span>Loading / unloading</span><b>${i.loadHrs.toFixed(1)}h</b></div>
+    <div class="kv"><span>Required 30-min break</span><b>${r.needsBreak?'yes':'not yet'}</b></div>
+    <div class="kv"><span>Extra shifts needed</span><b>${r.extraDays}</b></div>
+    <div class="kv"><span>Required rest</span><b>${r.restHours}h</b></div>
+    <div class="kv" style="border-top:1px solid var(--line);margin-top:.4rem;padding-top:.6rem">
+      <span style="color:#fff;font-weight:600">Realistic total elapsed</span><b class="${r.feasible?'pos':'neg'}">${r.elapsed.toFixed(1)}h</b></div>
+    ${r.issues.length?`<p class="note">${r.issues.map(x=>'• '+x).join('<br>')}</p>`:'<p class="note">No clock problems on this run.</p>'}
+    <p class="note" style="color:var(--tx-3)">US property-carrying rules. Adverse-conditions and short-haul exceptions are not modelled — treat this as a planning check, not a compliance record.</p>`;
+}
+['h_drive','h_window','h_cycle','h_break','h_miles','h_speed','h_load','h_appt']
+  .forEach(id=>document.addEventListener('input',e=>{ if(e.target.id===id) runHOS(); }));
+
+/* ═══════════ CUSTOMERS ═══════════ */
+function custRows(){
+  const m=new Map();
+  scoredLoads().forEach(({L,s})=>{
+    const c=custOf(L.customerId);
+    const key=c?c.id:'__none';
+    const r=m.get(key)||{id:key,name:c?c.name:'No customer',terms:c?nz(c.terms):0,n:0,rev:0,net:0,cost:0,miles:0,dead:0,det:0,days:0};
+    r.n++; r.rev+=s.revenue; r.net+=s.net; r.cost+=s.cost;
+    r.miles+=s.miles; r.dead+=s.dead; r.det+=s.detHrs; r.days+=s.days;
+    m.set(key,r);
+  });
+  return [...m.values()].map(r=>{
+    // cost of money while an invoice is outstanding, at 10% annual
+    const carry=r.rev*(r.terms/365)*0.10;
+    const adj=r.net-carry;
+    return {...r,carry,adj,
+      margin:r.rev?r.net/r.rev:0, adjMargin:r.rev?adj/r.rev:0,
+      deadPct:r.miles?r.dead/r.miles:0, perDay:r.days?adj/r.days:0};
+  });
+}
+function renderCust(){
+  const rows=custRows();
+  if(!rows.length){ $('custTiles').innerHTML=''; $('custTable').innerHTML=emptyState('No loads booked yet.'); $('custChart').innerHTML=''; return; }
+  const byRev=[...rows].sort((a,b)=>b.rev-a.rev);
+  const byMargin=[...rows].sort((a,b)=>b.adjMargin-a.adjMargin);
+  const mismatch=byRev[0]&&byMargin[0]&&byRev[0].id!==byMargin[0].id;
+  $('custTiles').innerHTML=[
+    {l:'Customers',v:rows.length,d:`${sum(rows,r=>r.n)} loads`},
+    {l:'Biggest by revenue',v:money(byRev[0].rev),d:byRev[0].name,k:'gold'},
+    {l:'Best true margin',v:pct(byMargin[0].adjMargin),d:byMargin[0].name,k:'pos'},
+    {l:'Cost of payment terms',v:money(sum(rows,r=>r.carry)),d:'money tied up at 10%/yr',k:'neg'}
+  ].map(t=>`<div class="tile ${t.k||''}"><div class="l">${t.l}</div><div class="v">${t.v}</div><div class="d">${esc(t.d)}</div></div>`).join('');
+
+  $('custTable').innerHTML=table('cust',
+    [{t:'Customer'},{t:'Loads',n:1},{t:'Revenue',n:1},{t:'Deadhead'},{t:'Detention h',n:1},{t:'Terms',n:1},{t:'Terms cost',n:1},{t:'Net after terms',n:1},{t:'True margin',n:1}],
+    rows.map(r=>({cells:[
+      {v:r.name},{v:r.n,sv:r.n},{v:money(r.rev),sv:r.rev},
+      {h:`<span class="${r.deadPct>0.15?'warn':''}">${pct(r.deadPct)}</span>`,sv:r.deadPct},
+      {v:r.det.toFixed(1),sv:r.det},
+      {v:r.terms?r.terms+'d':'—',sv:r.terms},
+      {v:money(r.carry),sv:r.carry},
+      {h:`<b class="${r.adj>=0?'pos':'neg'}">${money(r.adj)}</b>`,sv:r.adj},
+      {h:`<span class="pill ${r.adjMargin>=DB.settings.targetMargin?'ok':r.adjMargin>=DB.settings.thinMargin?'mid':'bad'}">${pct(r.adjMargin)}</span>`,sv:r.adjMargin}
+    ]})),{sort:7,dir:-1});
+
+  $('custChart').innerHTML=barChart(byRev.slice(0,12).map(r=>({label:r.name,short:r.name,v:Math.round(r.adjMargin*1000)/10})),
+    {fmt:v=>v+'%',color:d=>d.v>=DB.settings.targetMargin*100?'#34C98A':d.v>=DB.settings.thinMargin*100?'#E0A93B':'#E4614C'})
+    + (mismatch?`<p class="note">Your largest customer by revenue (<b>${esc(byRev[0].name)}</b>) is not your best by margin (<b>${esc(byMargin[0].name)}</b>). That gap is the negotiation.</p>`:'');
+}
+
+/* ═══════════ BACKHAUL ═══════════ */
+let BACKS=[{id:uid('bh'),label:'Return A',rate:1650,loaded:790,dead:60},
+           {id:uid('bh'),label:'Return B',rate:2100,loaded:930,dead:240}];
+function addBack(){
+  BACKS.push({id:uid('bh'),label:'Return '+String.fromCharCode(65+BACKS.length),rate:1500,loaded:700,dead:80});
+  renderBack();
+}
+function delBack(id){ BACKS=BACKS.filter(b=>b.id!==id); renderBack(); }
+function setBack(id,k,v){ const b=BACKS.find(x=>x.id===id); if(b){ b[k]=k==='label'?v:nz(v); calcBack(); } }
+function renderBack(){
+  fillSelects();
+  if(!DB.trucks.length){ $('backOut').innerHTML=emptyState('Add a truck first.','<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Set up the fleet</button>'); $('backList').innerHTML=''; return; }
+  $('backList').innerHTML=BACKS.map(b=>`
+    <div style="border:1px solid var(--line-soft);border-radius:10px;padding:.85rem;margin-bottom:.6rem;background:rgba(3,10,22,.35)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;gap:.6rem">
+        <input value="${esc(b.label)}" oninput="setBack('${b.id}','label',this.value)"
+          style="background:none;border:0;color:#fff;font-family:var(--disp);font-weight:600;font-size:.9rem;min-width:0;flex:1">
+        <button class="ico-btn" onclick="delBack('${b.id}')">Remove</button>
+      </div>
+      <div class="frm">
+        <div class="field"><label>Rate</label><div class="inp has-pre"><span class="pre">$</span>
+          <input type="number" value="${b.rate}" step="10" min="0" inputmode="decimal" oninput="setBack('${b.id}','rate',this.value)"></div></div>
+        <div class="field"><label>Loaded</label><div class="inp has-suf">
+          <input type="number" value="${b.loaded}" step="10" min="0" inputmode="decimal" oninput="setBack('${b.id}','loaded',this.value)"><span class="suf">mi</span></div></div>
+        <div class="field"><label>Deadhead to it</label><div class="inp has-suf">
+          <input type="number" value="${b.dead}" step="5" min="0" inputmode="decimal" oninput="setBack('${b.id}','dead',this.value)"><span class="suf">mi</span></div></div>
+      </div>
+    </div>`).join('') || '<p class="note">No return offers added yet.</p>';
+  calcBack();
+}
+function calcBack(){
+  if(!DB.trucks.length) return;
+  const base={truckId:$('b_truck').value,driverId:$('b_driver').value,diesel:DB.settings.diesel,extras:0,detentionHrs:0,detentionPay:0};
+  const out={...base,rate:nz($('b_rate').value),loaded:nz($('b_loaded').value),deadhead:nz($('b_dead').value)};
+  const so=score(out);
+
+  // If no backhaul is taken the truck still runs home empty.
+  const emptyHome={...base,rate:0,loaded:0,deadhead:nz($('b_loaded').value)};
+  const se=score(emptyHome);
+  const soloNet=so.net-se.cost, soloDays=so.days+se.days;
+
+  const opts=BACKS.map(b=>{
+    const r={...base,rate:b.rate,loaded:b.loaded,deadhead:b.dead};
+    const sr=score(r);
+    const net=so.net+sr.net, days=so.days+sr.days, rev=so.revenue+sr.revenue;
+    return {b,sr,net,days,rev,perDay:days?net/days:0,margin:rev?net/rev:0,gain:net-soloNet};
+  }).sort((a,b)=>b.perDay-a.perDay);
+
+  const best=opts[0];
+  $('backOut').innerHTML=`
+    <h3>Round trip, not the leg</h3>
+    <p class="hint">The outbound is fixed. The question is what the return does to the whole trip.</p>
+    <div class="tiles" style="margin-bottom:1rem">
+      <div class="tile ${so.net>=0?'pos':'neg'}"><div class="l">Outbound alone</div><div class="v">${money(so.net)}</div><div class="d">${pct(so.margin)} margin</div></div>
+      <div class="tile ${soloNet>=0?'pos':'neg'}"><div class="l">Deadheading home</div><div class="v">${money(soloNet)}</div><div class="d">${money(soloNet/Math.max(soloDays,1))}/day</div></div>
+    </div>
+    ${opts.length?`<div class="tw"><table class="t" style="min-width:480px"><thead><tr>
+      <th class="no">Return</th><th class="no n">Rate</th><th class="no n">Trip net</th><th class="no n">Per day</th><th class="no n">vs. empty</th></tr></thead><tbody>
+      ${opts.map((o,i)=>`<tr${i===0?' style="background:rgba(227,180,74,.07)"':''}>
+        <td><b>${esc(o.b.label)}</b>${i===0?' <span class="pill ok">BEST</span>':''}<br>
+          <span style="color:var(--tx-3);font-size:.76rem">${o.b.loaded} mi loaded · ${o.b.dead} mi to reach it</span></td>
+        <td class="n">${money(o.b.rate)}</td>
+        <td class="n"><b class="${o.net>=0?'pos':'neg'}">${money(o.net)}</b></td>
+        <td class="n">${money(o.perDay)}</td>
+        <td class="n"><b class="${o.gain>=0?'pos':'neg'}">${o.gain>=0?'+':''}${money(o.gain)}</b></td>
+      </tr>`).join('')}</tbody></table></div>
+    <p class="note">${best.gain>0
+      ? `<b>${esc(best.b.label)}</b> is worth <b>${money(best.gain)}</b> more than driving home empty, even though it pays ${money(best.b.rate)}. A cheap return that kills ${nz($('b_loaded').value)-best.b.dead} empty miles beats a rich return that adds deadhead.`
+      : `Every return offered is worse than running home empty. That is unusual — check the deadhead figures before rejecting them.`}</p>`
+    :'<p class="note">Add a return offer to compare.</p>'}`;
+}
+['b_rate','b_loaded','b_dead'].forEach(id=>document.addEventListener('input',e=>{ if(e.target.id===id) calcBack(); }));
+document.addEventListener('change',e=>{ if(['b_truck','b_driver'].includes(e.target.id)) calcBack(); });
+
+/* ═══════════ FLEET & DATA ═══════════ */
+function renderData(){
+  const S=DB.settings;
+  $('cfg_target').value=Math.round(S.targetMargin*100);
+  $('cfg_thin').value=Math.round(S.thinMargin*100);
+  $('cfg_mpd').value=S.milesPerDay;
+  $('cfg_diesel').value=S.diesel;
+
+  $('truckList').innerHTML=DB.trucks.length?DB.trucks.map(t=>`
+    <div class="kv"><span><b style="color:#fff">${esc(t.name)}</b><br>
+      <span style="color:var(--tx-3);font-size:.76rem">${nz(t.mpg)} mpg · ${money2(truckCPM(t))}/mi fixed</span></span>
+      <span style="display:flex;gap:.35rem"><button class="ico-btn g" onclick="renameTruck('${t.id}')">Rename</button>
+      <button class="ico-btn" onclick="delTruck('${t.id}')">Delete</button></span></div>`).join('')
+    :'<p class="note">No trucks yet.</p>';
+
+  $('driverList').innerHTML=DB.drivers.length?DB.drivers.map(d=>`
+    <div class="kv"><span><b style="color:#fff">${esc(d.name)}</b><br>
+      <span style="color:var(--tx-3);font-size:.76rem">${d.payMode==='pct'?nz(d.payRate)+'% of rate':money2(nz(d.payRate))+'/mi'}</span></span>
+      <span style="display:flex;gap:.35rem"><button class="ico-btn g" onclick="editDriver('${d.id}')">Edit</button>
+      <button class="ico-btn" onclick="delDriver('${d.id}')">Delete</button></span></div>`).join('')
+    :'<p class="note">No drivers yet.</p>';
+
+  $('customerList').innerHTML=DB.customers.length?DB.customers.map(c=>`
+    <div class="kv"><span><b style="color:#fff">${esc(c.name)}</b><br>
+      <span style="color:var(--tx-3);font-size:.76rem">net ${nz(c.terms)} days</span></span>
+      <span style="display:flex;gap:.35rem"><button class="ico-btn g" onclick="editCustomer('${c.id}')">Edit</button>
+      <button class="ico-btn" onclick="delCustomer('${c.id}')">Delete</button></span></div>`).join('')
+    :'<p class="note">No customers yet.</p>';
+
+  let bytes=0; try{ bytes=(localStorage.getItem(KEY)||'').length; }catch(e){}
+  $('storeInfo').innerHTML=`${DB.trucks.length} trucks · ${DB.drivers.length} drivers · ${DB.customers.length} customers · ${DB.loads.length} loads
+    · <b>${(bytes/1024).toFixed(1)} KB</b> stored in this browser${storageOK?'':' — <span class="neg">storage is blocked, changes will not persist</span>'}`;
+}
+['cfg_target','cfg_thin','cfg_mpd','cfg_diesel'].forEach(id=>document.addEventListener('input',e=>{
+  if(e.target.id!==id) return;
+  const S=DB.settings;
+  S.targetMargin=clamp(nz($('cfg_target').value)/100,0,0.9);
+  S.thinMargin=clamp(nz($('cfg_thin').value)/100,0,S.targetMargin);
+  S.milesPerDay=Math.max(nz($('cfg_mpd').value),50);
+  S.diesel=Math.max(nz($('cfg_diesel').value),0);
+  save();
+}));
+
+function addTruck(){
+  const name=prompt('Truck name or unit number','Unit '+(DB.trucks.length+1));
+  if(!name) return;
+  DB.trucks.push({id:uid('tk'),name:name.trim(),mpg:6.5,maintCpm:0.19,monthlyMiles:10500,
+    fixed:{truck:2450,trailer:620,insurance:1350,permits:310,eld:185,other:540}});
+  save(); renderData(); fillSelects(); refreshBadges(); toast('Truck added — set its real costs in Cost per Mile');
+}
+function renameTruck(id){ const t=truckOf(id); if(!t)return; const n=prompt('Truck name',t.name); if(n){t.name=n.trim();save();renderData();fillSelects();} }
+function delTruck(id){
+  const used=DB.loads.filter(l=>l.truckId===id).length;
+  if(used&&!confirm(`${used} booked load${used===1?'':'s'} use this truck. Delete anyway? Those loads will fall back to the first truck's cost model.`)) return;
+  DB.trucks=DB.trucks.filter(t=>t.id!==id); save(); renderData(); fillSelects(); refreshBadges();
+}
+function addDriver(){
+  const name=prompt('Driver name'); if(!name) return;
+  const pct_=confirm('Percentage pay? OK = % of rate, Cancel = per mile');
+  const rate=nz(prompt(pct_?'Percentage of line haul':'Cents per mile as a decimal, e.g. 0.62', pct_?'27':'0.62'));
+  DB.drivers.push({id:uid('dr'),name:name.trim(),payMode:pct_?'pct':'mile',payRate:rate});
+  save(); renderData(); fillSelects(); toast('Driver added');
+}
+function editDriver(id){
+  const d=DB.drivers.find(x=>x.id===id); if(!d)return;
+  const n=prompt('Driver name',d.name); if(n===null)return; d.name=n.trim()||d.name;
+  const r=prompt(d.payMode==='pct'?'Percentage of line haul':'Pay per mile',d.payRate);
+  if(r!==null) d.payRate=nz(r);
+  save(); renderData(); fillSelects();
+}
+function delDriver(id){ DB.drivers=DB.drivers.filter(d=>d.id!==id); save(); renderData(); fillSelects(); }
+function addCustomer(){
+  const name=prompt('Customer or broker name'); if(!name) return;
+  const terms=nz(prompt('Payment terms in days','30'));
+  DB.customers.push({id:uid('cu'),name:name.trim(),terms});
+  save(); renderData(); fillSelects(); refreshBadges(); toast('Customer added');
+}
+function editCustomer(id){
+  const c=DB.customers.find(x=>x.id===id); if(!c)return;
+  const n=prompt('Customer name',c.name); if(n===null)return; c.name=n.trim()||c.name;
+  const t=prompt('Payment terms in days',c.terms); if(t!==null) c.terms=nz(t);
+  save(); renderData(); fillSelects();
+}
+function delCustomer(id){ DB.customers=DB.customers.filter(c=>c.id!==id); save(); renderData(); fillSelects(); refreshBadges(); }
+
+/* ═══════════ DEMO DATA / IMPORT / EXPORT ═══════════ */
+function seedDemo(){
+  if(DB.loads.length&&!confirm('This replaces everything currently in the console. Continue?')) return;
+  const T=[
+    {id:'tk_101',name:'Unit 101 · Freightliner Cascadia',mpg:7.1,maintCpm:0.17,monthlyMiles:11200,
+      fixed:{truck:2450,trailer:620,insurance:1350,permits:310,eld:185,other:540}},
+    {id:'tk_102',name:'Unit 102 · Peterbilt 579',mpg:6.4,maintCpm:0.21,monthlyMiles:9800,
+      fixed:{truck:2680,trailer:600,insurance:1420,permits:310,eld:185,other:560}},
+    {id:'tk_103',name:'Unit 103 · Volvo VNL 760',mpg:6.9,maintCpm:0.19,monthlyMiles:10500,
+      fixed:{truck:2310,trailer:640,insurance:1380,permits:295,eld:185,other:505}}
+  ];
+  const D=[
+    {id:'dr_1',name:'Driver A · per mile',payMode:'mile',payRate:0.62},
+    {id:'dr_2',name:'Driver B · per mile',payMode:'mile',payRate:0.68},
+    {id:'dr_3',name:'Driver C · percentage',payMode:'pct',payRate:27}
+  ];
+  const C=[
+    {id:'cu_1',name:'Midwest Produce Co.',terms:30},
+    {id:'cu_2',name:'Gulf Coast Brokerage',terms:45},
+    {id:'cu_3',name:'Northline Retail DC',terms:15},
+    {id:'cu_4',name:'Spot market',terms:7}
+  ];
+  const lanes=[
+    ['Chicago, IL','Dallas, TX',925],['Dallas, TX','Atlanta, GA',780],
+    ['Atlanta, GA','Charlotte, NC',245],['Charlotte, NC','Chicago, IL',760],
+    ['Chicago, IL','Kansas City, MO',510],['Kansas City, MO','Denver, CO',600],
+    ['Denver, CO','Phoenix, AZ',820],['Phoenix, AZ','Los Angeles, CA',375],
+    ['Los Angeles, CA','Salt Lake City, UT',690],['Salt Lake City, UT','Chicago, IL',1250]
+  ];
+  // deterministic pseudo-random so the demo is reproducible
+  let seed=20260826;
+  const rnd=()=>{ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; };
+  const loads=[];
+  const start=new Date(); start.setDate(start.getDate()-56);
+  for(let i=0;i<38;i++){
+    const [o,d,mi]=lanes[Math.floor(rnd()*lanes.length)];
+    const t=T[Math.floor(rnd()*T.length)], dr=D[Math.floor(rnd()*D.length)], cu=C[Math.floor(rnd()*C.length)];
+    const dead=Math.round(20+rnd()*190);
+    const rpm=2.10+rnd()*1.30;                       // spot-ish spread
+    const date=new Date(start); date.setDate(date.getDate()+Math.floor(i*1.45));
+    loads.push({
+      id:uid('ld'), date:date.toISOString().slice(0,10),
+      truckId:t.id, driverId:dr.id, customerId:cu.id,
+      origin:o, dest:d, loaded:mi, deadhead:dead,
+      rate:Math.round(mi*rpm/5)*5,
+      diesel:+(3.55+rnd()*0.75).toFixed(2),
+      extras:Math.round(30+rnd()*180),
+      detentionHrs:rnd()<0.25?+(1+rnd()*4).toFixed(1):0,
+      detentionPay:0
+    });
+  }
+  DB={settings:{...BLANK.settings},trucks:T,drivers:D,customers:C,loads};
+  save(); go('dash');
+  toast(`Demo fleet loaded — ${T.length} trucks, ${loads.length} loads across ${lanes.length} lanes`);
+}
+function wipe(){
+  if(!confirm('Erase every truck, driver, customer and load from this browser?')) return;
+  DB=cloneBlank();
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  go('dash'); toast('Everything erased');
+}
+function download(name,text,type){
+  const b=new Blob([text],{type:type||'application/json'});
+  const u=URL.createObjectURL(b), a=document.createElement('a');
+  a.href=u; a.download=name; document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove();},400);
+}
+function exportJSON(){
+  download(`loadmargin-backup-${new Date().toISOString().slice(0,10)}.json`,
+    JSON.stringify({app:'LoadMargin',version:1,exported:new Date().toISOString(),data:DB},null,2));
+  toast('Backup downloaded');
+}
+function importJSON(input){
+  const f=input.files&&input.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const p=JSON.parse(r.result);
+      const d=p.data||p;
+      if(!d||!Array.isArray(d.trucks)) throw new Error('not a LoadMargin backup');
+      if(DB.loads.length&&!confirm('Replace what is currently in the console with this backup?')) return;
+      DB={...cloneBlank(),...d,settings:{...BLANK.settings,...(d.settings||{})}};
+      save(); go('dash'); toast(`Imported ${DB.loads.length} loads`);
+    }catch(e){ toast('That file is not a LoadMargin backup.','bad'); }
+    input.value='';
+  };
+  r.onerror=()=>{ toast('Could not read that file.','bad'); input.value=''; };
+  r.readAsText(f);
+}
+function exportCSV(){
+  if(!DB.loads.length){ toast('No loads to export.','bad'); return; }
+  const head=['date','origin','destination','customer','truck','driver','loaded_mi','deadhead_mi','total_mi',
+    'rate','detention_hrs','fuel','driver_pay','maintenance','fixed','fees','detention_idle','total_cost','net','margin','profit_per_day'];
+  const q=v=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
+  const rows=scoredLoads().map(({L,s})=>[
+    L.date,L.origin,L.dest,(custOf(L.customerId)||{}).name||'',(s.truck||{}).name||'',(s.driver||{}).name||'',
+    L.loaded,L.deadhead,Math.round(s.miles),s.revenue.toFixed(2),s.detHrs,
+    s.fuel.toFixed(2),s.driver_.toFixed(2),s.maint.toFixed(2),s.fixed.toFixed(2),s.extras.toFixed(2),
+    s.idleCost.toFixed(2),s.cost.toFixed(2),s.net.toFixed(2),(s.margin*100).toFixed(2),s.perDay.toFixed(2)
+  ].map(q).join(','));
+  download(`loadmargin-loads-${new Date().toISOString().slice(0,10)}.csv`,
+    [head.map(q).join(','),...rows].join('\r\n'),'text/csv');
+  toast(`${rows.length} loads exported`);
+}
+
+/* ═══════════ BOOT ═══════════ */
+function boot(){
+  const had=load();
+  buildNav();
+  fillSelects();
+  const h=(location.hash||'').replace('#','');
+  go(VIEWS.some(v=>v.id===h)?h:'dash');
+  if(!had && !DB.loads.length){
+    setTimeout(()=>toast('Empty console — load the demo fleet from Fleet & Data to see it working.'),700);
+  }
+}
+addEventListener('hashchange',()=>{
+  const h=(location.hash||'').replace('#','');
+  if(h&&h!==CUR&&VIEWS.some(v=>v.id===h)) go(h);
+});
+boot();
+</script>
+</body>
+</html>

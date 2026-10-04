@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factoring, quick pay and the cost of waiting — LoadMargin</title>
+<meta name="description" content="What freight factoring actually costs once you annualise it, why a 1.5% offer can be more expensive than a 3% one, what non-recourse really covers, and the single question that decides whether to factor at all.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/guide-factoring.html">
+<meta name="theme-color" content="#030A16">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Factoring, quick pay and the cost of waiting — LoadMargin">
+<meta property="og:description" content="What freight factoring actually costs once you annualise it, why a 1.5% offer can be more expensive than a 3% one, what non-recourse really covers, and the single question that decides whether to factor at all.">
+<meta property="og:url" content="https://aleksnvkvc-cell.github.io/loadmargin/guide-factoring.html">
+<meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Factoring, and the price of forty days","description":"What freight factoring actually costs once you annualise it, why a 1.5% offer can be more expensive than a 3% one, what non-recourse really covers, and the single question that decides whether to factor at all.","url":"https://aleksnvkvc-cell.github.io/loadmargin/guide-factoring.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://aleksnvkvc-cell.github.io/loadmargin/guide-factoring.html"},"image":"https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"author":{"@type":"Organization","@id":"https://aleksnvkvc-cell.github.io/loadmargin/#org","name":"LoadMargin","url":"https://aleksnvkvc-cell.github.io/loadmargin/","logo":"https://aleksnvkvc-cell.github.io/loadmargin/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and Excel workbooks for US trucking carriers."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aleksnvkvc-cell.github.io/loadmargin/guides.html"},{"@type":"ListItem","position":3,"name":"Factoring, and the price of forty days","item":"https://aleksnvkvc-cell.github.io/loadmargin/guide-factoring.html"}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#calculator">Calculator</a></li>
+      <li><a href="calculators.html">Tools</a></li>
+      <li><a href="workbooks.html">Workbooks</a></li>
+      <li><a href="guides.html" class="active">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work with me</a></li>
+    </ul>
+    <div class="nav-act">
+      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="art-hero">
+  <div class="wrap">
+    <span class="eyebrow">Guide · Business</span>
+    <h1>Factoring, and the price of forty days</h1>
+    <p class="lede">Factoring at 3% against a 30-day payer is a 39% annual cost of capital — and it can still be the right decision. Here is how to tell which case you are in.</p>
+    <div class="art-meta">
+      <span class="tagx">Guide</span>
+      <span>Updated 26 August 2026</span>
+      <span>11 min read</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-toc"><ul><li><a href="#problem">The problem factoring solves</a></li><li><a href="#how">How it works, mechanically</a></li><li><a href="#rates">What it costs in 2026</a></li><li><a href="#apr">The number that makes it comparable</a></li><li><a href="#recourse">Recourse, non-recourse and what you are really buying</a></li><li><a href="#hidden">Where the advertised rate stops being the rate</a></li><li><a href="#quickpay">Quick pay: the same trade, without the contract</a></li><li><a href="#decide">When it is worth it and when it is not</a></li></ul></aside>
+    <div class="art-body">
+
+<p class="lead-in">Factoring is not expensive or cheap in the abstract. It is a price for time, and
+whether it is worth paying depends entirely on what you would do with the money and what it costs
+you not to have it. Both of those are numbers.</p>
+
+<h2 id="problem">The problem factoring solves</h2>
+<p>Freight is delivered today and paid for in thirty to forty-five days. Fuel is paid for at the
+   pump. The driver is paid on Friday. The gap between those two facts is the single largest
+   operational constraint on a small carrier, and it has nothing to do with profitability.</p>
+<p>A carrier can be earning a 22% margin and still be unable to take the next load, because the
+   money from the last four is sitting in a broker's payables. Factoring closes that gap for a fee.</p>
+<div class="pullq">Factoring does not make you more profitable. It makes you able to run more loads at
+the same profitability, and it costs a fixed slice of each one. Those two effects compete.</div>
+
+<h2 id="how">How it works, mechanically</h2>
+<ol>
+  <li>You deliver the load and submit the invoice plus the signed bill of lading to the factor.</li>
+  <li>The factor <strong>buys the invoice</strong> — it is a sale, not a loan — and advances a
+      percentage of the face value, commonly 90–100%, usually within 24 hours.</li>
+  <li>The broker or shipper is notified to pay the factor directly. This is a
+      <strong>notice of assignment</strong>, and it is not optional.</li>
+  <li>When the customer pays, the factor releases any reserve it held back, minus the fee.</li>
+</ol>
+<p>Two things follow that carriers should understand before signing. The factor now has a
+   relationship with your customer, and the factor will <strong>credit-check your customers</strong>
+   — which is a genuine service, since a broker the factor refuses to fund is usually a broker you
+   should not be hauling for.</p>
+
+<h2 id="rates">What it costs in 2026</h2>
+<p>Published market ranges for truckload carriers:</p>
+<div class="tw2"><table>
+  <thead><tr><th>Carrier profile</th><th class="n">Typical rate</th></tr></thead>
+  <tbody>
+  <tr><td>Established carrier, strong broker mix, volume</td><td class="n">1.0% – 1.5%</td></tr>
+  <tr><td>Owner-operator factoring reliable brokers</td><td class="n">1.5% – 3.0%</td></tr>
+  <tr><td>New authority, thin credit history</td><td class="n">3.0% – 5.0%</td></tr>
+  </tbody>
+</table></div>
+<p>On a $2,400 invoice at 3%, the fee is $72. That is the number everyone quotes, and on its own it
+   is meaningless, because it says nothing about how long the money was borrowed for.</p>
+
+<h2 id="apr">The number that makes it comparable</h2>
+<p>To compare factoring against any other use of money, convert the fee into an annualised rate.</p>
+<div class="keybox">
+  <p style="font-family:var(--mono);margin:0 0 .6rem">effective_apr = (fee_pct ÷ (100 − fee_pct)) × (365 ÷ days_saved)</p>
+  <p style="font-family:var(--mono);margin:0">days_saved = normal_payment_days − factoring_days</p>
+</div>
+<div class="tw2"><table>
+  <thead><tr><th>Fee</th><th class="n">Broker pays in 30d</th><th class="n">Broker pays in 40d</th><th class="n">Broker pays in 60d</th></tr></thead>
+  <tbody>
+  <tr><td>1.5%</td><td class="n">19.2%</td><td class="n">14.3%</td><td class="n">9.4%</td></tr>
+  <tr><td>2.0%</td><td class="n">25.7%</td><td class="n">19.1%</td><td class="n">12.6%</td></tr>
+  <tr><td>3.0%</td><td class="n">38.9%</td><td class="n">28.9%</td><td class="n">19.1%</td></tr>
+  <tr><td>5.0%</td><td class="n">66.2%</td><td class="n">49.3%</td><td class="n">32.6%</td></tr>
+  </tbody>
+</table></div>
+<p>Read that table honestly. <strong>Factoring at 3% against a 30-day payer is a 39% annual cost of
+   capital.</strong> That is more expensive than almost any bank product and comparable to a credit
+   card.</p>
+<p>And it can still be the right decision — because the comparison is not against a bank loan you
+   cannot get. It is against not running the load at all.</p>
+<div class="keybox">
+  <h3>The comparison that actually matters</h3>
+  <p>If factoring a $2,400 invoice for $72 lets you take a load that nets <strong>$520</strong> you
+     otherwise could not have funded, the 39% APR is irrelevant. You paid $72 to earn $520.</p>
+  <p>If you have the cash anyway and factor out of habit, you are paying $72 for nothing, forty
+     times a month, which is $2,880 a month of pure loss.</p>
+  <p>Same product. Same rate. Opposite verdict. The variable is whether the cash was actually
+     binding.</p>
+</div>
+
+<h2 id="recourse">Recourse, non-recourse and what you are really buying</h2>
+<div class="tw2"><table>
+  <thead><tr><th></th><th>Recourse</th><th>Non-recourse</th></tr></thead>
+  <tbody>
+  <tr><td>If the customer never pays</td><td>You buy the invoice back</td><td>The factor absorbs it</td></tr>
+  <tr><td>Rate</td><td>Lower</td><td>Higher — the difference is the premium</td></tr>
+  <tr><td>Credit checks</td><td>Advisory</td><td>Binding — they choose who you can haul for</td></tr>
+  </tbody>
+</table></div>
+<p>The important caveat: <strong>non-recourse usually covers credit risk only</strong> — the
+   customer becoming insolvent. It typically does not cover a disputed invoice, a damage claim, a
+   late or missing POD, or a rate disagreement. Those are the ways carriers actually fail to get
+   paid, and they remain yours in both structures.</p>
+<p>Read the definition of the covered event in the contract. If it says "insolvency" and not
+   "non-payment", you are buying a narrower product than the name suggests.</p>
+
+<h2 id="hidden">Where the advertised rate stops being the rate</h2>
+<p>The headline percentage is the part designed to be compared. The fees below are the part that
+   is not, and they routinely make a 1.5% offer more expensive than a 3% one.</p>
+<div class="tw2"><table>
+  <thead><tr><th>Fee</th><th class="n">Seen at</th><th>What it does</th></tr></thead>
+  <tbody>
+  <tr><td>Setup / application</td><td class="n">$250</td><td>One-off, but it prices switching later</td></tr>
+  <tr><td>Monthly minimum volume</td><td class="n">$50</td><td>Charged in slow months — exactly when it hurts</td></tr>
+  <tr><td>ACH / wire per payment</td><td class="n">$15</td><td>Per invoice. At 40 loads a month, $600</td></tr>
+  <tr><td>Invoice processing</td><td class="n">$2 – $10</td><td>Per invoice, on top of the percentage</td></tr>
+  <tr><td>Credit check per new broker</td><td class="n">$10 – $25</td><td>Discourages exactly the diversification you want</td></tr>
+  <tr><td>Termination penalty</td><td class="n">varies</td><td>The reason bad deals persist</td></tr>
+  <tr><td>Contract lock-in</td><td class="n">12 – 24 months</td><td>Not a fee, but priced like one</td></tr>
+  </tbody>
+</table></div>
+<p>Compare on total cost per month at your real volume, never on the percentage:</p>
+<div class="tw2"><table>
+  <thead><tr><th>40 invoices, $2,400 each, $96,000/month</th><th class="n">Factor A "1.5%"</th><th class="n">Factor B "3.0%"</th></tr></thead>
+  <tbody>
+  <tr><td>Percentage fee</td><td class="n">$1,440</td><td class="n">$2,880</td></tr>
+  <tr><td>ACH at $15 × 40</td><td class="n">$600</td><td class="n">$0</td></tr>
+  <tr><td>Invoice processing at $8 × 40</td><td class="n">$320</td><td class="n">$0</td></tr>
+  <tr><td>Monthly minimum</td><td class="n">$50</td><td class="n">$0</td></tr>
+  <tr class="tot"><td>Actual monthly cost</td><td class="n">$2,410</td><td class="n">$2,880</td></tr>
+  <tr><td>Actual effective rate</td><td class="n">2.51%</td><td class="n">3.00%</td></tr>
+  </tbody>
+</table></div>
+<p>Factor A is still cheaper here — but it is 2.51%, not 1.5%, and at 15 invoices a month instead of
+   40 the fixed fees would flip the answer. <strong>Run the comparison at your own volume.</strong></p>
+
+<h2 id="quickpay">Quick pay: the same trade, without the contract</h2>
+<p>Most large brokers offer quick pay: payment in 1–7 days instead of 30–45, for a discount of
+   typically <strong>2–5%</strong> of the line haul.</p>
+<div class="tw2"><table>
+  <thead><tr><th></th><th>Factoring</th><th>Quick pay</th></tr></thead>
+  <tbody>
+  <tr><td>Cost</td><td>1–5%</td><td>2–5%</td></tr>
+  <tr><td>Contract</td><td>Usually 12–24 months</td><td>None — per invoice</td></tr>
+  <tr><td>Applies to</td><td>All customers</td><td>Only that broker</td></tr>
+  <tr><td>Credit protection</td><td>Available</td><td>None</td></tr>
+  <tr><td>Available when you need it most</td><td>Yes</td><td>Not necessarily</td></tr>
+  </tbody>
+</table></div>
+<p>The practical pattern that works for most small carriers: <strong>use quick pay selectively on
+   the loads where cash is actually binding, and factor only if that is most of them.</strong>
+   Quick pay used four times a month costs a few hundred dollars and no commitment. Factoring
+   everything to solve a problem that occurs four times a month costs several thousand.</p>
+
+<h2 id="decide">When it is worth it and when it is not</h2>
+<p>The decision reduces to one question, and it is not about the rate.</p>
+<div class="keybox">
+  <h3>Is cash actually the constraint?</h3>
+  <p><strong>Yes — factor.</strong> You are turning down loads, delaying fuel purchases, paying
+     drivers late, or running the truck under-utilised because the money has not arrived. The fee
+     buys throughput and the throughput is worth more.</p>
+  <p><strong>No — do not.</strong> You have working capital, the truck is as full as you can keep
+     it, and factoring would simply move 2–3% of every invoice to a third party in exchange for
+     receiving money slightly earlier than you need it.</p>
+</div>
+<p>Two tests worth running before you sign anything:</p>
+<ol>
+  <li><strong>Model the trough.</strong> Build the twelve-week cash schedule from the
+      <a href="guide-authority.html#working">authority guide</a>. If the trough never goes below
+      what you hold in reserve, cash is not your constraint and factoring is a pure cost.</li>
+  <li><strong>Price it against the marginal load.</strong> Take your typical net per load. If the
+      factoring fee across a month is less than the net on the loads it lets you add, it pays for
+      itself. If you cannot name those additional loads, it does not.</li>
+</ol>
+<p>And one thing to do regardless of the decision: <strong>fix your invoicing speed first</strong>.
+   A carrier who invoices the same day with a clean, complete packet is paid materially faster than
+   one who invoices weekly with missing PODs — for free. It is common to find a week of the delay
+   is self-inflicted, and a week of delay at 3% factoring is worth about a quarter of the fee.</p>
+
+<div class="art-cta">
+  <div>
+    <h3>See the fee against the load, not against the invoice</h3>
+    <p>Enter a factoring fee in the calculator's fees field and watch what it does to the margin on
+       a load you were already unsure about.</p>
+  </div>
+  <a href="index.html#calculator" class="btn btn-gold">Open the calculator →</a>
+</div>
+
+      <div class="srcbox">
+        <h3>Sources</h3>
+        <ol><li>Factoring rate ranges (1–5% overall, 1.5–3% typical for owner-operators factoring reliable brokers) and the listed add-on fees — setup, monthly minimum, ACH, processing, credit check, termination — are current 2026 published market figures.</li><li>Quick pay discounts of 2–5% for payment in 1–7 days are the common broker convention; terms vary by broker.</li><li>Effective APR figures are computed from the stated formula. They are arithmetic, not quotes.</li><li>The comparison tables use a $2,400 average invoice and 40 invoices per month. Substitute your own volume — the fixed fees change the answer at low volume.</li></ol>
+      </div>
+      <div class="art-next"><a href="guide-authority.html"><span class="k">Guide</span><span class="t">What authority really costs</span><span class="d">The working-capital trough that makes factoring a question in the first place.</span></a><a href="guide-cost-per-mile.html"><span class="k">Guide</span><span class="t">How to calculate your true cost per mile</span><span class="d">Where a factoring fee belongs in the cost model.</span></a><a href="guide-detention.html"><span class="k">Guide</span><span class="t">Detention and accessorials</span><span class="d">The other place a small carrier leaves money uncollected.</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
+        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+      </div>
+      <div><h2>Platform</h2><ul>
+        <li><a href="app.html">Fleet console</a></li>
+        <li><a href="index.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li>
+        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Work with me</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

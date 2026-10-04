@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live demo — Track &amp; Trace | LoadMargin</title>
+<meta name="description" content="Live demo of the LoadMargin track & trace board: loads, check calls, ETAs, late-load alerts and ready broker/customer status messages. Sample data only — nothing is saved or uploaded.">
+<link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/demo-track-trace.html">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#030A16; --panel:#0A1628; --panel2:#0d1b30; --line:#1b2a3f;
+    --tx:#e8eef7; --tx2:#a9b6c9; --tx3:#6f8098;
+    --gold:#E3B44A; --blue:#2C6FD1; --pos:#3fbf7f; --neg:#e0655a; --warn:#e0a53a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    font-size:15px;line-height:1.5;-webkit-text-size-adjust:100%}
+  h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;margin:0}
+  a{color:var(--gold)}
+  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(.8rem,3vw,1.6rem)}
+
+  header{border-bottom:1px solid var(--line);padding:1rem 0;position:sticky;top:0;
+    background:rgba(3,10,22,.92);backdrop-filter:blur(8px);z-index:20}
+  .brand{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+  .logo{width:34px;height:34px;border-radius:8px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
+  .brand b{font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;font-size:1.05rem}
+  .brand b span{color:var(--gold)}
+  .tag{color:var(--tx3);font-size:.82rem;margin-left:.2rem}
+
+  .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin:1.1rem 0}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem}
+  .tile .n{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;line-height:1}
+  .tile .l{color:var(--tx3);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.35rem}
+  .tile.warn .n{color:var(--warn)} .tile.neg .n{color:var(--neg)} .tile.pos .n{color:var(--pos)} .tile.blue .n{color:var(--blue)}
+
+  .toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.6rem 0 1.1rem}
+  .btn{border:1px solid var(--line);background:var(--panel);color:var(--tx);border-radius:9px;
+    padding:.5rem .9rem;font-size:.9rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .btn:hover{border-color:var(--tx3)}
+  .btn-gold{background:var(--gold);color:#1a1305;border-color:var(--gold);font-weight:600}
+  .btn-gold:hover{filter:brightness(1.05)}
+  .btn-sm{padding:.32rem .6rem;font-size:.8rem}
+  .btn-ghost{background:transparent}
+  input,select,textarea{background:var(--panel2);border:1px solid var(--line);color:var(--tx);
+    border-radius:8px;padding:.5rem .6rem;font-size:.9rem;font-family:inherit;width:100%}
+  input:focus,select,textarea:focus{outline:none;border-color:var(--blue)}
+  .grow{flex:1;min-width:150px}
+  .spacer{flex:1}
+
+  .board{display:flex;flex-direction:column;gap:.7rem}
+  .load{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;
+    border-left:4px solid var(--blue)}
+  .load.late{border-left-color:var(--neg)} .load.risk{border-left-color:var(--warn)}
+  .load.done{border-left-color:var(--pos);opacity:.72} .load.check{border-left-color:var(--gold)}
+  .load-top{display:flex;justify-content:space-between;gap:.8rem;align-items:flex-start;flex-wrap:wrap}
+  .ref{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem}
+  .cust{color:var(--tx3);font-size:.85rem}
+  .lane{margin:.5rem 0;color:var(--tx2);font-size:.92rem}
+  .lane b{color:var(--tx)}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.4rem .9rem;margin:.55rem 0;font-size:.85rem}
+  .meta div span{color:var(--tx3);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+  .badges{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+  .badge{font-size:.72rem;font-weight:600;padding:.18rem .5rem;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+  .badge.st{background:rgba(44,111,209,.14);border-color:rgba(44,111,209,.4);color:#8fbaf0}
+  .badge.late{background:rgba(224,101,90,.16);border-color:rgba(224,101,90,.5);color:#f0a49c}
+  .badge.risk{background:rgba(224,165,58,.14);border-color:rgba(224,165,58,.5);color:#f0cd8a}
+  .badge.check{background:rgba(227,180,74,.16);border-color:rgba(227,180,74,.55);color:#f0cd8a}
+  .badge.done{background:rgba(63,191,127,.14);border-color:rgba(63,191,127,.45);color:#8fe0b4}
+  .row-act{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
+  .note{color:var(--tx3);font-size:.82rem;margin-top:.4rem;font-style:italic}
+  .empty{text-align:center;color:var(--tx3);padding:2.5rem 1rem;border:1px dashed var(--line);border-radius:12px}
+
+  /* form + modal */
+  .modal{position:fixed;inset:0;background:rgba(2,7,15,.72);display:none;z-index:40;padding:1rem;overflow:auto}
+  .modal.open{display:block}
+  .sheet{max-width:720px;margin:2rem auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.4rem}
+  .sheet h2{font-size:1.15rem;margin-bottom:1rem}
+  .fg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  .field label{display:block;font-size:.76rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+  .field.full{grid-column:1/-1}
+  .sheet-act{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.2rem;flex-wrap:wrap}
+  .msgout{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:.8rem;white-space:pre-wrap;
+    font-size:.9rem;line-height:1.6;margin:.4rem 0 0}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{background:var(--panel2);border:0;color:var(--tx2);padding:.4rem .8rem;cursor:pointer;font-family:inherit;font-size:.85rem}
+  .seg button.on{background:var(--gold);color:#1a1305;font-weight:600}
+  .hint{color:var(--tx3);font-size:.8rem}
+  .foot{color:var(--tx3);font-size:.8rem;text-align:center;padding:2rem 0 3rem;line-height:1.7}
+
+  @media(max-width:820px){ .tiles{grid-template-columns:repeat(2,1fr)} .fg{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo"><svg width="22" height="22" viewBox="0 0 64 64"><path d="M14 44V20h7v18h11v6z" fill="#2C6FD1"/><path d="M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z" fill="#E3B44A"/></svg></span>
+      <b>LOAD<span>MARGIN</span></b>
+      <span class="tag">· Track &amp; Trace</span>
+      <span class="spacer"></span>
+      <a href="work.html" class="tag" style="text-decoration:none">&larr; LoadMargin</a>
+      <span class="tag mono" id="clock"></span>
+    </div>
+  </div>
+</header>
+
+<div style="background:rgba(227,180,74,.10);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="padding:.6rem 0;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
+    <span style="color:var(--gold);font-size:.86rem"><b>Live demo</b> · sample loads · nothing is saved or uploaded — this is the kind of board I run freight on.</span>
+    <a href="work.html#contact" style="color:var(--tx2);font-size:.86rem">Want it on your loads? &rarr;</a>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="tiles">
+    <div class="tile blue"><div class="n" id="tActive">0</div><div class="l">Active loads</div></div>
+    <div class="tile"><div class="n" id="tTransit">0</div><div class="l">In transit</div></div>
+    <div class="tile check"><div class="n" id="tCheck">0</div><div class="l">Check-call due</div></div>
+    <div class="tile neg"><div class="n" id="tRisk">0</div><div class="l">Late / at risk</div></div>
+    <div class="tile pos"><div class="n" id="tDone">0</div><div class="l">Delivered</div></div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn btn-gold" onclick="openForm()">+ Add load</button>
+    <select id="fStatus" class="btn" style="width:auto" onchange="render()">
+      <option value="">All statuses</option>
+      <option>Booked</option><option>At pickup</option><option>Loaded</option>
+      <option>In transit</option><option>At delivery</option><option>Delivered</option><option>Problem</option>
+    </select>
+    <input id="fSearch" class="grow" placeholder="Search ref, customer, lane, driver…" oninput="render()">
+    <span class="spacer"></span>
+    <span class="hint">Demo — changes reset on refresh</span>
+  </div>
+
+  <div id="board" class="board"></div>
+
+  <p class="foot">
+    This is a live demo with sample data — nothing is saved, nothing is uploaded, nothing leaves your browser.<br>
+    Want a board like this running your real loads, kept up to date for you? <a href="work.html#contact">Talk to me &rarr;</a>
+  </p>
+</main>
+
+<!-- Add / edit -->
+<div class="modal" id="formModal">
+  <div class="sheet">
+    <h2 id="formTitle">Add load</h2>
+    <div class="fg">
+      <div class="field"><label>Load / Ref #</label><input id="iRef" placeholder="e.g. 10482"></div>
+      <div class="field"><label>Broker / Customer</label><input id="iCust" placeholder="e.g. TQL"></div>
+      <div class="field"><label>Origin</label><input id="iOrig" placeholder="City, ST"></div>
+      <div class="field"><label>Destination</label><input id="iDest" placeholder="City, ST"></div>
+      <div class="field"><label>Pickup appt</label><input id="iPu" type="datetime-local"></div>
+      <div class="field"><label>Delivery appt</label><input id="iDel" type="datetime-local"></div>
+      <div class="field"><label>Driver / Truck</label><input id="iDrv" placeholder="e.g. Mike / #204"></div>
+      <div class="field"><label>Status</label><select id="iStatus">
+        <option>Booked</option><option>At pickup</option><option>Loaded</option>
+        <option selected>In transit</option><option>At delivery</option><option>Delivered</option><option>Problem</option>
+      </select></div>
+      <div class="field"><label>Current location</label><input id="iLoc" placeholder="e.g. near OKC, I-40"></div>
+      <div class="field"><label>ETA to delivery</label><input id="iEta" type="datetime-local"></div>
+      <div class="field"><label>Next check-call</label><input id="iCheck" type="datetime-local"></div>
+      <div class="field"><label>&nbsp;</label><span class="hint">Set a next check-call and the board flags it when it's due.</span></div>
+      <div class="field full"><label>Notes</label><textarea id="iNotes" rows="2" placeholder="Detention risk, appointment notes, lumper, etc."></textarea></div>
+    </div>
+    <div class="sheet-act">
+      <button class="btn btn-ghost" id="delBtn" onclick="delLoad()" style="display:none;color:var(--neg);border-color:rgba(224,101,90,.4)">Delete</button>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" onclick="closeForm()">Cancel</button>
+      <button class="btn btn-gold" onclick="saveLoad()">Save load</button>
+    </div>
+  </div>
+</div>
+
+<!-- Message generator -->
+<div class="modal" id="msgModal">
+  <div class="sheet" style="max-width:560px">
+    <h2>Status message</h2>
+    <div style="margin:.2rem 0 .8rem">
+      <span class="seg" id="audSeg">
+        <button data-aud="broker" class="on" onclick="setAud('broker')">For broker</button>
+        <button data-aud="customer" onclick="setAud('customer')">For customer</button>
+      </span>
+    </div>
+    <div class="msgout" id="msgOut"></div>
+    <div class="sheet-act">
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" onclick="closeMsg()">Close</button>
+      <button class="btn btn-gold" onclick="copyMsg()">Copy message</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── LoadMargin Track & Trace — standalone, no libraries, no network.
+   State lives in memory; mirrored to localStorage when available.       */
+(function(){
+  "use strict";
+  var KEY='lm_tt_loads_v1';
+  var loads=[];
+  var editingId=null, msgId=null, msgAud='broker';
+
+  /* ---- persistence (guarded) ---- */
+  function load(){ loads=sample(); }   /* demo: always fresh sample data, never persisted */
+  function save(){}                      /* demo: nothing is saved */
+
+  function sample(){
+    var now=Date.now(), h=3600000;
+    function iso(ms){ var d=new Date(ms); d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
+      return d.toISOString().slice(0,16); }
+    return [
+      {id:uid(),ref:'10482',cust:'TQL',orig:'Dallas, TX',dest:'Memphis, TN',
+       pu:iso(now-6*h),del:iso(now+2*h),drv:'Mike / #204',loc:'near Little Rock, I-40',
+       eta:iso(now+90*60000),status:'In transit',check:iso(now-20*60000),notes:'Receiver closes 17:00'},
+      {id:uid(),ref:'10490',cust:'Coyote',orig:'Atlanta, GA',dest:'Nashville, TN',
+       pu:iso(now+2*h),del:iso(now+9*h),drv:'Sam / #211',loc:'',eta:'',status:'Booked',
+       check:iso(now+90*60000),notes:''},
+      {id:uid(),ref:'10475',cust:'RXO',orig:'Kansas City, MO',dest:'Denver, CO',
+       pu:iso(now-30*h),del:iso(now-3*h),drv:'Mike / #204',loc:'delivered',eta:'',
+       status:'Delivered',check:'',notes:'POD signed'}
+    ];
+  }
+  function uid(){ return 'L'+Math.random().toString(36).slice(2,9); }
+
+  /* ---- helpers ---- */
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function ms(v){ if(!v) return null; var t=new Date(v).getTime(); return isFinite(t)?t:null; }
+  function fmt(v){ if(!v) return '—'; var d=new Date(v); if(isNaN(d)) return '—';
+    var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+    var hh=('0'+d.getHours()).slice(-2), mm=('0'+d.getMinutes()).slice(-2);
+    return mo+' '+d.getDate()+', '+hh+':'+mm; }
+  function timeOnly(v){ if(!v) return ''; var d=new Date(v); if(isNaN(d)) return '';
+    return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+
+  /* ---- status analysis ---- */
+  function analyse(l){
+    var now=Date.now(), a={flags:[], cls:'', done:false};
+    if(l.status==='Delivered'){ a.done=true; a.cls='done'; a.flags.push(['done','Delivered']); return a; }
+    var del=ms(l.del), pu=ms(l.pu), eta=ms(l.eta), chk=ms(l.check);
+    var late=false, risk=false, check=false;
+    if(del && now>del){ a.flags.push(['late','LATE']); late=true; }
+    else if(eta && del && eta>del){ a.flags.push(['risk','WILL BE LATE']); risk=true; }
+    if(l.status==='Booked' && pu && now>pu){ a.flags.push(['late','PICKUP OVERDUE']); late=true; }
+    if(chk && now>=chk){ a.flags.push(['check','CHECK-CALL DUE']); check=true; }
+    if(l.status==='Problem'){ a.flags.push(['late','PROBLEM']); late=true; }
+    a.cls = late?'late':(risk?'risk':(check?'check':''));
+    a._late=late; a._risk=risk; a._check=check; a._transit=(l.status==='In transit');
+    return a;
+  }
+
+  /* ---- render ---- */
+  function render(){
+    var fS=$('fStatus').value, q=($('fSearch').value||'').toLowerCase();
+    var active=0,transit=0,check=0,risk=0,done=0;
+    var html='', shown=0;
+    // sort: problems/late first, then by delivery time
+    var arr=loads.slice().sort(function(a,b){
+      var da=ms(a.del)||8e15, db=ms(b.del)||8e15; return da-db; });
+    for(var i=0;i<arr.length;i++){
+      var l=arr[i], a=analyse(l);
+      if(a.done) done++; else active++;
+      if(a._transit) transit++;
+      if(a._check) check++;
+      if(a._late||a._risk) risk++;
+      if(fS && l.status!==fS) continue;
+      if(q){ var hay=(l.ref+' '+l.cust+' '+l.orig+' '+l.dest+' '+l.drv+' '+l.loc).toLowerCase();
+        if(hay.indexOf(q)<0) continue; }
+      shown++;
+      var badges='<span class="badge st">'+esc(l.status)+'</span>';
+      for(var f=0;f<a.flags.length;f++){ badges+=' <span class="badge '+a.flags[f][0]+'">'+a.flags[f][1]+'</span>'; }
+      html+='<div class="load '+a.cls+'">'
+        +'<div class="load-top"><div><div class="ref">#'+esc(l.ref||'—')+' <span class="cust">'+esc(l.cust||'')+'</span></div></div>'
+        +'<div class="badges">'+badges+'</div></div>'
+        +'<div class="lane"><b>'+esc(l.orig||'—')+'</b> &rarr; <b>'+esc(l.dest||'—')+'</b></div>'
+        +'<div class="meta">'
+          +'<div><span>Pickup</span>'+fmt(l.pu)+'</div>'
+          +'<div><span>Delivery</span>'+fmt(l.del)+'</div>'
+          +'<div><span>ETA</span>'+fmt(l.eta)+'</div>'
+          +'<div><span>Location</span>'+(esc(l.loc)||'—')+'</div>'
+          +'<div><span>Driver</span>'+(esc(l.drv)||'—')+'</div>'
+          +'<div><span>Next check-call</span>'+fmt(l.check)+'</div>'
+        +'</div>'
+        +(l.notes?'<div class="note">'+esc(l.notes)+'</div>':'')
+        +'<div class="row-act">'
+          +'<button class="btn btn-sm" onclick="openMsg(\''+l.id+'\')">Message</button>'
+          +'<button class="btn btn-sm btn-ghost" onclick="openForm(\''+l.id+'\')">Edit</button>'
+          +'<button class="btn btn-sm btn-ghost" onclick="quickStatus(\''+l.id+'\')">Advance status &rarr;</button>'
+        +'</div>'
+      +'</div>';
+    }
+    $('board').innerHTML = shown ? html :
+      '<div class="empty">No loads'+((fS||q)?' match this filter.':' yet. Click <b>+ Add load</b> to start.')+'</div>';
+    $('tActive').textContent=active; $('tTransit').textContent=transit;
+    $('tCheck').textContent=check; $('tRisk').textContent=risk; $('tDone').textContent=done;
+  }
+
+  /* ---- form ---- */
+  var F={ref:'iRef',cust:'iCust',orig:'iOrig',dest:'iDest',pu:'iPu',del:'iDel',
+          drv:'iDrv',status:'iStatus',loc:'iLoc',eta:'iEta',check:'iCheck',notes:'iNotes'};
+  function openForm(id){
+    editingId=id||null;
+    var l = id ? find(id) : {status:'In transit'};
+    for(var k in F){ if(F.hasOwnProperty(k)){ $(F[k]).value = l&&l[k]!=null ? l[k] : ''; } }
+    if(!id) $('iStatus').value='In transit';
+    $('formTitle').textContent = id ? 'Edit load #'+(l.ref||'') : 'Add load';
+    $('delBtn').style.display = id ? '' : 'none';
+    $('formModal').classList.add('open');
+  }
+  function closeForm(){ $('formModal').classList.remove('open'); editingId=null; }
+  function saveLoad(){
+    var o = editingId ? find(editingId) : {id:uid()};
+    for(var k in F){ if(F.hasOwnProperty(k)){ o[k]=$(F[k]).value.trim ? $(F[k]).value.trim() : $(F[k]).value; } }
+    if(!o.ref && !o.cust && !o.orig){ alert('Add at least a ref, customer or origin.'); return; }
+    if(!editingId) loads.push(o);
+    save(); closeForm(); render();
+  }
+  function delLoad(){
+    if(!editingId) return;
+    if(!confirm('Delete this load?')) return;
+    loads=loads.filter(function(x){ return x.id!==editingId; });
+    save(); closeForm(); render();
+  }
+  function find(id){ for(var i=0;i<loads.length;i++){ if(loads[i].id===id) return loads[i]; } return null; }
+
+  var ORDER=['Booked','At pickup','Loaded','In transit','At delivery','Delivered'];
+  function quickStatus(id){
+    var l=find(id); if(!l) return;
+    var i=ORDER.indexOf(l.status); l.status = ORDER[Math.min(i+1,ORDER.length-1)] || 'In transit';
+    if(l.status==='Delivered'){ l.check=''; }
+    save(); render();
+  }
+
+  /* ---- message generator ---- */
+  function openMsg(id){ msgId=id; msgAud='broker'; syncSeg(); buildMsg(); $('msgModal').classList.add('open'); }
+  function closeMsg(){ $('msgModal').classList.remove('open'); msgId=null; }
+  function setAud(a){ msgAud=a; syncSeg(); buildMsg(); }
+  function syncSeg(){ var b=$('audSeg').getElementsByTagName('button');
+    for(var i=0;i<b.length;i++){ b[i].className = b[i].getAttribute('data-aud')===msgAud?'on':''; } }
+  function buildMsg(){
+    var l=find(msgId); if(!l){ $('msgOut').textContent=''; return; }
+    var ref=l.ref||'(no ref)', dest=l.dest||'destination';
+    var stMap={
+      'Booked':'booked and covered', 'At pickup':'at the shipper for pickup',
+      'Loaded':'loaded and rolling', 'In transit':'in transit',
+      'At delivery':'at the receiver', 'Delivered':'delivered', 'Problem':'delayed — see below'
+    };
+    var st=stMap[l.status]||l.status.toLowerCase();
+    var locP = l.loc ? (' Currently near '+l.loc+'.') : '';
+    var etaP = l.eta ? (' ETA '+timeOnly(l.eta)+' ('+fmt(l.eta)+') to '+dest+'.') : '';
+    var a=analyse(l);
+    var out;
+    if(msgAud==='broker'){
+      out='Load '+ref+' — '+st+'.'+locP+etaP;
+      if(l.status==='Delivered'){ out='Load '+ref+' — delivered'+(l.del?' ('+fmt(l.del)+')':'')+'. POD to follow.'; }
+      else if(a._late){ out='Load '+ref+' — running behind. '+(l.loc?'Currently near '+l.loc+'.':'')+(l.eta?' Revised ETA '+timeOnly(l.eta)+' to '+dest+'.':'')+' Will keep you posted.'; }
+      else if(l.check){ out+=' Next update by '+timeOnly(l.check)+'.'; }
+    } else {
+      if(l.status==='Delivered'){ out='Good news — your shipment ('+ref+') was delivered'+(l.del?' on '+fmt(l.del):'')+'. Thank you.'; }
+      else if(a._late){ out='Update on your shipment ('+ref+'): we\'re running a little behind.'+(l.eta?' Current ETA is '+timeOnly(l.eta)+' to '+dest+'.':'')+' We\'ll let you know as soon as it\'s in.'; }
+      else { out='Update on your shipment ('+ref+'): '+st+'.'+etaP+(l.check?' Next update by '+timeOnly(l.check)+'.':''); }
+    }
+    if(l.notes && msgAud==='broker'){ out+='\n\nNote: '+l.notes; }
+    $('msgOut').textContent=out;
+  }
+  function copyMsg(){ copyText($('msgOut').textContent, 'Message copied.'); }
+
+  /* ---- export / import ---- */
+  function doExport(){
+    var data=JSON.stringify(loads,null,2);
+    try{
+      var blob=new Blob([data],{type:'application/json'});
+      var url=URL.createObjectURL(blob), a=document.createElement('a');
+      var d=new Date(), stamp=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);
+      a.href=url; a.download='loadmargin-tt-'+stamp+'.json';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); },1000);
+    }catch(e){ copyText(data,'Download blocked here — JSON copied to clipboard instead.'); }
+  }
+  function copyJSON(){ copyText(JSON.stringify(loads,null,2),'All loads copied as JSON.'); }
+  function copyText(t,okMsg){
+    try{ navigator.clipboard.writeText(t).then(function(){ toast(okMsg); },
+      function(){ fallbackCopy(t,okMsg); }); }
+    catch(e){ fallbackCopy(t,okMsg); }
+  }
+  function fallbackCopy(t,okMsg){
+    try{ var ta=document.createElement('textarea'); ta.value=t;
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); document.body.removeChild(ta); toast(okMsg); }
+    catch(e){ alert('Copy failed — select the text manually.'); }
+  }
+  function doImport(inp){
+    var f=inp.files&&inp.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){ try{ var arr=JSON.parse(r.result);
+      if(Object.prototype.toString.call(arr)!=='[object Array]') throw 0;
+      if(!confirm('Import '+arr.length+' loads? This replaces the current board.')) return;
+      for(var i=0;i<arr.length;i++){ if(!arr[i].id) arr[i].id=uid(); }
+      loads=arr; save(); render(); toast('Imported '+arr.length+' loads.');
+    }catch(e){ alert('That file is not a valid Track & Trace export.'); } };
+    r.readAsText(f); inp.value='';
+  }
+
+  /* ---- toast ---- */
+  var toEl=null;
+  function toast(msg){ if(!msg) return;
+    if(!toEl){ toEl=document.createElement('div'); toEl.style.cssText=
+      'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0d1b30;'+
+      'border:1px solid var(--line);color:var(--tx);padding:.6rem 1rem;border-radius:10px;'+
+      'font-size:.88rem;z-index:60;box-shadow:0 8px 30px rgba(0,0,0,.5)'; document.body.appendChild(toEl); }
+    toEl.textContent=msg; toEl.style.opacity='1';
+    clearTimeout(toEl._t); toEl._t=setTimeout(function(){ toEl.style.opacity='0'; },2200);
+  }
+
+  /* ---- clock + live refresh ---- */
+  function tick(){ var d=new Date();
+    $('clock').textContent = ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2);
+  }
+
+  /* expose for inline handlers */
+  window.openForm=openForm; window.closeForm=closeForm; window.saveLoad=saveLoad; window.delLoad=delLoad;
+  window.openMsg=openMsg; window.closeMsg=closeMsg; window.setAud=setAud; window.copyMsg=copyMsg;
+  window.quickStatus=quickStatus; window.render=render;
+  window.doExport=doExport; window.copyJSON=copyJSON; window.doImport=doImport;
+
+  /* close modals on backdrop click */
+  document.getElementById('formModal').addEventListener('click',function(e){ if(e.target===this) closeForm(); });
+  document.getElementById('msgModal').addEventListener('click',function(e){ if(e.target===this) closeMsg(); });
+
+  load(); render(); tick();
+  setInterval(tick,1000);
+  setInterval(render,30000); /* refresh due/late flags */
+})();
+</script>
+</body>
+</html>
