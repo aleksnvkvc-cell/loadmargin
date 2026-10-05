@@ -7,16 +7,16 @@
 <meta name="description" content="The LoadMargin application: load scoring, cost per mile, lanes, drivers, fuel, HOS, customers and backhaul — one cost model, running in your browser.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://aleksnvkvc-cell.github.io/loadmargin/app.html">
-<meta name="theme-color" content="#030A16">
+<meta name="theme-color" content="#07112E">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="manifest" href="site.webmanifest">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/fonts.css?v=20261005b">
+<link rel="stylesheet" href="assets/fonts.css?v=20261005c">
 <meta property="og:image" content="https://aleksnvkvc-cell.github.io/loadmargin/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/site.css?v=20261005">
-<link rel="stylesheet" href="assets/app.css?v=20261005">
+<link rel="stylesheet" href="assets/site.css?v=20261005c">
+<link rel="stylesheet" href="assets/app.css?v=20261005c">
 <script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aleksnvkvc-cell.github.io/loadmargin/index.html"},{"@type":"ListItem","position":2,"name":"Console","item":"https://aleksnvkvc-cell.github.io/loadmargin/app.html"}],"@context":"https://schema.org"}</script>
 </head>
 <body class="app">
@@ -718,7 +718,7 @@ function renderCPM(){
   if(!DB.trucks.length){ $('cpmEditor').innerHTML=emptyState('No trucks yet.','<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Add a truck</button>'); $('cpmCompare').innerHTML=''; return; }
   $('cpmEditor').innerHTML=DB.trucks.map(t=>{
     const f=t.fixed||{}, cpm=truckCPM(t), tot=truckFixedTotal(t);
-    return `<div class="box" style="margin-bottom:1rem;background:rgba(3,10,22,.4)">
+    return `<div class="box" style="margin-bottom:1rem;background:rgba(7,17,46,.4)">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem">
         <h3 style="margin:0">${esc(t.name)}</h3>
         <div style="text-align:right"><div style="font-size:.67rem;letter-spacing:.11em;text-transform:uppercase;color:var(--tx-3)">Fixed cost per mile</div>
@@ -1067,7 +1067,7 @@ function renderBack(){
   fillSelects();
   if(!DB.trucks.length){ $('backOut').innerHTML=emptyState('Add a truck first.','<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Set up the fleet</button>'); $('backList').innerHTML=''; return; }
   $('backList').innerHTML=BACKS.map(b=>`
-    <div style="border:1px solid var(--line-soft);border-radius:10px;padding:.85rem;margin-bottom:.6rem;background:rgba(3,10,22,.35)">
+    <div style="border:1px solid var(--line-soft);border-radius:10px;padding:.85rem;margin-bottom:.6rem;background:rgba(7,17,46,.35)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;gap:.6rem">
         <input value="${esc(b.label)}" oninput="setBack('${b.id}','label',this.value)"
           style="background:none;border:0;color:#fff;font-family:var(--disp);font-weight:600;font-size:.9rem;min-width:0;flex:1">

@@ -10,9 +10,9 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <style>
   :root{
-    --bg:#030A16; --panel:#0A1628; --panel2:#0d1b30; --line:#1b2a3f;
+    --bg:#07112E; --panel:#0D1F52; --panel2:#0d1b30; --line:#1F3570;
     --tx:#e8eef7; --tx2:#a9b6c9; --tx3:#6f8098;
-    --gold:#E3B44A; --blue:#2C6FD1; --pos:#3fbf7f; --neg:#e0655a; --warn:#e0a53a;
+    --gold:#E3B44A; --blue:#4169E1; --pos:#3fbf7f; --neg:#e0655a; --warn:#e0a53a;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--tx);
@@ -24,7 +24,7 @@
   .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(.8rem,3vw,1.6rem)}
 
   header{border-bottom:1px solid var(--line);padding:1rem 0;position:sticky;top:0;
-    background:rgba(3,10,22,.92);backdrop-filter:blur(8px);z-index:20}
+    background:rgba(7,17,46,.92);backdrop-filter:blur(8px);z-index:20}
   .brand{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
   .logo{width:34px;height:34px;border-radius:8px;background:var(--bg);display:grid;place-items:center;border:1px solid var(--line)}
   .brand b{font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;font-size:1.05rem}
@@ -65,7 +65,7 @@
   .meta div span{color:var(--tx3);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
   .badges{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
   .badge{font-size:.72rem;font-weight:600;padding:.18rem .5rem;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
-  .badge.st{background:rgba(44,111,209,.14);border-color:rgba(44,111,209,.4);color:#8fbaf0}
+  .badge.st{background:rgba(65,105,225,.14);border-color:rgba(65,105,225,.4);color:#8fbaf0}
   .badge.late{background:rgba(224,101,90,.16);border-color:rgba(224,101,90,.5);color:#f0a49c}
   .badge.risk{background:rgba(224,165,58,.14);border-color:rgba(224,165,58,.5);color:#f0cd8a}
   .badge.check{background:rgba(227,180,74,.16);border-color:rgba(227,180,74,.55);color:#f0cd8a}
@@ -75,7 +75,7 @@
   .empty{text-align:center;color:var(--tx3);padding:2.5rem 1rem;border:1px dashed var(--line);border-radius:12px}
 
   /* form + modal */
-  .modal{position:fixed;inset:0;background:rgba(2,7,15,.72);display:none;z-index:40;padding:1rem;overflow:auto}
+  .modal{position:fixed;inset:0;background:rgba(5,12,32,.72);display:none;z-index:40;padding:1rem;overflow:auto}
   .modal.open{display:block}
   .sheet{max-width:720px;margin:2rem auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.4rem}
   .sheet h2{font-size:1.15rem;margin-bottom:1rem}
@@ -99,7 +99,7 @@
 <header>
   <div class="wrap">
     <div class="brand">
-      <span class="logo"><svg width="22" height="22" viewBox="0 0 64 64"><path d="M14 44V20h7v18h11v6z" fill="#2C6FD1"/><path d="M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z" fill="#E3B44A"/></svg></span>
+      <span class="logo"><svg width="22" height="22" viewBox="0 0 64 64"><path d="M14 44V20h7v18h11v6z" fill="#4169E1"/><path d="M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z" fill="#E3B44A"/></svg></span>
       <b>LOAD<span>MARGIN</span></b>
       <span class="tag">· Track &amp; Trace</span>
       <span class="spacer"></span>
