@@ -3,7 +3,7 @@
 Smart tools for smarter freight decisions.
 
 Static site — no build step, no dependencies, no server. Served by GitHub Pages at
-<https://aleksnvkvc-cell.github.io/loadmargin/>
+<https://loadmargin.com/>
 
 Every calculation runs in the visitor's browser. Nothing is uploaded, and there is
 no analytics and no tracking script.
