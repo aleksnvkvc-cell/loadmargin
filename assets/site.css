@@ -1179,3 +1179,15 @@ html[data-theme="light"] .hero-card{box-shadow:0 24px 60px rgba(15,23,42,.12),0 
   .nav-act .btn-gold.btn-sm span{display:none}
 }
 @media (max-width:520px){ .hero-kicker{letter-spacing:.02em} }
+
+/* audit CTA used on guides and calculators */
+.audit-cta{display:grid;gap:1.2rem 2rem;align-items:center;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+  margin:2rem 0;padding:1.6rem;border:1px solid rgba(227,180,74,.45);border-radius:14px;
+  background:linear-gradient(160deg,rgba(18,42,102,.55),rgba(10,26,69,.55))}
+.audit-cta .k{display:block;font:600 .72rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.audit-cta h3{margin:0 0 .4rem;font-size:1.25rem}
+.audit-cta p{margin:0;color:var(--tx-2);font-size:.95rem}
+.audit-cta .a{text-align:center}
+.audit-cta .a .btn{width:100%;justify-content:center}
+.audit-cta small{display:block;margin-top:.6rem;color:var(--tx-3);font-size:.8rem}
+html[data-theme="light"] .audit-cta{background:linear-gradient(160deg,#fff,#F3F6FD);border-color:rgba(176,125,18,.45)}
