@@ -35,7 +35,6 @@
       <li><a href="load-calculator.html#calculator">Calculator</a></li>
       <li><a href="calculators.html">Tools</a></li>
       <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="workbooks.html">Workbooks</a></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html">About</a></li>
@@ -108,7 +107,7 @@
           <td>Only if you remember</td><td>N/A</td><td>Yes</td><td class="me">One field, everything moves</td></tr>
       <tr><td>Cost</td>
           <td>Your time</td><td>Subscription</td><td>Subscription, often per seat</td>
-          <td class="me">Free; workbooks $9–$25 once</td></tr>
+          <td class="me">Free tools; paid help from $49, per service</td></tr>
       <tr><td>Works with no account or upload</td>
           <td>Yes</td><td>No</td><td>No</td><td class="me">Yes</td></tr>
       </tbody>
@@ -254,7 +253,7 @@
       <h2>If something is not working</h2>
     </div>
     <div class="grid g2" style="gap:1.1rem">
-      <div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The numbers do not match my accountant</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Most often this is the fixed cost per mile. Check two things: that your monthly overhead includes everything that does not depend on miles, and that you divided by <strong>total</strong> monthly miles including empty ones rather than by loaded miles. Dividing by loaded miles alone understates fixed cost per mile by whatever your deadhead percentage is.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">My fleet data disappeared</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">The console stores everything in your browser's local storage, so clearing browsing data, using private browsing, or switching browser or device loses it. We cannot restore it — we never had a copy. Going forward, use <em>Fleet &amp; Data → Export backup</em> and keep the JSON file.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">A number shows as — or NaN</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Something is empty or zero where it is used as a divider — usually MPG or monthly miles. Every calculator guards against dividing by zero rather than crashing, so it shows a dash instead of a wrong figure. Fill the field in and it recalculates immediately.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The page looks broken on my phone</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Try a hard refresh first — an old cached stylesheet is the usual cause after an update. If it persists, tell us the phone, the browser and roughly the year of the device, and it gets tested against that.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">A workbook shows #VALUE! or #REF!</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">That should not happen — every file ships with zero formula errors. If it does, the file is almost always a partial download or was opened in something that does not support the formula. Re-download first, then email us the sheet name and cell reference and it gets fixed and re-issued to everyone.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The workbook opens but the colours look wrong</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Google Sheets renders a handful of conditional-formatting rules differently from Excel. Every calculation is identical; only some highlight colours shift. Excel or LibreOffice Calc render them as designed.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">I bought a workbook and cannot find the download</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">The download link is in the receipt email from the payment platform, and the platform's account page keeps a copy. Check spam. If it is genuinely gone, email us with the address you paid with and we will send the file directly.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The contact form does not seem to send</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">The form posts to a third-party form service. If you get no confirmation, email <a href='mailto:aleksnvkvc@gmail.com' style='color:var(--gold)'>aleksnvkvc@gmail.com</a> directly — it is the same inbox and it is one fewer thing that can go wrong.</p></div>
+      <div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The numbers do not match my accountant</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Most often this is the fixed cost per mile. Check two things: that your monthly overhead includes everything that does not depend on miles, and that you divided by <strong>total</strong> monthly miles including empty ones rather than by loaded miles. Dividing by loaded miles alone understates fixed cost per mile by whatever your deadhead percentage is.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">My fleet data disappeared</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">The console stores everything in your browser's local storage, so clearing browsing data, using private browsing, or switching browser or device loses it. We cannot restore it — we never had a copy. Going forward, use <em>Fleet &amp; Data → Export backup</em> and keep the JSON file.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">A number shows as — or NaN</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Something is empty or zero where it is used as a divider — usually MPG or monthly miles. Every calculator guards against dividing by zero rather than crashing, so it shows a dash instead of a wrong figure. Fill the field in and it recalculates immediately.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The page looks broken on my phone</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">Try a hard refresh first — an old cached stylesheet is the usual cause after an update. If it persists, tell us the phone, the browser and roughly the year of the device, and it gets tested against that.</p></div><div class="panel rv" style="padding:1.3rem"><h3 style="font-size:1rem;margin-bottom:.5rem;color:var(--gold)">The contact form does not seem to send</h3><p style="color:var(--tx-2);line-height:1.75;font-size:.92rem;margin:0">The form posts to a third-party form service. If you get no confirmation, email <a href='mailto:aleksnvkvc@gmail.com' style='color:var(--gold)'>aleksnvkvc@gmail.com</a> directly — it is the same inbox and it is one fewer thing that can go wrong.</p></div>
     </div>
   </div>
 </section>
@@ -300,7 +299,7 @@
         reaches a person.</p>
       <p style="color:var(--tx-2);line-height:1.8;max-width:60ch;margin:0 auto 1.6rem">If a
         calculation looks wrong, that is the message we most want to receive. The same arithmetic
-        runs in four independent places — the browser, the workbooks, a Python engine and a SQL
+        runs in three independent places — the browser, a Python engine and a SQL
         view — so an error in one is worth hunting down in all of them.</p>
       <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
         <a href="mailto:aleksnvkvc@gmail.com" class="btn btn-gold">Email us</a>
@@ -321,8 +320,7 @@
       <div><h2>Platform</h2><ul>
         <li><a href="app.html">Fleet console</a></li>
         <li><a href="load-calculator.html#calculator">Load calculator</a></li>
-        <li><a href="calculators.html">Free calculators</a></li>
-        <li><a href="workbooks.html">Excel workbooks</a></li></ul></div>
+        <li><a href="calculators.html">Free calculators</a></li></ul></div>
       <div><h2>Learn</h2><ul>
         <li><a href="guides.html">All guides</a></li>
         <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
