@@ -1197,3 +1197,8 @@ html[data-theme="light"] .audit-cta{background:linear-gradient(160deg,#fff,#F3F6
 .plan-bonus{font-size:.86rem;color:var(--tx-2);border-top:1px dashed rgba(227,180,74,.4);padding-top:.9rem;margin:0 0 1.1rem;line-height:1.55}
 .plan-bonus b{color:var(--tx)}
 .plan-bonus a{color:var(--gold);white-space:nowrap}
+
+/* buy color for primary buttons (Oct 8) */
+.btn-gold,.prod-cta .btn-gold,html[data-theme="light"] .btn-gold{background:#ff7a1a;color:#1a0b00;box-shadow:0 10px 26px -8px rgba(255,122,26,.7);font-weight:700}
+.btn-gold:hover{background:#ff9142}
+html[data-theme="light"] .btn-gold{background:#f26a0a}
