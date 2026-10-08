@@ -291,6 +291,51 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
 .ps{margin-top:2.4rem;color:var(--tx-2);font-size:.98rem;max-width:60ch;border-top:1px solid var(--line);padding-top:1.2rem}
 .ps b{color:var(--tx)}
 
+/* Oct 8b: visual-first */
+.center{text-align:center}
+.badges{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin-top:1.2rem;color:var(--tx-2);font-size:.88rem}
+.badges li{display:flex;align-items:center;gap:.45rem}
+.badges svg{width:17px;height:17px;stroke:var(--accent);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.donut-row{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;align-items:center;margin-top:.4rem}
+.donut{width:120px;height:120px}
+.legend{list-style:none;display:grid;gap:.35rem;font-size:.85rem;color:var(--tx-2)}
+.legend li{display:flex;align-items:center;gap:.5rem}
+.legend i{width:10px;height:10px;border-radius:2px;flex:none}
+.legend b{margin-left:auto;font-family:var(--mono);color:var(--tx);font-weight:600}
+.wf{list-style:none;margin-top:2rem;display:grid;gap:.55rem}
+.wf li{display:grid;grid-template-columns:minmax(110px,190px) 1fr 70px;gap:.9rem;align-items:center;font-size:.93rem}
+.wf-l{color:var(--tx-2)}
+.wf-track{position:relative;height:26px;background:color-mix(in srgb,var(--line) 60%,transparent);border-radius:4px}
+.wf-track i{position:absolute;top:0;bottom:0;border-radius:4px}
+.wf-in i{background:var(--accent)}
+.wf-out i{background:#e0655a}
+.wf-left i{background:var(--go);min-width:4px}
+.wf li b{font-family:var(--mono);text-align:right}
+.wf-out b{color:#e88a80}
+.wf-left b{color:var(--go)}
+html[data-theme="light"] .wf-out b{color:#b83a30}
+html[data-theme="light"] .wf-out i{background:#d4574c}
+.wf-left .wf-l{color:var(--tx);font-weight:700}
+.wf-left{border-top:1px solid var(--line-2);padding-top:.6rem;margin-top:.2rem}
+@media (max-width:560px){.wf li{grid-template-columns:1fr 64px;row-gap:.25rem}.wf-track{grid-column:1/-1;grid-row:2}}
+#audit h2{margin-bottom:2rem}
+.steps3.icons li{text-align:left}
+.steps3.icons svg{width:34px;height:34px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:1.1rem}
+.me{display:flex;gap:1.2rem;align-items:center}
+.me h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.4rem}
+.avatar{width:84px;height:84px;flex:none;border-radius:50%;display:grid;place-items:center;font:700 1.6rem/1 var(--serif);color:var(--accent-ink);background:var(--accent)}
+.res .lede{margin-bottom:1rem}
+.tiles{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
+@media (min-width:700px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1050px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tiles a{background:var(--bg);padding:1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:.35rem;transition:background .2s}
+.tiles a:hover{background:var(--bg-2)}
+.tiles small{color:var(--tx-3);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.tiles b{font:700 1.6rem/1.1 var(--serif);color:var(--accent)}
+.tiles span{color:var(--tx-2);font-size:.92rem}
+.cta.center .btn{margin:1rem auto 0}
+.cta .ps{margin:2rem auto 0;text-align:center;border:0}
+
 .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -346,14 +391,18 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="callout">For owner-operators and small fleets who book their own loads</p>
+      <p class="callout">For owner-operators and small fleets</p>
       <h1>Find out if a load makes money <em>before you book it.</em></h1>
-      <p class="lede">Send me the load and what your truck costs to run. You get back a one-page report: what the trip really costs, your break-even rate, and a straight answer on whether to take it, counter or pass.</p>
+      <p class="lede">Send the load and your costs. Get a one-page answer: take it, counter or pass.</p>
       <div class="hero-cta">
         <a class="btn btn-acc" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        <a class="btn btn-line" href="#sample">See a sample report</a>
+        <a class="btn btn-line" href="#sample">See a sample</a>
       </div>
-      <p class="micro guarantee-line"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>If the report doesn't help you decide on that load, you get the $49 back.</p>
+      <ul class="badges">
+        <li><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Money back if it doesn't help</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>2 business days</li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>All by email</li>
+      </ul>
     </div>
 
     <aside class="review rv" aria-label="Sample load check">
@@ -367,62 +416,54 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
         <div><span>Profit</span><strong class="acc">$816</strong></div>
         <div><span>Margin</span><strong>28.6%</strong></div>
       </div>
-      <ul class="rows">
-        <li><span>Miles, loaded + empty</span><b>1,065 + 254</b></li>
-        <li><span>Fuel</span><b>$893</b></li>
-        <li><span>Driver pay</span><b>$514</b></li>
-        <li><span>Maintenance and tires</span><b>$237</b></li>
-        <li><span>Truck, insurance, permits</span><b>$390</b></li>
-      </ul>
-      <p class="review-note">Clears a 25% target margin, deadhead included.
-        <em>Example client. <a href="#sample">See the full report</a></em></p>
+      <div class="donut-row">
+        <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Where the $2,850 goes: fuel 31%, driver 18%, maintenance 8%, fixed 14%, profit 29%">
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="var(--line)" stroke-width="6"/>
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="#e0655a" stroke-width="6" stroke-dasharray="31.3 68.7" stroke-dashoffset="25"/>
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="#e8935a" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="-6.3"/>
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="#9aa6c8" stroke-width="6" stroke-dasharray="8.3 91.7" stroke-dashoffset="-24.3"/>
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="#6f8ff0" stroke-width="6" stroke-dasharray="13.7 86.3" stroke-dashoffset="-32.6"/>
+          <circle r="15.9" cx="21" cy="21" fill="none" stroke="var(--go)" stroke-width="6" stroke-dasharray="28.7 71.3" stroke-dashoffset="-46.3"/>
+        </svg>
+        <ul class="legend">
+          <li><i style="background:#e0655a"></i>Fuel <b>$893</b></li>
+          <li><i style="background:#e8935a"></i>Driver <b>$514</b></li>
+          <li><i style="background:#9aa6c8"></i>Maintenance <b>$237</b></li>
+          <li><i style="background:#6f8ff0"></i>Truck, insurance <b>$390</b></li>
+          <li><i style="background:var(--go)"></i>Profit <b>$816</b></li>
+        </ul>
+      </div>
+      <p class="review-note"><em>Example client. 1,065 loaded + 254 empty miles.</em></p>
     </aside>
   </div>
 </section>
 
 <section id="problem">
   <div class="wrap narrow">
-    <h2 class="rv">The rate con shows the rate. It doesn't show what's left.</h2>
-    <div class="prose rv">
-      <p>A broker offers $2.40 a mile. Sounds fine.</p>
-      <p>Then you add the 250 empty miles to the pickup. The diesel. Six hours at the dock. The 3% factoring fee. The truck payment that's due whether you roll or not.</p>
-      <p>Once all of that is in, a load that looked good can leave you very little. Sometimes it leaves you nothing.</p>
-      <p>The usual ways of checking don't catch it:</p>
-      <ul class="xlist">
-        <li><b>Load board averages</b> are built on other people's costs, not yours.</li>
-        <li><b>Gut feel</b> works until diesel goes up 40 cents.</li>
-        <li><b>The spreadsheet</b> you set up last year hasn't been touched since.</li>
-      </ul>
-      <p class="punch">What you need is one number: what this load leaves you, with your costs, before you say yes.</p>
-    </div>
+    <h2 class="rv">A $2,400 load. Here's what's left.</h2>
+    <ol class="wf rv" aria-label="Waterfall from rate to profit"><li class="wf-in"><span class="wf-l">Rate</span><span class="wf-track"><i style="left:0%;width:100%" title="Rate: $2,400"></i></span><b>$2,400</b></li><li class="wf-out"><span class="wf-l">Fuel (incl. 250 empty mi)</span><span class="wf-track"><i style="left:69.54%;width:30.46%" title="Fuel (incl. 250 empty mi): −$731"></i></span><b>−$731</b></li><li class="wf-out"><span class="wf-l">Driver pay</span><span class="wf-track"><i style="left:35.67%;width:33.88%" title="Driver pay: −$813"></i></span><b>−$813</b></li><li class="wf-out"><span class="wf-l">Maintenance</span><span class="wf-track"><i style="left:25.25%;width:10.42%" title="Maintenance: −$250"></i></span><b>−$250</b></li><li class="wf-out"><span class="wf-l">Truck, insurance</span><span class="wf-track"><i style="left:9.63%;width:15.62%" title="Truck, insurance: −$375"></i></span><b>−$375</b></li><li class="wf-out"><span class="wf-l">Factoring 3%</span><span class="wf-track"><i style="left:6.63%;width:3.0%" title="Factoring 3%: −$72"></i></span><b>−$72</b></li><li class="wf-left"><span class="wf-l">What's left</span><span class="wf-track"><i style="left:0%;width:6.63%" title="What's left: $159"></i></span><b>$159</b></li></ol>
+    <p class="micro rv">Example: 1,000 loaded + 250 empty miles, diesel $3.80, 6.5 MPG, $0.65/mi driver pay. Your numbers will differ. That's the point.</p>
   </div>
 </section>
 
 <section id="audit" class="audit-sec">
-  <div class="wrap two">
-    <div>
-      <h2 class="rv">I run the numbers on your load, with your costs.</h2>
-      <p class="lede rv">You send the load and what your truck costs to run. I send back a report you can read in two minutes.</p>
-      <p class="lede rv">Start with one load. If you want your real cost per mile worked out and your regular lanes priced against it, take the full audit.</p>
-    </div>
+  <div class="wrap">
+    <h2 class="rv center">Pick one.</h2>
     <div class="offers-pair rv">
       <div class="offer offer-main">
         <div class="offer-hd">
           <div><span class="tag">Start here</span><h3>Quick Load Check</h3></div>
           <div class="price"><b>$49</b><span>per load</span></div>
         </div>
-        <p class="offer-sub">One load, checked against your costs. One-page report with:</p>
         <ul class="ticks">
-          <li>Total trip cost, empty miles included</li>
-          <li>Your cost per mile</li>
-          <li>Profit and margin on this load</li>
+          <li>Trip cost, empty miles included</li>
           <li>Break-even rate</li>
-          <li>The rate you need for your target margin</li>
-          <li>Take it, counter or pass, and why</li>
+          <li>Rate for your target margin</li>
+          <li>Take, counter or pass</li>
         </ul>
         <ul class="bonus">
           <li><b>Money back</b> if it doesn't help you decide</li>
-          <li><b>Counts toward the $249 audit</b> if you upgrade within 30 days</li>
+          <li><b>$49 off</b> the audit within 30 days</li>
         </ul>
         <a class="btn btn-acc btn-block" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
@@ -431,70 +472,58 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
           <div><span class="tag tag-2">Full picture</span><h3>Full Cost &amp; Lane Audit</h3></div>
           <div class="price"><b>$249</b><span>one-time</span></div>
         </div>
-        <p class="offer-sub">Your real cost per mile, built from your own costs, then used to price the loads you run:</p>
         <ul class="ticks">
-          <li>Your cost per mile, fixed and variable</li>
-          <li>Fuel, driver pay, maintenance, insurance, fixed costs</li>
-          <li>Up to 3 loads or lanes checked</li>
-          <li>Break-even and walk-away rate for each</li>
-          <li>The rate you need for your target margin</li>
-          <li>A written assessment, plus follow-up questions by email</li>
+          <li>Your real cost per mile</li>
+          <li>Up to 3 lanes priced</li>
+          <li>Walk-away rate for each</li>
+          <li>Follow-up questions by email</li>
         </ul>
         <a class="btn btn-line btn-block" href="mailto:aleksnvkvc@gmail.com?subject=Full%20Cost%20%26%20Lane%20Audit%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20the%20%24249%20Full%20Cost%20%26%20Lane%20Audit.%0A%0ANumber%20of%20trucks%3A%0AThe%20loads%20or%20lanes%20I%20want%20reviewed%20%28up%20to%203%29%3A%0ADo%20I%20know%20my%20cost%20per%20mile%20already%3F%20%28yes%20/%20roughly%20/%20no%29%3A%0A%0AThanks%2C%0A">Request the $249 audit <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
   </div>
-  <div class="wrap"><p class="micro rv" style="text-align:center;margin-top:1.4rem">Arranged by email. You pay a PayPal or Payoneer invoice, and the report arrives within 2 business days of having your numbers.</p></div>
 </section>
 
 <section id="sample">
   <div class="wrap two">
     <div>
-      <h2 class="rv">See exactly what you get.</h2>
-      <p class="lede rv">LoadMargin is new, so I don't have client reviews to show you yet. Here is the report itself instead. The client is an example; the format is exactly what you'll receive.</p>
+      <h2 class="rv">This is what you get.</h2>
       <ul class="ticks one rv">
-        <li>The answer is at the top: go, negotiate or pass</li>
-        <li>Every number is shown, so you can check it</li>
-        <li>Every assumption I made is listed</li>
-        <li>A short assessment in plain English: the biggest risk, and what would change the answer</li>
+        <li>The answer at the top</li>
+        <li>Every number shown</li>
+        <li>Every assumption listed</li>
       </ul>
-      <p class="rv" style="margin-top:1.6rem"><a class="btn btn-line" href="sample-load-check-report.pdf" target="_blank" rel="noopener">Open the sample report (PDF)</a></p>
+      <p class="micro rv">LoadMargin is new: no reviews yet, so here's the real report format instead.</p>
+      <p class="rv" style="margin-top:1.4rem"><a class="btn btn-line" href="sample-load-check-report.pdf" target="_blank" rel="noopener">Open the PDF</a></p>
     </div>
     <a class="sample-img rv" href="sample-load-check-report.pdf" target="_blank" rel="noopener" aria-label="Open the sample report">
-      <img src="images/sample-report.webp" alt="Sample Quick Load Check report for a Dallas to Phoenix load, showing a GO verdict, key numbers and a cost breakdown" width="839" height="909" loading="lazy">
+      <img src="images/sample-report.webp" alt="Sample Quick Load Check report for a Dallas to Phoenix load, with a GO verdict, key numbers and cost breakdown" width="839" height="909" loading="lazy">
     </a>
   </div>
 </section>
 
 <section id="workflow">
   <div class="wrap">
-    <h2 class="rv">How it works</h2>
-    <ol class="steps3">
-      <li class="rv"><span>1</span><h3>Email me the load</h3><p>The button opens an email that already lists what to send: the load, the rate, loaded and empty miles. I'll ask for anything missing.</p></li>
-      <li class="rv"><span>2</span><h3>Pay the invoice</h3><p>$49 by PayPal or Payoneer. Nothing is charged before you've agreed.</p></li>
-      <li class="rv"><span>3</span><h3>Get the report</h3><p>One page, by email, within 2 business days. Questions about it are answered by email at no extra cost.</p></li>
+    <h2 class="rv center">Three steps.</h2>
+    <ol class="steps3 icons">
+      <li class="rv"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h3>Email the load</h3><p>The button fills in what to send.</p></li>
+      <li class="rv"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><h3>Pay $49</h3><p>PayPal or Payoneer invoice.</p></li>
+      <li class="rv"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14l2.5 2.5L16 11"/></svg><h3>Get the answer</h3><p>One-page PDF, within 2 business days.</p></li>
     </ol>
-    <div class="cta-row rv">
-      <a class="btn btn-acc" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      <span class="micro">Money back if it doesn't help you decide.</span>
-    </div>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap two">
-    <div>
-      <h2 class="rv">Who's doing the math</h2>
+    <div class="me rv">
+      <div class="avatar" aria-hidden="true">AN</div>
+      <div><h2>Aleksandar Novaković</h2><p class="lede">U.S. trucking support background. I do every report myself.</p></div>
     </div>
-    <div>
-      <p class="lede rv">I'm Aleksandar Novaković. I've worked in U.S. trucking support: load support, track and trace, and day-to-day contact with drivers and brokers. I live in Serbia and work with U.S. carriers by email.</p>
-      <p class="lede rv">I do every report myself. If something in it looks wrong to you, reply and I'll fix it.</p>
-      <div class="faq rv">
-        <details><summary>You're in Serbia. Why should I trust you with this?</summary><p>You don't have to take my word for it. The calculators and guides on this site are free and use the same math I use in the reports. Run a load you already hauled through the <a href="load-calculator.html">calculator</a>. If the result matches what you know about that load, send me the next one.</p></details>
-        <details><summary>What if I don't know my costs?</summary><p>Most people don't, at least not exactly. Send what you have. I'll fill the gaps with reasonable estimates and list every one of them on the report, so you can see what I assumed.</p></details>
-        <details><summary>What if the answer is "pass"?</summary><p>Then the report did its job and kept you off a bad load. The money-back promise is about whether the report helped you decide, not about whether you liked the answer.</p></details>
-        <details><summary>How do I pay?</summary><p>There's no checkout on this site. Once we agree what you need, I send an invoice by email (PayPal or Payoneer), and the report follows once it's paid. See the <a href="refunds.html">refund policy</a>.</p></details>
-      </div>
+    <div class="faq rv">
+      <details><summary>You're in Serbia. Why trust you?</summary><p>Run a load you already hauled through the free <a href="load-calculator.html">calculator</a>. Same math as the reports. If it matches what you know, send me the next one.</p></details>
+      <details><summary>I don't know my costs.</summary><p>Send what you have. I'll estimate the rest and list every assumption on the report.</p></details>
+      <details><summary>What if the answer is "pass"?</summary><p>Then it kept you off a bad load. Money back is about whether it helped you decide, not whether you liked the answer.</p></details>
+      <details><summary>How do I pay?</summary><p>Invoice by email, PayPal or Payoneer. <a href="refunds.html">Refund policy</a>.</p></details>
     </div>
   </div>
 </section>
@@ -502,10 +531,10 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
 <section class="res">
   <div class="wrap">
     <div>
-      <h2 class="rv">Rather do it yourself? Use the same calculator.</h2>
+      <h2 class="rv">Rather do it yourself?</h2>
+      <p class="lede rv">Free calculators. No sign-up.</p>
     </div>
     <div>
-      <p class="lede rv" style="margin-bottom:1.6rem">The load calculator and the tools around it are free, with no sign-up. They cover deadhead, fuel surcharge, detention, factoring, IFTA and take-home pay.</p>
       <div class="dstage rv" id="dstage" aria-label="Free calculators">
   <a class="dtile dcenter" href="load-calculator.html" style="left:50%;top:50%"><span>Load<br>calculator<small>Start here</small></span></a>
   <a class="dtile dorb" href="calculators.html#eta" aria-label="ETA and hours of service calculator"><span>ETA &amp;<br>HOS</span></a>
@@ -517,42 +546,27 @@ html[data-theme="light"] .dtile{box-shadow:0 8px 20px rgba(14,27,69,.10)}
   <a class="dtile dorb" href="calculators.html#factoring" aria-label="Factoring cost calculator"><span>Factoring</span></a>
   <a class="dtile dorb" href="calculators.html#maintenance" aria-label="Maintenance reserve calculator"><span>Maint.<br>reserve</span></a>
 </div>
-      <div class="chips rv" style="margin-top:1.4rem">
-        <a href="calculators.html">All calculators</a>
-        <a href="guides.html">Guides</a>
-        <a href="how-it-works.html">How the math works</a>
-      </div>
     </div>
   </div>
 </section>
 
 <section id="more">
   <div class="wrap">
-    <h2 class="rv">Need more than one load checked?</h2>
-    <div class="offers2">
-      <article class="card rv">
-        <div class="o-top"><h3>New authority</h3><b>$99 <small>or</small> $349</b></div>
-        <p><strong>Authority Checklist Review, $99:</strong> I go through your driver file, Clearinghouse, consortium, IFTA, UCR and MCS-150 and send you a list of what's missing, most urgent first.</p>
-        <p><strong>New Authority Setup, $349:</strong> we set up the first-year compliance together.</p>
-        <a href="work.html#authority">Compare both →</a>
-      </article>
-      <article class="card rv">
-        <div class="o-top"><h3>Monthly help</h3><b>$99 <small>or</small> $249–$799<small>/mo</small></b></div>
-        <p><strong>Load Check Plan, $99/month:</strong> up to 4 Load Checks a month, and your cost per mile updated every month.</p>
-        <p><strong>Ongoing Support, $249–$799/month:</strong> loads checked, plus IFTA and the annual Clearinghouse query handled. Priced by fleet size.</p>
-        <a href="work.html#ongoing">Compare both →</a>
-      </article>
+    <h2 class="rv">More than one load?</h2>
+    <div class="tiles rv">
+      <a href="work.html#authority"><small>New authority</small><b>$99 / $349</b><span>Checklist review or full setup</span></a>
+      <a href="work.html#tuneup"><small>Safety audit coming</small><b>$199</b><span>Compliance Tune-up</span></a>
+      <a href="work.html#plan"><small>Monthly</small><b>$99/mo</b><span>Up to 4 Load Checks</span></a>
+      <a href="work.html#support"><small>Fleet support</small><b>$249–$799/mo</b><span>Loads, IFTA, Clearinghouse</span></a>
     </div>
-    <p class="micro rv" style="margin-top:1.2rem">Safety audit coming up? <a href="work.html#tuneup" style="color:var(--royal-lt)">Compliance Tune-up, $199</a>: I check your files against the common audit failures and tell you what to fix.</p>
   </div>
 </section>
 
 <section class="cta">
-  <div class="wrap narrow">
-    <h2 class="rv">Got a load on the table right now?</h2>
-    <p class="lede rv">Send it over. You'll know what it leaves you before you commit the truck, and if the report doesn't help you decide, you get your money back.</p>
+  <div class="wrap narrow center">
+    <h2 class="rv">Got a load on the table?</h2>
     <a class="btn btn-acc rv" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-    <p class="ps rv"><b>P.S.</b> Not ready to pay? Run a load you already hauled through the <a href="load-calculator.html">free calculator</a>. If the number surprises you, send me the next load before you book it.</p>
+    <p class="ps rv"><b>P.S.</b> Not ready? Try the <a href="load-calculator.html">free calculator</a> on last week's load.</p>
   </div>
 </section>
 
