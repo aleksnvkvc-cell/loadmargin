@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to calculate your true cost per mile — LoadMargin</title>
+<title>How to calculate your true cost per mile: LoadMargin</title>
 <meta name="description" content="The step-by-step method for working out what a mile actually costs your truck, why most carriers are 15-25 cents wrong, and how to use the number on a real load.">
 <link rel="canonical" href="https://loadmargin.com/guide-cost-per-mile.html">
 <meta name="theme-color" content="#07112E">
@@ -12,14 +12,14 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to calculate your true cost per mile — LoadMargin">
+<meta property="og:title" content="How to calculate your true cost per mile: LoadMargin">
 <meta property="og:description" content="The step-by-step method for working out what a mile actually costs your truck, why most carriers are 15-25 cents wrong, and how to use the number on a real load.">
 <meta property="og:url" content="https://loadmargin.com/guide-cost-per-mile.html">
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/fonts.css?v=20261005e">
-<link rel="stylesheet" href="assets/site.css?v=20261005e">
-<script src="assets/theme-auto-switch.js?v=20261005e"></script>
+<link rel="stylesheet" href="assets/fonts.css?v=20261008a">
+<link rel="stylesheet" href="assets/site.css?v=20261008a">
+<script src="assets/theme-auto-switch.js?v=20261008a"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to calculate your true cost per mile","description":"The step-by-step method for working out what a mile actually costs your truck, why most carriers are 15-25 cents wrong, and how to use the number on a real load.","url":"https://loadmargin.com/guide-cost-per-mile.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://loadmargin.com/guide-cost-per-mile.html"},"image":"https://loadmargin.com/images/og-cover.jpg","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."},"author":{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."},"dateModified":"2026-08-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loadmargin.com/index.html"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://loadmargin.com/guides.html"},{"@type":"ListItem","position":3,"name":"How to calculate your true cost per mile","item":"https://loadmargin.com/guide-cost-per-mile.html"}]}]}</script>
 </head>
 <body>
@@ -44,9 +44,9 @@
       <button id="themeToggle" class="btn btn-sm btn-theme"
               aria-label="Toggle theme" aria-pressed="false"
               title="Light / dark">
-        ☀️ Light
+        Light
       </button>
-      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <a class="btn btn-gold btn-sm" href="work.html#check"><span>$49 </span>Load Check</a>
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
         <span></span><span></span><span></span>
       </button>
@@ -59,7 +59,7 @@
   <div class="wrap">
     <span class="eyebrow">Guide · Fundamentals</span>
     <h1>How to calculate your true cost per mile</h1>
-    <p class="lede">The single number every freight decision depends on, and the one most carriers get wrong. Worked through end to end with real arithmetic.</p>
+    <p class="lede">The single number every freight decision depends on, and the one that is easiest to get wrong. Worked through end to end with real arithmetic.</p>
     <div class="art-meta">
       <span class="tagx">Guide</span>
       <span>Updated 26 August 2026</span>
@@ -73,9 +73,7 @@
     <aside class="legal-toc"><ul><li><a href="#why">Why the number is usually wrong</a></li><li><a href="#what">What actually goes into it</a></li><li><a href="#fixed">Fixed cost: the part everyone forgets</a></li><li><a href="#variable">Variable cost: the part that moves</a></li><li><a href="#calc">Working it out, step by step</a></li><li><a href="#miles">The mistake that ruins the whole calculation</a></li><li><a href="#bench">How your number compares</a></li><li><a href="#use">Using it on a real load</a></li><li><a href="#update">When to update it</a></li><li><a href="#mistakes">Six mistakes that cost real money</a></li></ul></aside>
     <div class="art-body">
 
-<p class="lead-in">Ask ten carriers what a mile costs them and you get ten confident answers.
-Most are wrong by fifteen to twenty-five cents. On a 900-mile load that is between $135 and $225
-of margin that exists on paper and not in the bank account. This guide fixes the number.</p>
+<p class="lead-in">Cost per mile is the number every load decision rests on, and it is easy to get wrong. Be off by 20 cents and a 900-mile load has $180 less margin than you think. This guide shows how to work it out properly.</p>
 
 <h2 id="why">Why the number is usually wrong</h2>
 <p>Cost per mile is not hard arithmetic. It is hard <em>bookkeeping</em>. The division itself takes
@@ -84,12 +82,12 @@ of margin that exists on paper and not in the bank account. This guide fixes the
 <p>So the industry substitutes something easier: <strong>rate per mile</strong>. A broker says
    $2.65 a mile, a dispatcher hears "that's decent", and the load is booked. Rate per mile is quick
    to say and it is wrong often enough to be dangerous, because it silently assumes two things that
-   are almost never true — that all miles are loaded, and that your costs match the carrier next
+   are almost never true: that all miles are loaded, and that your costs match the carrier next
    to you.</p>
 <p>The consequence shows up in the industry-wide numbers rather than in any one carrier's books.
    In its 2026 <em>Operational Costs of Trucking</em> analysis, the American Transportation Research
    Institute put average operating margins in the truckload and refrigerated sectors <strong>below
-   1.0%</strong> for 2025, with flatbed carriers at <strong>−0.5%</strong> — an operating loss for
+   1.0%</strong> for 2025, with flatbed carriers at <strong>−0.5%</strong>: an operating loss for
    the sector as a whole.<sup>[1]</sup> At a margin that thin, a twenty-cent error in cost per mile
    is not a rounding issue. It is the difference between the year working and not working.</p>
 
@@ -109,7 +107,7 @@ It becomes profitable when the rate exceeds every cost the load causes.</div>
       <td>Fuel, tyres, maintenance and repair, driver pay per mile, tolls</td></tr>
   </tbody>
 </table></div>
-<p>Fixed cost is where the error lives. Fuel is visible — you watch the pump. A truck payment is
+<p>Fixed cost is where the error lives. Fuel is visible: you watch the pump. A truck payment is
    invisible on any given load, because it already left the account on the first of the month
    whether you ran 12,000 miles or 6,000.</p>
 
@@ -129,7 +127,7 @@ It becomes profitable when the rate exceeds every cost the load causes.</div>
   </tbody>
 </table></div>
 <p>These are illustrative figures for a typical single-truck operation, not a benchmark. Replace
-   every line with yours — the whole point of this exercise is that your number is not the
+   every line with yours: the whole point of this exercise is that your number is not the
    industry's number.</p>
 <div class="keybox">
   <h3>If you own the truck outright</h3>
@@ -151,21 +149,21 @@ It becomes profitable when the rate exceeds every cost the load causes.</div>
    instantly whether the market moved or the truck did. A single blended number hides both causes,
    and they have completely different fixes.</p>
 <h3>Maintenance, repair and tyres</h3>
-<p>Take twelve months of every invoice — oil changes, brakes, tyres, the alternator that failed in
-   Amarillo — and divide by the miles run in the same period. Most single-truck operations land
+<p>Take twelve months of every invoice, oil changes, brakes, tyres, the alternator that failed in
+   Amarillo, and divide by the miles run in the same period. Most single-truck operations land
    between <strong>$0.15 and $0.25 a mile</strong>. ATRI reported repair and maintenance costs
    rising 8.6% and tyres 6.4% in 2025, so a figure you calculated two years ago is already
    optimistic.<sup>[1]</sup></p>
 <h3>Driver pay</h3>
 <p>If you pay per mile, it is a variable cost and it belongs here. If you pay a percentage of the
-   line haul, it is not per-mile at all and must be modelled against revenue instead — which
+   line haul, it is not per-mile at all and must be modelled against revenue instead, which
    changes the arithmetic on every load. If you drive yourself, either pay yourself a wage here and
    treat the remainder as business profit, or take zero here and treat all of it as your income.
    Both are defensible. Mixing them is not.</p>
 <h3>Tolls</h3>
 <p>Lane-specific rather than fleet-wide, so most carriers charge them to the individual load rather
    than into cost per mile. Either is fine as long as you do not do both. ATRI recorded tolls
-   rising <strong>13.2%</strong> in 2025 — the fastest-rising line item in the study.<sup>[1]</sup></p>
+   rising <strong>13.2%</strong> in 2025: the fastest-rising line item in the study.<sup>[1]</sup></p>
 
 <h2 id="calc">Working it out, step by step</h2>
 <p>Two numbers, one division.</p>
@@ -178,7 +176,7 @@ It becomes profitable when the rate exceeds every cost the load causes.</div>
   <tr class="tot"><td>Fixed cost per mile</td><td class="n">$0.520</td></tr>
   </tbody>
 </table></div>
-<p>Now stack the variable costs on top to get the all-in figure — the number below which a mile
+<p>Now stack the variable costs on top to get the all-in figure: the number below which a mile
    loses money:</p>
 <div class="tw2"><table>
   <thead><tr><th>Component</th><th class="n">Per mile</th></tr></thead>
@@ -190,7 +188,7 @@ It becomes profitable when the rate exceeds every cost the load causes.</div>
   <tr class="tot"><td>All-in break-even</td><td class="n">$1.922</td></tr>
   </tbody>
 </table></div>
-<p>That $1.92 is the honest floor. Every mile the truck turns — loaded or empty — costs that much
+<p>That $1.92 is the honest floor. Every mile the truck turns, loaded or empty, costs that much
    before a cent of profit exists.</p>
 <div class="art-cta">
   <div>
@@ -254,10 +252,10 @@ became more expensive.</div>
   <tbody>
   <tr><td>Line haul revenue</td><td class="n">$2,400</td></tr>
   <tr><td>Total miles (850 + 120)</td><td class="n">970</td></tr>
-  <tr><td>Fuel — 149 gal at $3.85</td><td class="n">−$575</td></tr>
-  <tr><td>Driver pay — 970 × $0.62</td><td class="n">−$601</td></tr>
-  <tr><td>Maintenance — 970 × $0.19</td><td class="n">−$184</td></tr>
-  <tr><td>Fixed cost — 970 × $0.52</td><td class="n">−$504</td></tr>
+  <tr><td>Fuel: 149 gal at $3.85</td><td class="n">−$575</td></tr>
+  <tr><td>Driver pay: 970 × $0.62</td><td class="n">−$601</td></tr>
+  <tr><td>Maintenance: 970 × $0.19</td><td class="n">−$184</td></tr>
+  <tr><td>Fixed cost: 970 × $0.52</td><td class="n">−$504</td></tr>
   <tr><td>Tolls and fees</td><td class="n">−$85</td></tr>
   <tr class="tot"><td>Net profit</td><td class="n">$451</td></tr>
   <tr><td>Margin</td><td class="n">18.8%</td></tr>
@@ -265,7 +263,7 @@ became more expensive.</div>
   <tr><td>Break-even rate per mile</td><td class="n">$1.98</td></tr>
   </tbody>
 </table></div>
-<p>The load is genuinely good — but notice that the honest rate per mile is <strong>$2.47, not
+<p>The load is genuinely good, but notice that the honest rate per mile is <strong>$2.47, not
    $2.82</strong>. The 120 deadhead miles took 35 cents off the top before anything else happened.
    That gap is where most thin loads hide.</p>
 <p>The same arithmetic works in reverse when a broker lowballs you. If your total cost is $1,949
@@ -318,9 +316,9 @@ became more expensive.</div>
 
       <div class="srcbox">
         <h3>Sources</h3>
-        <ol><li>American Transportation Research Institute, <em>An Analysis of the Operational Costs of Trucking: 2026 Update</em> — average marginal cost $2.336 per mile for 2025 ($1.854 excluding fuel); truckload and refrigerated operating margins below 1.0%; flatbed −0.5%; tolls +13.2%, repair and maintenance +8.6%, tyres +6.4%. <a href="https://truckingresearch.org/2026/07/new-atri-report-details-accelerating-costs-and-low-profitability-despite-cuts/" target="_blank" rel="noopener noreferrer">truckingresearch.org</a></li><li>Cost figures in the worked examples are illustrative values for a typical single-truck operation, chosen to demonstrate the method. They are not benchmarks and should be replaced with your own.</li></ol>
+        <ol><li>American Transportation Research Institute, <em>An Analysis of the Operational Costs of Trucking: 2026 Update</em>: average marginal cost $2.336 per mile for 2025 ($1.854 excluding fuel); truckload and refrigerated operating margins below 1.0%; flatbed −0.5%; tolls +13.2%, repair and maintenance +8.6%, tyres +6.4%. <a href="https://truckingresearch.org/2026/07/new-atri-report-details-accelerating-costs-and-low-profitability-despite-cuts/" target="_blank" rel="noopener noreferrer">truckingresearch.org</a></li><li>Cost figures in the worked examples are illustrative values for a typical single-truck operation, chosen to demonstrate the method. They are not benchmarks and should be replaced with your own.</li></ol>
       </div>
-      <div class="art-next"><a href="guide-deadhead.html"><span class="k">Next guide</span><span class="t">The real cost of deadhead miles</span><span class="d">Why empty miles are the most misread number in freight, and how to price a backhaul properly.</span></a><a href="guide-hos.html"><span class="k">Guide</span><span class="t">Hours of service, in plain English</span><span class="d">The four clocks, what resets them, and why an illegal load was never a profitable one.</span></a><a href="glossary.html"><span class="k">Reference</span><span class="t">Freight glossary</span><span class="d">Deadhead, detention, RPM, accessorials — the vocabulary, defined without jargon.</span></a></div>
+      <div class="art-next"><a href="guide-deadhead.html"><span class="k">Next guide</span><span class="t">The real cost of deadhead miles</span><span class="d">Why empty miles are the most misread number in freight, and how to price a backhaul properly.</span></a><a href="guide-hos.html"><span class="k">Guide</span><span class="t">Hours of service, in plain English</span><span class="d">The four clocks, what resets them, and why an illegal load was never a profitable one.</span></a><a href="glossary.html"><span class="k">Reference</span><span class="t">Freight glossary</span><span class="d">Deadhead, detention, RPM, accessorials: the vocabulary, defined without jargon.</span></a></div>
     </div>
   </div>
 </section>
@@ -331,10 +329,9 @@ became more expensive.</div>
     <div class="f-grid f-grid-5">
       <div class="f-brand">
         <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
-        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+        <p>Load checks and cost-per-mile work for U.S. owner-operators and small fleets. $49 a load, done by one person, by email. The calculators and guides are free.</p>
       </div>
-      <div><h2>Platform</h2><ul>
-        <li><a href="app.html">Fleet console</a></li>
+      <div><h2>Free tools</h2><ul>
         <li><a href="load-calculator.html#calculator">Load calculator</a></li>
         <li><a href="calculators.html">Free calculators</a></li></ul></div>
       <div><h2>Learn</h2><ul>
@@ -345,6 +342,7 @@ became more expensive.</div>
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="news.html">Freight news</a></li></ul></div>
       <div><h2>Company</h2><ul>
+        <li><a href="work.html">Services</a></li>
         <li><a href="work.html">Services</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#method">Methodology</a></li>

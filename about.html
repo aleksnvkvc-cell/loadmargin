@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About LoadMargin — the cost model behind the number</title>
-<meta name="description" content="Who LoadMargin is built for, how the profitability model works, what we deliberately do not claim, and how freight data is handled.">
+<title>About LoadMargin: the cost model behind the number</title>
+<meta name="description" content="Who LoadMargin is built for, how the profitability model works, what I do not claim, and how your data is handled.">
 <link rel="canonical" href="https://loadmargin.com/about.html">
 <meta name="theme-color" content="#07112E">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -13,13 +13,13 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="About LoadMargin">
-<meta property="og:description" content="The cost model behind the number — and what we deliberately do not claim.">
+<meta property="og:description" content="The cost model behind the number, and what we deliberately do not claim.">
 <meta property="og:url" content="https://loadmargin.com/about.html">
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/fonts.css?v=20261005e">
-<link rel="stylesheet" href="assets/site.css?v=20261005e">
-<script src="assets/theme-auto-switch.js?v=20261005e"></script>
+<link rel="stylesheet" href="assets/fonts.css?v=20261008a">
+<link rel="stylesheet" href="assets/site.css?v=20261008a">
+<script src="assets/theme-auto-switch.js?v=20261008a"></script>
 <script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loadmargin.com/index.html"},{"@type":"ListItem","position":2,"name":"About","item":"https://loadmargin.com/about.html"}],"@context":"https://schema.org"}</script>
 <style>
 .about-hero{padding:clamp(120px,15vh,170px) 0 clamp(40px,5vw,64px)}
@@ -66,14 +66,15 @@
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html" class="active">About</a></li>
+      <li><a href="work.html">Services</a></li>
     </ul>
     <div class="nav-act">
       <button id="themeToggle" class="btn btn-sm btn-theme"
               aria-label="Toggle theme" aria-pressed="false"
               title="Light / dark">
-        ☀️ Light
+        Light
       </button>
-      <a class="btn btn-gold btn-sm" href="load-calculator.html#calculator">Open <span>calculator</span></a>
+      <a class="btn btn-gold btn-sm" href="work.html#check"><span>$49 </span>Load Check</a>
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
         <span></span><span></span><span></span>
       </button>
@@ -84,11 +85,8 @@
 <main id="main">
 <section class="about-hero">
   <div class="wrap">
-    <span class="eyebrow">About</span>
-    <h1>A freight decision is <em>an arithmetic problem</em> that nobody has time to do</h1>
-    <p class="lede">LoadMargin exists because the gap between a rate that looks acceptable and a rate that
-      actually pays is usually twenty cents a mile — and twenty cents a mile, across a fleet, is the difference
-      between a good year and a lender conversation.</p>
+    <h1>I built LoadMargin to answer one question: <em>does this load pay?</em></h1>
+    <p class="lede">I'm Aleksandar Novaković. I've worked in U.S. trucking support: load support, track and trace, and day-to-day contact with drivers and brokers. LoadMargin is the math I use to check a load, free on this site, plus a service where I check your loads for you.</p>
   </div>
 </section>
 
@@ -97,11 +95,11 @@
     <aside class="toc">
       <ul>
         <li><span><a href="#why" class="on">Why it exists</a></span></li>
-        <li><span><a href="#who">Who it is for</a></span></li>
-        <li><span><a href="#method">Methodology</a></span></li>
-        <li><span><a href="#honest">What we don't claim</a></span></li>
-        <li><span><a href="#security">Data &amp; security</a></span></li>
-        <li><span><a href="#roadmap">Roadmap</a></span></li>
+        <li><span><a href="#who">Who it's for</a></span></li>
+        <li><span><a href="#method">How the math works</a></span></li>
+        <li><span><a href="#honest">What I don't claim</a></span></li>
+        <li><span><a href="#security">Your data</a></span></li>
+        <li><span><a href="#roadmap">What's next</a></span></li>
         <li><span><a href="#contact">Contact</a></span></li>
       </ul>
     </aside>
@@ -109,34 +107,20 @@
     <div class="prose">
       <div id="why" class="rv">
         <h2>Why it exists</h2>
-        <p>Ask ten carriers what a mile costs them and you will get ten confident answers, most of them wrong by
-          fifteen to twenty-five cents. Not through carelessness — the number is genuinely awkward to compute. It moves
-          when insurance renews, when a truck comes off warranty, when a driver's pay package changes, and when
-          monthly miles drop because a customer went quiet.</p>
-        <p>So the industry substitutes a proxy: <strong>rate per mile</strong>. It is easy to say out loud and it is
-          wrong often enough to be dangerous, because it ignores the two costs that decide most loads —
-          <strong>deadhead</strong> and <strong>the fixed cost of simply owning the truck</strong>.</p>
-        <div class="pull">A load does not become profitable because the rate per mile sounded good.
-          It becomes profitable when the rate exceeds every cost that the load causes.</div>
-        <p>LoadMargin is that subtraction, made fast enough to do while a broker is still on the phone.</p>
+        <p>Cost per mile is the number every load decision depends on, and it's awkward to work out. It changes when insurance renews, when a truck comes off warranty, when a driver's pay changes, and when monthly miles drop because a customer went quiet.</p>
+        <p>So most people go by <strong>rate per mile</strong> instead. It's easy to compare, but it leaves out the two costs that decide a lot of loads: <strong>deadhead</strong> and <strong>the fixed cost of owning the truck</strong>.</p>
+        <div class="pull">A load makes money when the rate covers every cost the load causes. A good-sounding rate per mile doesn't guarantee that.</div>
+        <p>LoadMargin does that subtraction quickly enough to use while a broker is waiting for an answer.</p>
       </div>
 
       <div id="who" class="rv" style="margin-top:3rem">
-        <h2>Who it is for</h2>
-        <div class="mini">
-          <div><span class="k">1–4</span><span class="v">Owner-operators who feel the mistake immediately and personally.</span></div>
-          <div><span class="k">5–99</span><span class="v">Small and mid-size fleets where one dispatcher's habit sets the margin.</span></div>
-          <div><span class="k">100+</span><span class="v">Carriers where the leak is systematic and worth a custom cost model.</span></div>
-        </div>
-        <p>The tool is the same at every size. What changes is the question. An owner-operator asks
-          <em>should I take this load</em>. A fleet of forty asks <em>which of my dispatchers is quietly booking
-          break-even freight</em>. A carrier of four hundred asks <em>which division, lane and customer combination
-          is destroying margin at scale</em> — and needs the answer in a format a CFO will accept.</p>
+        <h2>Who it's for</h2>
+        <p>Owner-operators and small fleets that book their own loads and want to know what a load leaves them before they say yes. If you run one truck, the question is usually "should I take this load?" If you run ten, it's also "which lanes and customers actually pay?" Both come down to the same math.</p>
       </div>
 
       <div id="method" class="rv" style="margin-top:3rem">
-        <h2>Methodology</h2>
-        <p>There is one model and it is public. Every module reads from it; none of them applies a private adjustment.</p>
+        <h2>How the math works</h2>
+        <p>There is one model, and it's public. The calculators and the reports I send clients all use it.</p>
         <div class="panel" style="padding:1.3rem;margin:1.4rem 0">
           <div class="mono" style="font-size:.84rem;line-height:2;color:var(--tx-2)">
             <div>total_miles  = loaded + deadhead</div>
@@ -148,73 +132,53 @@
             <div style="color:var(--gold)">margin       = net / rate</div>
           </div>
         </div>
-        <h3>Three decisions that make it accurate</h3>
+        <h3>Three choices behind it</h3>
         <ul class="no-list">
-          <li><span><strong>Fuel is modelled in gallons, not dollars per mile.</strong> A price spike and an efficiency
-            drop have different causes and different fixes; collapsing them into one number hides both.</span></li>
-          <li><span><strong>Deadhead is a first-class cost.</strong> Empty miles burn fuel, consume hours of service and
-            carry the same fixed cost per mile as loaded ones. Most models treat them as a footnote.</span></li>
-          <li><span><strong>Fixed cost is yours, not the industry's.</strong> Overhead divided by <em>your</em> monthly miles.
-            Two carriers on the same lane with the same truck can have a nine-cent gap, and that gap decides the load.</span></li>
+          <li><span><strong>Fuel is worked out in gallons.</strong> A higher diesel price and a drop in MPG have different causes and different fixes, so the model keeps them apart.</span></li>
+          <li><span><strong>Deadhead counts as fully as loaded miles.</strong> Empty miles burn the same fuel, use the same hours and carry the same fixed cost per mile.</span></li>
+          <li><span><strong>Fixed cost is yours.</strong> Your monthly overhead divided by your monthly miles, not an industry average.</span></li>
         </ul>
-        <p>The thresholds — accept at 15% margin, reject below 5% — are defaults, not doctrine. They are the point
-          where a load stops paying for the truck-day it consumes. A carrier with different economics sets their own.</p>
+        <p>The calculator's default thresholds (accept at 15% margin, reject below 5%) are only starting points. You can set your own, and a report uses the target margin you give me.</p>
       </div>
 
       <div id="honest" class="rv" style="margin-top:3rem">
-        <h2>What we deliberately do not claim</h2>
-        <p>Freight software has an honesty problem, so here is the short version of ours.</p>
+        <h2>What I don't claim</h2>
         <ul class="no-list">
-          <li><span>We do not publish a customer count, a dollar figure of "revenue tracked", or an average profit
-            improvement percentage. We would have to invent them, and anyone senior enough to matter can tell.</span></li>
-          <li><span>We do not claim live load-board or TMS integration. Bulk import from a TMS export exists on
-            Fleet Licence and above; an API exists on Fleet Scale and above. Live integration is on the roadmap.</span></li>
-          <li><span>We do not claim the model predicts the market. It prices the load in front of you against
-            the costs you actually carry. Rate forecasting is a different product and a harder one.</span></li>
-          <li><span>We do not use testimonials we cannot attribute to a real, contactable customer.</span></li>
+          <li><span>LoadMargin is new. There are no client numbers, savings figures or reviews on this site, because I'd have to make them up. When there are real ones, they'll be shown with the client's permission.</span></li>
+          <li><span>There is no load-board or TMS integration. You type the numbers in, or email them to me.</span></li>
+          <li><span>The model doesn't predict rates. It prices the load in front of you against the costs you actually carry.</span></li>
+          <li><span>A report is an analysis of the numbers you give me, not a guarantee of profit and not tax or legal advice.</span></li>
         </ul>
-        <div class="pull">The calculator is free and unlimited on the homepage precisely because the fastest way
-          to settle an accuracy argument is to let you run last week's load through it.</div>
+        <div class="pull">The quickest way to judge the math is to run a load you already hauled through the <a href="load-calculator.html" style="color:var(--gold)">free calculator</a> and see if the answer matches what you know.</div>
       </div>
 
       <div id="security" class="rv" style="margin-top:3rem">
-        <h2>Data &amp; security</h2>
-        <p><strong>The public calculator sends nothing anywhere.</strong> It is client-side JavaScript. Open your
-          browser's network tab while you use it and you will see no outbound request — this is verifiable in
-          thirty seconds, and verifying it beats believing it.</p>
-        <ul class="no-list">
-          <li><span><strong>There is no server and no database.</strong> This site is static files. There is
-            nowhere for your freight data to be stored even in principle.</span></li>
-          <li><span><strong>No accounts, no sign-in, no analytics, no cookies.</strong> Nothing to profile
-            you with.</span></li>
-          <li><span><strong>No resale, no aggregation, no benchmarking product</strong> built from anyone's
-            numbers &mdash; there are no numbers here to build one from.</span></li>
-        </ul>
+        <h2>Your data</h2>
+        <p><strong>The calculators send nothing anywhere.</strong> They run in your browser. You can check this by opening your browser's network tab while you use one: there are no outgoing requests.</p>
+        <p><strong>For a paid service</strong>, the numbers you email me are used only to do that work. They aren't shared, sold or pooled with anyone else's. The <a href="privacy.html" style="color:var(--gold)">privacy policy</a> says what is kept and for how long.</p>
+        <p>The site itself has no accounts, no analytics and no tracking cookies.</p>
       </div>
 
       <div id="roadmap" class="rv" style="margin-top:3rem">
-        <h2>Roadmap</h2>
-        <p>Stated plainly, so nobody buys a promise as if it were a feature.</p>
+        <h2>What's next</h2>
         <div class="mini">
-          <div><span class="k">Now</span><span class="v">All eight modules working in the browser console, plus the free calculator on the homepage.</span></div>
-          <div><span class="k">Next</span><span class="v">More written guides and calculators, built around the questions carriers actually send.</span></div>
-          <div><span class="k">Later</span><span class="v">Ideas, not commitments: lane rate context, and a way for a fleet to share one dataset. Neither is built, neither is sold, and neither should influence what you buy today.</span></div>
+          <div><span class="k">Now</span><span class="v">The free calculators and console, 66 guides, and paid load checks and audits by email.</span></div>
+          <div><span class="k">Next</span><span class="v">More guides and calculators, based on the questions carriers send me.</span></div>
+          <div><span class="k">Maybe</span><span class="v">Lane rate context, or a way for a small fleet to share one set of numbers. Neither exists yet, so don't buy anything because of them.</span></div>
         </div>
       </div>
 
       <div id="contact" class="rv" style="margin-top:3rem">
         <h2>Contact</h2>
-        <p>Questions about the method, a number that looks wrong, or a straight argument about the
-          methodology — all welcome, all answered by a person. There is only one person, so it is
-          always the same one.</p>
+        <p>A question about the method, a number that looks wrong, or a load you want checked: email me. I read and answer everything myself.</p>
         <div class="panel" style="padding:1.6rem;margin-top:1.2rem">
           <div style="display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
             <div>
-              <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.4rem">Direct</div>
-              <a href="mailto:aleksnvkvc@gmail.com?subject=LoadMargin%20enquiry" class="mono gold"
+              <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.4rem">Email</div>
+              <a href="mailto:aleksnvkvc@gmail.com?subject=LoadMargin%20question" class="mono gold"
                  style="font-size:1.02rem;text-decoration:none">aleksnvkvc@gmail.com</a>
             </div>
-            <a href="app.html" class="btn btn-gold">Open the console →</a>
+            <a href="work.html#check" class="btn btn-gold">Get a $49 Load Check →</a>
           </div>
         </div>
       </div>
@@ -223,15 +187,15 @@
 </section>
 </main>
 
+
 <footer>
   <div class="wrap">
     <div class="f-grid f-grid-5">
       <div class="f-brand">
         <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
-        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+        <p>Load checks and cost-per-mile work for U.S. owner-operators and small fleets. $49 a load, done by one person, by email. The calculators and guides are free.</p>
       </div>
-      <div><h2>Platform</h2><ul>
-        <li><a href="app.html">Fleet console</a></li>
+      <div><h2>Free tools</h2><ul>
         <li><a href="load-calculator.html#calculator">Load calculator</a></li>
         <li><a href="calculators.html">Free calculators</a></li></ul></div>
       <div><h2>Learn</h2><ul>
@@ -242,6 +206,7 @@
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="news.html">Freight news</a></li></ul></div>
       <div><h2>Company</h2><ul>
+        <li><a href="work.html">Services</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#method">Methodology</a></li>
         <li><a href="support.html">Help &amp; support</a></li>
@@ -264,7 +229,7 @@
    iOS before 12.2 and older Android WebView have no IntersectionObserver.
    Constructing one there throws, which would kill every line of script
    after it. This stand-in reveals everything immediately and counts every
-   counter to its final value — no animation, but a working page. */
+   counter to its final value: no animation, but a working page. */
 if (typeof window.IntersectionObserver === 'undefined') {
   window.IntersectionObserver = function (cb) {
     this.observe = function (el) {

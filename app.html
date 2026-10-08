@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LoadMargin — Fleet Console</title>
-<meta name="description" content="The LoadMargin application: load scoring, cost per mile, lanes, drivers, fuel, HOS, customers and backhaul — one cost model, running in your browser.">
+<title>LoadMargin: Fleet Console</title>
+<meta name="description" content="The LoadMargin application: load scoring, cost per mile, lanes, drivers, fuel, HOS, customers and backhaul: one cost model, running in your browser.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://loadmargin.com/app.html">
 <meta name="theme-color" content="#07112E">
@@ -12,11 +12,11 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/fonts.css?v=20261005e">
+<link rel="stylesheet" href="assets/fonts.css?v=20261008a">
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/site.css?v=20261005e">
-<link rel="stylesheet" href="assets/app.css?v=20261005e">
+<link rel="stylesheet" href="assets/site.css?v=20261008a">
+<link rel="stylesheet" href="assets/app.css?v=20261008a">
 <script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loadmargin.com/index.html"},{"@type":"ListItem","position":2,"name":"Console","item":"https://loadmargin.com/app.html"}],"@context":"https://schema.org"}</script>
 </head>
 <body class="app">
@@ -125,7 +125,7 @@
       <section class="view vmax" id="v-cpm">
         <div class="box">
           <h2>Fixed cost per mile, per truck</h2>
-          <p class="hint">Monthly overhead divided by monthly miles. This number feeds load scoring, lanes, customers — everything.</p>
+          <p class="hint">Monthly overhead divided by monthly miles. This number feeds load scoring, lanes, customers: everything.</p>
           <div id="cpmEditor"></div>
         </div>
         <div class="box"><h2>Fleet comparison</h2><div id="cpmCompare"></div></div>
@@ -241,7 +241,7 @@
         </div>
         <div class="box">
           <h2>Your data</h2>
-          <p class="hint">Everything lives in this browser only. Nothing is uploaded, which also means clearing site data erases it — export a backup.</p>
+          <p class="hint">Everything lives in this browser only. Nothing is uploaded, which also means clearing site data erases it: export a backup.</p>
           <div class="row-act">
             <button class="btn btn-gold btn-sm" onclick="exportJSON()">Export backup (.json)</button>
             <button class="btn btn-ghost btn-sm" onclick="document.getElementById('importFile').click()">Import backup</button>
@@ -264,7 +264,7 @@
 /* ═══════════════════════════════════════════════════════════════
    LoadMargin Fleet Console
    One cost model. Every module reads from it.
-   Storage: browser localStorage, key lm.v1 — nothing leaves the device.
+   Storage: browser localStorage, key lm.v1: nothing leaves the device.
    ═══════════════════════════════════════════════════════════════ */
 
 const KEY='lm.v1';
@@ -305,7 +305,7 @@ function load(){
 let storageOK=true;
 function save(){
   try{ localStorage.setItem(KEY,JSON.stringify(DB)); storageOK=true; }
-  catch(e){ storageOK=false; toast('Could not save — this browser is blocking storage. Export a backup.','bad'); }
+  catch(e){ storageOK=false; toast('Could not save: this browser is blocking storage. Export a backup.','bad'); }
 }
 
 /* ─────────── the engine ─────────── */
@@ -333,8 +333,8 @@ function truckFixedTotal(t){
 }
 
 /**
- * The single scoring function. Everything in this application — dashboard,
- * lanes, drivers, customers, backhaul — resolves through here.
+ * The single scoring function. Everything in this application: dashboard,
+ * lanes, drivers, customers, backhaul: resolves through here.
  */
 function score(L){
   const S=DB.settings;
@@ -637,7 +637,7 @@ function renderScore(){
   fillSelects();
   if(!$('s_date').value) $('s_date').value=new Date().toISOString().slice(0,10);
   if(!DB.trucks.length){
-    $('scoreOut').innerHTML=emptyState('Add a truck first — scoring needs its cost model.',
+    $('scoreOut').innerHTML=emptyState('Add a truck first: scoring needs its cost model.',
       '<button class="btn btn-gold btn-sm" onclick="go(\'data\')">Set up the fleet</button> <button class="btn btn-ghost btn-sm" onclick="seedDemo()">Load demo fleet</button>');
     $('loadTable').innerHTML='';
     return;
@@ -909,7 +909,7 @@ function renderFuel(){
       {h:`<b class="${r.mpg<6?'warn':'pos'}">${r.mpg.toFixed(2)}</b>`,sv:r.mpg},
       {v:money(r.c),sv:r.c},{v:money2(r.perMile),sv:r.perMile},
       {h:`<span class="warn">${Math.round(r.deadGal).toLocaleString()} gal</span>`,sv:r.deadGal}
-    ]})),{sort:4,dir:1,empty:'No fuel recorded — book loads first.'});
+    ]})),{sort:4,dir:1,empty:'No fuel recorded: book loads first.'});
 
   const annualMiles=sum(DB.trucks,t=>nz(t.monthlyMiles))*12;
   $('mpgSim').innerHTML=`
@@ -935,8 +935,7 @@ function runMpgSim(setMpg){
     <div class="kv"><span>At ${base.toFixed(2)} mpg</span><b>${Math.round(galNow).toLocaleString()} gal · ${money(galNow*price)}</b></div>
     <div class="kv"><span>At ${(base+gain).toFixed(2)} mpg</span><b>${Math.round(galThen).toLocaleString()} gal · ${money(galThen*price)}</b></div>
     <div class="kv"><span>Saved per year</span><b class="pos">${money(saved)}</b></div>
-    <p class="note">A <b>${gain.toFixed(1)} mpg</b> improvement is worth <b>${money(saved)}</b> a year at ${money2(price)} diesel across ${Math.round(miles).toLocaleString()} miles —
-      <b>${money2(miles?saved/miles:0)}</b> per mile off your cost base. Compare that to what an idle-reduction policy or a tyre programme costs.</p>`;
+    <p class="note">A <b>${gain.toFixed(1)} mpg</b> improvement is worth <b>${money(saved)}</b> a year at ${money2(price)} diesel across ${Math.round(miles).toLocaleString()} miles: <b>${money2(miles?saved/miles:0)}</b> per mile off your cost base. Compare that to what an idle-reduction policy or a tyre programme costs.</p>`;
 }
 
 /* ═══════════ HOS PLANNER ═══════════ */
@@ -964,8 +963,8 @@ function computeHOS(i){
   const issues=[];
   if(cycleShort) issues.push(`Only ${cycleLeft.toFixed(1)}h left in the 70-hour cycle but the run needs ${driveNeeded.toFixed(1)}h of driving. A 34-hour restart is required first.`);
   if(needsBreak) issues.push(`A 30-minute break is due after ${breakLeft.toFixed(1)}h more driving.`);
-  if(extraDays>0) issues.push(`The run cannot finish today — it needs ${extraDays} more shift${extraDays>1?'s':''} and ${restHours}h of required rest.`);
-  if(!feasible && !cycleShort) issues.push(`Realistic arrival is ${elapsed.toFixed(1)}h away but the appointment is in ${i.apptIn}h — short by ${(elapsed-i.apptIn).toFixed(1)}h.`);
+  if(extraDays>0) issues.push(`The run cannot finish today: it needs ${extraDays} more shift${extraDays>1?'s':''} and ${restHours}h of required rest.`);
+  if(!feasible && !cycleShort) issues.push(`Realistic arrival is ${elapsed.toFixed(1)}h away but the appointment is in ${i.apptIn}h: short by ${(elapsed-i.apptIn).toFixed(1)}h.`);
   return {driveLeft,windowLeft,cycleLeft,breakLeft,driveNeeded,totalNeeded,todayDrive,needsBreak,extraDays,restHours,elapsed,feasible,cycleShort,issues};
 }
 function renderHOS(){ runHOS(); }
@@ -984,7 +983,7 @@ function runHOS(){
       <div class="vt">${r.cycleShort?'✕':r.feasible?'✓':'!'} ${label}</div>
       <div class="vs">${r.feasible
         ? `Arrives about ${r.elapsed.toFixed(1)}h from now, ${(i.apptIn-r.elapsed).toFixed(1)}h before the appointment.`
-        : `This load only works by breaking the clock. That is not a profitable load — it is a liability with a rate attached.`}</div>
+        : `This load only works by breaking the clock. That is not a profitable load: it is a liability with a rate attached.`}</div>
     </div>
     <div class="tiles" style="margin-bottom:1rem">
       <div class="tile"><div class="l">Driving left today</div><div class="v">${r.driveLeft.toFixed(1)}h</div><div class="d">of ${HOS.DRIVE}h</div></div>
@@ -999,7 +998,7 @@ function runHOS(){
     <div class="kv" style="border-top:1px solid var(--line);margin-top:.4rem;padding-top:.6rem">
       <span style="color:#fff;font-weight:600">Realistic total elapsed</span><b class="${r.feasible?'pos':'neg'}">${r.elapsed.toFixed(1)}h</b></div>
     ${r.issues.length?`<p class="note">${r.issues.map(x=>'• '+x).join('<br>')}</p>`:'<p class="note">No clock problems on this run.</p>'}
-    <p class="note" style="color:var(--tx-3)">US property-carrying rules. Adverse-conditions and short-haul exceptions are not modelled — treat this as a planning check, not a compliance record.</p>`;
+    <p class="note" style="color:var(--tx-3)">US property-carrying rules. Adverse-conditions and short-haul exceptions are not modelled: treat this as a planning check, not a compliance record.</p>`;
 }
 ['h_drive','h_window','h_cycle','h_break','h_miles','h_speed','h_load','h_appt']
   .forEach(id=>document.addEventListener('input',e=>{ if(e.target.id===id) runHOS(); }));
@@ -1122,7 +1121,7 @@ function calcBack(){
       </tr>`).join('')}</tbody></table></div>
     <p class="note">${best.gain>0
       ? `<b>${esc(best.b.label)}</b> is worth <b>${money(best.gain)}</b> more than driving home empty, even though it pays ${money(best.b.rate)}. A cheap return that kills ${nz($('b_loaded').value)-best.b.dead} empty miles beats a rich return that adds deadhead.`
-      : `Every return offered is worse than running home empty. That is unusual — check the deadhead figures before rejecting them.`}</p>`
+      : `Every return offered is worse than running home empty. That is unusual: check the deadhead figures before rejecting them.`}</p>`
     :'<p class="note">Add a return offer to compare.</p>'}`;
 }
 ['b_rate','b_loaded','b_dead'].forEach(id=>document.addEventListener('input',e=>{ if(e.target.id===id) calcBack(); }));
@@ -1176,7 +1175,7 @@ function addTruck(){
   if(!name) return;
   DB.trucks.push({id:uid('tk'),name:name.trim(),mpg:6.5,maintCpm:0.19,monthlyMiles:10500,
     fixed:{truck:2450,trailer:620,insurance:1350,permits:310,eld:185,other:540}});
-  save(); renderData(); fillSelects(); refreshBadges(); toast('Truck added — set its real costs in Cost per Mile');
+  save(); renderData(); fillSelects(); refreshBadges(); toast('Truck added: set its real costs in Cost per Mile');
 }
 function renameTruck(id){ const t=truckOf(id); if(!t)return; const n=prompt('Truck name',t.name); if(n){t.name=n.trim();save();renderData();fillSelects();} }
 function delTruck(id){
@@ -1266,7 +1265,7 @@ function seedDemo(){
   }
   DB={settings:{...BLANK.settings},trucks:T,drivers:D,customers:C,loads};
   save(); go('dash');
-  toast(`Demo fleet loaded — ${T.length} trucks, ${loads.length} loads across ${lanes.length} lanes`);
+  toast(`Demo fleet loaded: ${T.length} trucks, ${loads.length} loads across ${lanes.length} lanes`);
 }
 function wipe(){
   if(!confirm('Erase every truck, driver, customer and load from this browser?')) return;
@@ -1326,7 +1325,7 @@ function boot(){
   const h=(location.hash||'').replace('#','');
   go(VIEWS.some(v=>v.id===h)?h:'dash');
   if(!had && !DB.loads.length){
-    setTimeout(()=>toast('Empty console — load the demo fleet from Fleet & Data to see it working.'),700);
+    setTimeout(()=>toast('Empty console: load the demo fleet from Fleet & Data to see it working.'),700);
   }
 }
 addEventListener('hashchange',()=>{

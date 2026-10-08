@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOT Audit Readiness Check — free | LoadMargin</title>
-<meta name="description" content="A free self-check for small US carriers: score how ready you are for a new-entrant or safety audit across driver files, drug & alcohol, HOS, vehicles, authority and records — with the gaps to fix first. Nothing uploaded.">
+<title>DOT Audit Readiness Check: free | LoadMargin</title>
+<meta name="description" content="A free self-check for small US carriers: score how ready you are for a new-entrant or safety audit across driver files, drug & alcohol, HOS, vehicles, authority and records: with the gaps to fix first. Nothing uploaded.">
 <link rel="canonical" href="https://loadmargin.com/audit-check.html">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
@@ -84,8 +84,7 @@
   <div class="hero">
     <span class="eyebrow">Free · nothing uploaded</span>
     <h1>DOT Audit Readiness Check</h1>
-    <p class="lede">Answer honestly and see how ready you are for a new-entrant or safety audit — and,
-      more useful, the exact gaps to close first. Everything runs in your browser; nothing is saved or sent.</p>
+    <p class="lede">Answer a few questions to see how ready you are for a new-entrant or safety audit, and which gaps to close first. Everything runs in your browser; nothing is saved or sent.</p>
   </div>
 
   <div class="layout">
@@ -100,7 +99,7 @@
       </div>
       <div class="cta">
         <p id="ctaText">Want a second pair of eyes before the auditor's? I check your file against exactly this list.</p>
-        <a class="btn" href="work.html#tuneup">Compliance tune-up — $199 &rarr;</a>
+        <a class="btn" href="work.html#tuneup">Compliance tune-up: $199 &rarr;</a>
         <a class="btn ghost" href="work.html#check" style="margin-top:.5rem;display:block">See all services</a>
       </div>
     </aside>
@@ -108,7 +107,7 @@
 
   <p class="foot">
     This is a self-check for planning, not legal advice or a guarantee of passing. Requirements change and
-    depend on your operation — confirm against the current FMCSA rules or ask a professional. For the how and
+    depend on your operation: confirm against the current FMCSA rules or ask a professional. For the how and
     why behind each item, the <a href="guides.html">guides</a> break it down.
   </p>
 </main>
@@ -193,9 +192,9 @@
     var pct=Math.round(got/max*100);
     el.textContent=pct;
     el.style.color = pct>=85?"var(--pos)":pct>=60?"var(--warn)":"var(--neg)";
-    if(pct>=85){ bd.className="band ready"; bd.textContent="Audit-ready — keep it current"; }
-    else if(pct>=60){ bd.className="band risk"; bd.textContent="At risk — close the gaps below"; }
-    else { bd.className="band no"; bd.textContent="Not ready — act before an audit finds it"; }
+    if(pct>=85){ bd.className="band ready"; bd.textContent="Audit-ready: keep it current"; }
+    else if(pct>=60){ bd.className="band risk"; bd.textContent="At risk: close the gaps below"; }
+    else { bd.className="band no"; bd.textContent="Not ready: act before an audit finds it"; }
     gaps.sort(function(a,b){ return (b.crit-a.crit)|| (b.w-a.w); });
     var g=document.getElementById("gaps");
     if(!gaps.length){ g.innerHTML='<li style="border:0;color:var(--pos)">No gaps flagged. Nice.</li>'; }

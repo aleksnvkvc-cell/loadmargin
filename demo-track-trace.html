@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live demo — Track &amp; Trace | LoadMargin</title>
-<meta name="description" content="Live demo of the LoadMargin track & trace board: loads, check calls, ETAs, late-load alerts and ready broker/customer status messages. Sample data only — nothing is saved or uploaded.">
+<title>Live demo: Track &amp; Trace | LoadMargin</title>
+<meta name="description" content="Live demo of the LoadMargin track & trace board: loads, check calls, ETAs, late-load alerts and ready broker/customer status messages. Sample data only: nothing is saved or uploaded.">
 <link rel="canonical" href="https://loadmargin.com/demo-track-trace.html">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
@@ -111,7 +111,7 @@
 
 <div style="background:rgba(227,180,74,.10);border-bottom:1px solid var(--line)">
   <div class="wrap" style="padding:.6rem 0;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
-    <span style="color:var(--gold);font-size:.86rem"><b>Live demo</b> · sample loads · nothing is saved or uploaded — this is the kind of board I run freight on.</span>
+    <span style="color:var(--gold);font-size:.86rem"><b>Live demo</b> · sample loads · nothing is saved or uploaded: this is the kind of board I run freight on.</span>
     <a href="mailto:aleksnvkvc@gmail.com?subject=Track%20%26%20trace%20board" style="color:var(--tx2);font-size:.86rem">Want it on your loads? &rarr;</a>
   </div>
 </div>
@@ -135,13 +135,13 @@
     </select>
     <input id="fSearch" class="grow" placeholder="Search ref, customer, lane, driver…" oninput="render()">
     <span class="spacer"></span>
-    <span class="hint">Demo — changes reset on refresh</span>
+    <span class="hint">Demo: changes reset on refresh</span>
   </div>
 
   <div id="board" class="board"></div>
 
   <p class="foot">
-    This is a live demo with sample data — nothing is saved, nothing is uploaded, nothing leaves your browser.<br>
+    This is a live demo with sample data: nothing is saved, nothing is uploaded, nothing leaves your browser.<br>
     Want a board like this running your real loads, kept up to date for you? <a href="mailto:aleksnvkvc@gmail.com?subject=Track%20%26%20trace%20board">Talk to me &rarr;</a>
   </p>
 </main>
@@ -197,7 +197,7 @@
 </div>
 
 <script>
-/* ── LoadMargin Track & Trace — standalone, no libraries, no network.
+/* ── LoadMargin Track & Trace: standalone, no libraries, no network.
    State lives in memory; mirrored to localStorage when available.       */
 (function(){
   "use strict";
@@ -349,7 +349,7 @@
     var stMap={
       'Booked':'booked and covered', 'At pickup':'at the shipper for pickup',
       'Loaded':'loaded and rolling', 'In transit':'in transit',
-      'At delivery':'at the receiver', 'Delivered':'delivered', 'Problem':'delayed — see below'
+      'At delivery':'at the receiver', 'Delivered':'delivered', 'Problem':'delayed: see below'
     };
     var st=stMap[l.status]||l.status.toLowerCase();
     var locP = l.loc ? (' Currently near '+l.loc+'.') : '';
@@ -362,7 +362,7 @@
       else if(a._late){ out='Load '+ref+' — running behind. '+(l.loc?'Currently near '+l.loc+'.':'')+(l.eta?' Revised ETA '+timeOnly(l.eta)+' to '+dest+'.':'')+' Will keep you posted.'; }
       else if(l.check){ out+=' Next update by '+timeOnly(l.check)+'.'; }
     } else {
-      if(l.status==='Delivered'){ out='Good news — your shipment ('+ref+') was delivered'+(l.del?' on '+fmt(l.del):'')+'. Thank you.'; }
+      if(l.status==='Delivered'){ out='Good news: your shipment ('+ref+') was delivered'+(l.del?' on '+fmt(l.del):'')+'. Thank you.'; }
       else if(a._late){ out='Update on your shipment ('+ref+'): we\'re running a little behind.'+(l.eta?' Current ETA is '+timeOnly(l.eta)+' to '+dest+'.':'')+' We\'ll let you know as soon as it\'s in.'; }
       else { out='Update on your shipment ('+ref+'): '+st+'.'+etaP+(l.check?' Next update by '+timeOnly(l.check)+'.':''); }
     }
@@ -381,7 +381,7 @@
       a.href=url; a.download='loadmargin-tt-'+stamp+'.json';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(function(){ URL.revokeObjectURL(url); },1000);
-    }catch(e){ copyText(data,'Download blocked here — JSON copied to clipboard instead.'); }
+    }catch(e){ copyText(data,'Download blocked here: JSON copied to clipboard instead.'); }
   }
   function copyJSON(){ copyText(JSON.stringify(loads,null,2),'All loads copied as JSON.'); }
   function copyText(t,okMsg){
@@ -393,7 +393,7 @@
     try{ var ta=document.createElement('textarea'); ta.value=t;
       ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
       ta.select(); document.execCommand('copy'); document.body.removeChild(ta); toast(okMsg); }
-    catch(e){ alert('Copy failed — select the text manually.'); }
+    catch(e){ alert('Copy failed: select the text manually.'); }
   }
   function doImport(inp){
     var f=inp.files&&inp.files[0]; if(!f) return;

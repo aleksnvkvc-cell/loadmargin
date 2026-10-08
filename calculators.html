@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free freight calculators — ETA & hours-of-service, fuel, deadhead, IFTA | LoadMargin</title>
+<title>Free freight calculators: ETA & hours-of-service, fuel, deadhead, IFTA | LoadMargin</title>
 <meta name="description" content="Eight working calculators for carriers: ETA and hours-of-service (will you make it legally), fuel surcharge recovery, deadhead and backhaul, owner-operator take-home, detention cost, IFTA quarterly estimate, factoring effective APR and maintenance reserve. No account, nothing uploaded.">
 <link rel="canonical" href="https://loadmargin.com/calculators.html">
 <meta name="theme-color" content="#07112E">
@@ -12,14 +12,14 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Free freight calculators — ETA & hours-of-service, fuel, deadhead, IFTA | LoadMargin">
+<meta property="og:title" content="Free freight calculators: ETA & hours-of-service, fuel, deadhead, IFTA | LoadMargin">
 <meta property="og:description" content="Eight working calculators for carriers: ETA and hours-of-service (will you make it legally), fuel surcharge recovery, deadhead and backhaul, owner-operator take-home, detention cost, IFTA quarterly estimate, factoring effective APR and maintenance reserve. No account, nothing uploaded.">
 <meta property="og:url" content="https://loadmargin.com/calculators.html">
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/fonts.css?v=20261005e">
-<link rel="stylesheet" href="assets/site.css?v=20261005e">
-<script src="assets/theme-auto-switch.js?v=20261005e"></script>
+<link rel="stylesheet" href="assets/fonts.css?v=20261008a">
+<link rel="stylesheet" href="assets/site.css?v=20261008a">
+<script src="assets/theme-auto-switch.js?v=20261008a"></script>
 <script type="application/ld+json">{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loadmargin.com/index.html"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://loadmargin.com/calculators.html"}],"@context":"https://schema.org"}</script>
 </head>
 <body>
@@ -43,9 +43,9 @@
       <button id="themeToggle" class="btn btn-sm btn-theme"
               aria-label="Toggle theme" aria-pressed="false"
               title="Light / dark">
-        ☀️ Light
+        Light
       </button>
-      <a class="btn btn-gold btn-sm" href="app.html">Open <span>console</span></a>
+      <a class="btn btn-gold btn-sm" href="work.html#check"><span>$49 </span>Load Check</a>
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
         <span></span><span></span><span></span>
       </button>
@@ -59,8 +59,7 @@
     <span class="eyebrow">Free tools · no account, no email</span>
     <h1>Freight calculators</h1>
     <p class="lede">Eight working calculators for the decisions that actually move money in a
-      small carrier — including whether you'll make the next delivery legally. Everything runs
-      in your browser — nothing is uploaded, nothing is stored, nothing asks who you are.</p>
+      small carrier, including whether you'll make the next delivery legally. They run in your browser and nothing you type is sent anywhere.</p>
     <div class="chips" style="margin-top:1.6rem">
       <a class="chip" href="audit-check.html">DOT audit check</a>
       <a class="chip" href="#eta">ETA &amp; hours</a>
@@ -82,7 +81,7 @@
         <div>
           <h2 style="font-size:1.15rem;margin-bottom:.6rem">Looking for the load calculator?</h2>
           <p style="color:var(--tx-2);line-height:1.75;margin:0">Scoring a single load against your
-            own cost base — accept, negotiate or reject — is on the home page, and the full
+            own cost base, accept, negotiate or reject, is on the home page, and the full
             eight-module console runs every report on top of it.</p>
         </div>
         <div style="display:flex;gap:.7rem;flex-wrap:wrap">
@@ -98,10 +97,10 @@
     <div class="sec-head rv">
       <span class="eyebrow">Operations</span>
       <h2>ETA & hours-of-service calculator</h2>
-      <p class="lede">Miles left, your speed and your remaining clocks — and it tells you when you arrive, whether you make it legally, and the farthest you can still drive. Built on the 11-hour driving limit, the 14-hour window and the 30-minute break.</p>
+      <p class="lede">Miles left, your speed and your remaining clocks, and it tells you when you arrive, whether you make it legally, and the farthest you can still drive. Built on the 11-hour driving limit, the 14-hour window and the 30-minute break.</p>
     </div>
     <div class="calc">
-      <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="etMiles">Miles remaining <span class="hint">to destination</span></label><div class="inp has-suf"><input type="number" id="etMiles" value="240" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="etSpeed">Average speed <span class="hint">realistic, not the limit</span></label><div class="inp has-suf"><input type="number" id="etSpeed" value="55" min="1" step="1" inputmode="decimal"><span class="suf">mph</span></div></div></div><div class="field-row"><div class="field"><label for="etDrive">Driving hours left <span class="hint">of your 11</span></label><div class="inp has-suf"><input type="number" id="etDrive" value="6.5" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="etWindow">On-duty hours left <span class="hint">of your 14</span></label><div class="inp has-suf"><input type="number" id="etWindow" value="8" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field-row"><div class="field"><label for="etSince">Driving since last break <span class="hint">for the 30-min rule</span></label><div class="inp has-suf"><input type="number" id="etSince" value="3" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="etAppt">Delivery due in <span class="hint">hours from now</span></label><div class="inp has-suf"><input type="number" id="etAppt" value="5" min="0" step="0.25" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field"><label for="etNow">Current time <span class="hint">optional — for an arrival clock</span></label><div class="inp"><input type="time" id="etNow"></div></div></div>
+      <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="etMiles">Miles remaining <span class="hint">to destination</span></label><div class="inp has-suf"><input type="number" id="etMiles" value="240" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="etSpeed">Average speed <span class="hint">realistic, not the limit</span></label><div class="inp has-suf"><input type="number" id="etSpeed" value="55" min="1" step="1" inputmode="decimal"><span class="suf">mph</span></div></div></div><div class="field-row"><div class="field"><label for="etDrive">Driving hours left <span class="hint">of your 11</span></label><div class="inp has-suf"><input type="number" id="etDrive" value="6.5" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="etWindow">On-duty hours left <span class="hint">of your 14</span></label><div class="inp has-suf"><input type="number" id="etWindow" value="8" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field-row"><div class="field"><label for="etSince">Driving since last break <span class="hint">for the 30-min rule</span></label><div class="inp has-suf"><input type="number" id="etSince" value="3" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="etAppt">Delivery due in <span class="hint">hours from now</span></label><div class="inp has-suf"><input type="number" id="etAppt" value="5" min="0" step="0.25" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field"><label for="etNow">Current time <span class="hint">optional: for an arrival clock</span></label><div class="inp"><input type="time" id="etNow"></div></div></div>
       <div class="panel rv" style="padding:1.7rem">
         <div class="kv big"><span>Will you make it?</span><b id="etVerdict">—</b></div>
 <div class="hr"></div>
@@ -115,7 +114,7 @@
 <div class="kv"><span>Make the appointment</span><b id="etOnTime">—</b></div>
 <div class="hr"></div>
 <div class="kv"><span>Farthest you can legally drive now</span><b id="etMaxMiles">—</b></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">A planning estimate on the interstate property-carrying rules — the 11-hour driving limit, the 14-hour window and the 30-minute break after 8 hours driving. It does not know your 70-hour cycle, split-sleeper, adverse-conditions or personal-conveyance exceptions. Always confirm against your ELD. See the <a href="guide-hos.html">hours-of-service guide</a>.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">A planning estimate on the interstate property-carrying rules: the 11-hour driving limit, the 14-hour window and the 30-minute break after 8 hours driving. It does not know your 70-hour cycle, split-sleeper, adverse-conditions or personal-conveyance exceptions. Always confirm against your ELD. See the <a href="guide-hos.html">hours-of-service guide</a>.</p>
       </div>
     </div>
   </div>
@@ -125,7 +124,7 @@
     <div class="sec-head rv">
       <span class="eyebrow">Fuel</span>
       <h2>Fuel surcharge calculator</h2>
-      <p class="lede">Work out the surcharge from any DOE index, base price and peg mpg — and the gap between what the surcharge pays and the fuel you actually burn, including deadhead.</p>
+      <p class="lede">Work out the surcharge from any DOE index, base price and peg mpg, and the gap between what the surcharge pays and the fuel you actually burn, including deadhead.</p>
     </div>
     <div class="calc">
       <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="fsDoe">DOE index <span class="hint">this week</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fsDoe" value="3.85" min="0" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div><div class="field"><label for="fsBase">Base price</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="fsBase" value="1.25" min="0" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="fsPeg">Peg mpg <span class="hint">contracted</span></label><div class="inp has-suf"><input type="number" id="fsPeg" value="6.0" min="0.1" step="0.1" inputmode="decimal"><span class="suf">mpg</span></div></div><div class="field"><label for="fsReal">Your real mpg <span class="hint">measured</span></label><div class="inp has-suf"><input type="number" id="fsReal" value="6.2" min="0.1" step="0.1" inputmode="decimal"><span class="suf">mpg</span></div></div></div><div class="field-row"><div class="field"><label for="fsLoaded">Loaded miles</label><div class="inp has-suf"><input type="number" id="fsLoaded" value="850" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="fsDead">Deadhead</label><div class="inp has-suf"><input type="number" id="fsDead" value="120" min="0" step="5" inputmode="decimal"><span class="suf">mi</span></div></div></div></div>
@@ -134,11 +133,11 @@
 <div class="kv"><span>Surcharge received</span><b id="fsTot">—</b></div>
 <div class="kv"><span>Fuel actually burned, all miles</span><b id="fsBurn">—</b></div>
 <div class="kv"><span>Covered by the surcharge</span><b id="fsCov">—</b></div>
-<div class="kv big"><span>Uncovered fuel — carried by your line haul</span><b id="fsGap">—</b></div>
+<div class="kv big"><span>Uncovered fuel: carried by your line haul</span><b id="fsGap">—</b></div>
 <div class="hr"></div>
 <div class="kv"><span>Peg vs your real mpg</span><b id="fsPegGap">—</b></div>
 <div class="kv"><span>Effect of the peg over 200 loads</span><b id="fsYear">—</b></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">If the peg is above your real mpg, the surcharge under-recovers on every mile — permanently. Read the <a href="guide-fuel-surcharge.html">fuel surcharge guide</a>.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">If the peg is above your real mpg, the surcharge under-recovers on every mile: permanently. Read the <a href="guide-fuel-surcharge.html">fuel surcharge guide</a>.</p>
       </div>
     </div>
   </div>
@@ -153,19 +152,19 @@
     <div class="calc">
       <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="dhCpm">All-in cost per mile <span class="hint">yours</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dhCpm" value="1.92" min="0" step="0.01" inputmode="decimal"><span class="suf">/mi</span></div></div><div class="field"><label for="dhRate">Return load rate <span class="hint">0 = run empty</span></label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="dhRate" value="1650" min="0" step="10" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="dhLoaded">Loaded miles home</label><div class="inp has-suf"><input type="number" id="dhLoaded" value="790" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="dhDead">Deadhead to reach it</label><div class="inp has-suf"><input type="number" id="dhDead" value="60" min="0" step="5" inputmode="decimal"><span class="suf">mi</span></div></div></div><div class="field-row"><div class="field"><label for="dhHome">Miles home if you run empty</label><div class="inp has-suf"><input type="number" id="dhHome" value="850" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="dhRate2">Alternative return rate <span class="hint">optional</span></label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="dhRate2" value="2100" min="0" step="10" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="dhLoaded2">Alt. loaded miles</label><div class="inp has-suf"><input type="number" id="dhLoaded2" value="930" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="dhDead2">Alt. deadhead</label><div class="inp has-suf"><input type="number" id="dhDead2" value="240" min="0" step="5" inputmode="decimal"><span class="suf">mi</span></div></div></div></div>
       <div class="panel rv" style="padding:1.7rem">
-        <div class="kv"><span>Run empty home — cost</span><b id="dhEmpty" class="neg">—</b></div>
+        <div class="kv"><span>Run empty home: cost</span><b id="dhEmpty" class="neg">—</b></div>
 <div class="hr"></div>
-<div class="kv"><span>Return A — total miles</span><b id="dhAmi">—</b></div>
-<div class="kv"><span>Return A — cost</span><b id="dhAcost">—</b></div>
-<div class="kv"><span>Return A — net on the leg</span><b id="dhAnet">—</b></div>
-<div class="kv"><span>Return A — better than empty by</span><b id="dhAbet">—</b></div>
-<div class="kv"><span>Return A — all-in per total mile</span><b id="dhArpm">—</b></div>
+<div class="kv"><span>Return A: total miles</span><b id="dhAmi">—</b></div>
+<div class="kv"><span>Return A: cost</span><b id="dhAcost">—</b></div>
+<div class="kv"><span>Return A: net on the leg</span><b id="dhAnet">—</b></div>
+<div class="kv"><span>Return A: better than empty by</span><b id="dhAbet">—</b></div>
+<div class="kv"><span>Return A: all-in per total mile</span><b id="dhArpm">—</b></div>
 <div class="hr"></div>
-<div class="kv"><span>Return B — net on the leg</span><b id="dhBnet">—</b></div>
-<div class="kv"><span>Return B — better than empty by</span><b id="dhBbet">—</b></div>
-<div class="kv"><span>Return B — all-in per total mile</span><b id="dhBrpm">—</b></div>
+<div class="kv"><span>Return B: net on the leg</span><b id="dhBnet">—</b></div>
+<div class="kv"><span>Return B: better than empty by</span><b id="dhBbet">—</b></div>
+<div class="kv"><span>Return B: all-in per total mile</span><b id="dhBrpm">—</b></div>
 <div class="kv big"><span>Best option</span><b id="dhBest">—</b></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">A return leg that loses money on its own can still be the best available outcome, because the alternative is not zero — it is the cost of driving home empty. See the <a href="guide-deadhead.html">deadhead guide</a>.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">A return leg that loses money on its own can still be the best available outcome, because the alternative is not zero: it is the cost of driving home empty. See the <a href="guide-deadhead.html">deadhead guide</a>.</p>
       </div>
     </div>
   </div>
@@ -193,7 +192,7 @@
 <div class="hr"></div>
 <div class="kv"><span>Effective hourly at 60 h/week, 48 weeks</span><b id="ohHr">—</b></div>
 <div class="kv"><span>Break-even rate per loaded mile</span><b id="ohBe">—</b></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">This is an estimate, not tax advice. The set-aside percentage is a placeholder — your actual rate depends on your entity, deductions and jurisdiction. Talk to an accountant.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">This is an estimate, not tax advice. The set-aside percentage is a placeholder: your actual rate depends on your entity, deductions and jurisdiction. Talk to an accountant.</p>
       </div>
     </div>
   </div>
@@ -213,9 +212,9 @@
 <div class="kv"><span>Lost contribution per hour</span><b id="dtLost">—</b></div>
 <div class="kv big"><span>Full economic cost per hour</span><b id="dtFull" class="neg">—</b></div>
 <div class="hr"></div>
-<div class="kv"><span>This visit — cost of the wait</span><b id="dtVisitCost" class="neg">—</b></div>
-<div class="kv"><span>This visit — detention paid</span><b id="dtVisitPay" class="pos">—</b></div>
-<div class="kv"><span>This visit — recovered</span><b id="dtRec">—</b></div>
+<div class="kv"><span>This visit: cost of the wait</span><b id="dtVisitCost" class="neg">—</b></div>
+<div class="kv"><span>This visit: detention paid</span><b id="dtVisitPay" class="pos">—</b></div>
+<div class="kv"><span>This visit: recovered</span><b id="dtRec">—</b></div>
 <div class="hr"></div>
 <div class="kv"><span>Expected cost per visit to this facility</span><b id="dtExp" class="neg">—</b></div>
 <div class="kv"><span>Charge this much more per load here</span><b id="dtSur">—</b></div>
@@ -233,7 +232,7 @@
       <p class="lede">Fleet mpg, taxable gallons and net tax for up to five jurisdictions. Enough to know what the quarter will cost before the return is due.</p>
     </div>
     <div class="calc">
-      <div class="panel calc-form rv"><p class="fine" style="margin:-.4rem 0 1rem;color:var(--tx-3)">Enter miles driven and gallons purchased in each jurisdiction. Fleet mpg is computed from the totals, exactly as IFTA requires.</p><div class="field-row"><div class="field"><label for="if1m">State 1 — miles</label><div class="inp has-suf"><input type="number" id="if1m" value="6200" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if1g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if1g" value="1450" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if1r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if1r" value="0.5470" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if2m">State 2 — miles</label><div class="inp has-suf"><input type="number" id="if2m" value="3100" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if2g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if2g" value="280" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if2r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if2r" value="0.5900" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if3m">State 3 — miles</label><div class="inp has-suf"><input type="number" id="if3m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if3g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if3g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if3r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if3r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if4m">State 4 — miles</label><div class="inp has-suf"><input type="number" id="if4m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if4g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if4g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if4r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if4r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if5m">State 5 — miles</label><div class="inp has-suf"><input type="number" id="if5m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if5g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if5g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if5r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if5r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div></div>
+      <div class="panel calc-form rv"><p class="fine" style="margin:-.4rem 0 1rem;color:var(--tx-3)">Enter miles driven and gallons purchased in each jurisdiction. Fleet mpg is computed from the totals, exactly as IFTA requires.</p><div class="field-row"><div class="field"><label for="if1m">State 1: miles</label><div class="inp has-suf"><input type="number" id="if1m" value="6200" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if1g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if1g" value="1450" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if1r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if1r" value="0.5470" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if2m">State 2: miles</label><div class="inp has-suf"><input type="number" id="if2m" value="3100" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if2g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if2g" value="280" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if2r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if2r" value="0.5900" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if3m">State 3: miles</label><div class="inp has-suf"><input type="number" id="if3m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if3g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if3g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if3r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if3r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if4m">State 4: miles</label><div class="inp has-suf"><input type="number" id="if4m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if4g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if4g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if4r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if4r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div><div class="field-row"><div class="field"><label for="if5m">State 5: miles</label><div class="inp has-suf"><input type="number" id="if5m" value="0" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="if5g">Gallons bought</label><div class="inp has-suf"><input type="number" id="if5g" value="0" min="0" step="10" inputmode="decimal"><span class="suf">gal</span></div></div><div class="field"><label for="if5r">Tax rate</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="if5r" value="0.0000" min="0" step="0.0001" inputmode="decimal"><span class="suf">/gal</span></div></div></div></div>
       <div class="panel rv" style="padding:1.7rem">
         <div class="kv"><span>Total miles</span><b id="ifTm">—</b></div>
 <div class="kv"><span>Total gallons purchased</span><b id="ifTg">—</b></div>
@@ -243,7 +242,7 @@
 <div class="kv big"><span id="ifLbl">Net tax due</span><b id="ifNet">—</b></div>
 <div class="hr"></div>
 <div class="kv"><span>Effective cost per mile</span><b id="ifCpm">—</b></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">An estimate for planning only. Rates change every quarter and are published by the member jurisdictions — file from the current published rates, never from a remembered figure. See the <a href="guide-ifta.html">IFTA guide</a>.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">An estimate for planning only. Rates change every quarter and are published by the member jurisdictions: file from the current published rates, never from a remembered figure. See the <a href="guide-ifta.html">IFTA guide</a>.</p>
       </div>
     </div>
   </div>
@@ -284,7 +283,7 @@
       <p class="lede">Turn twelve months of repair spend into the per-mile figure your cost model needs, and see what the reserve should hold each month.</p>
     </div>
     <div class="calc">
-      <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="mtMiles">Miles in the last 12 months</label><div class="inp has-suf"><input type="number" id="mtMiles" value="118000" min="0" step="1000" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="mtPm">Preventive services</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtPm" value="2640" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtTyre">Tyres</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtTyre" value="5900" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtBrake">Brakes and air</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtBrake" value="2300" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtAt">Aftertreatment — DPF, DEF</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtAt" value="3850" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtEng">Engine and cooling</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtEng" value="2100" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtDrv">Drivetrain, suspension</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtDrv" value="1950" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtElec">Electrical and minor</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtElec" value="1180" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtTrl">Trailer</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtTrl" value="1540" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtRoad">Roadside and towing</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtRoad" value="1620" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtOh">Annual in-frame overhaul reserve <span class="hint">spread over its life</span></label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtOh" value="24000" min="0" step="1000" inputmode="decimal"></div></div><div class="field"><label for="mtOhLife">Overhaul interval</label><div class="inp has-suf"><input type="number" id="mtOhLife" value="1000000" min="1" step="50000" inputmode="decimal"><span class="suf">mi</span></div></div></div></div>
+      <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="mtMiles">Miles in the last 12 months</label><div class="inp has-suf"><input type="number" id="mtMiles" value="118000" min="0" step="1000" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="mtPm">Preventive services</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtPm" value="2640" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtTyre">Tyres</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtTyre" value="5900" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtBrake">Brakes and air</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtBrake" value="2300" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtAt">Aftertreatment: DPF, DEF</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtAt" value="3850" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtEng">Engine and cooling</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtEng" value="2100" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtDrv">Drivetrain, suspension</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtDrv" value="1950" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtElec">Electrical and minor</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtElec" value="1180" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtTrl">Trailer</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtTrl" value="1540" min="0" step="50" inputmode="decimal"></div></div><div class="field"><label for="mtRoad">Roadside and towing</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtRoad" value="1620" min="0" step="50" inputmode="decimal"></div></div></div><div class="field-row"><div class="field"><label for="mtOh">Annual in-frame overhaul reserve <span class="hint">spread over its life</span></label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="mtOh" value="24000" min="0" step="1000" inputmode="decimal"></div></div><div class="field"><label for="mtOhLife">Overhaul interval</label><div class="inp has-suf"><input type="number" id="mtOhLife" value="1000000" min="1" step="50000" inputmode="decimal"><span class="suf">mi</span></div></div></div></div>
       <div class="panel rv" style="padding:1.7rem">
         <div class="kv"><span>Total 12-month spend</span><b id="mtTot">—</b></div>
 <div class="kv big"><span>Maintenance cost per mile</span><b id="mtCpm">—</b></div>
@@ -294,7 +293,7 @@
 <div class="kv big"><span>Total to put in your cost model</span><b id="mtAll">—</b></div>
 <div class="hr"></div>
 <div id="mtBreak"></div>
-        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">Use twelve months minimum — anything shorter is dominated by whether a big repair happened to fall inside the window. See the <a href="guide-maintenance.html">maintenance guide</a>.</p>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">Use twelve months minimum: anything shorter is dominated by whether a big repair happened to fall inside the window. See the <a href="guide-maintenance.html">maintenance guide</a>.</p>
       </div>
     </div>
   </div>
@@ -369,7 +368,7 @@
     var best='Run empty home', bv=0;
     if(A.better>bv){best='Return A, by '+m(A.better)+' over empty';bv=A.better;}
     if(B.better>bv){best='Return B, by '+m(B.better)+' over empty';bv=B.better;}
-    if(bv===0) best='Run empty — neither return beats it';
+    if(bv===0) best='Run empty: neither return beats it';
     set('dhBest',best,bv>0?'pos':'neg');
   }
 
@@ -494,7 +493,7 @@
     var breakNeeded=(since+driveNeed>8)?0.5:0;
     var total=driveNeed+breakNeeded;
     set('etDriveNeed',hm(driveNeed));
-    set('etBreak',breakNeeded>0?('Yes — after '+hm(Math.max(0,8-since))+' more driving'):'No');
+    set('etBreak',breakNeeded>0?('Yes: after '+hm(Math.max(0,8-since))+' more driving'):'No');
     set('etTotal',hm(total));
     var nowEl=document.getElementById('etNow'), nowVal=nowEl?nowEl.value:'';
     if(nowVal && nowVal.indexOf(':')>-1){
@@ -504,17 +503,17 @@
       set('etEta',(H<10?'0'+H:H)+':'+(M<10?'0'+M:M));
     } else { set('etEta','— (enter current time)'); }
     var driveMargin=driveLeft-driveNeed;
-    set('etFitsDrive',driveMargin>=0?('Yes — '+hm(driveMargin)+' to spare'):('No — short by '+hm(-driveMargin)),driveMargin>=0?'pos':'neg');
+    set('etFitsDrive',driveMargin>=0?('Yes — '+hm(driveMargin)+' to spare'):('No: short by '+hm(-driveMargin)),driveMargin>=0?'pos':'neg');
     var winMargin=winLeft-total;
-    set('etFitsWin',winMargin>=0?('Yes — '+hm(winMargin)+' to spare'):('No — short by '+hm(-winMargin)),winMargin>=0?'pos':'neg');
+    set('etFitsWin',winMargin>=0?('Yes — '+hm(winMargin)+' to spare'):('No: short by '+hm(-winMargin)),winMargin>=0?'pos':'neg');
     var apptMargin=apptIn-total;
     set('etOnTime',apptMargin>=0?('On time — '+hm(apptMargin)+' early'):('Late by '+hm(-apptMargin)),apptMargin>=0?'pos':'neg');
     var D=Math.min(driveLeft,winLeft); if(since+D>8){ D=Math.min(driveLeft,winLeft-0.5); } if(D<0)D=0;
     set('etMaxMiles',num(D*speed)+' mi');
     var legal=driveMargin>=0 && winMargin>=0, onTime=apptMargin>=0, verdict, cls;
-    if(!legal){ verdict='NOT LEGALLY — you run out of hours'; cls='neg'; }
+    if(!legal){ verdict='NOT LEGALLY: you run out of hours'; cls='neg'; }
     else if(!onTime){ verdict='LEGAL, BUT LATE by '+hm(-apptMargin); cls='neg'; }
-    else { verdict='YOU MAKE IT — legal and on time'; cls='pos'; }
+    else { verdict='YOU MAKE IT: legal and on time'; cls='pos'; }
     set('etVerdict',verdict,cls);
   }
 
@@ -547,10 +546,9 @@
     <div class="f-grid f-grid-5">
       <div class="f-brand">
         <img src="images/logo-full.png" alt="LoadMargin" width="1200" height="578">
-        <p>Smart tools for smarter freight decisions. Free load scoring, cost-per-mile analysis and lane reporting that runs in your browser.</p>
+        <p>Load checks and cost-per-mile work for U.S. owner-operators and small fleets. $49 a load, done by one person, by email. The calculators and guides are free.</p>
       </div>
-      <div><h2>Platform</h2><ul>
-        <li><a href="app.html">Fleet console</a></li>
+      <div><h2>Free tools</h2><ul>
         <li><a href="load-calculator.html#calculator">Load calculator</a></li>
         <li><a href="calculators.html">Free calculators</a></li></ul></div>
       <div><h2>Learn</h2><ul>
@@ -561,6 +559,7 @@
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="news.html">Freight news</a></li></ul></div>
       <div><h2>Company</h2><ul>
+        <li><a href="work.html">Services</a></li>
         <li><a href="work.html">Services</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#method">Methodology</a></li>

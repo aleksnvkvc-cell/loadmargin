@@ -57,7 +57,7 @@
     const toggle = document.getElementById('themeToggle');
     if (toggle) {
       toggle.setAttribute('aria-pressed', theme === 'light');
-      toggle.textContent = theme === 'light' ? '🌙 Dark' : '☀️ Light';
+      toggle.textContent = theme === 'light' ? 'Dark' : 'Light';
     }
   }
 
