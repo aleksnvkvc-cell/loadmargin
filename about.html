@@ -49,6 +49,7 @@
 .about-grid{display:grid;grid-template-columns:210px minmax(0,1fr);gap:3rem;align-items:start}
 @media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:1.5rem}.toc{position:static;display:none}}
 </style>
+<link rel="stylesheet" href="assets/assistant.css?v=20261010b">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -264,5 +265,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
+<script src="assets/assistant.js?v=20261010b" defer></script>
 </body>
 </html>

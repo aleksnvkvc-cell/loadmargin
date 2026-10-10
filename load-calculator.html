@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="assets/site.css?v=20261010a">
 <script src="assets/theme-auto-switch.js?v=20261010a"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://loadmargin.com/#site","name":"LoadMargin","url":"https://loadmargin.com/","publisher":{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."},"inLanguage":"en","description":"Free freight profitability tools, 66 written guides and paid load profitability services for US trucking carriers. Every calculation runs in your browser."},{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."}]}</script>
+<link rel="stylesheet" href="assets/assistant.css?v=20261010b">
 </head>
 <body>
 <a class="skip" href="#top">Skip to content</a>
@@ -690,7 +691,7 @@ function loadPreset(k){
   const bar=$('miniRes'), form=document.querySelector('#calculator .calc-form'), out=$('verdict');
   if(!bar||!form||!out||!('IntersectionObserver' in window)) return;
   let fIn=false,oIn=false;
-  const upd=()=>bar.classList.toggle('hide',!(fIn&&!oIn));
+  const upd=()=>{const on=fIn&&!oIn; bar.classList.toggle('hide',!on); document.body.classList.toggle('mini-on',on&&matchMedia('(max-width:640px)').matches);};
   new IntersectionObserver(e=>{fIn=e[0].isIntersecting;upd();}).observe(form);
   new IntersectionObserver(e=>{oIn=e[0].isIntersecting;upd();}).observe(out);
 })();
