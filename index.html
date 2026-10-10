@@ -420,6 +420,16 @@ html[data-theme="light"] .wf-out i{background:#d4574c}
 .me-card b{display:block;color:var(--tx);font-size:1rem}
 .me-card a{color:var(--accent)}
 
+.comp{display:grid;gap:.8rem;margin:1.4rem 0 1rem}
+@media (min-width:640px){.comp{grid-template-columns:1fr 1fr}}
+.comp-card{display:flex;flex-direction:column;gap:.35rem;text-decoration:none;background:var(--panel);border:1px solid var(--line-2);border-radius:6px;padding:1.2rem;transition:border-color .2s,transform .2s}
+.comp-card:hover{border-color:var(--cta);transform:translateY(-2px)}
+.comp-card small{color:var(--tx-3);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.comp-card b{font:700 1.2rem/1.2 var(--serif);display:flex;justify-content:space-between;gap:.6rem}
+.comp-card b span{color:var(--accent)}
+.comp-card em{font-style:normal;color:var(--tx-2);font-size:.88rem}
+.comp-card::after{content:"Email me about it →";color:var(--cta);font-weight:700;font-size:.9rem;margin-top:.4rem}
+
 .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -523,6 +533,18 @@ html[data-theme="light"] .wf-out i{background:#d4574c}
       <li><span>2</span><div><b>Pay $49</b><small>PayPal or Payoneer invoice.</small></div></li>
       <li><span>3</span><div><b>Get your answer</b><small>One page, by email.</small></div></li>
     </ol>
+  </div>
+</section>
+
+<section id="compliance">
+  <div class="wrap col">
+    <h2 class="rv">New authority or a DOT audit coming?</h2>
+    <p class="lede rv">I check your files and tell you exactly what's missing, most urgent first.</p>
+    <div class="comp rv">
+      <a class="comp-card" href="mailto:aleksnvkvc@gmail.com?subject=Authority%20Checklist%20Review&amp;body=Hi%2C%0A%0AI%27d%20like%20the%20%2499%20Authority%20Checklist%20Review.%0A%0AMC/DOT%20number%20%28if%20issued%29%3A%0AWhen%20my%20authority%20became%20/%20will%20become%20active%3A%0ATrucks%20and%20drivers%3A%0A%0AThanks%2C%0A"><small>New authority, first year</small><b>Checklist Review <span>$99</span></b><em>Driver file, Clearinghouse, drug &amp; alcohol, IFTA, UCR, MCS-150</em></a>
+      <a class="comp-card" href="mailto:aleksnvkvc@gmail.com?subject=Compliance%20Tune-up&amp;body=Hi%2C%0A%0AI%27m%20interested%20in%20the%20%24199%20Compliance%20Tune-up.%0A%0AMC/DOT%20number%3A%0AHow%20long%20the%20authority%20has%20been%20active%3A%0ATrucks%20and%20drivers%3A%0AIs%20a%20safety%20audit%20or%20compliance%20review%20scheduled%3F%20%28date%20if%20known%29%3A%0A%0AThanks%2C%0A"><small>Already running</small><b>Compliance Tune-up <span>$199</span></b><em>Your files checked against the common audit failures</em></a>
+    </div>
+    <p class="micro rv">Not sure where you stand? <a href="audit-check.html">Free 2-minute DOT audit readiness check</a></p>
   </div>
 </section>
 
