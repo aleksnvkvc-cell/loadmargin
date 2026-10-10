@@ -207,8 +207,8 @@
     <div class="calc">
       <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="dtFixed">Annual fixed cost <span class="hint">truck + overhead</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dtFixed" value="50900" min="0" step="100" inputmode="decimal"><span class="suf">/yr</span></div></div><div class="field"><label for="dtDays">Operating days</label><div class="inp has-suf"><input type="number" id="dtDays" value="260" min="1" step="5" inputmode="decimal"><span class="suf">days</span></div></div></div><div class="field-row"><div class="field"><label for="dtDriver">Driver pay for the hour <span class="hint">0 if unpaid</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dtDriver" value="22" min="0" step="1" inputmode="decimal"><span class="suf">/h</span></div></div><div class="field"><label for="dtIdle">Idle fuel burn</label><div class="inp has-suf"><input type="number" id="dtIdle" value="0.8" min="0" step="0.1" inputmode="decimal"><span class="suf">gal/h</span></div></div></div><div class="field-row"><div class="field"><label for="dtDiesel">Diesel price</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dtDiesel" value="3.85" min="0" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div><div class="field"><label for="dtContrib">Net contribution <span class="hint">per mile</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dtContrib" value="2.20" min="0" step="0.05" inputmode="decimal"><span class="suf">/mi</span></div></div></div><div class="field-row"><div class="field"><label for="dtSpeed">Average speed</label><div class="inp has-suf"><input type="number" id="dtSpeed" value="53" min="1" step="1" inputmode="decimal"><span class="suf">mph</span></div></div><div class="field"><label for="dtHours">Hours detained</label><div class="inp has-suf"><input type="number" id="dtHours" value="3" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field-row"><div class="field"><label for="dtFree">Free time <span class="hint">before detention pays</span></label><div class="inp has-suf"><input type="number" id="dtFree" value="2" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="dtPay">Detention rate <span class="hint">what they pay</span></label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="dtPay" value="50" min="0" step="5" inputmode="decimal"><span class="suf">/h</span></div></div></div><div class="field-row"><div class="field"><label for="dtProb">How often this facility detains you</label><div class="inp has-suf"><input type="number" id="dtProb" value="60" min="0" step="5" inputmode="decimal"><span class="suf">%</span></div></div><div class="field"><label for="dtVisits">Visits per year</label><div class="inp"><input type="number" id="dtVisits" value="24" min="1" step="1" inputmode="decimal"></div></div></div></div>
       <div class="panel rv" style="padding:1.7rem">
-        <div class="kv"><span>Fixed cost per on-duty hour</span><b id="dtFx">—</b></div>
-<div class="kv"><span>Direct cost of one detained hour</span><b id="dtDir">—</b></div>
+        <div class="kv"><span>Fixed cost per on-duty hour (shown only; covered by contribution)</span><b id="dtFx">—</b></div>
+<div class="kv"><span>Direct cost of one detained hour (driver + idle fuel)</span><b id="dtDir">—</b></div>
 <div class="kv"><span>Lost contribution per hour</span><b id="dtLost">—</b></div>
 <div class="kv big"><span>Full economic cost per hour</span><b id="dtFull" class="neg">—</b></div>
 <div class="hr"></div>
@@ -261,7 +261,7 @@
 <div class="kv"><span>Monthly volume factored</span><b id="fcVol">—</b></div>
 <div class="kv"><span>Percentage fees</span><b id="fcPct" class="neg">—</b></div>
 <div class="kv"><span>Per-invoice fees</span><b id="fcPer" class="neg">—</b></div>
-<div class="kv"><span>Monthly minimum</span><b id="fcMn" class="neg">—</b></div>
+<div class="kv"><span>Top-up to the monthly minimum</span><b id="fcMn" class="neg">—</b></div>
 <div class="kv big"><span>Actual monthly cost</span><b id="fcMonth" class="neg">—</b></div>
 <div class="hr"></div>
 <div class="kv"><span>True effective rate</span><b id="fcTrue">—</b></div>
@@ -343,10 +343,10 @@
     set('fsGap',m(-gap),'neg');
     var pmReal=(doe-base)/real; if(pmReal<0) pmReal=0;
     var diff=(pmReal-pm)*ld;
-    set('fsPegGap',peg>real?('peg is '+(peg-real).toFixed(2)+' mpg optimistic'):
-                   (peg<real?('peg is '+(real-peg).toFixed(2)+' mpg conservative'):'peg matches your mpg'),
-        sign(diff));
-    set('fsYear',(diff>=0?'+':'')+m0(diff*200)+' vs a peg at your real mpg',sign(diff));
+    set('fsPegGap',peg>real?('peg is '+(peg-real).toFixed(2)+' mpg above yours: it underpays you'):
+                   (peg<real?('peg is '+(real-peg).toFixed(2)+' mpg below yours: it overpays you'):'peg matches your mpg'),
+        sign(-diff));
+    set('fsYear',(diff<=0?'+':'')+m0(-diff*200)+' vs a peg at your real mpg',sign(-diff));
   }
 
   /* 2 ── deadhead / backhaul */
@@ -397,7 +397,7 @@
         speed=v('dtSpeed'),hrs=v('dtHours'),free=v('dtFree'),payRate=v('dtPay'),
         prob=v('dtProb')/100,visits=v('dtVisits');
     var perDay=fixed/days, perHour=perDay/14;
-    var direct=perHour+drv+idle*diesel;
+    var direct=drv+idle*diesel; /* fixed cost is not added: the lost contribution below already has to cover it */
     var lost=speed*contrib;
     var full=direct+lost;
     set('dtFx',m(perHour)+' /h');
@@ -428,7 +428,7 @@
     for(i=0;i<rows.length;i++){
       var r=rows[i]; if(r.mi<=0&&r.ga<=0) continue;
       var taxable=mpg>0?r.mi/mpg:0, due=(taxable-r.ga)*r.ra; net+=due;
-      html+='<div class="kv"><span>State '+r.i+' — '+num(taxable,1)+' taxable gal</span>'
+      html+='<div class="kv"><span>State '+r.i+': '+num(taxable,1)+' taxable gal</span>'
           + '<b class="'+(due<0?'pos':'neg')+'">'+m(due)+'</b></div>';
     }
     document.getElementById('ifRows').innerHTML=html||'<div class="kv"><span>No jurisdictions entered</span><b>—</b></div>';
@@ -442,9 +442,9 @@
     var inv=v('fcInv'),cnt=v('fcCount'),rate=v('fcRate'),
         wait=v('fcDays'),fund=v('fcFund'),ach=v('fcAch'),proc=v('fcProc'),mn=v('fcMin');
     var fee=inv*rate/100, vol=inv*cnt;
-    var pct=fee*cnt, per=(ach+proc)*cnt, month=pct+per+mn;
+    var pct=fee*cnt, per=(ach+proc)*cnt, topup=Math.max(0,mn-(pct+per)), month=pct+per+topup;
     set('fcFee',m(fee)); set('fcVol',m0(vol));
-    set('fcPct',m0(-pct),'neg'); set('fcPer',m0(-per),'neg'); set('fcMn',m0(-mn),'neg');
+    set('fcPct',m0(-pct),'neg'); set('fcPer',m0(-per),'neg'); set('fcMn',m0(-topup),'neg');
     set('fcMonth',m0(-month),'neg');
     var trueRate=vol>0?month/vol*100:0;
     set('fcTrue',pc(trueRate,2));
@@ -476,7 +476,7 @@
     var html='<h3 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:.6rem">Where it goes</h3>';
     for(i=0;i<parts.length;i++){
       if(parts[i][1]<=0) continue;
-      html+='<div class="kv"><span>'+parts[i][0]+' — '+pc(tot>0?parts[i][1]/tot*100:0,0)
+      html+='<div class="kv"><span>'+parts[i][0]+': '+pc(tot>0?parts[i][1]/tot*100:0,0)
           + '</span><b>$'+(parts[i][1]/miles).toFixed(4)+' /mi</b></div>';
     }
     document.getElementById('mtBreak').innerHTML=html;
@@ -490,10 +490,11 @@
         driveLeft=v('etDrive'), winLeft=v('etWindow'),
         since=v('etSince'), apptIn=v('etAppt');
     var driveNeed=miles/speed;
-    var breakNeeded=(since+driveNeed>8)?0.5:0;
+    var nBreaks=(since+driveNeed>8)?1+Math.floor((driveNeed-(8-since)-1e-9)/8):0; if(nBreaks<0)nBreaks=0;
+    var breakNeeded=nBreaks*0.5;
     var total=driveNeed+breakNeeded;
     set('etDriveNeed',hm(driveNeed));
-    set('etBreak',breakNeeded>0?('Yes: after '+hm(Math.max(0,8-since))+' more driving'):'No');
+    set('etBreak',nBreaks>0?('Yes: after '+hm(Math.max(0,8-since))+' more driving'+(nBreaks>1?(' ('+nBreaks+' breaks)'):'')):'No');
     set('etTotal',hm(total));
     var nowEl=document.getElementById('etNow'), nowVal=nowEl?nowEl.value:'';
     if(nowVal && nowVal.indexOf(':')>-1){
@@ -503,11 +504,11 @@
       set('etEta',(H<10?'0'+H:H)+':'+(M<10?'0'+M:M));
     } else { set('etEta','— (enter current time)'); }
     var driveMargin=driveLeft-driveNeed;
-    set('etFitsDrive',driveMargin>=0?('Yes — '+hm(driveMargin)+' to spare'):('No: short by '+hm(-driveMargin)),driveMargin>=0?'pos':'neg');
+    set('etFitsDrive',driveMargin>=0?('Yes, '+hm(driveMargin)+' to spare'):('No: short by '+hm(-driveMargin)),driveMargin>=0?'pos':'neg');
     var winMargin=winLeft-total;
-    set('etFitsWin',winMargin>=0?('Yes — '+hm(winMargin)+' to spare'):('No: short by '+hm(-winMargin)),winMargin>=0?'pos':'neg');
+    set('etFitsWin',winMargin>=0?('Yes, '+hm(winMargin)+' to spare'):('No: short by '+hm(-winMargin)),winMargin>=0?'pos':'neg');
     var apptMargin=apptIn-total;
-    set('etOnTime',apptMargin>=0?('On time — '+hm(apptMargin)+' early'):('Late by '+hm(-apptMargin)),apptMargin>=0?'pos':'neg');
+    set('etOnTime',apptMargin>=0?('On time, '+hm(apptMargin)+' early'):('Late by '+hm(-apptMargin)),apptMargin>=0?'pos':'neg');
     var D=Math.min(driveLeft,winLeft); if(since+D>8){ D=Math.min(driveLeft,winLeft-0.5); } if(D<0)D=0;
     set('etMaxMiles',num(D*speed)+' mi');
     var legal=driveMargin>=0 && winMargin>=0, onTime=apptMargin>=0, verdict, cls;

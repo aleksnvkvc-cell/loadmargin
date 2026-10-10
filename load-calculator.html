@@ -597,12 +597,12 @@ function calc(){
     v.classList.add('v-accept'); $('vIcon').textContent='✓'; $('vText').textContent='ACCEPT';
     setHero('ACCEPT','Clears the target margin','v-accept');
     $('vSub').textContent=`Clears your ${(TARGET_MARGIN*100)|0}% target with ${money(net)} left after every cost.`;
-    $('advice').innerHTML=`At <b class="mono">${money2(rate/miles)}</b> all-in you are <b class="mono">${money2((rate-need)/miles)}</b> per mile above the accept line. Book it.`;
+    $('advice').innerHTML=miles?`At <b class="mono">${money2(rate/miles)}</b> a mile, counting empty miles, you are <b class="mono">${money2((rate-need)/miles)}</b> per mile above the accept line. Book it.`:`Clears your target with ${money(rate-need)} to spare.`;
   }else if(margin>=THIN_MARGIN){
     v.classList.add('v-warn'); $('vIcon').textContent='!'; $('vText').textContent='NEGOTIATE';
     setHero('NEGOTIATE','It pays, but thinly','v-warn');
     $('vSub').textContent=`It pays, but thinly. Ask for ${money(need)} to hit ${(TARGET_MARGIN*100)|0}%.`;
-    $('advice').innerHTML=`You need <b class="mono">${money(need-rate)}</b> more: about <b class="mono">${money2((need-rate)/miles)}</b> per mile. That is a reasonable ask on a ${miles.toFixed(0)}-mile run.`;
+    $('advice').innerHTML=miles?`You need <b class="mono">${money(need-rate)}</b> more: about <b class="mono">${money2((need-rate)/miles)}</b> per mile. That is a reasonable ask on a ${miles.toFixed(0)}-mile run.`:`You need ${money(need-rate)} more.`;
   }else if(net>=0){
     v.classList.add('v-reject'); $('vIcon').textContent='✕'; $('vText').textContent='REJECT';
     setHero('REJECT','Worth more parked','v-reject');
@@ -612,7 +612,7 @@ function calc(){
     v.classList.add('v-reject'); $('vIcon').textContent='✕'; $('vText').textContent='LOSING LOAD';
     setHero('LOSING LOAD','This load costs you money to run','v-reject');
     $('vSub').textContent=`This load costs you ${money(-net)} to run.`;
-    $('advice').innerHTML=`Break-even alone is <b class="mono">${money(cost)}</b> — <b class="mono">${money(cost-rate)}</b> above the offer. Deadhead of ${dead} mi is costing <b class="mono">${money(dead*(diesel/mpg+maintCpm+fixedCpm))}</b> of that.`;
+    $('advice').innerHTML=`Break-even alone is <b class="mono">${money(cost)}</b>: <b class="mono">${money(cost-rate)}</b> above the offer. Deadhead of ${dead} mi is costing <b class="mono">${money(dead*(diesel/mpg+maintCpm+fixedCpm+(payMode==='mile'?payRate:0)))}</b> of that.`;
   }
 }
 ['rate','loaded','deadhead','fuel','mpg','pay','fixedcpm','maint','extras']
@@ -639,9 +639,9 @@ function loadPreset(k){
 /* ═══════════ CPM BUILDER ═══════════ */
 function cpm(){
   const fixedTotal=['c1','c2','c3','c4','c5','c6'].reduce((s,id)=>s+num(id),0);
-  const miles=Math.max(num('cmiles'),1);
-  const v=fixedTotal/miles;
-  const el=$('cpmVal'); el.textContent=money2(v); flash(el);
+  const rawMiles=num('cmiles'), miles=Math.max(rawMiles,1);
+  const v=rawMiles>0?fixedTotal/miles:0;
+  const el=$('cpmVal'); el.textContent=rawMiles>0?money2(v):'Enter monthly miles'; flash(el);
   $('cpmNote').innerHTML=`<b class="mono">${money(fixedTotal)}</b> of fixed cost every month ÷ <b class="mono">${miles.toLocaleString('en-US')}</b> miles. Every mile you drive carries this before a drop of fuel.`;
   return v;
 }
@@ -792,7 +792,7 @@ const KB=[
  {c:'Free tools',k:['factoring','factor','quick pay','quickpay','advance','apr','cash flow'],q:'Should I use factoring?',
   a:'That is arithmetic, not ideology, and the <a href="calculators.html#factoring" style="color:var(--gold)">factoring calculator</a> does it.<br><br>Factoring at 3% against a 30-day payer is a <b>39% annual cost of capital</b>. That sounds fatal until you notice the comparison is not against a bank loan you cannot get: it is against not running the load at all.<br><br>The question is simply whether cash is actually your constraint. If you are turning down loads because the money has not arrived, factor. If you have working capital and factor out of habit, you are giving away 3% of every invoice for nothing.'},
  {c:'Free tools',k:['detention','dock','waiting','dwell','wait time','sitting'],q:'What does detention actually cost?',
-  a:'About <b>$156 an hour</b> at a typical cost base, against the $40–$75 the market pays.<br><br>Roughly $39 of that is direct: fixed cost, driver pay, idle fuel. The rest is the 53 miles you can no longer drive today, because the 14-hour window does not pause for a slow receiver.<br><br>The <a href="calculators.html#detention" style="color:var(--gold)">detention calculator</a> also tells you how much extra to charge a facility with a known dwell problem, before you accept.'},
+  a:'About <b>$142 an hour</b> with the example cost base, against the $40–$75 the market pays.<br><br>Roughly $25 of that is direct: driver pay and idle fuel. The rest is the 53 miles you can no longer drive today, because the 14-hour window does not pause for a slow receiver.<br><br>The <a href="calculators.html#detention" style="color:var(--gold)">detention calculator</a> also tells you how much extra to charge a facility with a known dwell problem, before you accept.'},
  {c:'Free tools',k:['maintenance','repair','reserve','breakdown','wear','tyre','tire'],q:'How should I budget maintenance?',
   a:'As a <b>reserve</b>, not as last month\'s invoices. Maintenance arrives in lumps: eleven quiet months and then a $9,400 week, so a model built on recent bills is wrong in both directions.<br><br>Take twelve months of everything (tyres, PM, brakes, aftertreatment, roadside, trailer), divide by twelve months of miles, and charge that per mile every month. For most trucks it lands between <b>15 and 25 cents</b>.<br><br><a href="calculators.html#maintenance" style="color:var(--gold)">Build your figure</a> · <a href="guide-maintenance.html" style="color:var(--gold)">read the guide</a>'},
 
