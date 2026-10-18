@@ -1,6 +1,7 @@
 /**
- * Auto Theme Switcher — US Time-Based + Manual Toggle
- * Prebacuje između light theme-a (dan) i dark theme-a (noć) po američkom vremenu
+ * Auto Theme Switcher — system preference + Manual Toggle
+ * Prati svetlu/tamnu temu operativnog sistema (isto kao početna strana),
+ * a američko vreme koristi samo kad browser ne prijavljuje preferencu
  * + omogućava ručnu preferencu sa toggle dugmetom
  */
 
@@ -28,7 +29,15 @@
    * 6:00 AM - 6:00 PM = light theme
    * 6:00 PM - 6:00 AM = dark theme
    */
+  const mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  const mqKnown = window.matchMedia && window.matchMedia('(prefers-color-scheme: light), (prefers-color-scheme: dark)').matches;
+
   function getAutoTheme() {
+    if (mq && mqKnown) return mq.matches ? 'light' : 'dark';
+    return getTimeTheme();
+  }
+
+  function getTimeTheme() {
     const tz = getUserTimeZone();
     const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: tz,
@@ -85,13 +94,10 @@
       });
     }
 
-    // Check theme every hour (in case time changed)
-    setInterval(() => {
-      if (!readPref()) { // Only auto-switch if no manual preference
-        const auto = getAutoTheme();
-        applyTheme(auto);
-      }
-    }, 3600000); // 1 hour
+    // Follow the OS when it switches (only if the visitor never picked a theme)
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', () => { if (!readPref()) applyTheme(getAutoTheme()); });
+    }
   }
 
   // Init on DOMContentLoaded or immediately if already loaded

@@ -250,7 +250,7 @@
             <button class="btn btn-ghost btn-sm" onclick="seedDemo()">Load demo fleet</button>
             <button class="btn btn-ghost btn-sm" onclick="wipe()">Erase everything</button>
           </div>
-          <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(this)">
+          <input type="file" id="importFile" aria-label="Import data file (JSON)" accept=".json,application/json" style="display:none" onchange="importJSON(this)">
           <p class="note" id="storeInfo"></p>
         </div>
       </section>

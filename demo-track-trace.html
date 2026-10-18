@@ -143,12 +143,12 @@
 
   <div class="toolbar">
     <button class="btn btn-gold" onclick="openForm()">+ Add load</button>
-    <select id="fStatus" class="btn" style="width:auto" onchange="render()">
+    <select id="fStatus" class="btn" aria-label="Filter by status" style="width:auto" onchange="render()">
       <option value="">All statuses</option>
       <option>Booked</option><option>At pickup</option><option>Loaded</option>
       <option>In transit</option><option>At delivery</option><option>Delivered</option><option>Problem</option>
     </select>
-    <input id="fSearch" class="grow" placeholder="Search ref, customer, lane, driver…" oninput="render()">
+    <input id="fSearch" class="grow" type="search" aria-label="Search loads" placeholder="Search ref, customer, lane, driver…" oninput="render()">
     <span class="spacer"></span>
     <span class="hint">Demo: changes reset on refresh</span>
   </div>
@@ -166,22 +166,22 @@
   <div class="sheet">
     <h2 id="formTitle">Add load</h2>
     <div class="fg">
-      <div class="field"><label>Load / Ref #</label><input id="iRef" placeholder="e.g. 10482"></div>
-      <div class="field"><label>Broker / Customer</label><input id="iCust" placeholder="e.g. TQL"></div>
-      <div class="field"><label>Origin</label><input id="iOrig" placeholder="City, ST"></div>
-      <div class="field"><label>Destination</label><input id="iDest" placeholder="City, ST"></div>
-      <div class="field"><label>Pickup appt</label><input id="iPu" type="datetime-local"></div>
-      <div class="field"><label>Delivery appt</label><input id="iDel" type="datetime-local"></div>
-      <div class="field"><label>Driver / Truck</label><input id="iDrv" placeholder="e.g. Mike / #204"></div>
-      <div class="field"><label>Status</label><select id="iStatus">
+      <div class="field"><label for="iRef">Load / Ref #</label><input id="iRef" placeholder="e.g. 10482"></div>
+      <div class="field"><label for="iCust">Broker / Customer</label><input id="iCust" placeholder="e.g. TQL"></div>
+      <div class="field"><label for="iOrig">Origin</label><input id="iOrig" placeholder="City, ST"></div>
+      <div class="field"><label for="iDest">Destination</label><input id="iDest" placeholder="City, ST"></div>
+      <div class="field"><label for="iPu">Pickup appt</label><input id="iPu" type="datetime-local"></div>
+      <div class="field"><label for="iDel">Delivery appt</label><input id="iDel" type="datetime-local"></div>
+      <div class="field"><label for="iDrv">Driver / Truck</label><input id="iDrv" placeholder="e.g. Mike / #204"></div>
+      <div class="field"><label for="iStatus">Status</label><select id="iStatus">
         <option>Booked</option><option>At pickup</option><option>Loaded</option>
         <option selected>In transit</option><option>At delivery</option><option>Delivered</option><option>Problem</option>
       </select></div>
-      <div class="field"><label>Current location</label><input id="iLoc" placeholder="e.g. near OKC, I-40"></div>
-      <div class="field"><label>ETA to delivery</label><input id="iEta" type="datetime-local"></div>
-      <div class="field"><label>Next check-call</label><input id="iCheck" type="datetime-local"></div>
+      <div class="field"><label for="iLoc">Current location</label><input id="iLoc" placeholder="e.g. near OKC, I-40"></div>
+      <div class="field"><label for="iEta">ETA to delivery</label><input id="iEta" type="datetime-local"></div>
+      <div class="field"><label for="iCheck">Next check-call</label><input id="iCheck" type="datetime-local"></div>
       <div class="field"><label>&nbsp;</label><span class="hint">Set a next check-call and the board flags it when it's due.</span></div>
-      <div class="field full"><label>Notes</label><textarea id="iNotes" rows="2" placeholder="Detention risk, appointment notes, lumper, etc."></textarea></div>
+      <div class="field full"><label for="iNotes">Notes</label><textarea id="iNotes" rows="2" placeholder="Detention risk, appointment notes, lumper, etc."></textarea></div>
     </div>
     <div class="sheet-act">
       <button class="btn btn-ghost" id="delBtn" onclick="delLoad()" style="display:none;color:var(--neg);border-color:rgba(224,101,90,.4)">Delete</button>
