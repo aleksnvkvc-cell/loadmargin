@@ -89,6 +89,10 @@ img{max-width:100%;display:block}
 .nav-inline a,.nl{color:var(--tx-2);font-size:15px}
 .nav-inline a:hover,.nl:hover{color:var(--tx);text-decoration:none}
 .nav-btns{display:flex;align-items:center;gap:10px}
+.nav-drop{position:relative}
+.nav-sub{display:none;position:absolute;top:100%;left:-14px;min-width:230px;list-style:none;margin:0;padding:8px 0;background:var(--bg);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.nav-sub a{display:block;padding:7px 14px}
+.nav-drop:hover .nav-sub,.nav-drop:focus-within .nav-sub{display:block}
 @media (max-width:760px){.nav-inline{display:none}.nav-btns{margin-left:auto}}
 
 /* hero */
@@ -204,6 +208,7 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
     <ul class="nav-inline">
       <li><a href="#sample">Sample</a></li>
       <li><a href="load-calculator.html">Free calculator</a></li>
+      <li class="nav-drop"><a href="calculators.html">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="work.html">Services</a></li>
     </ul>

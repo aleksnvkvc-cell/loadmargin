@@ -14,64 +14,60 @@ no analytics and no tracking script.
 
 | File | What it is |
 |---|---|
-| `index.html` | Home: live load calculator, cost-per-mile builder, 8 modules, 7 tool cards, 6 guide cards, workbooks, assistant |
-| `app.html` | The fleet console — 8 working modules, dashboard, fleet & data |
-| `calculators.html` | 7 free calculators: fuel surcharge, deadhead & backhaul, owner-operator take-home, detention, IFTA, factoring APR, maintenance reserve |
-| `workbooks.html` | The 7 Excel products in detail, with the buy links |
+| `index.html` | Home: the $49 Load Check offer, example load, sample report. Self-contained styles (does not load `assets/site.css`) |
+| `work.html` | Services and prices: $49 Load Check, $249 Cost & Lane Audit, $99 Authority Checklist Review, $349 New Authority Setup, $199 Compliance Tune-up, $99/month Load Check Plan, Ongoing Support from $249/month |
+| `load-calculator.html` | The free load calculator |
+| `calculators.html` | Index of the free calculators |
+| `calc-*.html` | 8 calculators, one per page: ETA & hours, fuel surcharge, deadhead & backhaul, owner-operator take-home, detention, IFTA, factoring APR, maintenance reserve |
+| `audit-check.html` | Free DOT audit self-check |
+| `app.html` | The fleet console (noindex, not in the sitemap) |
+| `demo-track-trace.html` | Track & trace demo |
+| `how-it-works.html` `news.html` | How the load scoring works; freight news |
 | `guides.html` | Guide index, grouped by subject |
 | `guide-*.html` | 66 written guides |
-| `glossary.html` | 36 freight terms |
-| `support.html` | Where LoadMargin fits, getting started, your data, browsers, troubleshooting, accessibility |
-| `about.html` | Why it exists, methodology, what we do not claim, security, roadmap |
+| `glossary.html` | Freight terms |
+| `support.html` `about.html` | Help, methodology, what we do not claim |
+| `workbooks.html` | Notice that the spreadsheet files are no longer sold (noindex) |
 | `privacy.html` `terms.html` `refunds.html` `cookies.html` `legal.html` | Legal pages |
 | `404.html` | Custom not-found page |
-| `assets/site.css` | The design system for every marketing page |
+| `sample-load-check-report.pdf` | The sample report linked from the homepage |
+| `assets/site.css` | The design system for every page except the homepage |
 | `assets/app.css` | The console shell |
-| `images/` | Logo assets, demo video, poster, social preview |
+| `assets/assistant.js` `assets/assistant.css` | The floating assistant on every page |
+| `assets/theme-auto-switch.js` | Light/dark theme switching |
+| `assets/fonts/` | Self-hosted fonts, with their licenses |
+| `images/` | Logo, founder photo, hero image, demo video, social preview |
+| `CNAME` | Custom domain: loadmargin.com |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is — **required** |
 | `robots.txt` `sitemap.xml` | Search engine basics |
-| `_generators/` | Python scripts that produce most pages. Kept under version control; not part of the served site — see the README inside it |
+
+When you add or remove a page, update `sitemap.xml` and, for a calculator, the
+Tools menu on every page (including the homepage's own menu).
 
 ---
 
 ## Deploying
 
-The **contents** of this folder go in the repository root — `index.html` sits at
-the top level, next to `assets/` and `images/`.
+GitHub Pages serves the `main` branch from the repository root:
+**Settings → Pages → Deploy from a branch → main → / (root)**.
+Anything merged to `main` is live a minute or two later.
 
-Then: **Settings → Pages → Deploy from a branch → main → / (root)**.
-
-`.nojekyll` is hidden on Windows. Make sure it is copied — without it GitHub Pages
-silently ignores some files.
+`.nojekyll` is hidden on Windows. Make sure it is never deleted — without it
+GitHub Pages silently ignores some files.
 
 ---
 
-## Before it is really live
+## Orders and contact
 
-Two things are deliberately left for you:
-
-1. **The contact form** posts to FormSubmit and delivers nothing until you send
-   one message through it and click the confirmation email.
-2. **The Gumroad links.** Six of the eight products are not published yet, so
-   the page marks them "Not yet on sale" and the button opens an email instead
-   of a dead shop link. Paste each real product URL into `BUY_LINKS` — in
-   `workbooks.html` and in `index.html` — and the badge disappears by itself.
+There is no checkout and no contact form. Every "buy" and "contact" button is a
+`mailto:` link to aleksnvkvc@gmail.com with the order details pre-filled in the
+email body. To change the address, search the HTML files for `mailto:`.
 
 ---
 
 ## Configuration
 
-The contact form endpoint, in `index.html`:
-
-```js
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/aleksnvkvc@gmail.com';
-```
-
-The first submission activates it. After activating, replace the address with the
-hashed endpoint FormSubmit gives you, so your email is not exposed in the page
-source.
-
-Scoring thresholds, in the same block:
+Load scoring thresholds, in `load-calculator.html`:
 
 ```js
 const TARGET_MARGIN = 0.15;   // at or above this = accept
@@ -79,27 +75,15 @@ const THIN_MARGIN   = 0.05;   // below this = reject
 const MILES_PER_DAY = 500;    // used for profit per truck-day
 ```
 
-Purchase links for the workbooks live in one place, in `workbooks.html`:
-
-```js
-var BUY_LINKS = { fuel:'', cpm:'', driver:'', hos:'', pro:'', dispatch:'', route:'', bundle:'' };
-```
-
-Any link left empty falls back to an email enquiry rather than breaking, so you can
-publish products one at a time.
+The same constants are printed in `how-it-works.html` and `news.html`; keep them
+in step if you change them.
 
 ---
 
-## Verified before release
+## Last checked (2026-10-18)
 
-- 36 pages, 0 broken links, 0 dead anchors, 0 JavaScript errors
-- No horizontal scroll at any width from 320px to 2560px
-- No heading-level skips; identical nav and footer on every page
-- Every page has a unique title and meta description
-- Tested with `structuredClone` and `IntersectionObserver` removed and
-  `scrollIntoView` downgraded — the way a 2019 Android or iOS 12 phone behaves
-- All 9 calculators checked against an independent Python implementation of the
-  published model, agreeing to four decimal places
+- 94 pages, 0 broken internal links, 0 dead anchors
+- 0 JavaScript errors and no horizontal scroll at 320px, 390px and 1280px
 
 ---
 
@@ -114,6 +98,4 @@ fixed_cpm   = monthly_overhead ÷ monthly_miles
 target_rate = total_cost ÷ (1 − target_margin)
 ```
 
-The same arithmetic is implemented four times — here in JavaScript, in the Excel
-workbooks, in `backend/engine.py`, and as a SQL view — and the implementations are
-checked against each other.
+The arithmetic runs in JavaScript in the visitor's browser.
