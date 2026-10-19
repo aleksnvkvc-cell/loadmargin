@@ -18,8 +18,8 @@
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/fonts.css?v=20261010a">
-<link rel="stylesheet" href="assets/site.css?v=20261017a">
-<script src="assets/theme-auto-switch.js?v=20261010a"></script>
+<link rel="stylesheet" href="assets/site.css?v=20261018a">
+<script src="assets/theme-auto-switch.js?v=20261018a"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://loadmargin.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://loadmargin.com/calculators.html"}, {"@type": "ListItem", "position": 3, "name": "ETA & hours-of-service calculator", "item": "https://loadmargin.com/calc-eta.html"}]}</script>
 <link rel="stylesheet" href="assets/assistant.css?v=20261010b">
 </head>
@@ -34,7 +34,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="load-calculator.html#calculator">Calculator</a></li>
-      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
+      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html">About</a></li>
@@ -55,16 +55,12 @@
 </nav>
 
 <main id="main">
-<section style="padding-top:clamp(110px,14vw,150px);padding-bottom:0">
+<section id="eta" class="calc-page">
   <div class="wrap">
-    <p class="fine" style="margin:0 0 1rem"><a href="calculators.html" style="color:var(--gold)">← All calculators</a></p>
-  </div>
-</section>
-<section id="eta">
-  <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
+      <a class="crumb" href="calculators.html">← All calculators</a>
       <span class="eyebrow">Operations</span>
-      <h2>ETA & hours-of-service calculator</h2>
+      <h1>ETA & hours-of-service calculator</h1>
       <p class="lede">Miles left, your speed and your remaining clocks, and it tells you when you arrive, whether you make it legally, and the farthest you can still drive. Built on the 11-hour driving limit, the 14-hour window and the 30-minute break.</p>
     </div>
     <div class="calc">
@@ -123,7 +119,6 @@
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="news.html">Freight news</a></li></ul></div>
       <div><h2>Company</h2><ul>
-        <li><a href="work.html">Services</a></li>
         <li><a href="work.html">Services</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#method">Methodology</a></li>

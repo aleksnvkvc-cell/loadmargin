@@ -18,8 +18,8 @@
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/fonts.css?v=20261010a">
-<link rel="stylesheet" href="assets/site.css?v=20261017a">
-<script src="assets/theme-auto-switch.js?v=20261010a"></script>
+<link rel="stylesheet" href="assets/site.css?v=20261018a">
+<script src="assets/theme-auto-switch.js?v=20261018a"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://loadmargin.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://loadmargin.com/calculators.html"}, {"@type": "ListItem", "position": 3, "name": "Fuel surcharge calculator", "item": "https://loadmargin.com/calc-fuel-surcharge.html"}]}</script>
 <link rel="stylesheet" href="assets/assistant.css?v=20261010b">
 </head>
@@ -34,7 +34,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="load-calculator.html#calculator">Calculator</a></li>
-      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
+      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html">About</a></li>
@@ -55,16 +55,12 @@
 </nav>
 
 <main id="main">
-<section style="padding-top:clamp(110px,14vw,150px);padding-bottom:0">
+<section id="fsc" class="calc-page">
   <div class="wrap">
-    <p class="fine" style="margin:0 0 1rem"><a href="calculators.html" style="color:var(--gold)">← All calculators</a></p>
-  </div>
-</section>
-<section id="fsc">
-  <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
+      <a class="crumb" href="calculators.html">← All calculators</a>
       <span class="eyebrow">Fuel</span>
-      <h2>Fuel surcharge calculator</h2>
+      <h1>Fuel surcharge calculator</h1>
       <p class="lede">Work out the surcharge from any DOE index, base price and peg mpg, and the gap between what the surcharge pays and the fuel you actually burn, including deadhead.</p>
     </div>
     <div class="calc">
@@ -79,6 +75,19 @@
 <div class="kv"><span>Peg vs your real mpg</span><b id="fsPegGap">—</b></div>
 <div class="kv"><span>Effect of the peg over 200 loads</span><b id="fsYear">—</b></div>
         <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">If the peg is above your real mpg, the surcharge under-recovers on every mile: permanently. Read the <a href="guide-fuel-surcharge.html">fuel surcharge guide</a>.</p>
+      </div>
+    </div>
+    <div class="panel rv audit-after" style="margin-top:1.6rem;padding:clamp(1.4rem,3vw,2rem);display:grid;gap:1.2rem 2rem;align-items:center;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
+      <div>
+        <span class="eyebrow">Considering a real load?</span>
+        <h2 style="font-size:clamp(1.25rem,2.2vw,1.6rem);margin:.3rem 0 .6rem">Fuel surcharge is one line of the load.</h2>
+        <p style="color:var(--tx-2);margin:0">The surcharge only tells you part of the story. Send me the load and your costs, and I send back a one-page answer: trip cost, break-even rate and take it, counter or pass.</p>
+      </div>
+      <div style="text-align:center">
+        <div style="font:700 2.4rem/1 var(--disp);color:var(--gold)">$49</div>
+        <div style="font-size:.82rem;color:var(--tx-3);margin:.3rem 0 1rem">Quick Load Check, per load · money back if it doesn't help</div>
+        <a class="btn btn-gold" style="width:100%;justify-content:center" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check →</a>
+        <p style="font-size:.8rem;color:var(--tx-3);margin:.7rem 0 0"><a href="sample-load-check-report.pdf" target="_blank" rel="noopener" style="color:var(--gold)">See a sample report</a></p>
       </div>
     </div>
   </div>
@@ -119,7 +128,6 @@
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="news.html">Freight news</a></li></ul></div>
       <div><h2>Company</h2><ul>
-        <li><a href="work.html">Services</a></li>
         <li><a href="work.html">Services</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#method">Methodology</a></li>

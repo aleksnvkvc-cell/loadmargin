@@ -20,9 +20,7 @@
 <meta name="twitter:title" content="$49 Load Check for owner-operators | LoadMargin">
 <meta name="twitter:description" content="Find out if a load makes money before you book it. Send the load and your costs, get a one-page report with trip cost, break-even and a take/counter/pass answer. $49, money back if it does not help.">
 <meta name="twitter:image" content="https://loadmargin.com/images/og-cover.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>
 (function(){var K='theme-preference',mq=matchMedia('(prefers-color-scheme: light)'),h=document.documentElement;
 function rd(){try{return localStorage.getItem(K)}catch(e){return null}}
@@ -36,6 +34,16 @@ window.themeManager={set:function(t){wr(t);ap(t)},get:function(){return rd()||sy
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://loadmargin.com/#site","name":"LoadMargin","url":"https://loadmargin.com/","publisher":{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."},"inLanguage":"en","description":"Free freight profitability tools and guides, and load profitability services for US owner-operators and small fleets. Every calculation runs in your browser."},{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","email":"aleksnvkvc@gmail.com","description":"Free freight profitability tools and load profitability services for US owner-operators and small fleets."}]}</script>
 <style>
+/* Self-hosted fonts (no request to Google). Source: Fontsource, SIL Open Font License 1.1 */
+@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/barlow-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/barlow-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/barlow-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/barlow-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/barlow-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/barlow-condensed-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/barlow-condensed-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --bg:#0e0e0f; --panel:#1a1a1c; --bg-2:#26262a; --line:#38383d; --line-2:#38383d;
   --tx:#ececee; --tx-2:#a9a9b0; --tx-3:#85858c;
@@ -89,7 +97,22 @@ img{max-width:100%;display:block}
 .nav-inline a,.nl{color:var(--tx-2);font-size:15px}
 .nav-inline a:hover,.nl:hover{color:var(--tx);text-decoration:none}
 .nav-btns{display:flex;align-items:center;gap:10px}
-@media (max-width:760px){.nav-inline{display:none}.nav-btns{margin-left:auto}}
+.nav-drop{position:relative}
+.nav-sub{display:none;position:absolute;top:100%;left:-14px;min-width:230px;list-style:none;margin:0;padding:8px 0;background:var(--bg);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.nav-sub a{display:block;padding:7px 14px}
+.nav-drop:hover .nav-sub,.nav-drop:focus-within .nav-sub{display:block}
+.nav-tog{display:none;width:42px;height:38px;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);border-radius:4px;color:var(--tx);cursor:pointer}
+.nav-tog svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+@media (max-width:760px){
+  .nav-btns{margin-left:auto}
+  .nav-tog{display:inline-flex}
+  .nav-inline{display:none;order:3;width:100%;margin:0;flex-direction:column;gap:0;border-top:1px solid var(--line);padding-top:6px}
+  .lm-nav.open .nav-inline{display:flex}
+  .nav-inline a{display:block;padding:12px 2px;font-size:17px}
+  .nav-sub{display:none!important}
+}
+@media (max-width:420px){.lm-nav .wrap{gap:10px;padding-left:16px;padding-right:16px}.brand span{font-size:19px}#lmTheme{display:none}.nav-btns{gap:8px}.nav-btns .btn-sm{padding:10px;font-size:14px}}
+@media (max-width:374px){.brand img{height:22px}.brand span{font-size:17px}.nav-btns .btn-sm{font-size:13px;padding:9px 8px}.nav-tog{width:38px}}
 
 /* hero */
 .hero{position:relative;overflow:hidden}
@@ -188,8 +211,9 @@ footer{background:var(--gray);border-top:1px solid var(--gray-2)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;font-size:15px;padding-top:32px;padding-bottom:40px}
 footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
 footer ul a{color:var(--tx-2)}footer ul a:hover{color:var(--tx);text-decoration:none}
-footer .legal a{color:var(--tx-3);font-size:14px}
-footer .copy{width:100%;color:var(--tx-3);font-size:14px}
+footer .legal a{color:var(--tx-2);font-size:14px}
+footer .wrap>a{color:var(--tx);font-weight:600}
+footer .copy{width:100%;color:var(--tx-2);font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 <link rel="stylesheet" href="assets/assistant.css?v=20261010b">
@@ -201,15 +225,17 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
 <header class="lm-nav">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="images/logo-mark.png" alt="" width="520" height="238"><span>LOAD<b>MARGIN</b></span></a>
-    <ul class="nav-inline">
+    <ul class="nav-inline" id="lmNavLinks">
       <li><a href="#sample">Sample</a></li>
       <li><a href="load-calculator.html">Free calculator</a></li>
+      <li class="nav-drop"><a href="calculators.html">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="work.html">Services</a></li>
     </ul>
     <div class="nav-btns">
       <button class="ghost" id="lmTheme" type="button" aria-label="Switch to light theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg><span id="lmThemeLbl">Light</span></button>
       <a class="btn btn-sm" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">$49 Load Check</a>
+      <button class="nav-tog" id="lmNavTog" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="lmNavLinks"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
@@ -345,6 +371,13 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
     paint();});
   window.addEventListener('themechange',paint);
   paint();
+})();
+(function(){
+  var n=document.querySelector('.lm-nav'),t=document.getElementById('lmNavTog');
+  function set(o){n.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  t.addEventListener('click',function(){set(!n.classList.contains('open'));});
+  document.querySelectorAll('#lmNavLinks a').forEach(function(a){a.addEventListener('click',function(){set(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 })();
 </script>
 <script src="assets/assistant.js?v=20261010b" defer></script>
