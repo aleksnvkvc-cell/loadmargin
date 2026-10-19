@@ -1247,3 +1247,16 @@ html:not([data-theme="light"]){--line:rgba(255,255,255,.10);--line-soft:rgba(255
   .rv{opacity:1!important;transform:none!important}
   #nav,footer,.asst,.asst-fab,.asst-nudge{display:none!important}
 }
+
+/* one brand with the home page (Oct 19): yellow primary button, neutral theme toggle */
+.btn-gold,.prod-cta .btn-gold,html[data-theme="light"] .btn-gold{background:#F5B91E;color:#141414;box-shadow:0 10px 26px -10px rgba(245,185,30,.6);font-weight:700}
+.btn-gold:hover,html[data-theme="light"] .btn-gold:hover{background:#FFC83D}
+.btn-theme,html[data-theme="light"] .btn-theme{background:transparent;border:1px solid var(--line);color:var(--tx-2);display:inline-flex;align-items:center;gap:.45rem}
+.btn-theme:hover,html[data-theme="light"] .btn-theme:hover{background:transparent;border-color:var(--tx-3);color:var(--tx)}
+.btn-theme::before{content:"";width:15px;height:15px;flex:0 0 auto;border-radius:50%;border:1.6px solid currentColor;
+  background:linear-gradient(90deg,transparent 50%,currentColor 50%)}
+@media (max-width:600px){
+  .btn-theme{font-size:0 !important;min-width:0;width:38px;height:38px;padding:0 !important;justify-content:center;gap:0}
+  .btn-theme::before{width:17px;height:17px}
+}
+@media (max-width:400px) and (min-width:340px){ .nav-act .btn-gold span{display:inline} }
