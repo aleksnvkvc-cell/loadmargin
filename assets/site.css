@@ -1260,3 +1260,17 @@ html:not([data-theme="light"]){--line:rgba(255,255,255,.10);--line-soft:rgba(255
   .btn-theme::before{width:17px;height:17px}
 }
 @media (max-width:400px) and (min-width:340px){ .nav-act .btn-gold span{display:inline} }
+
+/* one brand with the home page (Oct 19): Barlow body, Barlow Condensed uppercase headings */
+:root{--body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;--disp:'Barlow Condensed','Barlow',system-ui,sans-serif}
+h1,h2{font-weight:700;text-transform:uppercase;letter-spacing:.005em;line-height:1.05}
+h3,h4{font-weight:600;letter-spacing:0}
+h1{font-size:clamp(2.3rem,5.6vw,4rem)}
+h2{font-size:clamp(1.9rem,4vw,3rem)}
+.art-body h2{font-size:1.75rem;line-height:1.1}
+h3{font-size:1.25rem}
+.hero h1,.legal-hero h1,.art-hero h1,.calc-page .sec-head h1{letter-spacing:.005em;line-height:1.02}
+.legal-hero h1,.calc-page .sec-head h1{font-size:clamp(2.1rem,4.6vw,3.1rem)}
+.art-hero h1{font-size:clamp(2.2rem,4.8vw,3.4rem);max-width:22ch}
+.btn,.asst-hd .t,.pullq,.art-next .t,.prod-title{font-family:var(--body)}
+.btn{font-weight:600}
