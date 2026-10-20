@@ -36,7 +36,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="load-calculator.html#calculator">Calculator</a></li>
-      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
+      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-cost-per-mile.html">Cost per mile</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html">About</a></li>
@@ -93,10 +93,14 @@
 </section>
 <section id="how-it-works" style="padding-top:0">
   <div class="wrap" style="max-width:820px">
-    <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:.9rem">How the owner-operator take-home pay calculator works</h2>
+    <details class="hiw panel" style="padding:1rem 1.3rem">
+      <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem"><h2 style="font-size:1.05rem;margin:0">How the owner-operator take-home pay calculator works</h2><span style="color:var(--gold);font-weight:700;font-size:.9rem;white-space:nowrap">Formula &amp; FAQ +</span></summary>
+      <div style="margin-top:1rem">
     <p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">This owner-operator take-home calculator estimates what you keep in a year after running the truck. It starts from your loaded miles and rate per mile, then subtracts fuel on all miles including deadhead, maintenance, truck and trailer payments, insurance and other fixed costs.</p><p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">What is left is profit before tax. It then sets aside the tax percentage you enter and shows your take-home, an hourly figure at 60 hours a week for 48 weeks, and the break-even rate per loaded mile.</p>
     <div class="panel mono" style="padding:1rem 1.2rem;font-size:.86rem;line-height:1.9;color:var(--tx-2);margin:.4rem 0 1.4rem">gross revenue = loaded miles × rate per mile<br>fuel = loaded miles × (1 + deadhead %) ÷ MPG × diesel price<br>take-home = gross − fuel − maintenance − payments − insurance − other fixed costs − tax set-aside</div>
     <h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">How much does an owner-operator take home?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">It depends almost entirely on cost per mile and miles run. Put in your own numbers; averages hide the difference between a good and a bad year.</p><h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">How much should I set aside for tax?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">Many owner-operators set aside 25–30% of profit for self-employment and income tax. Check with an accountant for your situation.</p>
+  </div>
+    </details>
   </div>
 </section>
 <section style="padding-top:0">

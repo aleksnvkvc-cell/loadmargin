@@ -36,7 +36,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="load-calculator.html#calculator">Calculator</a></li>
-      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
+      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-cost-per-mile.html">Cost per mile</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="about.html">About</a></li>
@@ -97,10 +97,14 @@
 </section>
 <section id="how-it-works" style="padding-top:0">
   <div class="wrap" style="max-width:820px">
-    <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:.9rem">How the fuel surcharge calculator works</h2>
+    <details class="hiw panel" style="padding:1rem 1.3rem">
+      <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem"><h2 style="font-size:1.05rem;margin:0">How the fuel surcharge calculator works</h2><span style="color:var(--gold);font-weight:700;font-size:.9rem;white-space:nowrap">Formula &amp; FAQ +</span></summary>
+      <div style="margin-top:1rem">
     <p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">A trucking fuel surcharge pays the difference between the weekly DOE diesel price and the base price your rate already assumes. This fuel surcharge calculator uses the standard formula: the DOE price minus the base, divided by the peg MPG in your contract, paid on loaded miles.</p><p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">It then compares that with the fuel you actually burn on all miles, including deadhead, at your real MPG. The gap between the two is fuel cost your line haul rate has to cover. The U.S. average diesel price was $6.28 a gallon on 19 October 2026 (EIA).</p>
     <div class="panel mono" style="padding:1rem 1.2rem;font-size:.86rem;line-height:1.9;color:var(--tx-2);margin:.4rem 0 1.4rem">surcharge per loaded mile = (DOE price − base price) ÷ peg MPG<br>surcharge received = surcharge per mile × loaded miles<br>fuel actually burned = (loaded + empty miles) ÷ your MPG × DOE price</div>
     <h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">Which DOE price should I use?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">The weekly U.S. on-highway diesel average published by the EIA every Monday, or the regional average if your contract names one.</p><h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">Why is my surcharge less than my fuel bill?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">The surcharge only covers the price above the base, usually only on loaded miles, and at the contract's peg MPG, not yours.</p>
+  </div>
+    </details>
   </div>
 </section>
 <section style="padding-top:0">
