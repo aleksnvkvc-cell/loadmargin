@@ -103,7 +103,7 @@
               <div class="field"><label for="s_dead">Deadhead</label><div class="inp has-suf"><input type="number" id="s_dead" value="120" step="5" inputmode="decimal"><span class="suf">mi</span></div></div>
             </div>
             <div class="frm" style="margin-top:.8rem">
-              <div class="field"><label for="s_diesel">Diesel</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="s_diesel" value="3.85" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div>
+              <div class="field"><label for="s_diesel">Diesel</label><div class="inp has-pre has-suf"><span class="pre">$</span><input type="number" id="s_diesel" value="6.28" step="0.01" inputmode="decimal"><span class="suf">/gal</span></div></div>
               <div class="field"><label for="s_extras">Tolls &amp; fees</label><div class="inp has-pre"><span class="pre">$</span><input type="number" id="s_extras" value="85" step="5" inputmode="decimal"></div></div>
               <div class="field"><label for="s_det">Detention</label><div class="inp has-suf"><input type="number" id="s_det" value="0" step="0.5" inputmode="decimal"><span class="suf">hrs</span></div></div>
             </div>
@@ -286,7 +286,7 @@ const avg=(a,f)=>a.length?sum(a,f)/a.length:0;
 function cloneBlank(){ return JSON.parse(JSON.stringify(BLANK)); }
 
 const BLANK={
-  settings:{targetMargin:0.15,thinMargin:0.05,milesPerDay:500,diesel:3.85},
+  settings:{targetMargin:0.15,thinMargin:0.05,milesPerDay:500,diesel:6.28},
   trucks:[],drivers:[],customers:[],loads:[]
 };
 let DB=cloneBlank();

@@ -482,9 +482,9 @@ function safeScroll(el){
 }
 function loadPreset(k){
   const P={
-    good : {rate:3450,loaded:920,deadhead:40,fuel:3.72,mpg:7.1,pay:0.60,fixedcpm:0.42,maint:0.17,extras:60},
-    bad  : {rate:1250,loaded:640,deadhead:310,fuel:4.35,mpg:5.6,pay:0.68,fixedcpm:0.61,maint:0.24,extras:180},
-    reset: {rate:2400,loaded:850,deadhead:120,fuel:3.85,mpg:6.5,pay:0.62,fixedcpm:0.48,maint:0.19,extras:85}
+    good : {rate:3450,loaded:920,deadhead:40,fuel:6.10,mpg:7.1,pay:0.60,fixedcpm:0.42,maint:0.17,extras:60},
+    bad  : {rate:1250,loaded:640,deadhead:310,fuel:6.45,mpg:5.6,pay:0.68,fixedcpm:0.61,maint:0.24,extras:180},
+    reset: {rate:2400,loaded:850,deadhead:120,fuel:6.28,mpg:6.5,pay:0.62,fixedcpm:0.48,maint:0.19,extras:85}
   }[k];
   if(payMode==='pct') setPayMode('mile');
   Object.entries(P).forEach(([id,v])=>$(id).value=v);
@@ -648,7 +648,7 @@ const KB=[
  {c:'Free tools',k:['factoring','factor','quick pay','quickpay','advance','apr','cash flow'],q:'Should I use factoring?',
   a:'That is arithmetic, not ideology, and the <a href="calc-factoring.html" style="color:var(--gold)">factoring calculator</a> does it.<br><br>Factoring at 3% against a 30-day payer is a <b>39% annual cost of capital</b>. That sounds fatal until you notice the comparison is not against a bank loan you cannot get: it is against not running the load at all.<br><br>The question is simply whether cash is actually your constraint. If you are turning down loads because the money has not arrived, factor. If you have working capital and factor out of habit, you are giving away 3% of every invoice for nothing.'},
  {c:'Free tools',k:['detention','dock','waiting','dwell','wait time','sitting'],q:'What does detention actually cost?',
-  a:'About <b>$142 an hour</b> with the example cost base, against the $40–$75 the market pays.<br><br>Roughly $25 of that is direct: driver pay and idle fuel. The rest is the 53 miles you can no longer drive today, because the 14-hour window does not pause for a slow receiver.<br><br>The <a href="calc-detention.html" style="color:var(--gold)">detention calculator</a> also tells you how much extra to charge a facility with a known dwell problem, before you accept.'},
+  a:'About <b>$144 an hour</b> with the example cost base, against the $40–$75 the market pays.<br><br>Roughly $27 of that is direct: driver pay and idle fuel. The rest is the 53 miles you can no longer drive today, because the 14-hour window does not pause for a slow receiver.<br><br>The <a href="calc-detention.html" style="color:var(--gold)">detention calculator</a> also tells you how much extra to charge a facility with a known dwell problem, before you accept.'},
  {c:'Free tools',k:['maintenance','repair','reserve','breakdown','wear','tyre','tire'],q:'How should I budget maintenance?',
   a:'As a <b>reserve</b>, not as last month\'s invoices. Maintenance arrives in lumps: eleven quiet months and then a $9,400 week, so a model built on recent bills is wrong in both directions.<br><br>Take twelve months of everything (tyres, PM, brakes, aftertreatment, roadside, trailer), divide by twelve months of miles, and charge that per mile every month. For most trucks it lands between <b>15 and 25 cents</b>.<br><br><a href="calc-maintenance.html" style="color:var(--gold)">Build your figure</a> · <a href="guide-maintenance.html" style="color:var(--gold)">read the guide</a>'},
 
