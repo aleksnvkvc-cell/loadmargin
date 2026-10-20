@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detention cost calculator | LoadMargin</title>
+<title>Detention Pay Calculator for Truckers | LoadMargin</title>
 <meta name="robots" content="index, follow">
-<meta name="description" content="What an hour at the dock costs directly, what it costs once lost driving capacity is counted, and what a facility with known dwell problems should be…">
+<meta name="description" content="Free detention calculator: what an hour waiting at a dock really costs a truck, how much detention pay covers, and how to price slow facilities.">
 <link rel="canonical" href="https://loadmargin.com/calc-detention.html">
 <meta name="theme-color" content="#000000">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -14,8 +14,8 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Detention cost calculator | LoadMargin">
-<meta property="og:description" content="What an hour at the dock costs directly, what it costs once lost driving capacity is counted, and what a facility with known dwell problems should be…">
+<meta property="og:title" content="Detention Pay Calculator for Truckers | LoadMargin">
+<meta property="og:description" content="Free detention calculator: what an hour waiting at a dock really costs a truck, how much detention pay covers, and how to price slow facilities.">
 <meta property="og:url" content="https://loadmargin.com/calc-detention.html">
 <meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -62,7 +62,7 @@
     <div class="sec-head">
       <a class="crumb" href="calculators.html">← All calculators</a>
       <span class="eyebrow">Operations</span>
-      <h1>Detention cost calculator</h1>
+      <h1>Detention pay calculator</h1>
       <p class="lede">What an hour at the dock costs directly, what it costs once lost driving capacity is counted, and what a facility with known dwell problems should be charged extra.</p>
     </div>
     <div class="calc">
@@ -97,6 +97,14 @@
       </div>
     </div>
     <p class="rv free-toolkit" style="margin:1rem 0 0;font-size:.92rem;color:var(--tx-3)">Prefer a spreadsheet? <a href="https://loadmargin.gumroad.com" style="color:var(--gold);font-weight:600" rel="noopener">Get all 7 freight tools free →</a> (pay what you want, $0 is fine).</p>
+  </div>
+</section>
+<section id="how-it-works" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <h2 style="font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:.9rem">How the detention pay calculator works</h2>
+    <p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">Detention is the time a truck waits at a shipper or receiver beyond the free time in the rate confirmation. This detention calculator puts a dollar figure on one hour of waiting, so you can see how much of it the detention pay actually covers.</p><p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">It adds the direct cost of the hour (driver pay and idle fuel) to the money the truck would have earned driving: your average speed times your net contribution per mile. The truck's fixed cost is not added again, because the lost contribution already has to cover it.</p>
+    <div class="panel mono" style="padding:1rem 1.2rem;font-size:.86rem;line-height:1.9;color:var(--tx-2);margin:.4rem 0 1.4rem">direct cost per hour = driver pay + idle gallons × diesel price<br>lost earnings per hour = average speed × net contribution per mile<br>full cost per hour = direct cost + lost earnings</div>
+    <h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">How much should detention pay be?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">Typical detention pay is $40 to $75 an hour after two free hours. With the example inputs a detained hour costs about $144, so detention pay rarely covers the real cost.</p><h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">How do I price a facility with long waits?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">Multiply the chance of a delay by the expected hours and the uncovered cost per hour, and add that to the rate before you accept the load.</p>
   </div>
 </section>
 <section style="padding-top:0">
