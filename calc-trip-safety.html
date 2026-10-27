@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Safety Check for Truckers: HOS & Fatigue | LoadMargin</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Free pre-trip safety check for truckers: hours of service, sleep, night driving, weather and route risks, with red and green flags before you take a load.">
+<link rel="canonical" href="https://loadmargin.com/calc-trip-safety.html">
+<meta name="theme-color" content="#000000">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23030A16'/%3E%3Cpath d='M14 44V20h7v18h11v6z' fill='%232C6FD1'/%3E%3Cpath d='M36 44V20h6l5 9 5-9h6v24h-6V31l-5 9-5-9v13z' fill='%23E3B44A'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Trip Safety Check for Truckers: HOS & Fatigue | LoadMargin">
+<meta property="og:description" content="Free pre-trip safety check for truckers: hours of service, sleep, night driving, weather and route risks, with red and green flags before you take a load.">
+<meta property="og:url" content="https://loadmargin.com/calc-trip-safety.html">
+<meta property="og:image" content="https://loadmargin.com/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=20261019a">
+<link rel="stylesheet" href="assets/site.css?v=20261019b">
+<script src="assets/theme-auto-switch.js?v=20261018a"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://loadmargin.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://loadmargin.com/calculators.html"}, {"@type": "ListItem", "position": 3, "name": "Trip safety check", "item": "https://loadmargin.com/calc-trip-safety.html"}]}</script>
+<link rel="stylesheet" href="assets/assistant.css?v=20261010b">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Trip safety check","url":"https://loadmargin.com/calc-trip-safety.html","description":"Free pre-trip safety check for truckers: hours of service, sleep, night driving, weather and route risks, with red and green flags before you take a load.","applicationCategory":"BusinessApplication","operatingSystem":"Any (runs in the browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://loadmargin.com/#org"}}</script>
+<style>.ts-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.45rem .9rem;margin-top:.4rem}.ts-checks .ts-ck{display:flex!important;justify-content:flex-start!important;text-align:left!important;gap:.6rem;align-items:center;font-size:.92rem!important;text-transform:none!important;letter-spacing:0!important;font-weight:500!important;color:var(--tx-2)!important;cursor:pointer;margin:0!important;padding:.45rem .6rem;border:1px solid var(--line,rgba(127,127,127,.3));border-radius:8px}.ts-checks .ts-ck input{-webkit-appearance:checkbox!important;appearance:auto!important;width:18px!important;height:18px!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;background:none!important;flex:none;accent-color:#f5c542;box-shadow:none!important}
+.ts-badge{font-weight:800;letter-spacing:.06em;font-size:1.15rem;padding:.7rem 1rem;border-radius:8px;text-align:center;margin-bottom:.9rem;border:1px solid}.ts-badge.lo{color:#34c98a;border-color:rgba(52,201,138,.4);background:rgba(52,201,138,.1)}.ts-badge.md{color:#e0a93b;border-color:rgba(224,169,59,.45);background:rgba(224,169,59,.1)}.ts-badge.hi{color:#e4614c;border-color:rgba(228,97,76,.45);background:rgba(228,97,76,.1)}
+.ts-flags{display:grid;gap:.4rem}.ts-flags .fl{font-size:.88rem;padding:.5rem .7rem;border-radius:7px;border:1px solid}.ts-flags .r{color:#e4614c;border-color:rgba(228,97,76,.35);background:rgba(228,97,76,.08)}.ts-flags .g{color:#34c98a;border-color:rgba(52,201,138,.3);background:rgba(52,201,138,.07)}.ts-flags .fl::before{content:"\2691  "}
+.ts-tips{margin:0;padding-left:1.1rem;color:var(--tx-2);font-size:.9rem;line-height:1.6}.ts-tips li{margin:.25rem 0}
+html[data-theme="light"] .ts-flags .r,html[data-theme="light"] .ts-badge.hi{color:#b3261e}html[data-theme="light"] .ts-flags .g,html[data-theme="light"] .ts-badge.lo{color:#13784b}html[data-theme="light"] .ts-badge.md{color:#8a5a00}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="LoadMargin" width="520" height="238">
+      <span class="brand-tx">LOAD<span>MARGIN</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="load-calculator.html#calculator">Calculator</a></li>
+      <li class="nav-drop"><a href="calculators.html" class="active">Tools</a><ul class="nav-sub" aria-label="Calculators"><li><a href="audit-check.html">DOT audit check</a></li><li><a href="calc-trip-safety.html">Trip safety check</a></li><li><a href="calc-eta.html">ETA &amp; hours</a></li><li><a href="calc-fuel-surcharge.html">Fuel surcharge</a></li><li><a href="calc-deadhead.html">Deadhead &amp; backhaul</a></li><li><a href="calc-take-home.html">Owner-operator take-home</a></li><li><a href="calc-detention.html">Detention cost</a></li><li><a href="calc-ifta.html">IFTA quarterly</a></li><li><a href="calc-factoring.html">Factoring APR</a></li><li><a href="calc-cost-per-mile.html">Cost per mile</a></li><li><a href="calc-fuel-cost.html">Trip fuel cost</a></li><li><a href="calc-per-diem.html">Per diem</a></li><li><a href="calc-maintenance.html">Maintenance reserve</a></li></ul></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Services</a></li>
+    </ul>
+    <div class="nav-act">
+      <button id="themeToggle" class="btn btn-sm btn-theme"
+              aria-label="Toggle theme" aria-pressed="false"
+              title="Light / dark">
+        Light
+      </button>
+      <a class="btn btn-gold btn-sm" href="work.html#check"><span>$49 </span>Load Check</a>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section id="tripsafety" class="calc-page">
+  <div class="wrap">
+    <div class="sec-head">
+      <a class="crumb" href="calculators.html">← All calculators</a>
+      <span class="eyebrow">Safety</span>
+      <h1>Trip safety check</h1>
+      <p class="lede">Before you accept a load: is it legal on your hours, and how risky is it? Enter the trip and how you slept, and get red and green flags with what to do about them.</p>
+    </div>
+    <div class="calc">
+      <div class="panel calc-form rv"><div class="field-row"><div class="field"><label for="tsMiles">Miles to drive</label><div class="inp has-suf"><input type="number" id="tsMiles" value="520" min="0" step="10" inputmode="decimal"><span class="suf">mi</span></div></div><div class="field"><label for="tsSpeed">Realistic average speed</label><div class="inp has-suf"><input type="number" id="tsSpeed" value="55" min="0" step="1" inputmode="decimal"><span class="suf">mph</span></div></div></div><div class="field-row"><div class="field"><label for="tsDrive">Driving hours left <span class="hint">of 11</span></label><div class="inp has-suf"><input type="number" id="tsDrive" value="11" min="0" step="0.25" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="tsWin">On-duty hours left <span class="hint">of 14</span></label><div class="inp has-suf"><input type="number" id="tsWin" value="14" min="0" step="0.25" inputmode="decimal"><span class="suf">h</span></div></div></div><div class="field-row"><div class="field"><label for="tsSince">Driving since last 30-min break</label><div class="inp has-suf"><input type="number" id="tsSince" value="0" min="0" step="0.25" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="tsDep">Departure hour <span class="hint">0–23</span></label><div class="inp has-suf"><input type="number" id="tsDep" value="21" min="0" step="1" inputmode="decimal"><span class="suf">:00</span></div></div></div><div class="field-row"><div class="field"><label for="tsSleep">Sleep in the last 24 hours</label><div class="inp has-suf"><input type="number" id="tsSleep" value="7" min="0" step="0.5" inputmode="decimal"><span class="suf">h</span></div></div><div class="field"><label for="tsDays">Days on the road this trip</label><div class="inp has-suf"><input type="number" id="tsDays" value="3" min="0" step="1" inputmode="decimal"><span class="suf">days</span></div></div></div><div class="field-row"><div class="field" style="grid-column:1/-1"><label>On this trip</label><div class="ts-checks"><label class="ts-ck"><input type="checkbox" id="tsSnow"> Snow or ice forecast on the route</label><label class="ts-ck"><input type="checkbox" id="tsWind"> High wind warning</label><label class="ts-ck"><input type="checkbox" id="tsMount"> Mountain grades or passes</label><label class="ts-ck"><input type="checkbox" id="tsCity"> Heavy city traffic</label><label class="ts-ck"><input type="checkbox" id="tsHaz"> Hazmat load</label><label class="ts-ck"><input type="checkbox" id="tsHeavy"> Close to 80,000 lb</label><label class="ts-ck"><input type="checkbox" id="tsNew"> Route you have not driven</label><label class="ts-ck"><input type="checkbox" id="tsTight"> Tight delivery window</label></div></div></div></div>
+      <div class="panel rv" style="padding:1.7rem">
+        <div id="tsBadge" class="ts-badge">—</div><div class="kv"><span>Driving time needed</span><b id="tsNeed">—</b></div><div class="kv"><span>30-minute breaks to plan</span><b id="tsBreaks">—</b></div><div class="kv"><span>Arrival, if nothing goes wrong</span><b id="tsArr">—</b></div><div class="hr"></div><div id="tsFlags" class="ts-flags"></div><div class="hr"></div><h3 style="font-size:.95rem;margin:.2rem 0 .5rem">Before you roll</h3><ul id="tsTips" class="ts-tips"></ul>
+        <p class="fine" style="margin-top:1.1rem;font-size:.79rem;color:var(--tx-3);line-height:1.6">A planning check, not a guarantee of safety or legal advice. It uses the 11-hour, 14-hour and 30-minute rules for property carriers and simple risk factors; it cannot see your ELD, the weather or the road. When in doubt, do not drive tired.</p>
+      </div>
+    </div>
+    <div class="panel rv load-check-cta" style="margin-top:1.6rem;padding:1.2rem 1.5rem;display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;align-items:center;justify-content:space-between">
+      <p style="margin:0;color:var(--tx-2);line-height:1.6"><strong style="color:var(--tx)">Want a specific load checked?</strong> I run it against your real costs and send a one-page answer: take it, counter or pass.</p>
+      <a class="btn btn-ghost" href="work.html#check">$49 Load Check →</a>
+    </div>
+  </div>
+</section>
+<section id="how-it-works" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <details class="hiw panel" style="padding:1rem 1.3rem">
+      <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem"><h2 style="font-size:1.05rem;margin:0">How the trip safety check works</h2><span style="color:var(--gold);font-weight:700;font-size:.9rem;white-space:nowrap">Formula &amp; FAQ +</span></summary>
+      <div style="margin-top:1rem"><p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">It first checks the hours: driving time is miles divided by your realistic speed, plus a 30-minute break for every 8 hours of driving. If that does not fit in your remaining 11-hour and 14-hour limits, the trip is not legal as planned.</p><p style="color:var(--tx-2);line-height:1.75;margin:0 0 1rem">Then it adds up risk factors that make crashes more likely: short sleep, driving between 2 and 6 a.m. when the body is least alert, long runs, bad weather, mountain grades, heavy traffic, heavy or hazmat loads, unfamiliar roads and tight appointments. More factors means a higher risk level and more specific advice.</p>
+    <div class="panel mono" style="padding:1rem 1.2rem;font-size:.86rem;line-height:1.9;color:var(--tx-2);margin:.4rem 0 1.4rem">driving time = miles ÷ average speed<br>30-minute breaks = one each time driving since the last break would pass 8 hours<br>risk points: sleep under 5 h = 3, under 7 h = 1, 2–6 a.m. driving = 2 (3 if 2 hours or more), snow/ice = 2, each other factor = 1<br>0–2 low · 3–4 medium · 5+ high · out of hours = not legal</div>
+    <h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">Does this replace my ELD?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">No. Your ELD is the legal record. This is a quick plan before you accept a load.</p><h3 style="font-size:1.02rem;margin:1.2rem 0 .35rem">Why does 2 to 6 a.m. matter?</h3><p style="color:var(--tx-2);line-height:1.7;margin:0">That is when the body's alertness is naturally lowest, even for drivers used to night runs, so fatigue-related crashes are more likely.</p></div>
+    </details>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="panel rv" style="padding:clamp(1.4rem,3vw,2rem)">
+      <div class="grid g2" style="gap:1.6rem;align-items:center">
+        <div>
+          <h2 style="font-size:1.15rem;margin-bottom:.6rem">Want the arithmetic behind it?</h2>
+          <p style="color:var(--tx-2);line-height:1.75;margin:0">Each calculator has a guide with the formula, the assumptions and the sources.</p>
+        </div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+          <a href="guide-hos.html" class="btn btn-gold">Read the guide</a>
+          <a href="load-calculator.html#calculator" class="btn btn-ghost">Score a load</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid f-grid-5">
+      <div class="f-brand">
+        <img src="images/logo-full.webp" alt="LoadMargin" width="600" height="289" loading="lazy">
+        <p>Load checks and cost-per-mile work for U.S. owner-operators and small fleets. $49 a load, done by one person, by email. The calculators and guides are free.</p>
+      </div>
+      <div><h2>Free tools</h2><ul>
+        <li><a href="load-calculator.html#calculator">Load calculator</a></li>
+        <li><a href="calculators.html">Free calculators</a></li></ul></div>
+      <div><h2>Learn</h2><ul>
+        <li><a href="guides.html">All guides</a></li>
+        <li><a href="guide-cost-per-mile.html">Cost per mile</a></li>
+        <li><a href="guide-fuel-surcharge.html">Fuel surcharges</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="news.html">Freight news</a></li></ul></div>
+      <div><h2>Company</h2><ul>
+        <li><a href="work.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#method">Methodology</a></li>
+        <li><a href="support.html">Help &amp; support</a></li>
+        <li><a href="mailto:aleksnvkvc@gmail.com">Contact</a></li></ul></div>
+      <div><h2>Legal</h2><ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of service</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="legal.html">Legal information</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr">2026</span> LoadMargin. All rights reserved.</span>
+      <span class="mono">Calculations run locally in your browser · nothing is uploaded</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/calculators.js?v=20261019a"></script>
+<script>
+(function(){
+  function v(id){var e=document.getElementById(id);var n=parseFloat(e&&e.value);return isFinite(n)&&n>0?n:0;}
+  function c(id){var e=document.getElementById(id);return !!(e&&e.checked);}
+  function hm(h){if(h<0)h=0;var t=Math.round(h*60);return Math.floor(t/60)+'h '+('0'+t%60).slice(-2)+'m';}
+  function esc(s){return String(s).replace(/[<>&]/g,'');}
+  function run(){
+    var mi=v('tsMiles'), sp=v('tsSpeed')||1, dl=v('tsDrive'), wl=v('tsWin'), since=v('tsSince'),
+        dep=Math.min(Math.floor(v('tsDep')),23), sl=parseFloat(document.getElementById('tsSleep').value), days=v('tsDays');
+    var need=mi/sp, nb=(since+need>8)?1+Math.floor((need-(8-since)-1e-9)/8):0; if(nb<0)nb=0;
+    var total=need+nb*0.5, red=[], green=[], tips=[], pts=0, illegal=false;
+    if(need>dl){illegal=true; red.push('Not legal: you need '+hm(need)+' of driving but have '+hm(dl)+' left');}
+    if(total>wl){illegal=true; red.push('Not legal: the trip needs '+hm(total)+' but your 14-hour window has '+hm(wl)+' left');}
+    var spare=Math.min(dl-need,wl-total);
+    if(!illegal){ if(spare<1){pts+=1; red.push('Under 1 hour to spare: one delay puts you out of hours');} else green.push(hm(spare)+' of hours to spare'); }
+    var night=0; for(var t=0;t<total*4;t++){var h=(dep+t/4)%24; if(h>=2&&h<6) night+=0.25;}
+    if(night>0){pts+=(night>=2?3:2); red.push(hm(night)+' of driving between 2 and 6 a.m., when alertness is at its lowest');} else green.push('No driving between 2 and 6 a.m.');
+    if(!isFinite(sl)) sl=0;
+    if(sl<5){pts+=3; red.push('Under 5 hours of sleep in the last 24 hours');} else if(sl<7){pts+=1; red.push('Under 7 hours of sleep');} else green.push(sl+' hours of sleep');
+    if(days>=10){pts+=1; red.push(days+' days on the road: fatigue builds over a long run');}
+    var W=[['tsSnow',2,'Snow or ice on the route'],['tsWind',1,'High wind warning'],['tsMount',1,'Mountain grades'],['tsCity',1,'Heavy city traffic'],['tsHaz',1,'Hazmat load'],['tsHeavy',1,'Close to max weight'],['tsNew',1,'Unfamiliar route'],['tsTight',1,'Tight delivery window']];
+    W.forEach(function(w){ if(c(w[0])){pts+=w[1]; red.push(w[2]);} });
+    if(nb>0) tips.push('Plan your 30-minute break after '+hm(Math.max(0,8-since))+' more driving'+(nb>1?' ('+nb+' breaks on this trip)':'')+'.');
+    if(night>0) tips.push('If you can, shift departure so you are parked between 2 and 6 a.m.');
+    if(sl<7) tips.push('Short on sleep: rest before you leave, and pull over at the first sign of drowsiness.');
+    if(c('tsSnow')||c('tsMount')) tips.push('Check the state DOT 511 site for chain laws and closures before you leave.');
+    if(c('tsWind')) tips.push('High wind: check the route for wind restrictions, especially with a light trailer.');
+    if(c('tsTight')||(!illegal&&spare<1)) tips.push('Ask the broker now to move the appointment, before you are running late.');
+    if(illegal) tips.push('Do not accept this load as planned: move the appointment, split the run or reset your hours first.');
+    if(!tips.length) tips.push('Do your pre-trip inspection and keep an hour of buffer for delays.');
+    var b=document.getElementById('tsBadge'), lvl=illegal?'NOT LEGAL':pts>=5?'HIGH RISK':pts>=3?'MEDIUM RISK':'LOW RISK';
+    b.textContent=lvl; b.className='ts-badge '+(illegal||pts>=5?'hi':pts>=3?'md':'lo');
+    document.getElementById('tsNeed').textContent=hm(need);
+    document.getElementById('tsBreaks').textContent=nb?nb+' × 30 min':'None';
+    var endH=dep+total, arr=endH%24, dd=Math.floor(endH/24), mins=Math.round(arr*60)%1440;
+    document.getElementById('tsArr').textContent=('0'+Math.floor(mins/60)).slice(-2)+':'+('0'+mins%60).slice(-2)+(dd?' (+'+dd+' day)':'')+', '+hm(total)+' after leaving';
+    document.getElementById('tsFlags').innerHTML=red.map(function(x){return '<div class="fl r">'+esc(x)+'</div>';}).join('')+green.map(function(x){return '<div class="fl g">'+esc(x)+'</div>';}).join('');
+    document.getElementById('tsTips').innerHTML=tips.map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+  }
+  document.querySelectorAll('#tripsafety input').forEach(function(i){i.addEventListener('input',run);i.addEventListener('change',run);});
+  run();
+})();
+</script>
+<script>
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+function toggleNav(){
+  const l=$('navLinks'),b=$('navTog');
+  const open=l.classList.toggle('open');
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if($('navLinks').classList.contains('open')) toggleNav();
+}));
+addEventListener('scroll',()=>{
+  $('nav').classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('.art-body h2[id]').forEach(s=>{ if(scrollY>=s.offsetTop-140) cur=s.id; });
+  document.querySelectorAll('.legal-toc a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+/* Older Safari and Android WebView (pre-2019) have no IntersectionObserver.
+   Without this shim `new IntersectionObserver` throws and kills the whole
+   script, which leaves every .rv element stuck at opacity 0. The stand-in
+   simply reveals everything immediately. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function (cb) {
+    this.observe = function (el) {
+      try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+    };
+    this.unobserve = function () {};
+    this.disconnect = function () {};
+    this.takeRecords = function () { return []; };
+  };
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+<script src="assets/assistant.js?v=20261019a" defer></script>
+</body>
+</html>
