@@ -103,16 +103,16 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
 "use strict";
 var K='lm_outreach_v1', DATASET='https://data.transportation.gov/resource/az4n-8mr2.json';
 var TPL={
- compliance:{name:'New authority: $99 checklist',subj:'Your new authority, {company}',
-  body:"Hi {first},\n\nCongrats on getting your authority. In the first year FMCSA does a new entrant safety audit, and most carriers who fail it fail on paperwork: driver file, drug and alcohol program, Clearinghouse queries, records.\n\nThere's a free 2-minute check here that shows what's missing and what to fix first:\nhttps://loadmargin.com/audit-check.html\n\nIf you'd rather have someone go through it with you, I do a $99 checklist review by email and send back a prioritized list.\n\nEither way, good luck with the first loads.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
  loadcheck:{name:'Load profit: free calculator',subj:'Quick tool for pricing loads, {company}',
   body:"Hi {first},\n\nWith diesel over $6 a lot of new carriers are booking loads that look fine on rate per mile and lose money once empty miles and fuel are in.\n\nI built a free calculator that shows what a load actually leaves you, no sign-up:\nhttps://loadmargin.com/load-calculator.html\n\nIf you want a second set of eyes on a specific load, I do a one-page check for $49, money back if it doesn't help you decide.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
+ compliance:{name:'New authority: $99 checklist',subj:'Your new authority, {company}',
+  body:"Hi {first},\n\nCongrats on getting your authority. In the first year FMCSA does a new entrant safety audit, and most carriers who fail it fail on paperwork: driver file, drug and alcohol program, Clearinghouse queries, records.\n\nThere's a free 2-minute check here that shows what's missing and what to fix first:\nhttps://loadmargin.com/audit-check.html\n\nIf you'd rather have someone go through it with you, I do a $99 checklist review by email and send back a prioritized list.\n\nEither way, good luck with the first loads.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
  followup:{name:'Follow-up (once, after 5+ days)',subj:'Re: {company}',
-  body:"Hi {first},\n\nJust bumping this once. If the audit checklist or the load calculator would be useful, the links are below. If not, no worries, I won't follow up again.\n\nhttps://loadmargin.com/audit-check.html\nhttps://loadmargin.com/load-calculator.html\n\nAleksandar"}
+  body:"Hi {first},\n\nJust bumping this once. If the free load calculator would help you price your next load, here it is again. If not, no worries, I won't follow up again.\n\nhttps://loadmargin.com/load-calculator.html\n\nAleksandar"}
 };
 var st=load();
 function load(){try{var s=JSON.parse(localStorage.getItem(K)||'{}');}catch(e){s={};}
-  s.leads=s.leads||[]; s.tpl=s.tpl||{}; s.addr=s.addr||''; s.cap=s.cap||20; s.cur=s.cur||'compliance'; return s;}
+  s.leads=s.leads||[]; s.tpl=s.tpl||{}; s.addr=s.addr||''; s.cap=s.cap||20; if(s.v!==2){s.cur='loadcheck';s.v=2;} s.cur=s.cur||'loadcheck'; return s;}
 function save(){try{localStorage.setItem(K,JSON.stringify(st));}catch(e){}}
 function $(id){return document.getElementById(id);}
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
