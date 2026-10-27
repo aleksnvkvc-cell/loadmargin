@@ -71,6 +71,14 @@
   .gaps li:first-child{border-top:0}
   .gaps li b{color:var(--warn)}
   .gaps li.crit b{color:var(--neg)}
+  .plan{margin:1.2rem 0;border-top:1px solid var(--line,rgba(127,127,127,.25));padding-top:1rem}
+  .plan h3{margin:0 0 .6rem}
+  .plan ol{margin:0 0 .9rem;padding-left:1.2rem;font-size:.92rem;line-height:1.55}
+  .plan li{margin:.45rem 0}
+  .plan li b{display:block}
+  .plan li small{color:var(--tx3)}
+  .plan-btns{display:grid;gap:.5rem}
+
   .gaps a{font-size:.8rem}
   .cta{margin-top:1.1rem;border-top:1px solid var(--line);padding-top:1rem}
   .cta p{font-size:.85rem;color:var(--tx2);margin:0 0 .6rem;line-height:1.5}
@@ -114,6 +122,11 @@
         <h3>Fix these first</h3>
         <ul id="gaps"><li style="border:0;color:var(--tx3)">Your weakest areas will appear here as you answer.</li></ul>
       </div>
+      <div class="plan" id="planBox" hidden>
+        <h3>Your action plan</h3>
+        <ol id="planList"></ol>
+        <div class="plan-btns"><button type="button" class="btn ghost" id="planCopy">Copy the plan</button><a class="btn" id="planMail" href="#">Email me this plan for a $99 review &rarr;</a></div>
+      </div>
       <div class="cta">
         <p id="ctaText">Want a second pair of eyes before the auditor's? I check your file against exactly this list.</p>
         <a class="btn" href="work.html#tuneup">Compliance tune-up: $199 &rarr;</a>
@@ -134,34 +147,34 @@
   "use strict";
   var ITEMS=[
     {s:"Driver qualification files", d:"What the auditor pulls first.", items:[
-      {id:"dq_med", w:3, q:"Every driver's medical certificate is current and on file", g:"guide-dot-physical.html"},
-      {id:"dq_mvr", w:2, q:"An MVR was pulled at hire and reviewed within the last 12 months", g:"guide-new-entrant-audit.html"},
-      {id:"dq_app", w:2, q:"A completed employment application is on file for each driver", g:"guide-new-entrant-audit.html"},
-      {id:"dq_cdl", w:1, q:"CDL, road test or equivalent documented for each driver", g:"guide-new-entrant-audit.html"}
+      {id:"dq_med", w:3, f:"Get each driver a medical card from an examiner on FMCSA's National Registry and put a copy in the driver file.", q:"Every driver's medical certificate is current and on file", g:"guide-dot-physical.html"},
+      {id:"dq_mvr", w:2, f:"Order an MVR for each driver at hire, then review it at least once a year; sign and date the review.", q:"An MVR was pulled at hire and reviewed within the last 12 months", g:"guide-new-entrant-audit.html"},
+      {id:"dq_app", w:2, f:"Have each driver fill in a full employment application (49 CFR 391.21) and file it.", q:"A completed employment application is on file for each driver", g:"guide-new-entrant-audit.html"},
+      {id:"dq_cdl", w:1, f:"Put a copy of each CDL and the road test certificate (or equivalent) in the driver file.", q:"CDL, road test or equivalent documented for each driver", g:"guide-new-entrant-audit.html"}
     ]},
     {s:"Drug & alcohol program", d:"The fastest way to fail if missing.", items:[
-      {id:"da_pre", w:3, q:"A pre-employment drug test was passed before each driver drove", g:"guide-drug-alcohol-program.html"},
-      {id:"da_random", w:3, q:"You're enrolled in a random testing consortium (2026: 50% drug / 10% alcohol)", g:"guide-drug-alcohol-program.html"},
-      {id:"da_ch_pre", w:3, q:"A full Clearinghouse query was run at hire for each driver", g:"guide-clearinghouse.html"},
-      {id:"da_ch_yr", w:3, q:"A limited Clearinghouse query was run in the last 12 months", g:"guide-clearinghouse.html"}
+      {id:"da_pre", w:3, f:"Nobody drives until a negative pre-employment drug test is on file. If someone already has, stop and test now.", q:"A pre-employment drug test was passed before each driver drove", g:"guide-drug-alcohol-program.html"},
+      {id:"da_random", w:3, f:"Join a drug and alcohol consortium today. Owner-operators must be in a random testing pool.", q:"You're enrolled in a random testing consortium (2026: 50% drug / 10% alcohol)", g:"guide-drug-alcohol-program.html"},
+      {id:"da_ch_pre", w:3, f:"Run a full Clearinghouse pre-employment query for each driver before they drive.", q:"A full Clearinghouse query was run at hire for each driver", g:"guide-clearinghouse.html"},
+      {id:"da_ch_yr", w:3, f:"Run a limited Clearinghouse query for every driver at least once every 12 months.", q:"A limited Clearinghouse query was run in the last 12 months", g:"guide-clearinghouse.html"}
     ]},
     {s:"Hours of service", d:"Logs and the paper behind them.", items:[
-      {id:"hos_eld", w:2, q:"An ELD is in use and drivers are trained on it", g:"guide-eld.html"},
-      {id:"hos_docs", w:2, q:"Supporting documents and logs are kept for at least 6 months", g:"guide-hos.html"}
+      {id:"hos_eld", w:2, f:"Use an ELD from FMCSA's registered list; keep its user guide, malfunction sheet and 8 days of blank logs in the truck.", q:"An ELD is in use and drivers are trained on it", g:"guide-eld.html"},
+      {id:"hos_docs", w:2, f:"Keep logs and supporting documents (fuel receipts, bills of lading) for at least 6 months.", q:"Supporting documents and logs are kept for at least 6 months", g:"guide-hos.html"}
     ]},
     {s:"Vehicles", d:"Inspections and the record of them.", items:[
-      {id:"veh_annual", w:3, q:"Every vehicle has a current annual DOT inspection", g:"guide-maintenance.html"},
-      {id:"veh_dvir", w:2, q:"Drivers complete DVIRs and defects are repaired and recorded", g:"guide-maintenance.html"},
-      {id:"veh_rec", w:1, q:"Maintenance records are kept for each vehicle", g:"guide-maintenance.html"}
+      {id:"veh_annual", w:3, f:"Book an annual DOT inspection for every truck and trailer and keep the report.", q:"Every vehicle has a current annual DOT inspection", g:"guide-maintenance.html"},
+      {id:"veh_dvir", w:2, f:"Do written post-trip inspections, fix and sign off defects, and keep the reports.", q:"Drivers complete DVIRs and defects are repaired and recorded", g:"guide-maintenance.html"},
+      {id:"veh_rec", w:1, f:"Start a maintenance file for each vehicle: inspections, repairs and service dates.", q:"Maintenance records are kept for each vehicle", g:"guide-maintenance.html"}
     ]},
     {s:"Authority & filings", d:"Active, current, and on file.", items:[
-      {id:"au_ins", w:2, q:"Authority is active and insurance is on file (BMC-91)", g:"guide-insurance.html"},
-      {id:"au_150", w:2, q:"MCS-150 was updated within the last 24 months", g:"guide-mcs150.html"},
-      {id:"au_ifta", w:2, q:"IFTA is registered and quarterly returns are filed on time", g:"guide-ifta.html"}
+      {id:"au_ins", w:2, f:"Check FMCSA's L&I site: authority active and insurance (BMC-91/91X) on file.", q:"Authority is active and insurance is on file (BMC-91)", g:"guide-insurance.html"},
+      {id:"au_150", w:2, f:"Update your MCS-150 now if it is more than 24 months old (it is free on FMCSA's site).", q:"MCS-150 was updated within the last 24 months", g:"guide-mcs150.html"},
+      {id:"au_ifta", w:2, f:"Register for IFTA in your base state and file every quarter by the last day of the following month.", q:"IFTA is registered and quarterly returns are filed on time", g:"guide-ifta.html"}
     ]},
     {s:"Records", d:"Small things auditors still check.", items:[
-      {id:"rec_acc", w:1, q:"An accident register is maintained (even if it's empty)", g:"guide-new-entrant-audit.html"},
-      {id:"rec_csa", w:1, q:"You monitor your CSA / SMS scores", g:"guide-csa.html"}
+      {id:"rec_acc", w:1, f:"Keep an accident register for 3 years, even if it is empty.", q:"An accident register is maintained (even if it's empty)", g:"guide-new-entrant-audit.html"},
+      {id:"rec_csa", w:1, f:"Check your SMS/CSA scores every month and challenge wrong data through DataQs.", q:"You monitor your CSA / SMS scores", g:"guide-csa.html"}
     ]}
   ];
   var state={};
@@ -200,7 +213,7 @@
         max+=it.w;
         var f=v==="yes"?1:v==="part"?0.5:0;
         got+=it.w*f;
-        if(f<1) gaps.push({q:it.q,g:it.g,w:it.w,crit:(v==="no"&&it.w>=3)});
+        if(f<1) gaps.push({q:it.q,g:it.g,w:it.w,f:it.f,part:(v==="part"),crit:(v==="no"&&it.w>=3)});
       }
     }
     var el=document.getElementById("score"), bd=document.getElementById("band");
@@ -218,10 +231,30 @@
     else{
       var h="";
       for(var k=0;k<gaps.length && k<8;k++){
-        h+='<li'+(gaps[k].crit?' class="crit"':'')+'><b>'+(gaps[k].crit?'Critical':'Gap')+'</b> — '+gaps[k].q+
+        h+='<li'+(gaps[k].crit?' class="crit"':'')+'><b>'+(gaps[k].crit?'Critical':'Gap')+'</b>: '+gaps[k].q+
            (gaps[k].g?' <a href="'+gaps[k].g+'" target="_blank" rel="noopener">fix &rarr;</a>':'')+'</li>';
       }
       g.innerHTML=h;
+    }
+
+    var pb=document.getElementById("planBox"), pl=document.getElementById("planList");
+    if(pb&&pl){
+      if(!gaps.length){ pb.hidden=true; }
+      else{
+        pb.hidden=false;
+        var lines=[], ph="";
+        for(var q=0;q<gaps.length;q++){
+          var gg=gaps[q], when=gg.crit?"This week":(gg.w>=2?"Within 30 days":"Before the audit");
+          ph+='<li><b>'+(gg.f||gg.q)+'</b><small>'+when+(gg.part?' · partly done':'')+'</small></li>';
+          lines.push((q+1)+'. ['+when+'] '+(gg.f||gg.q));
+        }
+        pl.innerHTML=ph;
+        var body="Hi,\n\nI used the DOT Audit Readiness Check on loadmargin.com (score "+pct+"/100). This is my action plan:\n\n"+lines.join("\n")+"\n\nI'd like the $99 Authority Checklist Review.\nMC/DOT number:\nTrucks and drivers:\n\nThanks,\n";
+        document.getElementById("planMail").href="mailto:aleksnvkvc@gmail.com?subject="+encodeURIComponent("Authority Checklist Review")+"&body="+encodeURIComponent(body);
+        var cp=document.getElementById("planCopy");
+        cp.onclick=function(){ var t="DOT audit action plan (loadmargin.com)\n\n"+lines.join("\n");
+          if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){cp.textContent="Copied";setTimeout(function(){cp.textContent="Copy the plan";},1500);});} };
+      }
     }
     var ct=document.getElementById("ctaText");
     ct.textContent = pct>=85
