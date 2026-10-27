@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outreach desk (private) | LoadMargin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/fonts.css?v=20261019a">
+<style>
+:root{--bg:#0e0e0f;--panel:#17171a;--line:#2e2e33;--tx:#eef0f5;--tx2:#a9adba;--tx3:#7b8090;--acc:#f5c542;--go:#34c98a;--neg:#e4614c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 Barlow,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:0 0 10px}
+.sub{color:var(--tx2);margin:0 0 18px}
+.grid{display:grid;gap:14px}@media(min-width:900px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+label{display:block;font-size:12px;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin:8px 0 4px}
+input,select,textarea{width:100%;background:#0b0b0c;border:1px solid var(--line);color:var(--tx);border-radius:7px;padding:9px 10px;font:inherit}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+button,.btn{background:var(--acc);color:#1a1200;border:0;border-radius:7px;padding:9px 14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;font:inherit;font-weight:700}
+.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+.small{padding:6px 10px;font-size:13px}
+.warn{border-color:rgba(228,97,76,.5);background:rgba(228,97,76,.08)}
+.note{font-size:13px;color:var(--tx2)}
+.stats{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--tx2)}.stats b{color:var(--tx);font-size:20px;display:block}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--tx3);font-weight:600;font-size:12px;text-transform:uppercase}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;border:1px solid var(--line);color:var(--tx2);white-space:nowrap}
+.tag.sent{color:var(--acc);border-color:var(--acc)}.tag.replied{color:var(--go);border-color:var(--go)}.tag.no{color:var(--neg);border-color:var(--neg)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.tabs button.on{background:var(--tx);color:#000}
+pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-radius:7px;padding:10px;font:13px/1.5 ui-monospace,Menlo,monospace;color:var(--tx2);margin:6px 0 0}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Outreach desk</h1>
+  <p class="sub">Private page, not linked anywhere. It finds leads and writes the emails; you read each one and press send. Everything you mark is saved only in this browser.</p>
+
+  <div class="card warn" style="margin-bottom:14px">
+    <b>Rules that keep your accounts alive</b>
+    <ul class="note" style="margin:6px 0 0 18px;padding:0">
+      <li>Max <b id="capTxt">20</b> cold emails a day from Gmail. More gets you flagged as spam.</li>
+      <li>Every email has an opt-out line and your postal address (U.S. CAN-SPAM law). Fill in the address below once.</li>
+      <li>No LinkedIn or Facebook bots: automation there gets accounts banned. This tool only prepares messages for those.</li>
+      <li>Anyone who says "stop": mark them <i>Do not contact</i>. They never show again.</li>
+    </ul>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>1. Find leads</h2>
+      <div class="tabs"><button class="on" data-tab="fmcsa">New carriers (FMCSA)</button><button class="ghost" data-tab="csv">Import CSV</button><button class="ghost" data-tab="manual">Add by hand</button></div>
+      <div data-pane="fmcsa">
+        <div class="row">
+          <div><label>Registered in the last</label><select id="fDays"><option>14</option><option selected>30</option><option>60</option><option>90</option></select></div>
+          <div><label>Trucks (power units)</label><select id="fSize"><option value="1-2">1–2</option><option value="1-5" selected>1–5</option><option value="3-20">3–20</option></select></div>
+          <div><label>State (optional)</label><input id="fState" maxlength="2" placeholder="TX"></div>
+        </div>
+        <p class="note">Public FMCSA Company Census data (data.transportation.gov): active interstate carriers. Only rows with an email address are useful for email; phone-only rows are kept for calls.</p>
+        <button id="fGo">Find new carriers</button> <span id="fMsg" class="note"></span>
+      </div>
+      <div data-pane="csv" class="hide">
+        <p class="note">Export from FMCSA, a load board, or any list. Needs columns for name and email; company, state and phone are optional.</p>
+        <input type="file" id="csvFile" accept=".csv,text/csv"> <span id="csvMsg" class="note"></span>
+      </div>
+      <div data-pane="manual" class="hide">
+        <div class="row"><div><label>Name</label><input id="mName"></div><div><label>Company</label><input id="mCo"></div></div>
+        <div class="row"><div><label>Email</label><input id="mEmail"></div><div><label>Where you found them</label><input id="mSrc" placeholder="LinkedIn post about deadhead"></div></div>
+        <button id="mAdd" style="margin-top:10px">Add lead</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2. Message</h2>
+      <div class="row">
+        <div><label>Template</label><select id="tpl"></select></div>
+        <div><label>Daily cap</label><input id="cap" type="number" min="1" max="50" value="20"></div>
+      </div>
+      <label>Your postal address (required in every cold email)</label><input id="addr" placeholder="Street, city, postcode, Serbia">
+      <label>Subject</label><input id="subj">
+      <label>Body ({first}, {company}, {state}, {days} are filled in per lead)</label><textarea id="body" style="min-height:190px"></textarea>
+      <p class="note">Edits are saved. The opt-out line and address are added automatically at the bottom.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <h2 style="margin:0">3. Send, one at a time</h2>
+      <div class="stats"><span><b id="sToday">0</b>sent today</span><span><b id="sAll">0</b>sent total</span><span><b id="sRep">0</b>replied</span><span><b id="sLeads">0</b>leads</span></div>
+    </div>
+    <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select>
+      <button class="ghost small" id="exp">Export CSV</button><button class="ghost small" id="clr">Clear leads</button></div>
+    <div style="overflow-x:auto"><table><thead><tr><th>Lead</th><th>Info</th><th>Status</th><th>Actions</th></tr></thead><tbody id="list"></tbody></table></div>
+    <div id="preview" class="hide"><h2 style="margin-top:14px">Preview</h2><pre id="pv"></pre></div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var K='lm_outreach_v1', DATASET='https://data.transportation.gov/resource/az4n-8mr2.json';
+var TPL={
+ compliance:{name:'New authority: $99 checklist',subj:'Your new authority, {company}',
+  body:"Hi {first},\n\nCongrats on getting your authority. In the first year FMCSA does a new entrant safety audit, and most carriers who fail it fail on paperwork: driver file, drug and alcohol program, Clearinghouse queries, records.\n\nThere's a free 2-minute check here that shows what's missing and what to fix first:\nhttps://loadmargin.com/audit-check.html\n\nIf you'd rather have someone go through it with you, I do a $99 checklist review by email and send back a prioritized list.\n\nEither way, good luck with the first loads.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
+ loadcheck:{name:'Load profit: free calculator',subj:'Quick tool for pricing loads, {company}',
+  body:"Hi {first},\n\nWith diesel over $6 a lot of new carriers are booking loads that look fine on rate per mile and lose money once empty miles and fuel are in.\n\nI built a free calculator that shows what a load actually leaves you, no sign-up:\nhttps://loadmargin.com/load-calculator.html\n\nIf you want a second set of eyes on a specific load, I do a one-page check for $49, money back if it doesn't help you decide.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
+ followup:{name:'Follow-up (once, after 5+ days)',subj:'Re: {company}',
+  body:"Hi {first},\n\nJust bumping this once. If the audit checklist or the load calculator would be useful, the links are below. If not, no worries, I won't follow up again.\n\nhttps://loadmargin.com/audit-check.html\nhttps://loadmargin.com/load-calculator.html\n\nAleksandar"}
+};
+var st=load();
+function load(){try{var s=JSON.parse(localStorage.getItem(K)||'{}');}catch(e){s={};}
+  s.leads=s.leads||[]; s.tpl=s.tpl||{}; s.addr=s.addr||''; s.cap=s.cap||20; s.cur=s.cur||'compliance'; return s;}
+function save(){try{localStorage.setItem(K,JSON.stringify(st));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function today(){return new Date().toISOString().slice(0,10);}
+function title(s){return String(s||'').toLowerCase().replace(/\b[a-z]/g,function(c){return c.toUpperCase();}).replace(/\bLlc\b/g,'LLC').replace(/\bInc\b/g,'Inc');}
+function firstName(l){var n=(l.name||'').trim(); if(!n) return 'there'; var p=n.split(/[\s,]+/); return title(p[0]);}
+
+/* templates */
+function curTpl(){var t=st.tpl[st.cur]||{}; var d=TPL[st.cur]; return {subj:t.subj!=null?t.subj:d.subj, body:t.body!=null?t.body:d.body};}
+function fillTplUI(){var sel=$('tpl'); sel.innerHTML=Object.keys(TPL).map(function(k){return '<option value="'+k+'"'+(k===st.cur?' selected':'')+'>'+TPL[k].name+'</option>';}).join('');
+  var t=curTpl(); $('subj').value=t.subj; $('body').value=t.body; $('addr').value=st.addr; $('cap').value=st.cap; $('capTxt').textContent=st.cap;}
+$('tpl').addEventListener('change',function(){st.cur=this.value;save();fillTplUI();render();});
+['subj','body'].forEach(function(id){$(id).addEventListener('input',function(){st.tpl[st.cur]=st.tpl[st.cur]||{};st.tpl[st.cur][id]=this.value;save();});});
+$('addr').addEventListener('input',function(){st.addr=this.value;save();});
+$('cap').addEventListener('input',function(){st.cap=Math.max(1,Math.min(50,parseInt(this.value,10)||20));$('capTxt').textContent=st.cap;save();render();});
+
+function compose(l,which){var t=which?{subj:TPL[which].subj,body:(st.tpl[which]&&st.tpl[which].body)||TPL[which].body}:curTpl();
+  if(which&&st.tpl[which]&&st.tpl[which].subj) t.subj=st.tpl[which].subj;
+  function f(s){return s.replace(/\{first\}/g,firstName(l)).replace(/\{company\}/g,title(l.company||l.name||'your company')).replace(/\{state\}/g,l.state||'').replace(/\{days\}/g,l.days!=null?l.days:'');}
+  var foot="\n\n--\nIf you'd rather not hear from me, just reply \"stop\" and I won't email again.\n"+(st.addr||'[ADD YOUR POSTAL ADDRESS]');
+  return {subj:f(t.subj), body:f(t.body)+foot};}
+
+/* tabs */
+document.querySelectorAll('[data-tab]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-tab]').forEach(function(x){x.className=x===b?'on':'ghost';});
+  document.querySelectorAll('[data-pane]').forEach(function(p){p.classList.toggle('hide',p.getAttribute('data-pane')!==b.getAttribute('data-tab'));});});});
+
+/* leads */
+function key(l){return (l.email||'').toLowerCase()||(l.dot?'dot'+l.dot:'')||(l.name||'').toLowerCase();}
+function addLeads(arr,src){var have={}; st.leads.forEach(function(l){have[key(l)]=1;}); var n=0;
+  arr.forEach(function(l){var k=key(l); if(!k||have[k]) return; have[k]=1; l.src=l.src||src; l.status='new'; l.added=today(); st.leads.push(l); n++;});
+  save(); render(); return n;}
+function pick(o,names){for(var i=0;i<names.length;i++){var v=o[names[i]]; if(v!=null&&String(v).trim()!=='') return String(v).trim();} return '';}
+function ymd(d){return d.toISOString().slice(0,10).replace(/-/g,'');}
+function daysSince(s){if(!s) return null; s=String(s).replace(/\D/g,'').slice(0,8); if(s.length<8) return null;
+  var d=new Date(s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8)); return Math.max(0,Math.round((Date.now()-d)/864e5));}
+
+$('fGo').addEventListener('click',function(){
+  var days=parseInt($('fDays').value,10), sz=$('fSize').value.split('-'), stt=$('fState').value.trim().toUpperCase();
+  var since=ymd(new Date(Date.now()-days*864e5));
+  var where="add_date >= '"+since+"' AND status_code='A' AND carrier_operation='A'";
+  var url=DATASET+'?$limit=1000&$order=add_date DESC&$where='+encodeURIComponent(where);
+  $('fMsg').textContent='Searching…';
+  fetch(url).then(function(r){if(!r.ok) throw new Error('HTTP '+r.status); return r.json();}).then(function(rows){
+    var out=[];
+    rows.forEach(function(r){
+      var pu=parseInt(pick(r,['power_units','truck_units']),10)||0; if(pu<+sz[0]||pu>+sz[1]) return;
+      var state=pick(r,['phy_state','phy_st','mailing_state','mail_state']).toUpperCase(); if(stt&&state&&state!==stt) return;
+      var email=pick(r,['email_address','email','emailaddress']);
+      out.push({dot:pick(r,['dot_number']), company:pick(r,['legal_name','dba_name']), name:pick(r,['company_officer_1'])||'',
+        email:/@/.test(email)?email.toLowerCase():'', phone:pick(r,['cell_phone','phone']), state:state, trucks:pu, days:daysSince(pick(r,['add_date']))});
+    });
+    var withEmail=out.filter(function(l){return l.email;}).length;
+    var n=addLeads(out,'FMCSA');
+    $('fMsg').textContent='Found '+out.length+' matching carriers ('+withEmail+' with email). Added '+n+' new.';
+  }).catch(function(e){
+    $('fMsg').innerHTML='Could not reach FMCSA data ('+esc(e.message)+'). Download the census CSV from data.transportation.gov and use <b>Import CSV</b>.';
+  });
+});
+
+/* CSV */
+function parseCSV(t){var rows=[],row=[],f='',q=false;for(var i=0;i<t.length;i++){var c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+  else if(c==='"')q=true; else if(c===','){row.push(f);f='';} else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++; row.push(f);f=''; if(row.length>1||row[0]!=='')rows.push(row); row=[];} else f+=c;}
+  if(f!==''||row.length){row.push(f);rows.push(row);} return rows;}
+$('csvFile').addEventListener('change',function(){var file=this.files[0]; if(!file) return; var rd=new FileReader();
+  rd.onload=function(){var rows=parseCSV(rd.result); if(rows.length<2){$('csvMsg').textContent='Empty file.';return;}
+    var h=rows[0].map(function(x){return x.trim().toLowerCase().replace(/[^a-z0-9]+/g,'_');});
+    var objs=rows.slice(1).map(function(r){var o={}; h.forEach(function(k,i){o[k]=r[i];}); return o;});
+    var out=objs.map(function(o){var email=pick(o,['email_address','email','e_mail']);
+      return {dot:pick(o,['dot_number','usdot','dot']), company:pick(o,['legal_name','company','dba_name','carrier']), name:pick(o,['name','contact','company_officer_1','first_name']),
+        email:/@/.test(email)?email.toLowerCase():'', phone:pick(o,['cell_phone','phone','telephone']), state:pick(o,['phy_state','state']).toUpperCase(),
+        trucks:parseInt(pick(o,['power_units','trucks']),10)||'', days:daysSince(pick(o,['add_date']))};}).filter(function(l){return l.email||l.phone;});
+    $('csvMsg').textContent='Read '+out.length+' rows, added '+addLeads(out,'CSV')+' new.';};
+  rd.readAsText(file);});
+
+$('mAdd').addEventListener('click',function(){var e=$('mEmail').value.trim();
+  if(!/@/.test(e)&&!$('mName').value.trim()) return;
+  addLeads([{name:$('mName').value.trim(),company:$('mCo').value.trim(),email:e.toLowerCase(),note:$('mSrc').value.trim()}],'manual');
+  ['mName','mCo','mEmail','mSrc'].forEach(function(id){$(id).value='';});});
+
+/* list */
+function sentToday(){return st.leads.filter(function(l){return l.sentOn===today();}).length;}
+function render(){
+  var v=$('view').value, now=Date.now();
+  var list=st.leads.filter(function(l){
+    if(l.status==='stop') return v==='all';
+    if(v==='todo') return l.status==='new';
+    if(v==='sent') return l.status==='sent';
+    if(v==='followup') return l.status==='sent'&&!l.followed&&l.sentOn&&(now-new Date(l.sentOn))/864e5>=5;
+    if(v==='replied') return l.status==='replied';
+    return true;});
+  var cap=st.cap, left=cap-sentToday();
+  $('sToday').textContent=sentToday()+' / '+cap; $('sAll').textContent=st.leads.filter(function(l){return l.sentOn;}).length;
+  $('sRep').textContent=st.leads.filter(function(l){return l.status==='replied';}).length; $('sLeads').textContent=st.leads.length;
+  $('list').innerHTML=list.slice(0,200).map(function(l){var i=st.leads.indexOf(l);
+    var tag={new:'',sent:'sent',replied:'replied',stop:'no'}[l.status]||'';
+    var canSend=l.email&&l.status!=='stop'&&(left>0);
+    return '<tr><td><b>'+esc(title(l.company)||esc(l.name)||'—')+'</b><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
+      '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[l.state,l.trucks?l.trucks+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+l.days+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
+      '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
+      '<td><div class="acts">'+
+        (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up':'Open email')+'</button>':'')+
+        '<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
+        '<button class="small ghost" data-a="rep" data-i="'+i+'">Replied</button>'+
+        '<button class="small ghost" data-a="stop" data-i="'+i+'">Do not contact</button>'+
+      '</div></td></tr>';}).join('')||'<tr><td colspan="4" class="note">Nothing here. Find leads above.</td></tr>';
+  if(left<=0) $('list').insertAdjacentHTML('afterbegin','<tr><td colspan="4" class="note" style="color:var(--neg)">Daily cap reached. Come back tomorrow.</td></tr>');
+}
+$('view').addEventListener('change',render);
+$('list').addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; var l=st.leads[+b.getAttribute('data-i')]; if(!l) return;
+  var a=b.getAttribute('data-a');
+  if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
+  if(a==='send'){var m2=compose(l,l.status==='sent'?'followup':null);
+    if(!st.addr){alert('Add your postal address in step 2 first.');return;}
+    window.location.href='mailto:'+encodeURIComponent(l.email)+'?subject='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
+    if(l.status==='sent') l.followed=today(); else {l.status='sent'; l.sentOn=today();} }
+  if(a==='rep') l.status='replied';
+  if(a==='stop') l.status='stop';
+  save(); render();});
+$('exp').addEventListener('click',function(){var cols=['company','name','email','phone','state','trucks','dot','status','sentOn','followed','src','note'];
+  var csv=[cols.join(',')].concat(st.leads.map(function(l){return cols.map(function(c){return '"'+String(l[c]==null?'':l[c]).replace(/"/g,'""')+'"';}).join(',');})).join('\n');
+  var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='loadmargin-leads-'+today()+'.csv'; a.click();});
+$('clr').addEventListener('click',function(){if(confirm('Remove all leads from this browser? Export first if you need them.')){st.leads=[];save();render();}});
+
+fillTplUI(); render();
+})();
+</script>
+</body>
+</html>
