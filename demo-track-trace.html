@@ -2,6 +2,8 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Live demo: Track &amp; Trace | LoadMargin</title>
 <meta name="description" content="Live demo of the LoadMargin track and trace board: loads, check calls, ETAs, late-load alerts and status messages. Sample data only, nothing is uploaded.">
@@ -417,7 +419,7 @@
     r.onload=function(){ try{ var arr=JSON.parse(r.result);
       if(Object.prototype.toString.call(arr)!=='[object Array]') throw 0;
       if(!confirm('Import '+arr.length+' loads? This replaces the current board.')) return;
-      for(var i=0;i<arr.length;i++){ if(!arr[i].id) arr[i].id=uid(); }
+      for(var i=0;i<arr.length;i++){ if(!arr[i]||typeof arr[i]!=='object') throw 0; if(!/^[A-Za-z0-9_-]{1,40}$/.test(String(arr[i].id||''))) arr[i].id=uid(); }
       loads=arr; save(); render(); toast('Imported '+arr.length+' loads.');
     }catch(e){ alert('That file is not a valid Track & Trace export.'); } };
     r.readAsText(f); inp.value='';

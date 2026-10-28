@@ -2,6 +2,8 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self' https://data.transportation.gov; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Outreach desk (private) | LoadMargin</title>
 <meta name="robots" content="noindex, nofollow">
@@ -211,8 +213,8 @@ function render(){
   $('list').innerHTML=list.slice(0,200).map(function(l){var i=st.leads.indexOf(l);
     var tag={new:'',sent:'sent',replied:'replied',stop:'no'}[l.status]||'';
     var canSend=l.email&&l.status!=='stop'&&(left>0);
-    return '<tr><td><b>'+esc(title(l.company)||esc(l.name)||'—')+'</b><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
-      '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[l.state,l.trucks?l.trucks+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+l.days+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
+    return '<tr><td><b>'+esc(title(l.company)||l.name||'—')+'</b><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
+      '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[esc(l.state),l.trucks?esc(l.trucks)+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+esc(l.days)+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
         (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up':'Open email')+'</button>':'')+

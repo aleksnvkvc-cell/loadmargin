@@ -2,6 +2,7 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>LoadMargin: Fleet Console</title>
 <meta name="description" content="The LoadMargin application: load scoring, cost per mile, lanes, drivers, fuel, HOS, customers and backhaul: one cost model, running in your browser.">
@@ -1287,6 +1288,14 @@ function exportJSON(){
     JSON.stringify({app:'LoadMargin',version:1,exported:new Date().toISOString(),data:DB},null,2));
   toast('Backup downloaded');
 }
+/* ids end up inside onclick handlers, so a backup may only carry ids shaped like uid() makes */
+function idsSafe(o){
+  if(Array.isArray(o)) return o.every(idsSafe);
+  if(!o||typeof o!=='object') return true;
+  return Object.keys(o).every(k=>(k==='id'||/Id$/.test(k))
+    ? (o[k]==null||o[k]===''||/^[A-Za-z0-9_-]{1,40}$/.test(String(o[k])))
+    : idsSafe(o[k]));
+}
 function importJSON(input){
   const f=input.files&&input.files[0]; if(!f) return;
   const r=new FileReader();
@@ -1295,6 +1304,7 @@ function importJSON(input){
       const p=JSON.parse(r.result);
       const d=p.data||p;
       if(!d||!Array.isArray(d.trucks)) throw new Error('not a LoadMargin backup');
+      if(!idsSafe(d)) throw new Error('unexpected ids in backup');
       if(DB.loads.length&&!confirm('Replace what is currently in the console with this backup?')) return;
       DB={...cloneBlank(),...d,settings:{...BLANK.settings,...(d.settings||{})}};
       save(); go('dash'); toast(`Imported ${DB.loads.length} loads`);
