@@ -1,13 +1,13 @@
-.asst,.asst-fab,.asst-nudge{--gold:#E3B44A;--gold-lt:#F5D98B;--gold-dk:#A87C22;--green:#34C98A;
+.asst,.asst-fab,.asst-nudge{--gold:var(--day-fill,#E3B44A);--gold-lt:var(--day-lt,#F5D98B);--gold-dk:var(--day-dk,#A87C22);--green:#34C98A;
   --line-soft:rgba(255,255,255,.07);--disp:'Space Grotesk','Inter',system-ui,sans-serif;font-family:'Inter',system-ui,sans-serif}
 .asst{--line:rgba(255,255,255,.12);--tx:#EEF2FB;--tx-3:#7787AE;color:var(--tx)}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,201,138,.5)}50%{opacity:.6;box-shadow:0 0 0 5px rgba(52,201,138,0)}}
 .asst-fab{position:fixed;right:20px;bottom:20px;z-index:940;width:56px;height:56px;border-radius:50%;border:1px solid var(--line);
   background:linear-gradient(140deg,var(--gold-lt),var(--gold) 50%,var(--gold-dk));color:#1A1200;cursor:pointer;
-  display:grid;place-items:center;box-shadow:0 12px 34px rgba(227,180,74,.32);transition:transform .25s}
+  display:grid;place-items:center;box-shadow:0 12px 34px rgba(var(--day-rgb,227,180,74),.32);transition:transform .25s}
 .asst-fab:hover{transform:scale(1.07)}
 .asst-fab svg{width:24px;height:24px;stroke:#1A1200;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.asst-fab .ping{position:absolute;top:-4px;right:-4px;bottom:-4px;left:-4px;border-radius:50%;border:2px solid rgba(227,180,74,.5);animation:ping 2.6s ease-out infinite}
+.asst-fab .ping{position:absolute;top:-4px;right:-4px;bottom:-4px;left:-4px;border-radius:50%;border:2px solid rgba(var(--day-rgb,227,180,74),.5);animation:ping 2.6s ease-out infinite}
 @keyframes ping{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.35);opacity:0}}
 .asst{position:fixed;right:20px;bottom:20px;z-index:950;width:min(380px,calc(100vw - 32px));height:min(620px,calc(100vh - 40px));
   border-radius:16px;display:none;flex-direction:column;overflow:hidden;
@@ -22,10 +22,10 @@
 .asst-hd .s{font-size:.72rem;color:var(--green);display:flex;align-items:center;gap:.32rem}
 .asst-hd .s::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 .asst-hd .x{margin-left:auto;background:none;border:0;color:var(--tx-3);font-size:1.5rem;cursor:pointer;line-height:1;padding:.2rem .4rem;border-radius:6px}
-.asst-hd .x:hover{color:var(--gold);background:rgba(227,180,74,.1)}
+.asst-hd .x:hover{color:var(--gold);background:rgba(var(--day-rgb,227,180,74),.1)}
 .asst-body{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;scrollbar-width:thin}
 .asst-body::-webkit-scrollbar{width:5px}
-.asst-body::-webkit-scrollbar-thumb{background:rgba(227,180,74,.25);border-radius:9px}
+.asst-body::-webkit-scrollbar-thumb{background:rgba(var(--day-rgb,227,180,74),.25);border-radius:9px}
 .asst .msg{max-width:88%;padding:.7rem .9rem;border-radius:12px;font-size:.88rem;line-height:1.6;animation:msgIn .3s ease both}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .asst .msg.bot{background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-bottom-left-radius:4px;align-self:flex-start;color:var(--tx)}
@@ -40,9 +40,9 @@
 @keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
 .asst .chips{display:flex;flex-wrap:wrap;gap:.5rem}
 .asst .chips{padding:.7rem 1rem;border-top:1px solid var(--line-soft);flex:0 0 auto;max-height:132px;overflow-y:auto}
-.asst .chip{background:rgba(227,180,74,.08);border:1px solid var(--line);color:var(--gold);border-radius:99px;
+.asst .chip{background:rgba(var(--day-rgb,227,180,74),.08);border:1px solid var(--line);color:var(--gold);border-radius:99px;
   padding:.36rem .75rem;font-size:.76rem;cursor:pointer;transition:.2s;white-space:nowrap}
-.asst .chip:hover{background:rgba(227,180,74,.2);transform:translateY(-1px)}
+.asst .chip:hover{background:rgba(var(--day-rgb,227,180,74),.2);transform:translateY(-1px)}
 .asst-in{display:flex;gap:.5rem;padding:.75rem 1rem 1rem;flex:0 0 auto;border-top:1px solid var(--line-soft)}
 .asst-in input{flex:1;background:rgba(0,0,0,.8);border:1px solid var(--line-soft);border-radius:9px;padding:.6rem .8rem;font-size:.87rem}
 .asst-in input:focus{border-color:var(--gold);outline:none}
@@ -54,7 +54,7 @@
 .asst .chip-qs{display:flex;flex-direction:column;gap:.32rem;overflow-y:auto;max-height:124px;padding-right:3px}
 .asst .chip-qs .chip{white-space:normal;text-align:left;width:100%;line-height:1.35;padding:.42rem .7rem}
 .asst .chip-qs::-webkit-scrollbar{width:4px}
-.asst .chip-qs::-webkit-scrollbar-thumb{background:rgba(227,180,74,.25);border-radius:9px}
+.asst .chip-qs::-webkit-scrollbar-thumb{background:rgba(var(--day-rgb,227,180,74),.25);border-radius:9px}
 .asst .chip.cat{background:rgba(255,255,255,.04);border-color:var(--line-soft);color:var(--tx-3);
   font-size:.72rem;letter-spacing:.04em;padding:.3rem .68rem}
 .asst .chip.cat.on{background:linear-gradient(135deg,var(--gold-lt),var(--gold));border-color:var(--gold);
@@ -91,8 +91,8 @@
 
 .asst-nudge{position:fixed;right:20px;bottom:88px;z-index:60;max-width:264px;background:#121214;border:1px solid #2A2A2E;border-radius:14px;padding:.9rem 1rem .85rem;box-shadow:0 12px 34px rgba(0,0,0,.5);animation:nudgeIn .45s ease both}
 .asst-nudge p{margin:0 0 .6rem;color:#e8eef7;font-size:.9rem;line-height:1.5}
-.asst-nudge p b{color:#E3B44A}
-.asst-nudge .cta{background:#E3B44A;color:#1a1305;border:0;border-radius:8px;padding:.42rem .75rem;font-weight:600;font-size:.85rem;cursor:pointer;font-family:inherit}
+.asst-nudge p b{color:var(--gold)}
+.asst-nudge .cta{background:var(--gold);color:#1a1305;border:0;border-radius:8px;padding:.42rem .75rem;font-weight:600;font-size:.85rem;cursor:pointer;font-family:inherit}
 .asst-nudge .x{position:absolute;top:.25rem;right:.5rem;background:none;border:0;color:#6f8098;font-size:1.15rem;line-height:1;cursor:pointer}
 .asst-nudge::after{content:"";position:absolute;right:26px;bottom:-8px;width:14px;height:14px;background:#121214;border-right:1px solid #2A2A2E;border-bottom:1px solid #2A2A2E;transform:rotate(45deg)}
 @keyframes nudgeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -117,3 +117,5 @@ html[data-theme="light"] .asst-nudge p{color:#0E1B45}
 html[data-theme="light"] .asst-nudge::after{background:#FFFFFF}
 html[data-theme="light"] .asst .msg.bot{background:rgba(15,23,42,.05)}
 html[data-theme="light"] .asst-in input{background:#f8f9fb}
+/* light theme: accent as text uses the darker day tone (assets/day-color.js) */
+html[data-theme="light"] .asst .chip,html[data-theme="light"] .asst-hd .x:hover,html[data-theme="light"] .asst-nudge p b{color:var(--day-txl,#8C640B)}

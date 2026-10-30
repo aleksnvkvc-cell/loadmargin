@@ -43,6 +43,7 @@ mq.addEventListener&&mq.addEventListener('change',function(){if(!rd()){ap(sys())
 window.themeManager={set:function(t){wr(t);ap(t)},get:function(){return rd()||sys()},auto:function(){wr(null);ap(sys())}};
 })();
 </script>
+<script src="assets/day-color.js?v=20261030a"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://loadmargin.com/#site","name":"LoadMargin","url":"https://loadmargin.com/","inLanguage":"en-US","publisher":{"@id":"https://loadmargin.com/#org"}},{"@type":"ProfessionalService","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","image":"https://loadmargin.com/images/og-cover.jpg","description":"Load profitability checks and DOT compliance reviews for U.S. owner-operators and small fleets, done by one person and arranged by email.","email":"aleksnvkvc@gmail.com","areaServed":{"@type":"Country","name":"United States"},"paymentAccepted":"PayPal","currenciesAccepted":"USD","priceRange":"$49–$799","founder":{"@id":"https://loadmargin.com/#founder"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"LoadMargin services","itemListElement":[{"@type":"Offer","price":"49","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Quick Load Check","description":"One load checked against your costs: trip cost, break-even, target rate and a take, counter or pass answer, as a one-page PDF.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html"},{"@type":"Offer","price":"249","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Full Cost & Lane Audit","description":"Your real cost per mile from your monthly costs, then up to 3 loads or lanes priced against it.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html"},{"@type":"Offer","price":"99","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Authority Checklist Review","description":"Review of driver file, Clearinghouse, drug and alcohol program, IFTA, UCR and MCS-150 with a prioritized list of what is missing.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html"},{"@type":"Offer","price":"349","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"New Authority Setup","description":"First-year compliance setup done together with a new owner-operator.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html"},{"@type":"Offer","price":"199","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Compliance Tune-up","description":"Files checked against the common safety audit failures, with a list of what to fix first.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html"},{"@type":"Offer","price":"99","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Load Check Plan","description":"Up to 4 Load Checks a month and cost per mile updated monthly.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}}},{"@type":"Offer","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Ongoing Support","description":"Loads checked plus IFTA and the annual Clearinghouse query handled, priced by fleet size from $249 to $799 a month.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","priceSpecification":{"@type":"UnitPriceSpecification","minPrice":"249","maxPrice":"799","priceCurrency":"USD","unitCode":"MON"}}]},"sameAs":["https://www.linkedin.com/in/aleksandar-novakovi%C4%87-8a585b3a5/"]},{"@type":"Person","@id":"https://loadmargin.com/#founder","name":"Aleksandar Novaković","jobTitle":"Founder","image":"https://loadmargin.com/images/aleksandar.webp","worksFor":{"@id":"https://loadmargin.com/#org"},"email":"aleksnvkvc@gmail.com","sameAs":["https://www.linkedin.com/in/aleksandar-novakovi%C4%87-8a585b3a5/"]}]}</script>
 <style>
 :root{
@@ -129,7 +130,7 @@ h1 em{font-style:normal;color:var(--accent-tx)}
 .wf-t{position:relative;height:18px;border-radius:3px;background:var(--bg-2)}
 .wf-t i{position:absolute;top:0;bottom:0;border-radius:3px}
 .wf b{font:500 14.5px var(--mono);text-align:right}
-.wf-in i{background:var(--accent)}
+.wf-in i{background:var(--wf-in,var(--accent))}
 .wf-out i{background:var(--loss)}.wf-out b{color:var(--loss)}
 .wf-left{border-top:1px solid var(--line);padding-top:11px}
 .wf-left .wf-l{color:var(--tx);font-weight:600}
@@ -187,7 +188,7 @@ h2.big{font:700 clamp(36px,4.6vw,56px)/1 var(--cond);text-transform:uppercase}
 .band .wrap{padding-top:clamp(48px,7vw,80px);padding-bottom:clamp(48px,7vw,80px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px}
 .band h2{font:700 clamp(40px,5.4vw,68px)/.98 var(--cond);text-transform:uppercase}
 .band-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:24px;font-size:15px}
-.band .btn{background:var(--ink);color:#f5b91e}
+.band .btn{background:var(--ink);color:var(--accent)}
 .band a:not(.btn){color:var(--ink);text-decoration:underline}
 .me{display:flex;align-items:center;gap:14px;padding:16px 18px;max-width:400px;border:2px solid var(--ink);border-radius:6px;font-size:15px;line-height:1.45}
 .me img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none}
@@ -201,7 +202,7 @@ footer .legal a{color:var(--tx-3);font-size:14px}
 footer .copy{width:100%;color:var(--tx-3);font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
-<link rel="stylesheet" href="assets/assistant.css?v=20261010b">
+<link rel="stylesheet" href="assets/assistant.css?v=20261030a">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
