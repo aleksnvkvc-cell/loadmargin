@@ -61,6 +61,8 @@
     if(!a||a.closest('.lc-box')) return;
     var h=a.getAttribute('href')||'';
     if(h.indexOf('subject=Quick%20Load%20Check')===-1) return;
+    /* On phones an Excel download is a dead end: let the email open straight away. */
+    if(window.matchMedia&&matchMedia('(pointer:coarse)').matches) return;
     e.preventDefault();
     download();
     show(h);

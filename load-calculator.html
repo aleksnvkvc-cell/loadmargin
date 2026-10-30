@@ -212,7 +212,8 @@ html[data-theme="light"] .fl-green li{color:#13784b}
 
         <div style="margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--line-soft)">
           <div style="font-size:.85rem;color:var(--tx-2);line-height:1.65" id="advice"></div>
-          <a class="btn btn-gold btn-sm" style="margin-top:1rem;width:100%;white-space:normal;text-align:center" href="app.html">Score your whole fleet in the console →</a>
+          <a class="btn btn-gold btn-sm" id="sendLoad" style="margin-top:1rem;width:100%;white-space:normal;text-align:center" href="mailto:aleksnvkvc@gmail.com?subject=Load%20Check%20request%3A%20numbers%20from%20the%20calculator">Send these numbers for a $49 Load Check →</a>
+          <p style="font-size:.8rem;color:var(--tx-3);margin:.6rem 0 0;text-align:center">Opens an email with your numbers filled in. Nothing is sent until you press send; you pay only after I confirm by PayPal invoice. <a href="app.html" style="color:var(--gold)">Or score your whole fleet in the console</a>.</p>
         </div>
       </div>
     </div>
@@ -670,6 +671,16 @@ function calc(){
     $('vSub').textContent=`This load costs you ${money(-net)} to run.`;
     $('advice').innerHTML=`Break-even alone is <b class="mono">${money(cost)}</b>: <b class="mono">${money(cost-rate)}</b> above the offer. Deadhead of ${dead} mi is costing <b class="mono">${money(dead*(diesel/mpg+maintCpm+fixedCpm+(payMode==='mile'?payRate:0)))}</b> of that.`;
   }
+  const sl=$('sendLoad');
+  if(sl){
+    const pay=payMode==='mile'?`$${payRate}/mi`:`${payRate}% of rate`;
+    const body=`Hi,\n\nI'd like a $49 Quick Load Check. These are the numbers I put in your calculator:\n\n`+
+      `Rate offered: ${money(rate)}\nLoaded miles: ${loaded}\nDeadhead miles: ${dead}\nDiesel: $${diesel}/gal\nMPG: ${mpg}\n`+
+      `Driver pay: ${pay}\nFixed cost: $${fixedCpm}/mi\nMaintenance: $${maintCpm}/mi\nTolls and fees: ${money(extras)}\n\n`+
+      `Calculator result: ${$('vText').textContent}, net ${money(net)}, margin ${(margin*100).toFixed(1)}%\n\n`+
+      `Origin -> destination:\nAccessorials (detention, lumper, etc.):\nWhen I need an answer:\n\nThanks,\n`;
+    sl.href='mailto:aleksnvkvc@gmail.com?subject='+encodeURIComponent('Load Check request: numbers from the calculator')+'&body='+encodeURIComponent(body);
+  }
 }
 ['rate','loaded','deadhead','fuel','mpg','pay','fixedcpm','maint','extras']
   .forEach(id=>{const el=$(id); if(el) el.addEventListener('input',calc);});
@@ -997,6 +1008,6 @@ if($('rate')) calc(); if($('c1')) cpm();
 observeReveals();
 markActive();
 </script>
-<script src="assets/loadcheck.js?v=20261020a" defer></script>
+<script src="assets/loadcheck.js?v=20261030a" defer></script>
 </body>
 </html>
