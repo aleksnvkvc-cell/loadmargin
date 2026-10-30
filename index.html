@@ -96,7 +96,7 @@ img{max-width:100%;display:block}
 .nav-inline a,.nl{color:var(--tx-2);font-size:15px}
 .nav-inline a:hover,.nl:hover{color:var(--tx);text-decoration:none}
 .nav-btns{display:flex;align-items:center;gap:10px}
-@media (max-width:760px){.nav-inline{display:none}.nav-btns{margin-left:auto}}
+@media (max-width:760px){.nav-btns{margin-left:auto}.nav-inline{order:3;width:100%;margin:0;gap:20px;flex-wrap:nowrap;overflow-x:auto;padding-top:2px}.nav-inline a{display:inline-block;padding:6px 0;white-space:nowrap}}
 
 /* hero */
 .hero{position:relative;overflow:hidden}
@@ -109,7 +109,9 @@ h1{font:700 clamp(46px,7vw,88px)/.96 var(--cond);text-transform:uppercase;margin
 h1 em{font-style:normal;color:var(--accent-tx)}
 .lede{font-size:19px;color:var(--tx-2);margin-top:22px;max-width:40ch}
 .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:30px}
-.hero-cta a.alt{font-size:15px;color:var(--tx-2)}
+.hero-cta a.alt{font-size:15px;color:var(--tx-2);text-decoration:underline;text-underline-offset:3px;padding:8px 0}
+.hero-mail{font-size:15px;color:var(--tx-2);margin-top:12px}
+.hero-mail a{color:var(--tx);font-weight:600;word-break:break-all}
 .guar{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:15px;color:var(--tx-2)}
 .guar svg{width:18px;height:18px;flex:none;stroke:var(--go);fill:none;stroke-width:2}
 .byline{display:flex;align-items:center;gap:12px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line);max-width:420px}
@@ -234,6 +236,7 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
         <a class="btn btn-lg" href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request&amp;body=Hi%2C%0A%0AI%27d%20like%20a%20%2449%20Quick%20Load%20Check.%0A%0ALoad%20%28origin%20-%3E%20destination%29%3A%0ARate%20offered%20%28and%20any%20accessorials%29%3A%0ALoaded%20miles%20/%20deadhead%20miles%3A%0AOwn%20truck%2C%20or%20fleet%20%28how%20many%20trucks%29%3A%0AWhen%20I%20need%20an%20answer%3A%0A%0AThanks%2C%0A">Get a $49 Load Check →</a>
         <a class="alt" href="load-calculator.html">or try the free calculator</a>
       </div>
+      <p class="hero-mail">Or email the load straight to <a href="mailto:aleksnvkvc@gmail.com?subject=Quick%20Load%20Check%20request">aleksnvkvc@gmail.com</a>. You get a PayPal invoice; nothing is charged before you agree.</p>
       <p class="guar"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Money back if it doesn't help you decide</p>
       <div class="byline"><img src="images/aleksandar.webp" alt="Aleksandar Novaković" width="48" height="48" loading="lazy"><p><b>Aleksandar Novaković</b>I check every load myself.</p></div>
     </div>
@@ -273,7 +276,7 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
     <div class="sample" id="sample">
       <div class="sample-hd"><h2>This is what you get.</h2><a href="sample-load-check-report.pdf" target="_blank" rel="noopener">Open the full PDF →</a></div>
       <a class="sample-img" href="sample-load-check-report.pdf" target="_blank" rel="noopener"><img src="images/sample-report.webp" alt="Sample Quick Load Check report: Dallas to Phoenix, GO verdict, key numbers and cost breakdown" width="839" height="909" loading="lazy"></a>
-      <small>Example client.</small>
+      <small>Sample report built from an example load, so you see exactly what arrives in your inbox.</small>
     </div>
   </div>
 </section>
@@ -355,6 +358,6 @@ footer .copy{width:100%;color:var(--tx-3);font-size:14px}
 })();
 </script>
 <script src="assets/assistant.js?v=20261010b" defer></script>
-<script src="assets/loadcheck.js?v=20261020a" defer></script>
+<script src="assets/loadcheck.js?v=20261030a" defer></script>
 </body>
 </html>
