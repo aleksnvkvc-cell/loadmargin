@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+<title>Empty Miles: 3D Trailer | LoadMargin</title>
+<meta name="description" content="Look inside an empty trailer. Every deadhead mile costs fuel, time and tires. Count the empty miles before you book the load.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://loadmargin.com/hero-3d.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+:root{--bg:#050506;--tx:#f1f3f8;--tx2:#b4b9c6;--acc:#ff7a1a;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:Barlow,Inter,system-ui,sans-serif;overflow:hidden}
+#stage{position:fixed;inset:0;display:block;width:100%;height:100%}
+.top{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;z-index:3;font-size:14px}
+.top a{color:var(--tx);text-decoration:none;font-weight:700;letter-spacing:.04em}
+.copy{position:fixed;left:clamp(16px,4vw,56px);right:16px;bottom:clamp(24px,7vh,72px);z-index:3;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 32px;pointer-events:none}
+h1{margin:0;font-family:"Barlow Condensed",Barlow,system-ui,sans-serif;font-weight:800;font-size:clamp(56px,13vw,180px);line-height:.86;letter-spacing:-.01em;text-transform:uppercase;text-shadow:0 6px 40px rgba(0,0,0,.55)}
+.side{max-width:330px;pointer-events:auto;padding-bottom:10px}
+.side p{margin:0 0 14px;color:var(--tx);font-size:15px;line-height:1.45;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:8px;background:var(--acc);color:#1a0b00;font-weight:800;text-decoration:none;font-size:15px}
+.cam{position:fixed;right:16px;top:52px;z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.cam button{font:inherit;font-size:13px;font-weight:700;color:var(--tx);background:rgba(10,10,12,.55);border:1px solid var(--line);border-radius:999px;padding:8px 13px;cursor:pointer;backdrop-filter:blur(6px)}
+.cam small{font-size:11.5px;color:var(--tx2);background:rgba(5,5,6,.6);padding:4px 8px;border-radius:6px;text-align:right;max-width:220px;text-shadow:0 1px 6px #000}
+@media (max-width:640px){.copy{flex-direction:column;align-items:flex-start}.side{max-width:none}}
+@media (prefers-reduced-motion:reduce){h1{text-shadow:none}}
+</style>
+</head>
+<body>
+<canvas id="stage" aria-hidden="true"></canvas>
+<header class="top"><a href="index.html">LOADMARGIN</a><a href="load-calculator.html">Load calculator</a></header>
+<div class="cam">
+  <button id="camBtn" type="button">Turn on head tracking</button>
+  <small id="camNote">Uses your camera to follow your head. The video stays on your device.</small>
+</div>
+<main class="copy">
+  <h1>Empty<br>miles</h1>
+  <div class="side">
+    <p>This is what you haul on a 200-mile deadhead. You still pay for the fuel, the time and the tires. Count those miles before you say yes to the load.</p>
+    <a class="btn" href="load-calculator.html">Check a load, free &rarr;</a>
+  </div>
+</main>
+
+<script src="assets/vendor/face/face_detection.js"></script>
+<script type="module">
+import * as THREE from './assets/vendor/three.module.min.js';
+
+const canvas=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.15;
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x050506);
+scene.fog=new THREE.Fog(0x0b0b0d,3,16);
+const camera=new THREE.PerspectiveCamera(50,1,0.02,60);
+
+/* ---------- procedural textures ---------- */
+function tex(w,h,draw,rx=1,ry=1){const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');draw(g,w,h);
+  const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;}
+function noise(g,w,h,a){const d=g.getImageData(0,0,w,h);for(let i=0;i<d.data.length;i+=4){const n=(Math.random()-.5)*a;d.data[i]+=n;d.data[i+1]+=n;d.data[i+2]+=n;}g.putImageData(d,0,0);}
+const floorTex=tex(512,512,(g,w,h)=>{const n=8;for(let i=0;i<n;i++){const v=70+Math.random()*40;g.fillStyle=`rgb(${v+40},${v+18},${v-8})`;g.fillRect(i*w/n,0,w/n,h);
+  g.fillStyle='rgba(0,0,0,.55)';g.fillRect(i*w/n,0,2,h);for(let k=0;k<3;k++){g.fillRect(i*w/n,Math.random()*h,w/n,2);}}
+  for(let k=0;k<60;k++){g.strokeStyle=`rgba(30,15,5,${Math.random()*.25})`;g.beginPath();const x=Math.random()*w;g.moveTo(x,0);g.bezierCurveTo(x+8,h*.3,x-8,h*.6,x+4,h);g.stroke();}
+  for(let k=0;k<14;k++){g.fillStyle=`rgba(10,8,6,${.08+Math.random()*.15})`;g.beginPath();g.ellipse(Math.random()*w,Math.random()*h,20+Math.random()*60,8+Math.random()*30,Math.random()*3,0,7);g.fill();}
+  noise(g,w,h,28);},1,6);
+const wallTex=tex(512,256,(g,w,h)=>{g.fillStyle='#c9ccd0';g.fillRect(0,0,w,h);
+  for(let i=0;i<8;i++){const x=i*w/8;const gr=g.createLinearGradient(x,0,x+w/8,0);gr.addColorStop(0,'rgba(255,255,255,.18)');gr.addColorStop(.5,'rgba(0,0,0,.06)');gr.addColorStop(1,'rgba(0,0,0,.22)');g.fillStyle=gr;g.fillRect(x,0,w/8,h);}
+  for(let y of [h*.35,h*.62]){g.fillStyle='#8d9196';g.fillRect(0,y,w,10);g.fillStyle='#2a2c30';for(let x=6;x<w;x+=18)g.fillRect(x,y+3,8,4);}
+  g.fillStyle='rgba(60,50,40,.35)';g.fillRect(0,h-26,w,26);
+  for(let k=0;k<40;k++){g.fillStyle=`rgba(80,60,40,${Math.random()*.12})`;g.fillRect(Math.random()*w,h*.5+Math.random()*h*.5,2+Math.random()*30,1+Math.random()*3);}
+  noise(g,w,h,18);},6,1);
+const roofTex=tex(256,256,(g,w,h)=>{g.fillStyle='#d8dde2';g.fillRect(0,0,w,h);for(let i=0;i<4;i++){g.fillStyle='#7c8086';g.fillRect(0,i*h/4,w,6);}noise(g,w,h,14);},1,6);
+const boxTex=tex(256,256,(g,w,h)=>{g.fillStyle='#a87a4a';g.fillRect(0,0,w,h);g.fillStyle='rgba(60,35,10,.35)';g.fillRect(w*.45,0,w*.1,h);g.fillStyle='rgba(255,255,255,.12)';g.fillRect(0,0,w,4);noise(g,w,h,22);});
+
+/* ---------- trailer interior ---------- */
+const H=1, D=7.5;           // screen height = 1 unit, trailer depth
+let W=1.6;                  // updated to screen aspect on resize
+const room=new THREE.Group();scene.add(room);
+const mFloor=new THREE.MeshStandardMaterial({map:floorTex,roughness:.85});
+const mWall=new THREE.MeshStandardMaterial({map:wallTex,roughness:.6,metalness:.25});
+const mRoof=new THREE.MeshStandardMaterial({map:roofTex,roughness:.5,emissive:0x1a1d22});
+const mPost=new THREE.MeshStandardMaterial({color:0xb7bcc2,roughness:.45,metalness:.25});
+const mBox=new THREE.MeshStandardMaterial({map:boxTex,roughness:.9});
+const mPallet=new THREE.MeshStandardMaterial({color:0x8a6a44,roughness:.95});
+const mStrap=new THREE.MeshStandardMaterial({color:0xffa21a,roughness:.7});
+let floor,roof,wl,wr,posts=[],outside,doorL,doorR,lights=[];
+function buildRoom(){
+  room.clear();posts=[];
+  floor=new THREE.Mesh(new THREE.PlaneGeometry(W,D),mFloor);floor.rotation.x=-Math.PI/2;floor.position.set(0,-H/2,-D/2);room.add(floor);
+  roof=new THREE.Mesh(new THREE.PlaneGeometry(W,D),mRoof);roof.rotation.x=Math.PI/2;roof.position.set(0,H/2,-D/2);room.add(roof);
+  wl=new THREE.Mesh(new THREE.PlaneGeometry(D,H),mWall);wl.rotation.y=Math.PI/2;wl.position.set(-W/2,0,-D/2);room.add(wl);
+  wr=new THREE.Mesh(new THREE.PlaneGeometry(D,H),mWall);wr.rotation.y=-Math.PI/2;wr.position.set(W/2,0,-D/2);room.add(wr);
+  for(let z=-.25;z>-D;z-=.42){for(const s of[-1,1]){const p=new THREE.Mesh(new THREE.BoxGeometry(.03,H,.035),mPost);p.position.set(s*(W/2-.015),0,z);room.add(p);}
+    const r=new THREE.Mesh(new THREE.BoxGeometry(W,.03,.05),mPost);r.position.set(0,H/2-.015,z);room.add(r);}
+  // open rear doors: bright dock outside
+  const oc=document.createElement('canvas');oc.width=512;oc.height=320;const g=oc.getContext('2d');
+  const sky=g.createLinearGradient(0,0,0,320);sky.addColorStop(0,'#fff7e6');sky.addColorStop(.55,'#ffd9a0');sky.addColorStop(.56,'#6d6a66');sky.addColorStop(1,'#3a3936');g.fillStyle=sky;g.fillRect(0,0,512,320);
+  g.fillStyle='rgba(40,40,44,.85)';for(let i=0;i<6;i++){g.fillRect(i*95-10,150,60,26);}g.fillStyle='#202022';g.fillRect(0,176,512,6);
+  const ot=new THREE.CanvasTexture(oc);ot.colorSpace=THREE.SRGBColorSpace;
+  outside=new THREE.Mesh(new THREE.PlaneGeometry(W*2.4,H*1.8),new THREE.MeshBasicMaterial({map:ot,fog:false}));outside.position.set(0,.15,-D-1.6);room.add(outside);
+  const mDoor=new THREE.MeshStandardMaterial({color:0xb9bdc2,metalness:.6,roughness:.45});
+  doorL=new THREE.Mesh(new THREE.BoxGeometry(W/2,H,.03),mDoor);doorL.geometry.translate(-W/4,0,0);doorL.position.set(-W/2,0,-D);doorL.rotation.y=-Math.PI*0.62;room.add(doorL);
+  doorR=new THREE.Mesh(new THREE.BoxGeometry(W/2,H,.03),mDoor);doorR.geometry.translate(W/4,0,0);doorR.position.set(W/2,0,-D);doorR.rotation.y=Math.PI*0.62;room.add(doorR);
+  // a lone pallet and a few boxes: the trailer is nearly empty
+  const pal=new THREE.Group();
+  for(let i=0;i<5;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(.38,.018,.06),mPallet);b.position.set(0,.06,-.17+i*.085);pal.add(b);}
+  for(let i=0;i<3;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(.06,.05,.4),mPallet);b.position.set(-.16+i*.16,.025,0);pal.add(b);}
+  pal.position.set(W/2-.28,-H/2,-4.6);pal.rotation.y=.18;room.add(pal);
+  const bx=[[0,.12,.22,.16,.2],[.02,.27,.2,.14,.18]];
+  for(const[x,y,w,h,d] of bx){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mBox);m.position.set(W/2-.28+x,-H/2+y,-4.6);m.rotation.y=.18+x*4;room.add(m);}
+  const box3=new THREE.Mesh(new THREE.BoxGeometry(.2,.14,.17),mBox);box3.position.set(-W/2+.22,-H/2+.07,-2.3);box3.rotation.y=-.4;room.add(box3);
+  // a loose cargo strap hanging from the left wall
+  const pts=[];for(let i=0;i<=24;i++){const t=i/24;pts.push(new THREE.Vector3(-W/2+.02+Math.sin(t*3)*.01,H*.18-t*.62+Math.sin(t*9)*.01,-1.6-t*.12));}
+  const strap=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,.008,6),mStrap);room.add(strap);
+  // ceiling lights
+  lights.forEach(l=>scene.remove(l));lights=[];
+  for(const z of[-1.1,-3.3,-5.6]){const panel=new THREE.Mesh(new THREE.PlaneGeometry(W*.42,.07),new THREE.MeshBasicMaterial({color:0xfff6e0}));panel.rotation.x=Math.PI/2;panel.position.set(0,H/2-.005,z);room.add(panel);
+    const pl=new THREE.PointLight(0xfff1d6,1.35,4.2,1.6);pl.position.set(0,H/2-.08,z);scene.add(pl);lights.push(pl);}
+  const back=new THREE.PointLight(0xffd8a0,4,6,1.4);back.position.set(0,.1,-D+.3);scene.add(back);lights.push(back);
+}
+scene.add(new THREE.AmbientLight(0x404650,.55));
+scene.add(new THREE.HemisphereLight(0xfff0dc,0x201810,.35));
+
+/* ---------- off-axis "window" projection ---------- */
+const head={x:0,y:0,z:1.6}, target={x:0,y:0,z:1.6};
+function project(){
+  const n=0.02,f=60, hz=Math.max(.35,head.z);
+  camera.position.set(head.x,head.y,hz);camera.quaternion.identity();
+  const l=(-W/2-head.x)*n/hz, r=(W/2-head.x)*n/hz, t=(H/2-head.y)*n/hz, b=(-H/2-head.y)*n/hz;
+  camera.projectionMatrix.makePerspective(l,r,t,b,n,f);camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
+}
+function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);W=w/h;buildRoom();}
+addEventListener('resize',resize);resize();
+
+/* ---------- input: mouse / touch / gyro, then camera ---------- */
+let source='pointer';
+addEventListener('pointermove',e=>{if(source!=='pointer')return;target.x=(e.clientX/innerWidth-.5)*-W*.9;target.y=(e.clientY/innerHeight-.5)*.8;});
+function gyro(e){if(source==='face'||e.gamma==null)return;source='gyro';target.x=Math.max(-1,Math.min(1,e.gamma/30))*W*.45;target.y=Math.max(-1,Math.min(1,(e.beta-45)/30))*.4;}
+addEventListener('deviceorientation',gyro);
+
+const btn=document.getElementById('camBtn'),note=document.getElementById('camNote');
+let video,det,busy=false,lastSeen=0;
+btn.addEventListener('click',async()=>{
+  if(typeof DeviceOrientationEvent!=='undefined'&&DeviceOrientationEvent.requestPermission){try{await DeviceOrientationEvent.requestPermission();}catch(e){}}
+  if(source==='face'){stopCam();return;}
+  btn.disabled=true;btn.textContent='Starting camera…';
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:640,height:480},audio:false});
+    video=document.createElement('video');video.playsInline=true;video.muted=true;video.srcObject=stream;await video.play();
+    det=new FaceDetection({locateFile:f=>'assets/vendor/face/'+f});
+    det.setOptions({model:'short',minDetectionConfidence:.5});
+    det.onResults(onFace);await det.initialize();
+    source='face';btn.textContent='Turn off head tracking';note.textContent='Move your head. The trailer moves with you.';
+  }catch(err){note.textContent='Camera not available. Move your mouse or tilt your phone instead.';btn.textContent='Turn on head tracking';}
+  btn.disabled=false;
+});
+function stopCam(){if(video&&video.srcObject)video.srcObject.getTracks().forEach(t=>t.stop());source='pointer';btn.textContent='Turn on head tracking';note.textContent='Uses your camera to follow your head. The video stays on your device.';}
+function onFace(res){busy=false;const d=res.detections&&res.detections[0];if(!d)return;lastSeen=performance.now();
+  const bb=d.boundingBox; // normalised, centre-based
+  const cx=bb.xCenter, cy=bb.yCenter, fw=bb.width;
+  // the webcam is mirrored relative to the viewer; screen height is 1 unit (~20 cm on a laptop)
+  target.x=(cx-.5)*W*1.6;
+  target.y=(.5-cy)*1.2+.08;
+  target.z=Math.max(.45,Math.min(3.2,.32/fw));
+}
+async function track(){if(source==='face'&&det&&video&&!busy&&video.readyState>=2){busy=true;try{await det.send({image:video});}catch(e){busy=false;}}}
+
+/* ---------- loop ---------- */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t0=performance.now();
+function loop(now){
+  track();
+  if(source==='pointer'&&reduce){target.x=0;target.y=0;}
+  const k=source==='face'?.25:.08;
+  head.x+=(target.x-head.x)*k;head.y+=(target.y-head.y)*k;head.z+=(target.z-head.z)*k;
+  const fl=1+Math.sin(now*.013)*.02+(Math.random()<.004?-.5:0);lights[1]&&(lights[1].intensity=1.35*fl);
+  project();renderer.render(scene,camera);requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
