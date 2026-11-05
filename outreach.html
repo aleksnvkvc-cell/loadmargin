@@ -229,7 +229,7 @@ function render(){
       '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[esc(l.state),l.trucks?esc(l.trucks)+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+esc(l.days)+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
-        (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up':'Open email')+'</button>':'')+
+        (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up in Gmail':'Open in Gmail')+'</button>':'')+
         '<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
         '<button class="small ghost" data-a="rep" data-i="'+i+'">Replied</button>'+
         '<button class="small ghost" data-a="stop" data-i="'+i+'">Do not contact</button>'+
@@ -242,7 +242,8 @@ $('list').addEventListener('click',function(e){var b=e.target.closest('button');
   if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
   if(a==='send'){var m2=compose(l,l.status==='sent'?'followup':null);
     if(!st.addr){alert('Add your postal address in step 2 first.');return;}
-    window.location.href='mailto:'+encodeURIComponent(l.email)+'?subject='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
+    var gm='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email)+'&su='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
+    if(!window.open(gm,'_blank')){window.location.href=gm;}
     if(l.status==='sent') l.followed=today(); else {l.status='sent'; l.sentOn=today();} }
   if(a==='rep') l.status='replied';
   if(a==='stop') l.status='stop';
