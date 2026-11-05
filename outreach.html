@@ -57,12 +57,12 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
       <div class="tabs"><button class="on" data-tab="fmcsa">New carriers (FMCSA)</button><button class="ghost" data-tab="csv">Import CSV</button><button class="ghost" data-tab="manual">Add by hand</button></div>
       <div data-pane="fmcsa">
         <div class="row">
-          <div><label>Registered in the last</label><select id="fDays"><option>14</option><option selected>30</option><option>60</option><option>90</option></select></div>
+          <div><label>Authority age</label><select id="fDays"><option value="0-30">0–30 days: brand new, setting up</option><option value="30-90">1–3 months: first loads</option><option value="60-270" selected>2–9 months: safety audit window (hot)</option><option value="270-365">9–12 months: audit is late</option><option value="0-14">Last 14 days</option></select></div>
           <div><label>Trucks (power units)</label><select id="fSize"><option value="1-2">1–2</option><option value="1-5" selected>1–5</option><option value="3-20">3–20</option></select></div>
           <div><label>State (optional)</label><input id="fState" maxlength="2" placeholder="TX"></div>
         </div>
         <p class="note">Public FMCSA Company Census data (data.transportation.gov): active interstate carriers. Only rows with an email address are useful for email; phone-only rows are kept for calls.</p>
-        <button id="fGo">Find new carriers</button> <span id="fMsg" class="note"></span>
+        <button id="fGo">Find carriers</button> <span id="fMsg" class="note"></span>
       </div>
       <div data-pane="csv" class="hide">
         <p class="note">Export from FMCSA, a load board, or any list. Needs columns for name and email; company, state and phone are optional.</p>
@@ -163,10 +163,10 @@ function daysSince(s){if(!s) return null; s=String(s).replace(/\D/g,'').slice(0,
   var d=new Date(s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8)); return Math.max(0,Math.round((Date.now()-d)/864e5));}
 
 $('fGo').addEventListener('click',function(){
-  var days=parseInt($('fDays').value,10), sz=$('fSize').value.split('-'), stt=$('fState').value.trim().toUpperCase();
-  var since=ymd(new Date(Date.now()-days*864e5));
-  var where="add_date >= '"+since+"' AND status_code='A' AND carrier_operation='A'";
-  var url=DATASET+'?$limit=1000&$order=add_date DESC&$where='+encodeURIComponent(where);
+  var rg=$('fDays').value.split('-'), sz=$('fSize').value.split('-'), stt=$('fState').value.trim().toUpperCase();
+  var since=ymd(new Date(Date.now()-(+rg[1])*864e5)), until=ymd(new Date(Date.now()-(+rg[0])*864e5));
+  var where="add_date >= '"+since+"' AND add_date <= '"+until+"' AND status_code='A' AND carrier_operation='A'";
+  var url=DATASET+'?$limit=5000&$order=add_date DESC&$where='+encodeURIComponent(where);
   $('fMsg').textContent='Searching…';
   fetch(url).then(function(r){if(!r.ok) throw new Error('HTTP '+r.status); return r.json();}).then(function(rows){
     var out=[];
@@ -227,7 +227,7 @@ function render(){
       '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[esc(l.state),l.trucks?esc(l.trucks)+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+esc(l.days)+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
-        (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up':'Open email')+'</button>':'')+
+        (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up in Gmail':'Open in Gmail')+'</button>':'')+
         '<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
         '<button class="small ghost" data-a="rep" data-i="'+i+'">Replied</button>'+
         '<button class="small ghost" data-a="stop" data-i="'+i+'">Do not contact</button>'+
@@ -240,7 +240,8 @@ $('list').addEventListener('click',function(e){var b=e.target.closest('button');
   if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
   if(a==='send'){var m2=compose(l,l.status==='sent'?'followup':null);
     if(!st.addr){alert('Add your postal address in step 2 first.');return;}
-    window.location.href='mailto:'+encodeURIComponent(l.email)+'?subject='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
+    var gm='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email)+'&su='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
+    if(!window.open(gm,'_blank')){window.location.href=gm;}
     if(l.status==='sent') l.followed=today(); else {l.status='sent'; l.sentOn=today();} }
   if(a==='rep') l.status='replied';
   if(a==='stop') l.status='stop';
