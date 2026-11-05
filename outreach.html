@@ -93,7 +93,7 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
       <h2 style="margin:0">3. Send, one at a time</h2>
       <div class="stats"><span><b id="sToday">0</b>sent today</span><span><b id="sAll">0</b>sent total</span><span><b id="sRep">0</b>replied</span><span><b id="sLeads">0</b>leads</span></div>
     </div>
-    <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select>
+    <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select> <select id="sortBy" style="width:auto"><option value="">Sort: as added</option><option value="new">Authority: newest first</option><option value="old">Authority: oldest first</option></select>
       <button class="ghost small" id="exp">Export CSV</button><button class="ghost small" id="clr">Clear leads</button></div>
     <div style="overflow-x:auto"><table><thead><tr><th>Lead</th><th>Info</th><th>Status</th><th>Actions</th></tr></thead><tbody id="list"></tbody></table></div>
     <div id="preview" class="hide"><h2 style="margin-top:14px">Preview</h2><pre id="pv"></pre></div>
@@ -220,6 +220,7 @@ function render(){
   var cap=st.cap, left=cap-sentToday();
   $('sToday').textContent=sentToday()+' / '+cap; $('sAll').textContent=st.leads.filter(function(l){return l.sentOn;}).length;
   $('sRep').textContent=st.leads.filter(function(l){return l.status==='replied';}).length; $('sLeads').textContent=st.leads.length;
+  var sb=$('sortBy').value; if(sb){var dv=function(l){var d=parseInt(l.days,10);return isFinite(d)?d:(sb==='new'?1e9:-1);}; list=list.slice().sort(function(a,b){return sb==='new'?dv(a)-dv(b):dv(b)-dv(a);});}
   $('list').innerHTML=list.slice(0,200).map(function(l){var i=st.leads.indexOf(l);
     var tag={new:'',sent:'sent',replied:'replied',stop:'no'}[l.status]||'';
     var canSend=l.email&&l.status!=='stop'&&(left>0);
@@ -234,7 +235,7 @@ function render(){
       '</div></td></tr>';}).join('')||'<tr><td colspan="4" class="note">Nothing here. Find leads above.</td></tr>';
   if(left<=0) $('list').insertAdjacentHTML('afterbegin','<tr><td colspan="4" class="note" style="color:var(--neg)">Daily cap reached. Come back tomorrow.</td></tr>');
 }
-$('view').addEventListener('change',render);
+$('view').addEventListener('change',render);$('sortBy').addEventListener('change',render);
 $('list').addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; var l=st.leads[+b.getAttribute('data-i')]; if(!l) return;
   var a=b.getAttribute('data-a');
   if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
