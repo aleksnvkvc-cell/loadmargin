@@ -250,12 +250,12 @@ occasionally spend. Model the reserve; the invoices are just withdrawals.</div>
 <h2 id="track">Tracking it so the number stays honest</h2>
 <p>Four fields per event, and the number maintains itself:</p>
 <ul>
-  <li><strong>Date and odometer</strong>: lets you compute intervals and per-mile cost properly.</li>
-  <li><strong>Category</strong>: PM, tyres, brakes, aftertreatment, engine, drivetrain, trailer,
+  <li>Date and odometer: lets you compute intervals and per-mile cost properly.</li>
+  <li>Category: PM, tyres, brakes, aftertreatment, engine, drivetrain, trailer,
       roadside. Eight buckets is plenty and it is enough to see where the money goes.</li>
-  <li><strong>Planned or unplanned</strong>: the single most informative field, because the ratio
+  <li>Planned or unplanned: the single most informative field, because the ratio
       between them tells you whether your PM programme is working.</li>
-  <li><strong>Downtime hours</strong>: the cost nobody records and the one that decides buy-versus-keep.</li>
+  <li>Downtime hours: the cost nobody records and the one that decides buy-versus-keep.</li>
 </ul>
 <p>Recompute the twelve-month rolling cost per mile monthly and feed it straight into the cost model.
    When it moves, you find out from your own data rather than from a surprise, and the load
