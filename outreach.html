@@ -105,11 +105,11 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
 "use strict";
 var K='lm_outreach_v1', DATASET='https://data.transportation.gov/resource/az4n-8mr2.json';
 var TPL={
- loadcheck:{name:'Load profit: free calculator',subj:'Pricing loads at $6 diesel, {company}',
+ loadcheck:{name:'Load profit: free calculator',subj:'Pricing loads at $6 diesel',
   body:"Hi {first},\n\nA lot of new carriers book loads that look fine on rate per mile and lose money once the empty miles and fuel are counted. With diesel over $6 that gap got bigger.\n\nI built a free calculator that shows what a load leaves you after fuel, deadhead and your fixed costs. No sign-up:\nhttps://loadmargin.com/load-calculator.html\n\nIf you want me to check a specific load, I do a one-page check for $49. If it doesn't help you decide, you get the money back.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
- compliance:{name:'New authority: $99 checklist',subj:'Your new authority, {company}',
+ compliance:{name:'New authority: $99 checklist',subj:'Your new authority',
   body:"Hi {first},\n\nCongrats on the authority. Sometime in the first 12 months FMCSA will do a new entrant safety audit. The usual problems are paperwork: the driver file, the drug and alcohol program, Clearinghouse queries and records.\n\nThis free check takes about 2 minutes and tells you what's missing and what to fix first:\nhttps://loadmargin.com/audit-check.html\n\nIf you want me to go through it with you, I do a $99 review by email and send back a list in the order to fix it.\n\nAleksandar Novakovic\nLoadMargin, loadmargin.com"},
- followup:{name:'Follow-up (once, after 5+ days)',subj:'Load calculator, {company}',
+ followup:{name:'Follow-up (once, after 5+ days)',subj:'The load calculator again',
   body:"Hi {first},\n\nOne more note and then I'll leave you alone. Here's the free load calculator again, in case it helps with the next load you're quoting:\n\nhttps://loadmargin.com/load-calculator.html\n\nAleksandar"}
 };
 var st=load();
@@ -135,7 +135,7 @@ function compose(l,which){var t=which?{subj:TPL[which].subj,body:(st.tpl[which]&
   if(which&&st.tpl[which]&&st.tpl[which].subj) t.subj=st.tpl[which].subj;
   function f(s){return s.replace(/\{first\}/g,firstName(l)).replace(/\{company\}/g,title(l.company||l.name||'your company')).replace(/\{state\}/g,l.state||'').replace(/\{days\}/g,l.days!=null?l.days:'');}
   var foot="\n\n--\nIf you'd rather not hear from me, just reply \"stop\" and I won't email again.\n"+(st.addr||'[ADD YOUR POSTAL ADDRESS]');
-  return {subj:f(t.subj), body:f(t.body)+foot};}
+  return {subj:f(String(t.subj).replace(/[,:\-\u2013\u2014]?\s*\{company\}/g,'')).trim(), body:f(t.body)+foot};}
 
 /* tabs */
 document.querySelectorAll('[data-tab]').forEach(function(b){b.addEventListener('click',function(){
