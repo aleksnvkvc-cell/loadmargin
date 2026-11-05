@@ -114,7 +114,7 @@ var TPL={
 };
 var st=load();
 function load(){try{var s=JSON.parse(localStorage.getItem(K)||'{}');}catch(e){s={};}
-  s.leads=s.leads||[]; s.tpl=s.tpl||{}; s.addr=s.addr||''; s.cap=s.cap||20; if(s.v!==2){s.cur='loadcheck';s.v=2;} s.cur=s.cur||'loadcheck'; return s;}
+  s.leads=s.leads||[]; s.tpl=s.tpl||{}; s.addr=s.addr||'Republička 2, Smederevo, 11314, Serbia'; s.cap=s.cap||20; if(s.v!==2){s.cur='loadcheck';s.v=2;} s.cur=s.cur||'loadcheck'; return s;}
 function save(){try{localStorage.setItem(K,JSON.stringify(st));}catch(e){}}
 function $(id){return document.getElementById(id);}
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
