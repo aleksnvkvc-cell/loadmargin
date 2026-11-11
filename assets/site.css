@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.css next to it: after editing, run  sh tools/minify.sh  */
 :root{
   --bg:#000000; --bg-2:#0B0B0C; --panel:#121214; --panel-2:#1A1A1D;
   --line:rgba(var(--gold-rgb),.16); --line-soft:rgba(255,255,255,.07);
@@ -1274,3 +1275,42 @@ h3{font-size:1.25rem}
 .art-hero h1{font-size:clamp(2.2rem,4.8vw,3.4rem);max-width:22ch}
 .btn,.asst-hd .t,.pullq,.art-next .t,.prod-title{font-family:var(--body)}
 .btn{font-weight:600}
+
+/* ── Mobile: tap targets of at least 44px and text of at least 12px ── */
+@media (max-width:860px){
+  .brand{min-height:44px}
+  .btn-sm,.nav-tog{min-height:44px}
+  .nav-tog{min-width:44px}
+  .btn-theme{width:44px;height:44px}
+  .f-grid li{margin-bottom:0}
+  .f-grid a,.f-bot a,a.crumb{display:inline-flex;align-items:center;min-height:44px}
+  a.crumb{margin-bottom:.4rem}
+  a.chip{display:inline-flex;align-items:center;min-height:44px}
+  .seg button{min-height:44px}
+  details>summary{min-height:44px;padding-top:.7rem;padding-bottom:.7rem}
+  .eyebrow,
+  .prod-badge,
+  .prod-cat,
+  .prod-price .label,
+  .tier-badge,
+  .kpi .lab,
+  .brk h3,.brk h4,
+  .tag,
+  .plan.best::after,
+  .asst-hd .s,
+  .f-grid h2,.f-grid h4,
+  .legal-body th,
+  .art-body th,
+  .srcbox h3,
+  .art-next .k,
+  .g-card .kicker,.mod .kicker,
+  .g-card .rt,
+  .chip.cat,
+  .art-cmp th,
+  .soon,
+  .hero-kicker,
+  .audit-cta .k,
+  .calc-form .field label,
+  .field label{font-size:.75rem}
+}
+.art-rel{margin-top:1.3rem;color:var(--tx-3);font-size:.92rem;line-height:1.9}

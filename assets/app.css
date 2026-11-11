@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.css next to it: after editing, run  sh tools/minify.sh  */
 /* ══ LoadMargin application shell ══ */
 /* site.css styles the bare `nav`, `section` and `footer` tags for the marketing
    pages. The console reuses that stylesheet for tokens and form controls, so
