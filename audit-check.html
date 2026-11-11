@@ -89,11 +89,12 @@
   .btn{display:inline-block;background:var(--gold);color:#1a1305;border:0;border-radius:9px;padding:.55rem .9rem;font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;text-decoration:none;text-align:center}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--tx)}
   .foot{color:var(--tx3);font-size:.8rem;line-height:1.7;padding:1.5rem 0 3rem;border-top:1px solid var(--line)}
+  .how{max-width:760px;margin:2.2rem 0 0}.how h2{font-size:1.15rem;margin:1.6rem 0 .5rem}.how p,.how li{color:var(--tx2);line-height:1.65}.how ul{padding-left:1.2rem;margin:.4rem 0}.how li{margin:.25rem 0}
   @media(max-width:780px){.layout{grid-template-columns:1fr}.panelScore{position:static;order:-1}}
   @media(max-width:860px){.eyebrow{font-size:.75rem}a.tag,.item .q .g{display:inline-flex;align-items:center;min-height:44px}.item .q .g{padding:0 .35rem}.btn{min-height:44px;display:inline-flex;align-items:center}}
 </style>
-<link rel="stylesheet" href="assets/assistant.css?v=20261111a">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DOT Audit Readiness Check","url":"https://loadmargin.com/audit-check.html","description":"Free self-check for small US carriers: score your new-entrant or safety audit readiness across driver files, drug testing, HOS and records. Nothing uploaded.","applicationCategory":"BusinessApplication","operatingSystem":"Any (runs in the browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://loadmargin.com/#org"}}</script>
+<link rel="stylesheet" href="assets/assistant.min.css?v=20261111b">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"DOT Audit Readiness Check","url":"https://loadmargin.com/audit-check.html","description":"Free self-check for small US carriers: score your new-entrant or safety audit readiness across driver files, drug testing, HOS and records. Nothing uploaded.","isAccessibleForFree":true,"publisher":{"@id":"https://loadmargin.com/#org"},"inLanguage":"en-US","about":{"@type":"Thing","name":"DOT Audit Readiness Check"},"isPartOf":{"@id":"https://loadmargin.com/#site"}}</script>
 </head>
 <body>
 
@@ -133,12 +134,29 @@
         <div class="plan-btns"><button type="button" class="btn ghost" id="planCopy">Copy the plan</button><a class="btn" id="planMail" href="#">Email me this plan for a $99 review &rarr;</a></div>
       </div>
       <div class="cta">
-        <p id="ctaText">Want a second pair of eyes before the auditor's? I check your file against exactly this list.</p>
+        <p id="ctaText">Want someone to check your file before the auditor does? I check it against this same list.</p>
         <a class="btn" href="work.html#tuneup">Compliance tune-up: $199 &rarr;</a>
         <a class="btn ghost" href="work.html#check" style="margin-top:.5rem;display:block">See all services</a>
       </div>
     </aside>
   </div>
+
+  <section class="how">
+    <h2>What the check covers</h2>
+    <p>There are 18 questions in six areas, the same ones a new entrant safety audit goes through:</p>
+    <ul>
+      <li>Driver qualification files: medical card, MVR, employment application, road test or CDL.</li>
+      <li>Drug and alcohol program: consortium enrollment, pre-employment test, Clearinghouse queries.</li>
+      <li>Hours of service: ELD or logs, and the supporting documents behind them.</li>
+      <li>Vehicles: annual inspections, daily inspection reports and maintenance records.</li>
+      <li>Authority and filings: active authority with insurance on file, MCS-150 and IFTA.</li>
+      <li>Records: accident register and your CSA scores.</li>
+    </ul>
+    <h2>How the score works</h2>
+    <p>Each question has a weight from 1 to 3. The items that carry the most risk, like a missing drug and alcohol program, weigh 3. "Yes" counts in full, "Partly" counts half and "No" counts zero. Anything you mark N/A is left out. The score is the points you have, divided by the points you could have, on a scale of 100.</p>
+    <p>85 or more means audit-ready. 60 to 84 means at risk. Under 60 means not ready. A weight-3 item answered "No" goes to the top of the list with a deadline of this week. Weight-2 gaps get 30 days. The rest should be closed before the audit.</p>
+    <p>You can copy the action plan or email it to me. Nothing you enter leaves your browser unless you send it yourself.</p>
+  </section>
 
   <p class="foot">
     This is a self-check for planning, not legal advice or a guarantee of passing. Requirements change and
@@ -270,6 +288,6 @@
   render();
 })();
 </script>
-<script src="assets/assistant.js?v=20261019a" defer></script>
+<script src="assets/assistant.min.js?v=20261111b" defer></script>
 </body>
 </html>

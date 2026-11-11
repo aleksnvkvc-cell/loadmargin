@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.css next to it: after editing, run  sh tools/minify.sh  */
 .asst,.asst-fab,.asst-nudge{--gold:var(--day-fill,#E3B44A);--gold-lt:var(--day-lt,#F5D98B);--gold-dk:var(--day-dk,#A87C22);--green:#34C98A;
   --line-soft:rgba(255,255,255,.07);--disp:'Space Grotesk','Inter',system-ui,sans-serif;font-family:'Inter',system-ui,sans-serif}
 .asst{--line:rgba(255,255,255,.12);--tx:#EEF2FB;--tx-3:#7787AE;color:var(--tx)}

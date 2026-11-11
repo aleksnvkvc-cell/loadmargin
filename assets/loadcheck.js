@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.js next to it: after editing, run  sh tools/minify.sh  */
 /* $49 Load Check: when a visitor clicks a Load Check email button, download the
    load form (Excel) and show a bubble that says what they got and what to do next.
    Static site: nothing is sent from here; the visitor emails the form themselves. */

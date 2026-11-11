@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.css next to it: after editing, run  sh tools/minify.sh  */
 :root{
   --bg:#000000; --bg-2:#0B0B0C; --panel:#121214; --panel-2:#1A1A1D;
   --line:rgba(var(--gold-rgb),.16); --line-soft:rgba(255,255,255,.07);
@@ -1312,3 +1313,4 @@ h3{font-size:1.25rem}
   .calc-form .field label,
   .field label{font-size:.75rem}
 }
+.art-rel{margin-top:1.3rem;color:var(--tx-3);font-size:.92rem;line-height:1.9}

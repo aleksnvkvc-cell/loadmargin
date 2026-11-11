@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.js next to it: after editing, run  sh tools/minify.sh  */
 /**
  * Auto Theme Switcher — system preference + Manual Toggle
  * Prati svetlu/tamnu temu operativnog sistema (isto kao početna strana),

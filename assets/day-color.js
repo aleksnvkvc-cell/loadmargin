@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.js next to it: after editing, run  sh tools/minify.sh  */
 /**
  * Boja dana — akcentna boja po Jyotish (vedskom) pravilu o planeti dana.
  * Jedan izvor za ceo sajt: index.html (--accent/--cta) i site.css (--gold*).

@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.js next to it: after editing, run  sh tools/minify.sh  */
 /* LoadMargin assistant: floats on every page. Scripted answers, no server. */
 (function(){
   if(document.getElementById('asstFab')) { return; }

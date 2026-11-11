@@ -1,3 +1,4 @@
+/* SOURCE FILE. Pages load the .min.js next to it: after editing, run  sh tools/minify.sh  */
 /* ── LoadMargin calculators ──────────────────────────────────────────
    Plain ES5-compatible arithmetic. No storage, no network, no libraries.
    Everything below runs on the visitor's own device.                    */

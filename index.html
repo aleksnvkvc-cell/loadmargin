@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://loadmargin.com/images/og-cover.jpg">
 <link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts.css?v=20261020a">
+<link rel="stylesheet" href="assets/fonts.min.css?v=20261111b">
 <link rel="preload" as="image" href="images/hero-port-1600.webp" imagesrcset="images/hero-port-800.webp 800w, images/hero-port-1600.webp 1600w" imagesizes="100vw" type="image/webp" fetchpriority="high">
 <script>
 (function(){var K='theme-preference',mq=matchMedia('(prefers-color-scheme: light)'),h=document.documentElement;
@@ -45,7 +45,7 @@ mq.addEventListener&&mq.addEventListener('change',function(){if(!rd()){ap(sys())
 window.themeManager={set:function(t){wr(t);ap(t)},get:function(){return rd()||sys()},auto:function(){wr(null);ap(sys())}};
 })();
 </script>
-<script src="assets/day-color.js?v=20261030a"></script>
+<script src="assets/day-color.min.js?v=20261111b"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://loadmargin.com/#site","name":"LoadMargin","url":"https://loadmargin.com/","inLanguage":"en-US","publisher":{"@id":"https://loadmargin.com/#org"}},{"@type":"Organization","@id":"https://loadmargin.com/#org","name":"LoadMargin","url":"https://loadmargin.com/","logo":"https://loadmargin.com/images/logo-full.png","image":"https://loadmargin.com/images/og-cover.jpg","description":"Load profitability checks and DOT compliance reviews for U.S. owner-operators and small fleets, done by one person and arranged by email.","email":"aleksnvkvc@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Smederevo","addressCountry":"RS"},"areaServed":{"@type":"Country","name":"United States"},"founder":{"@id":"https://loadmargin.com/#founder"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"LoadMargin services","itemListElement":[{"@type":"Offer","price":"49","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Quick Load Check","description":"One load checked against your costs: trip cost, break-even, target rate and a take, counter or pass answer, as a one-page PDF.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","availability":"https://schema.org/InStock"},{"@type":"Offer","price":"249","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Full Cost & Lane Audit","description":"Your real cost per mile from your monthly costs, then up to 3 loads or lanes priced against it.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","availability":"https://schema.org/InStock"},{"@type":"Offer","price":"99","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Authority Checklist Review","description":"Review of driver file, Clearinghouse, drug and alcohol program, IFTA, UCR and MCS-150 with a prioritized list of what is missing.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","availability":"https://schema.org/InStock"},{"@type":"Offer","price":"349","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"New Authority Setup","description":"First-year compliance setup done together with a new owner-operator.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","availability":"https://schema.org/InStock"},{"@type":"Offer","price":"199","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Compliance Tune-up","description":"Files checked against the common safety audit failures, with a list of what to fix first.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","availability":"https://schema.org/InStock"},{"@type":"Offer","price":"99","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Load Check Plan","description":"Up to 4 Load Checks a month and cost per mile updated monthly.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}},"availability":"https://schema.org/InStock"},{"@type":"Offer","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Ongoing Support","description":"Loads checked plus IFTA and the annual Clearinghouse query handled, priced by fleet size from $249 to $799 a month.","areaServed":{"@type":"Country","name":"United States"}},"url":"https://loadmargin.com/work.html","priceSpecification":{"@type":"UnitPriceSpecification","minPrice":"249","maxPrice":"799","priceCurrency":"USD","unitCode":"MON"},"price":"249","availability":"https://schema.org/InStock"}]},"sameAs":["https://www.linkedin.com/in/aleksandar-novakovi%C4%87-8a585b3a5/"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"aleksnvkvc@gmail.com","availableLanguage":"English","areaServed":"US"}},{"@type":"Person","@id":"https://loadmargin.com/#founder","name":"Aleksandar Novaković","jobTitle":"Founder","image":"https://loadmargin.com/images/aleksandar.webp","worksFor":{"@id":"https://loadmargin.com/#org"},"email":"aleksnvkvc@gmail.com","sameAs":["https://www.linkedin.com/in/aleksandar-novakovi%C4%87-8a585b3a5/"]}]}</script>
 <style>
 :root{
@@ -233,8 +233,8 @@ html.lm-rv .rv:not(.in){opacity:0;transform:translateY(20px)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}html.lm-rv .rv{opacity:1!important;transform:none!important}}
 </style>
 <style>#asst,#asstFab,#asstNudge{visibility:hidden}</style>
-<link rel="stylesheet" href="assets/assistant.css?v=20261111a" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="assets/assistant.css?v=20261111a"></noscript>
+<link rel="stylesheet" href="assets/assistant.min.css?v=20261111b" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="assets/assistant.min.css?v=20261111b"></noscript>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -405,7 +405,7 @@ html.lm-rv .rv:not(.in){opacity:0;transform:translateY(20px)}
   window.addEventListener('beforeprint',function(){els.forEach(function(el){el.classList.add('in');});});
 })();
 </script>
-<script src="assets/assistant.js?v=20261010b" defer></script>
-<script src="assets/loadcheck.js?v=20261030a" defer></script>
+<script src="assets/assistant.min.js?v=20261111b" defer></script>
+<script src="assets/loadcheck.min.js?v=20261111b" defer></script>
 </body>
 </html>

@@ -1,0 +1,110 @@
+# LoadMargin
+
+> Load profitability checks and DOT compliance reviews for U.S. owner-operators and small fleets. One person does the work and everything is arranged by email. The calculators and guides on the site are free and need no account.
+
+LoadMargin is run by Aleksandar Novaković from Smederevo, Serbia. Payment is by PayPal invoice. Calculators run in the browser and nothing a visitor enters is uploaded.
+
+## Services
+
+- [Services and prices](https://loadmargin.com/work.html): Quick Load Check $49 (one load checked against the carrier's own costs, one-page PDF, refund available), Full Cost & Lane Audit $249, Authority Checklist Review $99, New Authority Setup $349, Compliance Tune-up $199, Load Check Plan $99 a month, Ongoing Support $249 to $799 a month.
+- [Sample Quick Load Check report](https://loadmargin.com/sample-load-check-report.pdf): what the one-page report looks like.
+- [How it works](https://loadmargin.com/how-it-works.html): The exact formula behind every LoadMargin verdict and what each of the eight free console modules does.
+
+## Free calculators
+
+- [Load calculator](https://loadmargin.com/load-calculator.html): Free trucking load calculator: enter rate, loaded and deadhead miles, diesel, driver pay and fixed costs to see profit, margin and rate per mile. No sign-up.
+- [DOT audit readiness check](https://loadmargin.com/audit-check.html): Free self-check for small US carriers: score your new-entrant or safety audit readiness across driver files, drug testing, HOS and records. Nothing uploaded.
+- [Trucking cost per mile calculator](https://loadmargin.com/calc-cost-per-mile.html): Free trucking cost per mile calculator: fixed costs, fuel at today's diesel, driver pay and maintenance in one number, plus your break-even and target rate.
+- [Deadhead and backhaul calculator](https://loadmargin.com/calc-deadhead.html): Free deadhead calculator for truckers: what empty miles cost, the real rate per total mile, and whether a cheap backhaul beats driving home empty.
+- [Detention pay calculator](https://loadmargin.com/calc-detention.html): Free detention calculator: what an hour waiting at a dock really costs a truck, how much detention pay covers, and how to price slow facilities.
+- [HOS and ETA calculator](https://loadmargin.com/calc-eta.html): Free hours-of-service calculator: arrival time, the 30-minute break, the 11-hour and 14-hour limits, and the farthest you can legally drive now.
+- [Freight factoring fee calculator](https://loadmargin.com/calc-factoring.html): Free freight factoring calculator: monthly cost, effective rate and annual percentage rate of factoring fees, per-invoice charges and monthly minimums.
+- [Truck fuel cost calculator](https://loadmargin.com/calc-fuel-cost.html): Free truck fuel cost calculator: gallons and diesel cost for a trip, including empty miles and idling, fuel cost per mile, and what $0.50 more diesel does.
+- [Trucking fuel surcharge calculator](https://loadmargin.com/calc-fuel-surcharge.html): Free trucking fuel surcharge calculator: surcharge per mile from the DOE diesel price, base and peg MPG, and how much of your real fuel it covers.
+- [IFTA calculator](https://loadmargin.com/calc-ifta.html): Free IFTA calculator: estimate your quarterly fuel tax by state from miles and gallons, with fleet MPG, taxable gallons and net tax due or credit.
+- [Truck maintenance cost per mile calculator](https://loadmargin.com/calc-maintenance.html): Free truck maintenance cost per mile calculator: turn 12 months of repairs and tires into a per-mile reserve and a monthly amount to set aside.
+- [Truck driver per diem calculator](https://loadmargin.com/calc-per-diem.html): Free truck driver per diem calculator: days away at the IRS $80 rate, the 80% deductible share, and roughly how much tax it saves an owner-operator.
+- [Owner-operator take-home pay calculator](https://loadmargin.com/calc-take-home.html): Free owner-operator take-home pay calculator: yearly revenue minus fuel, maintenance, truck payments, insurance and tax, plus your break-even rate.
+- [Trip safety check](https://loadmargin.com/calc-trip-safety.html): Free pre-trip safety check for truckers: hours of service, sleep, night driving, weather and route risks, with red and green flags before you take a load.
+- [All calculators](https://loadmargin.com/calculators.html): Free trucking calculators for owner-operators: deadhead, fuel surcharge, detention, HOS, IFTA, factoring, maintenance and take-home pay. No sign-up.
+
+## Guides
+
+- [Form 2290, and the stamp you cannot register without](https://loadmargin.com/guide-2290-hvut.html): The federal road tax every 55,000-lb-plus truck pays: $550 a year at 80,000 lb, due 31 August, and the stamped Schedule 1 you cannot register a plate without.
+- [Accessorials, the charges you keep forgetting to bill](https://loadmargin.com/guide-accessorials.html): Detention is only the start: layover, TONU, lumper, extra stops, driver assist, redelivery and more.
+- [After a crash, the sequence that protects you](https://loadmargin.com/guide-accident-procedures.html): The minutes after a truck crash decide the claim: the safety-first sequence, the photos and notes that protect you, the required drug test and the reporting.
+- [Trucking associations, and whether the dues pay](https://loadmargin.com/guide-associations.html): What OOIDA and state trucking associations offer an owner-operator: advocacy, education, benefits and discounts, and when a membership actually pays.
+- [What authority really costs](https://loadmargin.com/guide-authority.html): The itemised cost of US operating authority, why insurance is 70-80% of the bill, three realistic first-year totals and the working capital nobody budgets.
+- [Vetting brokers, and the fifteen minutes that pays for itself](https://loadmargin.com/guide-broker-fraud.html): Double brokering and identity theft cost carriers up to $1bn a year. A fifteen-minute broker vetting routine, reading SAFER, and what to do if it goes wrong.
+- [Getting set up with brokers, the first time and fast](https://loadmargin.com/guide-broker-setup.html): What a freight broker needs before handing you a load: the carrier packet, authority and insurance filings, and the setup that makes you easy to book.
+- [Banking and books, the habit that pays for itself](https://loadmargin.com/guide-business-banking.html): The separate account, clean books and receipt habits that keep your trucking LLC protection real, your taxes lower and your cost per mile honest.
+- [Business credit, and why year two is cheaper than year one](https://loadmargin.com/guide-business-credit.html): Why a new carrier gets financed like a risk, how to build business credit of its own, and the small steps that mean better truck rates and lower deposits.
+- [How to structure a carrier, without the myths](https://loadmargin.com/guide-business-structure.html): Why almost every carrier runs an LLC, what it does and does not protect, when the S-corp election saves self-employment tax, and the EIN and banking.
+- [Buying a truck without buying a problem](https://loadmargin.com/guide-buying-a-truck.html): New vs used semi trucks, down payments and rates for a new authority, the pre-purchase inspection, and why the cheapest truck is often the costliest to own.
+- [Cargo claims, and the two minutes at pickup](https://loadmargin.com/guide-cargo-claims.html): How cargo claims work: what the claimant must prove, the five carrier defences, the deadlines, released value, and how to document a pickup to stop a claim.
+- [Cargo theft, the load that vanishes without a break-in](https://loadmargin.com/guide-cargo-theft.html): Strategic cargo theft and fictitious pickups: how loads get stolen without a break-in, which freight thieves target, and the habits that protect your authority.
+- [Choosing an ELD you will not regret](https://loadmargin.com/guide-choosing-eld.html): How to choose an ELD: the FMCSA registration and delisting risk, contract traps, the data transfer methods inspectors ask for, and features worth paying for.
+- [The Clearinghouse, and the query due every January](https://loadmargin.com/guide-clearinghouse.html): The FMCSA Drug & Alcohol Clearinghouse for owner-operators: the annual query due 5 January, Clearinghouse II CDL downgrades and the return-to-duty process.
+- [The audits that come after the first one](https://loadmargin.com/guide-compliance-review.html): What triggers an FMCSA compliance review or focused investigation after your first 18 months, what a safety rating means, and how to stay audit-ready.
+- [How to calculate your true cost per mile](https://loadmargin.com/guide-cost-per-mile.html): The step-by-step method for working out what a mile costs your truck, why most carriers are 15-25 cents wrong, and how to use the number on a real load.
+- [CSA scores, and what they really cost](https://loadmargin.com/guide-csa.html): A CSA score is a percentile, not a grade. The seven BASICs, intervention thresholds, severity and time weighting, and what crossing one costs in insurance.
+- [DataQs, and getting a wrong violation off your record](https://loadmargin.com/guide-dataqs.html): A wrong roadside violation stays on your CSA and your insurance for two years unless you challenge it.
+- [The real cost of deadhead miles](https://loadmargin.com/guide-deadhead.html): Why deadhead miles are the most misread number in freight, what an empty mile really costs, and how to price a backhaul so a cheap return is judged right.
+- [The emissions system, and the repair that ambushes owners](https://loadmargin.com/guide-def-dpf.html): How DPF, regen, DEF and SCR keep a modern diesel legal, how they fail, what repairs cost, and why a neglected emissions system is a five-figure surprise.
+- [Depreciation, and the deduction that can backfire](https://loadmargin.com/guide-depreciation.html): How truck depreciation works for owner-operators: Section 179, bonus and regular depreciation, why the biggest deduction is not always best, and what to ask.
+- [Detention, and the hour you cannot bill for](https://loadmargin.com/guide-detention.html): Detention pay covers about a quarter of what a detained hour costs. The full arithmetic, accessorials carriers leave unbilled, and how to price dwell risk.
+- [A dispatcher, or do it yourself?](https://loadmargin.com/guide-dispatcher.html): What a truck dispatcher does, what the 5-10% fee costs per mile, the case for and against, and how to spot one who earns the cut versus one who books cheap.
+- [The DOT physical, and the card you cannot drive without](https://loadmargin.com/guide-dot-physical.html): The DOT physical: what the exam checks, conditions that shorten or threaten your medical card, how it ties to your CDL, and the lapse that sidelines you.
+- [Driver pay, and who carries the bad day](https://loadmargin.com/guide-driver-pay.html): Truck driver pay models compared: per mile, percentage, hourly and salary, what each does to cost per mile, and the employer burden that turns $0.62 into $0.85.
+- [The drug and alcohol program, the part behind the database](https://loadmargin.com/guide-drug-alcohol-program.html): The DOT drug and alcohol program every carrier must run: the consortium, six test types, written policy, supervisor training and the records to keep.
+- [ELD rules, and the exemptions people get wrong](https://loadmargin.com/guide-eld.html): Who must run an ELD and who is exempt: the 150 air-mile short-haul test, the non-CDL 100-mile rule, eight days in thirty, and the pre-2000 engine exemption.
+- [Estimated taxes, the bill that comes four times a year](https://loadmargin.com/guide-estimated-taxes.html): Quarterly estimated taxes for owner-operators: the IRS due dates, how to estimate, the safe-harbor rule that avoids penalties, and a separate tax account.
+- [Factoring, and the price of forty days](https://loadmargin.com/guide-factoring.html): What freight factoring really costs once annualised, why a 1.5% offer can cost more than 3%, what non-recourse covers, and the question that decides it.
+- [Buying fuel, net of tax](https://loadmargin.com/guide-fuel-buying.html): How to buy diesel cheaper: compare fuel net of state tax under IFTA, retail-minus vs cost-plus fuel cards, the break-even detour formula and idling cost.
+- [Fuel cards, and the discount that is not always a discount](https://loadmargin.com/guide-fuel-cards.html): What a trucking fuel card really saves: network discounts, the retail-minus vs cost-plus trap, fees that eat the discount, and how to compare cards fairly.
+- [Fuel surcharges, and the number nobody negotiates](https://loadmargin.com/guide-fuel-surcharge.html): How a fuel surcharge is calculated, what the DOE weekly diesel index measures, how the peg mpg moves thousands of dollars, and why it never covers all fuel.
+- [Getting your authority, step by step](https://loadmargin.com/guide-get-authority.html): USDOT and operating authority, BOC-3, insurance filings, UCR and 2290: the filings in order, plus the 2026 registration changes that are still settling.
+- [Hazmat, the premium and what it asks in return](https://loadmargin.com/guide-hazmat.html): Is hauling hazmat worth it? The endorsement and TSA check, placards and shipping papers, the security plan, and the higher stakes behind the higher rate.
+- [Health insurance, the benefit nobody hands you now](https://loadmargin.com/guide-health-insurance.html): Health insurance for owner-operators: why it belongs in your cost per mile, the routes to coverage when self-employed, and the deduction worth asking about.
+- [The second truck is a different business](https://loadmargin.com/guide-hiring-first-driver.html): Hiring your first truck driver: the driver qualification file, payroll and pay model, insurance and CSA impact, and why truck two is a different business.
+- [Hours of service, in plain English](https://loadmargin.com/guide-hos.html): The four HOS clocks explained: the 11-hour driving limit, 14-hour window, 30-minute break and 70-hour cycle, and why an illegal load is never a profitable one.
+- [Hotshot trucking, and whether the math works](https://loadmargin.com/guide-hotshot.html): Hotshot trucking with a one-ton and a gooseneck: lower entry cost, lower rates, the payload ceiling, and whether it nets more than a used semi.
+- [IFTA, without the folklore](https://loadmargin.com/guide-ifta.html): IFTA explained: the three-step calculation, a fully worked quarter, taxable versus total miles, the records an auditor asks for, and the cost of a bad audit.
+- [Insurance, and the year before the quote](https://loadmargin.com/guide-insurance.html): Commercial truck insurance explained: each coverage, 2026 premium ranges, what moves a premium, why a lapse hurts more than a claim, and how to lower it.
+- [IRP, the plate that bills you by where you drive](https://loadmargin.com/guide-irp-plates.html): IRP apportioned plates: how the registration fee is split across the states you run, estimated first-year vs actual renewal, and the mileage records you need.
+- [Lease-purchase, and the nine clauses that decide it](https://loadmargin.com/guide-lease-purchase.html): A lease-purchase can be a real route to ownership or a treadmill, and the difference is about nine clauses.
+- [Finding loads, without living on the board](https://loadmargin.com/guide-load-boards.html): How freight reaches an owner-operator: load boards, broker relationships and shipper-direct, what each costs, and why the cheapest-looking load rarely pays.
+- [Load securement, where the rate premium is earned](https://loadmargin.com/guide-load-securement.html): Cargo securement rules: working load limit math for straps and chains, the aggregate rule, the required en-route checks, and why it is a life-safety issue.
+- [Maintenance is a reserve, not an invoice](https://loadmargin.com/guide-maintenance.html): Truck maintenance cost per mile: a twelve-month rolling budget, what big repairs really cost, why a $2,400 breakdown costs $5,295, and how truck age moves it.
+- [The MCS-150, the update that keeps you legal](https://loadmargin.com/guide-mcs150.html): The MCS-150 biennial update that keeps your USDOT number active: the schedule set by your DOT digits, deactivation and fines if missed, and your UCR bracket.
+- [Negotiating with numbers](https://loadmargin.com/guide-negotiation.html): How to negotiate freight rates: your walk-away number, why target rate is a division, what to say and never say, and when a cheap load is the right call.
+- [The new entrant audit, and the empty folder](https://loadmargin.com/guide-new-entrant-audit.html): How to pass the FMCSA new entrant safety audit: the sixteen automatic failures, the four files the auditor asks for, deadlines, and a ninety-day plan.
+- [Four ways to run the same truck](https://loadmargin.com/guide-operating-models.html): Solo vs team, power-only, drop-and-hook, regional vs OTR vs local: four ways to run a truck and what each does to miles, home time and cost per mile.
+- [Owner-operator or company driver, on the real numbers](https://loadmargin.com/guide-owner-vs-company.html): The decision that reshapes your income and your risk: higher gross against real costs and no benefits, freedom against responsibility.
+- [Preventive maintenance on a schedule](https://loadmargin.com/guide-pm-schedule.html): A truck preventive maintenance schedule: daily, weekly and mileage-based checks, the annual DOT inspection, and why the pre-trip is the cheapest repair.
+- [Quick pay vs factoring, getting paid before day 30](https://loadmargin.com/guide-quick-pay.html): Broker quick pay vs factoring: what each really costs, when each makes sense, and why the cheapest way to get paid faster depends on your cash flow.
+- [The rate confirmation, line by line](https://loadmargin.com/guide-rate-confirmation.html): The rate confirmation is the contract for the load: what every line means, clauses that move risk onto you, and the check that prevents payment disputes.
+- [Retirement, the plan nobody sets up for you now](https://loadmargin.com/guide-retirement.html): Retirement for owner-operators with no 401(k) match: SEP-IRA, Solo 401(k) and IRA options for self-employed drivers, and why the truck is not a plan.
+- [The roadside inspection, and what it costs later](https://loadmargin.com/guide-roadside-inspection.html): CVSA roadside inspection levels, what an officer checks, the out-of-service items that strand you, and how inspections follow you into CSA and insurance.
+- [The freight calendar, and planning around it](https://loadmargin.com/guide-seasonality.html): Why freight has a calendar: the slow first quarter, produce season and peak shipping, and how to plan cash, maintenance and time off around it.
+- [Spot vs contract, the two markets you sell into](https://loadmargin.com/guide-spot-vs-contract.html): Spot vs contract freight: how the two markets' rates move against each other and how a small carrier balances spot freedom with contract stability.
+- [Tax, and the money that was never yours](https://loadmargin.com/guide-taxes.html): Owner-operator taxes: 15.3% self-employment tax, quarterly estimates and safe harbor, the per diem drivers underclaim, deductions, and when an S-corp pays.
+- [Tires, in cents per mile](https://loadmargin.com/guide-tires.html): Truck tire costs in cents per mile: why cheap tires are often expensive, the pressure and alignment habits that add miles, and when retreads make sense.
+- [Dry van, reefer or flatbed: choosing on the real numbers](https://loadmargin.com/guide-trailer-types.html): Dry van vs reefer vs flatbed compared on what decides income: rate, cost, skill, claim risk and how easy the freight is to find.
+- [Trip planning, where miles are won before you drive them](https://loadmargin.com/guide-trip-planning.html): Truck trip planning: fuel stops net of tax, parking before you run out of hours, appointment math on the 14-hour clock, and a trip that fits HOS rules.
+- [UCR, the $46 filing that stops you at the scale](https://loadmargin.com/guide-ucr.html): The annual interstate fee almost nobody budgets: $46 for an owner-operator, due by 31 December, and a roadside violation if you skip it.
+- [Weigh stations, and the bypass that saves you time](https://loadmargin.com/guide-weigh-stations.html): What happens at a weigh station, when you get pulled in for inspection, how bypass services work and whether they pay, and why a clean truck wants the scale.
+- [Weight, axles and the ninety-second fix](https://loadmargin.com/guide-weight.html): Truck weight limits: the three federal limits, the bridge formula, how far to slide the tandems, fuel weight, and what an overweight ticket really costs.
+- [Winter, and the trip that should not have been made](https://loadmargin.com/guide-winter-operations.html): Winter trucking: chain laws and when they apply, fuel gelling and winterised diesel, the cold-weather pre-trip, and when to stop instead of pushing on.
+
+## Reference
+
+- [All guides](https://loadmargin.com/guides.html): index of every guide by topic.
+- [Glossary](https://loadmargin.com/glossary.html): 36 freight and trucking terms defined without jargon: deadhead, detention, cost per mile, truck-day, all-in rate, hours of service and more.
+- [Freight news](https://loadmargin.com/news.html): The freight industry sources worth keeping an eye on: regulation, rates, fuel and safety.
+
+## Optional
+
+- [About](https://loadmargin.com/about.html): who runs LoadMargin and how the numbers are calculated.
+- [Support](https://loadmargin.com/support.html): contact and help.
+- [Refunds](https://loadmargin.com/refunds.html), [Terms](https://loadmargin.com/terms.html), [Privacy](https://loadmargin.com/privacy.html), [Legal](https://loadmargin.com/legal.html)
