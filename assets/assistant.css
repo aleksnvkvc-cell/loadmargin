@@ -119,3 +119,6 @@ html[data-theme="light"] .asst .msg.bot{background:rgba(15,23,42,.05)}
 html[data-theme="light"] .asst-in input{background:#f8f9fb}
 /* light theme: accent as text uses the darker day tone (assets/day-color.js) */
 html[data-theme="light"] .asst .chip,html[data-theme="light"] .asst-hd .x:hover,html[data-theme="light"] .asst-nudge p b{color:var(--day-txl,#8C640B)}
+
+/* shown once this stylesheet has loaded (the homepage loads it without blocking render) */
+#asst,#asstFab,#asstNudge{visibility:visible}
