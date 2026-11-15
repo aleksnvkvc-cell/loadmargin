@@ -1,0 +1,7 @@
+id,company,contact,email,type,lane,source,status,template,last_subject,last_contacted,touches,next_follow_up,notes
+,Example Hauling LLC,Maria Lopez,maria@example.com,carrier,Dallas TX to Atlanta GA,FMCSA new authority list,new,carrier_authority,,,,,Fictional sample row
+,Sample Freight Inc,JOHN SMITH,dispatch@example.net,carrier,,Trucker forum post about deadhead,new,,,,,,Fictional sample row
+,Demo Logistics,Ana Petrovic,ana@example.org,broker,Midwest dry van,Load board listing,new,,,,,,Fictional sample row
+,Test Carriers LLC,,ops@example.com,carrier,Reefer out of California,FMCSA census,sent,carrier_cpm,Quick question,2026-11-01,1,2026-11-06,Fictional sample row
+,Stopped Example Co,Lee Kim,lee@example.com,carrier,,Referral,new,,,,,,On the do-not-contact list in the test
+,Phone Only Trucking,Sam Doe,,carrier,,FMCSA census,new,,,,,,No email: call instead
