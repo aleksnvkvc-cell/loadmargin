@@ -38,3 +38,11 @@ gumroad_ready/
 # Temporary
 *.tmp
 temp/
+
+# Outreach lead data never goes in this public repo (keep it in /mnt/project-files/outreach/)
+__pycache__/
+tools/outreach/*.csv
+!tools/outreach/sample-prospects.csv
+tools/outreach/outreach.ini
+tools/outreach/do-not-contact.txt
+tools/outreach/drafts/
