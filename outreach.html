@@ -39,12 +39,12 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
 <body>
 <div class="wrap">
   <h1>Outreach desk</h1>
-  <p class="sub">Private page, not linked anywhere. It finds leads and writes the emails; you read each one and press send. Everything you mark is saved only in this browser.</p>
+  <p class="sub">Unlisted workspace (not access-controlled). It finds leads and writes the emails; you read each one and press send. Everything you mark is saved only in this browser.</p>
 
   <div class="card warn" style="margin-bottom:14px">
     <b>Rules that keep your accounts alive</b>
     <ul class="note" style="margin:6px 0 0 18px;padding:0">
-      <li>Max <b id="capTxt">20</b> cold emails a day from Gmail. More gets you flagged as spam.</li>
+      <li>Workspace limit: <b id="capTxt">20</b> confirmed outreach emails per day, including follow-ups. This is not a deliverability guarantee.</li>
       <li>Every email has an opt-out line and your postal address (U.S. CAN-SPAM law). Fill in the address below once.</li>
       <li>No LinkedIn or Facebook bots: automation there gets accounts banned. This tool only prepares messages for those.</li>
       <li>Anyone who says "stop": mark them <i>Do not contact</i>. They never show again.</li>
@@ -53,7 +53,7 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
 
   <div class="grid two">
     <div class="card">
-      <h2>1. Find leads</h2>
+      <h2>1. Find leads</h2><p class="note">Fit score ranks leads by available contact, DOT record, fleet size, age and research notes. It is a heuristic, not an AI prediction.</p>
       <div class="tabs"><button class="on" data-tab="fmcsa">New carriers (FMCSA)</button><button class="ghost" data-tab="csv">Import CSV</button><button class="ghost" data-tab="manual">Add by hand</button></div>
       <div data-pane="fmcsa">
         <div class="row">
@@ -93,7 +93,7 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
       <h2 style="margin:0">3. Send, one at a time</h2>
       <div class="stats"><span><b id="sToday">0</b>sent today</span><span><b id="sAll">0</b>sent total</span><span><b id="sRep">0</b>replied</span><span><b id="sLeads">0</b>leads</span></div>
     </div>
-    <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select> <select id="sortBy" style="width:auto"><option value="">Sort: as added</option><option value="new">Authority: newest first</option><option value="old">Authority: oldest first</option></select>
+    <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select> <select id="sortBy" style="width:auto"><option value="score">Sort: best fit first</option><option value="">Sort: as added</option><option value="new">Authority: newest first</option><option value="old">Authority: oldest first</option></select>
       <button class="ghost small" id="exp">Export CSV</button><button class="ghost small" id="clr">Clear leads</button></div>
     <div style="overflow-x:auto"><table><thead><tr><th>Lead</th><th>Info</th><th>Status</th><th>Actions</th></tr></thead><tbody id="list"></tbody></table></div>
     <div id="preview" class="hide"><h2 style="margin-top:14px">Preview</h2><pre id="pv"></pre></div>
@@ -172,7 +172,7 @@ $('fGo').addEventListener('click',function(){
     var out=[];
     rows.forEach(function(r){
       var pu=parseInt(pick(r,['power_units','truck_units']),10)||0; if(pu<+sz[0]||pu>+sz[1]) return;
-      var state=pick(r,['phy_state','phy_st','mailing_state','mail_state']).toUpperCase(); if(stt&&state&&state!==stt) return;
+      var state=pick(r,['phy_state','phy_st','mailing_state','mail_state']).toUpperCase(); if(stt&&state!==stt) return;
       var email=pick(r,['email_address','email','emailaddress']);
       out.push({dot:pick(r,['dot_number']), company:pick(r,['legal_name','dba_name']), name:pick(r,['company_officer_1'])||'',
         email:/@/.test(email)?email.toLowerCase():'', phone:pick(r,['cell_phone','phone']), state:state, trucks:pu, days:daysSince(pick(r,['add_date']))});
@@ -207,7 +207,7 @@ $('mAdd').addEventListener('click',function(){var e=$('mEmail').value.trim();
   ['mName','mCo','mEmail','mSrc'].forEach(function(id){$(id).value='';});});
 
 /* list */
-function sentToday(){return st.leads.filter(function(l){return l.sentOn===today();}).length;}
+function fit(l){return (l.email?30:0)+(l.dot?20:0)+(l.trucks>=1&&l.trucks<=5?20:0)+(l.days!=null&&l.days>=30&&l.days<=270?20:0)+(l.note?10:0);} function sentToday(){return st.leads.reduce(function(n,l){return n+Number(l.sentOn===today())+Number(l.followed===today());},0);} function eligible(l){return l.status==="new"||(l.status==="sent"&&!l.followed&&l.sentOn&&(Date.now()-new Date(l.sentOn))/864e5>=5);}
 function render(){
   var v=$('view').value, now=Date.now();
   var list=st.leads.filter(function(l){
@@ -220,16 +220,16 @@ function render(){
   var cap=st.cap, left=cap-sentToday();
   $('sToday').textContent=sentToday()+' / '+cap; $('sAll').textContent=st.leads.filter(function(l){return l.sentOn;}).length;
   $('sRep').textContent=st.leads.filter(function(l){return l.status==='replied';}).length; $('sLeads').textContent=st.leads.length;
-  var sb=$('sortBy').value; if(sb){var dv=function(l){var d=parseInt(l.days,10);return isFinite(d)?d:(sb==='new'?1e9:-1);}; list=list.slice().sort(function(a,b){return sb==='new'?dv(a)-dv(b):dv(b)-dv(a);});}
+  var sb=$('sortBy').value; if(sb==='score'){list=list.slice().sort(function(a,b){return fit(b)-fit(a);});}else if(sb){var dv=function(l){var d=parseInt(l.days,10);return isFinite(d)?d:(sb==='new'?1e9:-1);}; list=list.slice().sort(function(a,b){return sb==='new'?dv(a)-dv(b):dv(b)-dv(a);});}
   $('list').innerHTML=list.slice(0,200).map(function(l){var i=st.leads.indexOf(l);
     var tag={new:'',sent:'sent',replied:'replied',stop:'no'}[l.status]||'';
-    var canSend=l.email&&l.status!=='stop'&&(left>0);
-    return '<tr><td><b>'+esc(title(l.company)||l.name||'—')+'</b><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
+    var canSend=l.email&&eligible(l)&&(left>0);
+    return '<tr><td><b>'+esc(title(l.company)||l.name||'—')+'</b> <span class="tag">Fit '+fit(l)+'/100</span><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
       '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[esc(l.state),l.trucks?esc(l.trucks)+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+esc(l.days)+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
         (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up in Gmail':'Open in Gmail')+'</button>':'')+
-        '<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
+        (canSend?'<button class="small ghost" data-a="confirm" data-i="'+i+'">Mark sent</button>':'')+'<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
         '<button class="small ghost" data-a="rep" data-i="'+i+'">Replied</button>'+
         '<button class="small ghost" data-a="stop" data-i="'+i+'">Do not contact</button>'+
       '</div></td></tr>';}).join('')||'<tr><td colspan="4" class="note">Nothing here. Find leads above.</td></tr>';
@@ -239,12 +239,12 @@ $('view').addEventListener('change',render);$('sortBy').addEventListener('change
 $('list').addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; var l=st.leads[+b.getAttribute('data-i')]; if(!l) return;
   var a=b.getAttribute('data-a');
   if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
-  if(a==='send'){var m2=compose(l,l.status==='sent'?'followup':null);
+  if(a==='send'){if(!eligible(l)||!l.email||sentToday()>=st.cap)return;var m2=compose(l,l.status==='sent'?'followup':null);
     if(!st.addr){alert('Add your postal address in step 2 first.');return;}
     var gm='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email)+'&su='+encodeURIComponent(m2.subj)+'&body='+encodeURIComponent(m2.body);
     if(!window.open(gm,'_blank')){window.location.href=gm;}
-    if(l.status==='sent') l.followed=today(); else {l.status='sent'; l.sentOn=today();} }
-  if(a==='rep') l.status='replied';
+    } if(a==='confirm'&&eligible(l)&&l.email&&sentToday()<st.cap&&confirm('Confirm this email was actually sent in Gmail.')){if(l.status==='sent') l.followed=today(); else {l.status='sent'; l.sentOn=today();} }
+  if(a==='rep'&&l.status!=='stop') l.status='replied';
   if(a==='stop') l.status='stop';
   save(); render();});
 $('exp').addEventListener('click',function(){var cols=['company','name','email','phone','state','trucks','dot','status','sentOn','followed','src','note'];
