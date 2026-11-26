@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self' https://data.transportation.gov; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self' https://data.transportation.gov https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Outreach desk (private) | LoadMargin</title>
@@ -96,7 +96,7 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
     <div class="acts" style="margin:12px 0"><select id="view" style="width:auto"><option value="todo">To contact</option><option value="sent">Sent, waiting</option><option value="followup">Follow-up due (5+ days)</option><option value="replied">Replied</option><option value="all">All</option></select> <select id="sortBy" style="width:auto"><option value="score">Sort: best fit first</option><option value="">Sort: as added</option><option value="new">Authority: newest first</option><option value="old">Authority: oldest first</option></select>
       <button class="ghost small" id="exp">Export CSV</button><button class="ghost small" id="clr">Clear leads</button></div>
     <div style="overflow-x:auto"><table><thead><tr><th>Lead</th><th>Info</th><th>Status</th><th>Actions</th></tr></thead><tbody id="list"></tbody></table></div>
-    <div id="preview" class="hide"><h2 style="margin-top:14px">Preview</h2><pre id="pv"></pre></div>
+    <div class="card" style="margin-top:14px"><h2>AI draft assistant</h2><p class="note">Optional server connection. Only company facts and reviewed notes are sent. No automatic sending.</p><label>Worker URL</label><input id="aiUrl" type="url" placeholder="https://your-worker.workers.dev"><label>Session access token</label><input id="aiToken" type="password" autocomplete="off"><label>Verified business notes</label><textarea id="aiNotes"></textarea><p id="aiStatus" role="status"></p><label>AI subject</label><input id="aiSubject"><label>AI draft (review and edit)</label><textarea id="aiBody"></textarea></div><div id="preview" class="hide"><h2 style="margin-top:14px">Preview</h2><pre id="pv"></pre></div>
   </div>
 </div>
 
@@ -206,7 +206,8 @@ $('mAdd').addEventListener('click',function(){var e=$('mEmail').value.trim();
   addLeads([{name:$('mName').value.trim(),company:$('mCo').value.trim(),email:e.toLowerCase(),note:$('mSrc').value.trim()}],'manual');
   ['mName','mCo','mEmail','mSrc'].forEach(function(id){$(id).value='';});});
 
-/* list */
+async function generateAI(l){var status=$('aiStatus');$('aiSubject').value='';$('aiBody').value='';try{var url=new URL($('aiUrl').value);if(url.protocol!=='https:'||!url.hostname.endsWith('.workers.dev')||url.username||url.password)throw Error('Enter your HTTPS workers.dev endpoint');if(!$('aiToken').value)throw Error('Session token required');status.textContent='Generating draft for '+(l.company||l.name)+'…';var response=await fetch(url.origin+'/draft',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+$('aiToken').value},body:JSON.stringify({company:l.company||l.name,state:l.state,trucks:l.trucks,days:l.days,notes:$('aiNotes').value})});var d=await response.json();if(!response.ok)throw Error(d.error||'Request failed');$('aiSubject').value=d.subject;$('aiBody').value=d.body.replace('[POSTAL ADDRESS]',st.addr||'[POSTAL ADDRESS]');status.textContent='Suggested: '+d.offer+' — '+d.rationale+' — review before use.';}catch(e){status.textContent=e.message;}}
+ /* list */
 function fit(l){return (l.email?30:0)+(l.dot?20:0)+(l.trucks>=1&&l.trucks<=5?20:0)+(l.days!=null&&l.days>=30&&l.days<=270?20:0)+(l.note?10:0);} function sentToday(){return st.leads.reduce(function(n,l){return n+Number(l.sentOn===today())+Number(l.followed===today());},0);} function eligible(l){return l.status==="new"||(l.status==="sent"&&!l.followed&&l.sentOn&&(Date.now()-new Date(l.sentOn))/864e5>=5);}
 function render(){
   var v=$('view').value, now=Date.now();
@@ -229,7 +230,7 @@ function render(){
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
         (l.email?'<button class="small'+(canSend?'':' ghost')+'" data-a="send" data-i="'+i+'"'+(canSend?'':' disabled')+'>'+(l.status==='sent'?'Follow up in Gmail':'Open in Gmail')+'</button>':'')+
-        (canSend?'<button class="small ghost" data-a="confirm" data-i="'+i+'">Mark sent</button>':'')+'<button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
+        (canSend?'<button class="small ghost" data-a="confirm" data-i="'+i+'">Mark sent</button>':'')+'<button class="small ghost" data-a="ai" data-i="'+i+'">AI draft</button><button class="small ghost" data-a="prev" data-i="'+i+'">Preview</button>'+
         '<button class="small ghost" data-a="rep" data-i="'+i+'">Replied</button>'+
         '<button class="small ghost" data-a="stop" data-i="'+i+'">Do not contact</button>'+
       '</div></td></tr>';}).join('')||'<tr><td colspan="4" class="note">Nothing here. Find leads above.</td></tr>';
@@ -237,7 +238,7 @@ function render(){
 }
 $('view').addEventListener('change',render);$('sortBy').addEventListener('change',render);
 $('list').addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; var l=st.leads[+b.getAttribute('data-i')]; if(!l) return;
-  var a=b.getAttribute('data-a');
+  var a=b.getAttribute('data-a'); if(a==='ai'){if(l.status==='stop')return; generateAI(l);return;}
   if(a==='prev'||a==='send'){var m=compose(l,l.status==='sent'?'followup':null); $('preview').classList.remove('hide'); $('pv').textContent='To: '+(l.email||'—')+'\nSubject: '+m.subj+'\n\n'+m.body;}
   if(a==='send'){if(!eligible(l)||!l.email||sentToday()>=st.cap)return;var m2=compose(l,l.status==='sent'?'followup':null);
     if(!st.addr){alert('Add your postal address in step 2 first.');return;}
