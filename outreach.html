@@ -82,7 +82,7 @@ pre{white-space:pre-wrap;background:#0b0b0c;border:1px solid var(--line);border-
         <div><label>Daily cap</label><input id="cap" type="number" min="1" max="50" value="20"></div>
       </div>
       <label>Your postal address (required in every cold email)</label><input id="addr" placeholder="Street, city, postcode, Serbia">
-      <label>Subject</label><input id="subj">
+      <label><input id="smartOffer" type="checkbox" style="width:auto"> Automatically recommend an offer for each new lead</label><p class="note">Uses carrier registration age and fleet size, not verified business needs. Review each recommendation.</p><label>Subject</label><input id="subj">
       <label>Body ({first}, {company}, {state}, {days} are filled in per lead)</label><textarea id="body" style="min-height:190px"></textarea>
       <p class="note">Edits are saved. The opt-out line and address are added automatically at the bottom.</p>
     </div>
@@ -141,7 +141,7 @@ $('tpl').addEventListener('change',function(){st.cur=this.value;save();fillTplUI
 $('addr').addEventListener('input',function(){st.addr=this.value;save();});
 $('cap').addEventListener('input',function(){st.cap=Math.max(1,Math.min(50,parseInt(this.value,10)||20));$('capTxt').textContent=st.cap;save();render();});
 
-function compose(l,which){var t=which?{subj:TPL[which].subj,body:(st.tpl[which]&&st.tpl[which].body)||TPL[which].body}:curTpl();
+function recommended(l){if(l.days!=null&&l.days!==''&&Number(l.days)<=270)return 'compliance';if(Number(l.trucks)>=3)return 'question';return 'loadcheck';} $('smartOffer').checked=!!st.smartOffer;$('smartOffer').addEventListener('change',function(){st.smartOffer=this.checked;save();render();}); function compose(l,which){if(!which&&st.smartOffer&&l.status==='new')which=recommended(l);var t=which?{subj:TPL[which].subj,body:(st.tpl[which]&&st.tpl[which].body)||TPL[which].body}:curTpl();
   if(which&&st.tpl[which]&&st.tpl[which].subj) t.subj=st.tpl[which].subj;
   function f(s){return s.replace(/\{first\}/g,firstName(l)).replace(/\{company\}/g,title(l.company||l.name||'your company')).replace(/\{state\}/g,l.state||'').replace(/\{days\}/g,l.days!=null?l.days:'');}
   var foot="\n\n--\nIf you'd rather not hear from me, just reply \"stop\" and I won't email again.\n"+(st.addr||'[ADD YOUR POSTAL ADDRESS]');
@@ -153,8 +153,8 @@ document.querySelectorAll('[data-tab]').forEach(function(b){b.addEventListener('
   document.querySelectorAll('[data-pane]').forEach(function(p){p.classList.toggle('hide',p.getAttribute('data-pane')!==b.getAttribute('data-tab'));});});});
 
 /* leads */
-function key(l){return (l.email||'').toLowerCase()||(l.dot?'dot'+l.dot:'')||(l.name||'').toLowerCase();}
-function addLeads(arr,src){var have={}; st.leads.forEach(function(l){have[key(l)]=1;}); var n=0;
+function key(l){return (l.email||'').trim().toLowerCase()||(l.dot?'dot'+l.dot:'')||(l.name||'').toLowerCase();}
+function addLeads(arr,src){var have=Object.create(null); st.leads.forEach(function(l){have[key(l)]=1;}); var n=0;
   arr.forEach(function(l){var k=key(l); if(!k||have[k]) return; have[k]=1; l.src=l.src||src; l.status='new'; l.added=today(); st.leads.push(l); n++;});
   save(); render(); return n;}
 function pick(o,names){for(var i=0;i<names.length;i++){var v=o[names[i]]; if(v!=null&&String(v).trim()!=='') return String(v).trim();} return '';}
@@ -224,7 +224,7 @@ function render(){
   $('list').innerHTML=list.slice(0,200).map(function(l){var i=st.leads.indexOf(l);
     var tag={new:'',sent:'sent',replied:'replied',stop:'no'}[l.status]||'';
     var canSend=l.email&&eligible(l)&&(left>0);
-    return '<tr><td><b>'+esc(title(l.company)||l.name||'—')+'</b> <span class="tag">Fit '+fit(l)+'/100</span><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
+    return '<tr><td><b>'+esc(title(l.company)||l.name||'—')+'</b> <span class="tag">Fit '+fit(l)+'/100</span><br><span class="note">Suggested: '+esc(TPL[recommended(l)].name)+'</span><br><span class="note">'+esc(firstName(l)!=='there'?title(l.name):'')+'</span></td>'+
       '<td class="note">'+(l.email?esc(l.email):'<i>no email</i>')+(l.phone?'<br>'+esc(l.phone):'')+'<br>'+[esc(l.state),l.trucks?esc(l.trucks)+' truck'+(l.trucks>1?'s':''):'',l.days!=null&&l.days!==''?'authority '+esc(l.days)+' days ago':'',l.dot?'DOT '+esc(l.dot):'',l.note?esc(l.note):''].filter(Boolean).join(' · ')+'</td>'+
       '<td><span class="tag '+tag+'">'+esc(l.status)+'</span>'+(l.sentOn?'<br><span class="note">'+esc(l.sentOn)+'</span>':'')+'</td>'+
       '<td><div class="acts">'+
